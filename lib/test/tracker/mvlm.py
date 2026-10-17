@@ -6,6 +6,8 @@ import cv2
 from lib.test.utils.hann import hann2d
 from lib.models.mvlm import build_mvlm
 from lib.utils.box_ops import clip_box
+from lib.models.mvlm.memory import extract_target_tokens
+import warnings
 
 
 class MVLM(BaseTracker):
@@ -14,7 +16,19 @@ class MVLM(BaseTracker):
         network = build_mvlm(params.cfg, training=False)
         ckpt = torch.load(self.params.checkpoint, map_location='cpu')
         state_dict = ckpt['net'] if 'net' in ckpt else ckpt
-        network.load_state_dict(state_dict, strict=False)
+        incompatible = network.load_state_dict(state_dict, strict=False)
+        if network.memory_enabled:
+            missing_memory = [name for name in incompatible.missing_keys if name.startswith('memory_fusion.')]
+            missing_base = [name for name in incompatible.missing_keys
+                            if not name.startswith(('memory_fusion.', 'text_encoder.clip.'))]
+            if missing_base or incompatible.unexpected_keys:
+                raise ValueError('Incompatible memory tracker checkpoint: missing={}, unexpected={}'.format(
+                    missing_base, incompatible.unexpected_keys))
+            if missing_memory:
+                if not params.cfg.TEST.MEMORY_ALLOW_UNTRAINED:
+                    raise ValueError('Checkpoint has no complete trained memory module; use a memory checkpoint '
+                                     'or explicitly enable TEST.MEMORY_ALLOW_UNTRAINED for a smoke check')
+                warnings.warn('Memory weights are incomplete or untrained; this run is only a smoke check')
         self.cfg = params.cfg
         if hasattr(params, 'device') and params.device:
             self.device = torch.device(params.device)
@@ -119,11 +133,26 @@ class MVLM(BaseTracker):
 
         self.kmem = None
         self.kmvlm = None
+        self.content_memory = self.network.new_memory(1)
+
+    def set_language(self, text):
+        if text == self.init_nlp:
+            return
+        self.init_nlp = text
+        with torch.no_grad():
+            self.text_emb = self.network.text_encoder(text) if text is not None else None
+        if self.content_memory is not None:
+            self.content_memory.reset()
+        self.kmem = None
+        self.kmvlm = None
+        self.flag = True
 
     def track(self, image, info: dict = None):
 
         H, W, _ = image.shape
         self.frame_id += 1
+        if info is not None and 'init_nlp' in info:
+            self.set_language(info['init_nlp'])
             
         if self.flag:
             x_patch_arr, resize_factor = resize_sample_target(image, output_sz=self.params.search_size)  # (x1, y1, w, h)
@@ -139,11 +168,16 @@ class MVLM(BaseTracker):
         search_list = [search]
 
         # run the encoder
+        memory_args = {}
+        if self.network.memory_enabled:
+            memory_args = dict(memory_state=self.content_memory,
+                               frame_ids=torch.tensor([self.frame_id], device=self.device))
         with torch.no_grad():
             out_dict = self.network(template_list=self.template_list,
                                     search_list=search_list,
                                     text_emb=self.text_emb,
                                     raw_text=[self.init_nlp] if self.init_nlp is not None else None,
+                                    **memory_args,
                                     )
 
         # add hann windows
@@ -234,6 +268,18 @@ class MVLM(BaseTracker):
             pred_box = (box.mean(dim=0) * self.params.search_size / resize_factor).tolist()  # (cx, cy, w, h) [0,1]
             self.state = clip_box(self.map_box_back(pred_box, resize_factor), H, W, margin=10)
 
+        if self.content_memory is not None:
+            with torch.no_grad():
+                crop_box = top1_box.detach().unsqueeze(0)
+                crop_xywh = torch.cat((crop_box[:, :2] - crop_box[:, 2:] / 2, crop_box[:, 2:]), -1)
+                target_tokens, roi_valid = extract_target_tokens(
+                    out_dict['feat_x'], crop_xywh, self.cfg.MODEL.MEMORY.ROI_SIZE)
+                roi_valid &= selected_boxes[top1_idx].reshape(1)
+                full_box = target_tokens.new_tensor([self.state])
+                full_box /= full_box.new_tensor([W, H, W, H])
+                self.content_memory.write(target_tokens, full_box, [self.frame_id],
+                                          cls_scores[top1_idx].reshape(1), roi_valid)
+
         # LOCAL OR GLOBAL VIEW ON NEXT FRAME?
         if next_flag:
             self.flag = True
@@ -289,6 +335,11 @@ class MVLM(BaseTracker):
             "image_BGR": image_BGR,
             "cropped_vis": cropped_vis,
         }
+
+        if self.content_memory is not None:
+            results_dict['memory_short_size'] = len(self.content_memory.short[0])
+            results_dict['memory_long_size'] = len(self.content_memory.long[0])
+            results_dict['memory_gate'] = float(out_dict['memory_gate'].mean())
 
         return results_dict
 

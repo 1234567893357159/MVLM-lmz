@@ -62,13 +62,18 @@ def run(settings):
             os.makedirs(log_dir)
     settings.log_file = os.path.join(log_dir, "%s-%s.log" % (settings.script_name, settings.config_name))
 
+    if cfg.MODEL.MEMORY.ENABLED:
+        if not cfg.MODEL.PRETRAINED_MODEL or not os.path.isfile(cfg.MODEL.PRETRAINED_MODEL):
+            raise ValueError('Memory training requires an existing baseline tracking checkpoint')
+        if not 0 <= cfg.TRAIN.MEMORY_PREDICTED_PROB <= 1:
+            raise ValueError('TRAIN.MEMORY_PREDICTED_PROB must be between zero and one')
+
     # Build dataloaders
     loader_type = getattr(cfg.DATA, "LOADER", "tracking")
     if loader_type == "tracking":
         loader_train = build_dataloaders(cfg, settings)
     else:
         raise ValueError("illegal DATA LOADER")
-
 
     # Create network
     if settings.script_name == "mvlm":
@@ -102,4 +107,4 @@ def run(settings):
     trainer = LTRTrainer(actor, [loader_train], optimizer, settings, lr_scheduler, use_amp=use_amp)
 
     # train
-    trainer.train(cfg.TRAIN.EPOCH, load_latest=True, fail_safe=True)
+    trainer.train(cfg.TRAIN.EPOCH, load_latest=True, fail_safe=not cfg.MODEL.MEMORY.ENABLED)

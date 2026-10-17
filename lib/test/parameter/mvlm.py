@@ -1,5 +1,6 @@
 from lib.test.utils import TrackerParams
 import os
+import copy
 from lib.test.evaluation.environment import env_settings
 from lib.config.mvlm.config import cfg, update_config_from_file
 
@@ -11,7 +12,7 @@ def parameters(yaml_name: str, weight_path: str):
     # update default config from yaml file
     yaml_file = os.path.join(workspace_dir, 'experiments', 'mvlm', '%s.yaml' % yaml_name)
     update_config_from_file(yaml_file)
-    params.cfg = cfg
+    params.cfg = copy.deepcopy(cfg)
     params.yaml_name = yaml_name
 
     # template and search region

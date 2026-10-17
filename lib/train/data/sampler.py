@@ -22,7 +22,7 @@ class TrackingSampler(torch.utils.data.Dataset):
 
     def __init__(self, datasets, p_datasets, samples_per_epoch, max_gap,
                  num_search_frames, num_template_frames=1, processing=no_processing, frame_sample_mode='causal',
-                 train_cls=False, pos_prob=0.5, multi_modal_language=False):
+                 train_cls=False, pos_prob=0.5, multi_modal_language=False, memory_max_stride=4):
         """
         args:
             datasets - List of datasets to be used for training
@@ -55,6 +55,9 @@ class TrackingSampler(torch.utils.data.Dataset):
         self.processing = processing
         self.frame_sample_mode = frame_sample_mode
         self.multi_modal_language = multi_modal_language
+        self.memory_max_stride = memory_max_stride
+        if frame_sample_mode == 'memory' and (num_search_frames < 2 or memory_max_stride < 1):
+            raise ValueError('Memory sampling requires at least two search frames and a positive stride')
 
     def __len__(self):
         return self.samples_per_epoch
@@ -124,7 +127,9 @@ class TrackingSampler(torch.utils.data.Dataset):
                     search_frame_ids = None
                     gap_increase = 0
 
-                    if self.frame_sample_mode == 'causal':
+                    if self.frame_sample_mode == 'memory':
+                        template_frame_ids, search_frame_ids = self.get_frame_ids_memory(visible)
+                    elif self.frame_sample_mode == 'causal':
                         # Sample test and train frames in a causal manner, i.e. search_frame_ids > template_frame_ids
                         while search_frame_ids is None:
                             base_frame_id = self._sample_visible_ids(visible, num_ids=1, min_id=self.num_template_frames - 1,
@@ -174,6 +179,10 @@ class TrackingSampler(torch.utils.data.Dataset):
                                    'search_masks': search_masks,
                                    'dataset': dataset.get_name(),
                                    'test_class': meta_obj_test.get('object_class_name')})
+
+                if self.frame_sample_mode == 'memory':
+                    data['search_frame_ids'] = torch.tensor(search_frame_ids, dtype=torch.long)
+                    data['search_visible'] = visible[search_frame_ids].bool()
 
                 # tokenize language
                 if self.multi_modal_language:
@@ -404,6 +413,21 @@ class TrackingSampler(torch.utils.data.Dataset):
 
         template_frame_ids = template_frame_id1 + template_frame_ids_extra
         return template_frame_ids, search_frame_ids
+
+    def get_frame_ids_memory(self, visible):
+        visible_ids = torch.nonzero(visible, as_tuple=False).flatten().tolist()
+        if len(visible_ids) < self.num_search_frames:
+            raise ValueError('Not enough visible frames for a memory clip')
+        max_stride = min(self.memory_max_stride, (len(visible) - 1) // (self.num_search_frames - 1))
+        for attempt in range(50):
+            stride = random.randint(1, max_stride)
+            start = random.randint(0, len(visible) - 1 - stride * (self.num_search_frames - 1))
+            search_ids = [start + stride * offset for offset in range(self.num_search_frames)]
+            if all(bool(visible[frame_id]) for frame_id in search_ids):
+                return [search_ids[0]] * self.num_template_frames, search_ids
+        start = random.randint(0, len(visible_ids) - self.num_search_frames)
+        search_ids = visible_ids[start:start + self.num_search_frames]
+        return [search_ids[0]] * self.num_template_frames, search_ids
 
     def get_frame_ids_order(self, visible):
         # get template and search ids in an 'order' manner, the template and search regions are arranged in chronological order

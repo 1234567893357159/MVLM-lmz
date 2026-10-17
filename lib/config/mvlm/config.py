@@ -35,6 +35,19 @@ cfg.MODEL.HEAD.XAVIER_INIT = True
 # MODEL.PRETRAINED_MODEL
 cfg.MODEL.PRETRAINED_MODEL = None
 
+cfg.MODEL.MEMORY = edict()
+cfg.MODEL.MEMORY.ENABLED = False
+cfg.MODEL.MEMORY.SHORT_CAPACITY = 8
+cfg.MODEL.MEMORY.LONG_CAPACITY = 16
+cfg.MODEL.MEMORY.ROI_SIZE = 2
+cfg.MODEL.MEMORY.HIDDEN_DIM = 256
+cfg.MODEL.MEMORY.KEY_DIM = 128
+cfg.MODEL.MEMORY.USE_SEMANTIC = True
+cfg.MODEL.MEMORY.MIN_QUALITY = 0.5
+cfg.MODEL.MEMORY.NOVELTY_THRESHOLD = 0.1
+cfg.MODEL.MEMORY.SHORT_DECAY = 0.1
+cfg.MODEL.MEMORY.LONG_DECAY = 0.01
+
 # TRAIN
 cfg.TRAIN = edict()
 cfg.TRAIN.LR = 0.0001
@@ -61,6 +74,8 @@ cfg.TRAIN.SCHEDULER.TYPE = "step"
 cfg.TRAIN.SCHEDULER.DECAY_RATE = 0.1
 cfg.TRAIN.TYPE = "normal" # normal, peft, fft, text_frozen
 cfg.TRAIN.PRETRAINED_PATH = None
+cfg.TRAIN.MEMORY_FREEZE_HEAD = True
+cfg.TRAIN.MEMORY_PREDICTED_PROB = 0.5
 
 # DATA
 cfg.DATA = edict()
@@ -68,6 +83,7 @@ cfg.DATA.MEAN = [0.485, 0.456, 0.406]
 cfg.DATA.STD = [0.229, 0.224, 0.225]
 cfg.DATA.MAX_SAMPLE_INTERVAL = 200
 cfg.DATA.SAMPLER_MODE = "order"
+cfg.DATA.MEMORY_MAX_STRIDE = 4
 cfg.DATA.LOADER = "tracking"
 cfg.DATA.MULTI_MODAL_VISION = True # vision multi-modal
 cfg.DATA.MULTI_MODAL_LANGUAGE = True # language multi-modal
@@ -85,6 +101,7 @@ cfg.DATA.USE_NLP.OTB99 = False
 cfg.DATA.TRAIN = edict()
 cfg.DATA.TRAIN.DATASETS_NAME = ["LASOT", "GOT10K_vottrain"]
 cfg.DATA.TRAIN.DATASETS_RATIO = [1, 1]
+cfg.DATA.TRAIN.OTB_SEQUENCES = []
 cfg.DATA.TRAIN.SAMPLE_PER_EPOCH = 60000
 # DATA.SEARCH
 cfg.DATA.SEARCH = edict()
@@ -108,6 +125,7 @@ cfg.TEST.TEMPLATE_SIZE = 256
 cfg.TEST.SEARCH_FACTOR = 2.0
 cfg.TEST.SEARCH_SIZE = 128
 cfg.TEST.EPOCH = 500
+cfg.TEST.MEMORY_ALLOW_UNTRAINED = False
 cfg.TEST.WINDOW = False # window penalty
 cfg.TEST.NUM_TEMPLATES = 1
 # TEST.UPDATE_INTERVALS
@@ -176,6 +194,8 @@ def update_config_from_file(filename):
     exp_config = None
     with open(filename) as f:
         exp_config = edict(yaml.safe_load(f))
+        if 'MEMORY' not in exp_config.get('MODEL', {}):
+            cfg.MODEL.MEMORY.ENABLED = False
         _update_config(cfg, exp_config)
 
 

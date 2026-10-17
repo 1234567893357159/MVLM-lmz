@@ -36,7 +36,7 @@ class Otb99_lang(BaseVideoDataset):
                     vid_ids or split option can be used at a time.
             data_fraction - Fraction of dataset to be used. The complete dataset is used by default
         """
-        root = env_settings().lasot_dir if root is None else root
+        root = env_settings().otb99_lang_dir if root is None else root
         super().__init__('Otb99_lang', root, image_loader)
         # Keep a list of all classes
         self.class_list = [f for f in os.listdir(self.root)]
@@ -52,6 +52,7 @@ class Otb99_lang(BaseVideoDataset):
         self.multi_modal_vision = multi_modal_vision
         self.multi_modal_language = multi_modal_language
         self.use_nlp = use_nlp
+        self._frame_files = {}
 
     def _build_sequence_list(self, vid_ids=None, split=None):
         if split is not None:
@@ -64,7 +65,16 @@ class Otb99_lang(BaseVideoDataset):
                 file_path = os.path.join(ltr_path, 'data_specs', 'otb99_test_split.txt')
             else:
                 raise ValueError('Unknown split name.')
-            sequence_list = pandas.read_csv(file_path, header=None).squeeze("columns").values.tolist()
+            if os.path.isfile(file_path):
+                sequence_list = pandas.read_csv(file_path, header=None).squeeze("columns").values.tolist()
+            elif split == 'train':
+                query_dir = os.path.join(self.root, 'OTB_query_train')
+                sequence_list = sorted(os.path.splitext(name)[0] for name in os.listdir(query_dir)
+                                       if name.endswith('.txt') and not name.startswith('._'))
+                if not sequence_list:
+                    raise ValueError('No OTB training language annotations found')
+            else:
+                raise FileNotFoundError(file_path)
         elif vid_ids is not None:
             sequence_list = [c + '-' + str(v) for c in self.class_list for v in vid_ids]
         else:
@@ -101,16 +111,22 @@ class Otb99_lang(BaseVideoDataset):
     def get_sequences_in_class(self, class_name):
         return self.seq_per_class[class_name]
 
-    def _read_bb_anno(self, seq_path):
-        bb_anno_file = os.path.join(seq_path, "groundtruth_rect.txt")
+    def _read_bb_anno(self, seq_path, sequence_name=None):
+        annotation_name = 'groundtruth_rect.txt'
+        if sequence_name in ('Jogging-1', 'Jogging-2'):
+            annotation_name = 'groundtruth_rect.{}.txt'.format(sequence_name[-1])
+        bb_anno_file = os.path.join(seq_path, annotation_name)
         gt = pandas.read_csv(bb_anno_file, delimiter=",|\s+", header=None, dtype=np.float32, na_filter=False,
                              engine='python').values
         return torch.tensor(gt)
 
     def _read_nlp(self, seq_name):
         nlp_file = os.path.join(self.root, "OTB_query_" + self.split, seq_name + ".txt")
-        nlp = pandas.read_csv(nlp_file, dtype=str, header=None, low_memory=False).values
-        return nlp[0][0]
+        with open(nlp_file, encoding='utf-8-sig') as query_file:
+            text = query_file.read().strip()
+        if not text:
+            raise ValueError('Empty OTB language annotation: ' + nlp_file)
+        return text
 
     def _read_target_visible(self, seq_path):
         # Read full occlusion and out_of_view
@@ -128,27 +144,37 @@ class Otb99_lang(BaseVideoDataset):
 
     def _get_sequence_path(self, seq_id):
         seq_name = self.sequence_list[seq_id]
+        if seq_name in ('Jogging-1', 'Jogging-2'):
+            seq_name = 'Jogging'
         return os.path.join(self.root, "OTB_videos", seq_name)
 
     def get_sequence_info(self, seq_id):
         seq_path = self._get_sequence_path(seq_id)
-        bbox = self._read_bb_anno(seq_path)
+        bbox = self._read_bb_anno(seq_path, self.sequence_list[seq_id])
 
         valid = (bbox[:, 2] > 0) & (bbox[:, 3] > 0)
         visible = 1 & valid.byte()
         output = {'bbox': bbox, 'valid': valid, 'visible': visible}
+        nlp = None
         if self.multi_modal_language and self.use_nlp:
             nlp = self._read_nlp(self.sequence_list[seq_id])
             output['nlp'] = nlp
         return {'bbox': bbox, 'valid': valid, 'visible': visible, 'nlp': nlp}
 
     def get_sequence_nlp(self, seq_id):
-        seq_path = self._get_sequence_path(seq_id)
-        nlp = self._read_nlp(seq_path)
+        nlp = self._read_nlp(self.sequence_list[seq_id])
         return nlp
 
     def _get_frame_path(self, seq_path, frame_id):
-        return os.path.join(seq_path, 'img', '{:04}.jpg'.format(frame_id + 1))  # frames start from 1
+        if seq_path not in self._frame_files:
+            image_dir = os.path.join(seq_path, 'img')
+            paths = sorted((os.path.join(image_dir, name) for name in os.listdir(image_dir)
+                            if os.path.splitext(name)[0].isdigit() and name.lower().endswith('.jpg')),
+                           key=lambda path: int(os.path.splitext(os.path.basename(path))[0]))
+            if os.path.basename(seq_path) == 'David':
+                paths = [path for path in paths if int(os.path.splitext(os.path.basename(path))[0]) >= 300]
+            self._frame_files[seq_path] = paths
+        return self._frame_files[seq_path][frame_id]
 
     def _get_frame(self, seq_path, frame_id):
         frame = self.image_loader(self._get_frame_path(seq_path, frame_id))

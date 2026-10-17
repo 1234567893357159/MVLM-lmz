@@ -3,6 +3,7 @@ import torchvision.transforms as transforms
 from lib.utils import TensorDict
 import lib.train.data.processing_utils as prutils
 import torch.nn.functional as F
+import math
 
 
 def stack_tensors(x):
@@ -165,7 +166,7 @@ class SeqTrackProcessing(BaseProcessing):
     """
 
     def __init__(self, search_area_factor, output_sz, center_jitter_factor, scale_jitter_factor,
-                 mode='pair', multi_modal_language=False, settings=None, *args, **kwargs):
+                 mode='pair', multi_modal_language=False, settings=None, joint_sequence=False, *args, **kwargs):
         """
         args:
             search_area_factor - The size of the search region  relative to the target size.
@@ -185,6 +186,7 @@ class SeqTrackProcessing(BaseProcessing):
         self.mode = mode
         self.settings = settings
         self.multi_modal_language = multi_modal_language
+        self.joint_sequence = joint_sequence
 
     def _get_jittered_box(self, box, mode):
         """ Jitter the input box
@@ -227,6 +229,24 @@ class SeqTrackProcessing(BaseProcessing):
             # Add a uniform noise to the center pos
             jittered_anno = [self._get_jittered_box(a, s) for a in data[s + '_anno']]
 
+            if self.joint_sequence:
+                source_sizes = [torch.tensor(image.shape[:2], dtype=torch.float32) for image in data[s + '_images']]
+                crop_regions = []
+                box_transforms = []
+                for crop_box in jittered_anno:
+                    crop_side = math.ceil(math.sqrt(float(crop_box[2] * crop_box[3])) * self.search_area_factor[s])
+                    origin_x = round(float(crop_box[0] + crop_box[2] / 2) - crop_side / 2)
+                    origin_y = round(float(crop_box[1] + crop_box[3] / 2) - crop_side / 2)
+                    crop_regions.append(torch.tensor([origin_x, origin_y, crop_side, crop_side], dtype=torch.float32))
+                    center = crop_box[:2] + crop_box[2:] / 2
+                    resize_factor = self.output_sz[s] / max(crop_side, 1)
+                    box_origin = center - (self.output_sz[s] - 1) / (2 * resize_factor)
+                    box_extent = (self.output_sz[s] - 1) / resize_factor
+                    box_transforms.append(torch.cat((box_origin, box_origin.new_tensor([box_extent, box_extent]))))
+                data[s + '_source_sizes'] = source_sizes
+                data[s + '_crop_regions'] = crop_regions
+                data[s + '_box_transforms'] = box_transforms
+
             # 2021.1.9 Check whether data is valid. Avoid too small bounding boxes
             w, h = torch.stack(jittered_anno, dim=0)[:, 2], torch.stack(jittered_anno, dim=0)[:, 3]
 
@@ -243,7 +263,7 @@ class SeqTrackProcessing(BaseProcessing):
 
             # Apply transforms
             data[s + '_images'], data[s + '_anno'], data[s + '_masks'] = self.transform[s](
-                image=crops, bbox=boxes, mask=mask_crops, joint=False)
+                image=crops, bbox=boxes, mask=mask_crops, joint=self.joint_sequence)
 
 
         data['valid'] = True

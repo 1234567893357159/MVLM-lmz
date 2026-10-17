@@ -33,6 +33,20 @@ class MVLM_Actor(BaseActor):
 
     def __call__(self, data):
         out_dict = self.forward_pass(data)
+        if 'memory_sequence' in out_dict:
+            losses, statistics = [], []
+            for frame_index, output in enumerate(out_dict['memory_sequence']):
+                frame_data = data.copy()
+                frame_data['search_anno'] = data['search_anno'][frame_index:frame_index + 1]
+                loss, status = self.compute_losses(output, frame_data)
+                losses.append(loss)
+                statistics.append(status)
+            mean_loss = torch.stack(losses).mean()
+            status = {name: sum(item[name] for item in statistics) / len(statistics)
+                      for name in statistics[0]}
+            status['Memory/Gate'] = torch.stack([output['memory_gate'].detach().mean()
+                                               for output in out_dict['memory_sequence']]).mean().item()
+            return mean_loss, status
         loss, status = self.compute_losses(out_dict, data)
         return loss, status
 
@@ -42,11 +56,19 @@ class MVLM_Actor(BaseActor):
         template_list = data["template_images"].reshape(-1, *data["template_images"].shape[2:]).split(b, dim=0)
         raw_text = data["nlp_real"] if self.multi_modal_language else None
         
+        memory_args = {}
+        if self.cfg.MODEL.MEMORY.ENABLED:
+            memory_args = dict(frame_ids=data['search_frame_ids'], memory_boxes=data['search_anno'],
+                               memory_valid=data['search_visible'],
+                               memory_box_transforms=data.get('search_box_transforms'),
+                               memory_image_sizes=data.get('search_source_sizes'),
+                               predicted_write_probability=self.cfg.TRAIN.MEMORY_PREDICTED_PROB)
         outputs = self.net(
             template_list=template_list,
             search_list=search_list,
             text_emb=None,
             raw_text=raw_text,
+            **memory_args,
         )
 
         return outputs
@@ -138,4 +160,4 @@ class MVLM_Actor(BaseActor):
             "IoU": ious.mean().item()}
         if self.cfg.TRAIN.CM_LOSS:
             status["Loss/CM"] = cm_loss_weighted.item()  # After applying weight
-        return loss, status   
+        return loss, status

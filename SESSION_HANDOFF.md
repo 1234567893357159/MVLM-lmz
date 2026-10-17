@@ -1,14 +1,116 @@
 # MVLM 会话交接记录
 
-更新时间：2026-10-17（Asia/Shanghai）；最新下载速度采样时间为当天 10:09。**12:1x 补写第 9.4 节（LaSOT 完整评测，此前版本遗漏）；17:0x 补写第 9.5 节（LaSOT 8 组参数搜索）；18:0x 补写第 9.6/9.7 节（OTB 10 组参数搜索与两数据集汇总）；18:0x 补写第 9.8 节（18 组数字全量核对通过、双数据集最优配置、下载实时状态；第 5 节下载表已过时，以 9.8 为准）。**本文是历史快照；新会话必须重新检查进程、网络和文件大小，不能将本文进度当成实时进度。
+更新时间：2026-10-17（Asia/Shanghai）。已补充开题报告并清理被后续进展取代的状态、下载快照和待办；实验历史与原始基线保留。动态下载状态以状态文件、进程、日志及有效字节增长共同核实，不沿用本文数字作实时进度。
+
+## 分支用途与当前开发位置（2026-10-17 更新，优先确认）
+
+**当前工作分支：`codex/xmem-memory`。用户要求后续记忆库相关修改都在这个分支进行。**本分支从本地 `main` 的 `d36160fa1af4e7438f67c0b58fb3f2c765e7d9fc` 创建；创建时只切换分支，未修改模型代码、创建提交或推送远端。
+
+本分支统一中文说明：`codex-xmem-memory分支说明.md`（由原 `记忆库改动说明.md` 更新重命名），包含完整文件改动、训练配置、已完成短训／评测结果、产物与复跑入口，以及后续工作。分支功能变化时同步维护该文件。
+
+### 本地分支
+
+| 分支 | 用途 | 开发约定 |
+| --- | --- | --- |
+| `main` | 保存已有 MVLM 复现适配、评测脚本、实验配置及精简结果，作为结构改造的固定起点 | 保留现有基线；新增记忆库功能在开发分支实现。这里的 `mvlm_TF.yaml` 是较早调参配置，不代表未经修改的官方默认配置 |
+| `codex/xmem-memory` | 当前毕设的第一阶段结构开发：参考 XMem 构建目标级短期／长期显式内容记忆库，并接入 MVLM | 后续修改默认在此分支进行；先实现记忆存储、可靠写入、检索与融合，验证有无记忆的差别，再考虑后续模块 |
+
+本阶段重点为内容记忆本身：保存可靠观测的目标外观、语言相关内容和时序状态，设计容量管理与目标切换重置，保留原有置信度记忆；新增功能可通过配置关闭，便于对照基线。记忆库与融合、时序训练接入的首版现已实现，状态见下文。残差 Transformer 世界模型与预测条件质量头属于后续阶段，当前尚未实现。
+
+### 远端引用与来源
+
+| 引用 | 用途 | 说明 |
+| --- | --- | --- |
+| `origin/main` | 个人仓库 `git@github.com:1234567893357159/MVLM-lmz.git` 的主分支远端跟踪引用 | 分支创建时指向 `d36160f`；记忆开发使用独立的 `codex/xmem-memory`，不直接更新 main |
+| `origin/codex/xmem-memory`（发布目标） | 个人仓库的同名记忆开发分支 | 用户已授权提交并推送代码、配置与说明；使用 `git push -u origin codex/xmem-memory` 发布，实际同步状态以 Git 查询为准 |
+| `upstream/main` | 官方仓库 `https://github.com/inha-vllab/MVLM.git` 的主分支远端跟踪引用 | 本地保存的引用为 `4186c8f`；用于追溯官方代码及复现差异，不在此引用上直接开发 |
+| `upstream/master` | 官方仓库另一个已保存的历史远端跟踪引用 | 本地指向 `6e36b74`；尚未核实其与主分支的内容差异，不作为当前开发起点 |
+
+上述远端信息来自本地已有引用，本次未 fetch，不代表远端实时状态。`upstream/HEAD` 当前指向 `upstream/main`，是默认分支指示，不是额外开发分支。
+
+### 未提交内容与实验记录约定
+
+- 创建分支前已有 `SESSION_HANDOFF.md` 的未提交更新及未跟踪的 `tex/`；切换时均原样保留，目前仍未提交。未提交和未跟踪文件不由分支隔离，切换分支时可能随工作区一起保留；不能把这些内容视为已经备份进分支历史。
+- 后续继续工作前先执行 `git branch --show-current` 和 `git status --short`，确认位于 `codex/xmem-memory`，保留既有文档与报告文件。
+- 实验记录代码提交号、配置、数据划分、权重来源和指标；不同实验使用独立 exp_id，避免跳过旧预测或覆盖结果。数据集、下载分块、模型和大型输出仍按 `REPRODUCTION.md` 的约定保存在本机，不因切换分支而复制或删除。
+- 新增分支或变更分支用途时同步更新本节；目前只有 `main` 与 `codex/xmem-memory` 两个本地分支，没有单独的世界模型或质量头开发分支。
+
+### 小规模真实训练与评测已通过（2026-10-17）
+
+- 用户授权使用已下载的小数据集验证训练与评测，已用 OTB99-Lang 的 Basketball、Bolt、Boy、Car4 四条训练序列完成 1 epoch、20 次真实更新，并在独立测试序列 Biker、Bird2、Dancer2（共 391 帧）上完成基线和记忆模型评测。训练与测试图像无交集。
+- 结果（PRE／NPR／AUC）：同参数基线 **91.15／64.97／58.16**；记忆短训 **90.14／64.61／57.97**。仅用于检查工程链路，尚未充分训练，不能当成完整 OTB 成绩或记忆增益证据。
+- 真实训练、参数更新、checkpoint 保存与重载、正常阈值下在线记忆写入、预测导出、指标计算均通过；冻结基线参数逐项不变，记忆输出投影权重从零发生更新。
+- 成功产物：`output/memory_otb_smoke_20261017_run02/`，含训练／评测日志、配置副本、`summary.json`、`结果说明.md` 及 `checkpoints/train/mvlm/mvlm_TF_memory_otb_smoke/MVLM_ep0001.pth.tar`。精简报告：`reports/reproduction/MEMORY_OTB_SMOKE_RESULTS.md`。
+- 本次补齐 OTB 训练划分读取及训练序列子集配置，修复训练加载器的路径／特殊序列处理，并修复 `lib/train/data/loader.py` 在零 worker 下的 batch 拼接错误。首次失败日志保留在 run01；成功 run02 未覆盖旧实验。
+- 新配置为 `experiments/mvlm/mvlm_TF_memory_otb_smoke.yaml`，评测入口为 `tracking/evaluate_memory_otb_smoke.py`；复跑应使用新运行目录，避免自动续训或覆盖预测。后文“尚未正式训练”指尚未进行充分训练／完整基准实验；现已存在这份仅用于功能检查的短训权重。
+
+### 当前分支实现进展：记忆库首版（2026-10-17）
+
+- 已新增 `lib/models/mvlm/memory.py` 与 `memory_fusion.py`：目标级短期／长期内容记忆（默认 8／16 条）、2×2 ROI 特征、质量写入与新颖性筛选、容量淘汰、外观／语言条件双路检索、时间与质量偏置、空匹配槽及门控残差融合。原始 `feat_x` 保留用于图文打分和记忆写入，增强的 `feat_x_mem` 进入原 CENTER 头；原 CENTER 结构未修改。
+- 已接入 `lib/models/mvlm/mvlm.py`、`lib/test/tracker/mvlm.py`：先读历史再定位、定位后写入；每个视频或 batch 样本独立持有运行时记忆；初始化空库，目标语言切换时清空内容／置信度记忆并全局重定位；新记忆不使用测试真值框初始化。
+- 已接入训练采样、数据处理、Actor 和优化器：严格递增多帧片段、片段一致增强、逐帧定位损失、历史特征停止梯度，以及真值／预测历史框混合写入。默认冻结编码器、文本编码器与原 CENTER，保持冻结模块 eval 状态，但保留 CENTER 对融合输入的梯度。
+- 独立配置：`experiments/mvlm/mvlm_TF_memory.yaml`；默认配置的记忆开关为关闭，原 `mvlm_TF.yaml` 未修改。同一进程读取不同跟踪配置时会隔离配置快照，旧 YAML 不会继承已开启的记忆开关。
+- 记忆训练从官方完整跟踪 checkpoint 初始化，包含已学习的语言投影，因此该路径跳过额外骨干预训练文件加载；不能误删语言投影后冻结随机参数。正式评测默认拒绝缺少记忆权重的 checkpoint；只有显式开启 `TEST.MEMORY_ALLOW_UNTRAINED` 才允许诊断，不能把诊断结果报告为训练后结果。
+- 检查脚本：`tracking/check_memory_module.py`。基础检查已通过：ROI 有效性、质量门控与容量、因果读取、batch 隔离、空库／零残差基线一致、时序采样与增强、定位损失反传到记忆读取、冻结参数及归一化状态不变。官方权重三帧合成序列前后向与少量真实 OTB 帧的零初始化基线一致检查也已通过。检查不是正式训练或精度评测，没有覆盖已有预测文件。
+- **仅完成上述 OTB 小规模短训，尚无充分训练或精度提升结论。**配置中的 10 epoch、每卡 batch 2、4 帧片段、仅 VastTrack 是开发起点，需数据校验后再安排训练。现阶段仅采可见历史帧，训练裁剪仍围绕扰动真值，未实现预测状态驱动的在线裁剪；训练预测写入与线上 MVLM margin 门控也未完全统一。训练数据路径与线上记忆框元信息已统一到全图归一化 xywh，ROI 提取继续使用裁剪相对坐标；当前框元信息不参与注意力或运动计算。
+- 详细设计、限制、检查及训练／评测命令：`reports/reproduction/MEMORY_IMPLEMENTATION.md`。后续经用户授权已完成上述真实数据短训，尚未全量评测；代码和说明通过当前分支提交发布，具体提交号与远端同步状态以 Git 查询为准。
+
+## 0. 毕设开题报告与整体研究方向（优先阅读，2026-10-17 新增）
+
+用户已确认：工作区 `tex/` 中的 TeX 文档是本人的本科毕业设计开题报告。当前 MVLM 复现工作是毕设的基线准备阶段，后续结构改进应结合这份报告理解；以下内容是报告中的研究计划，不代表新增模块已经实现或训练已启动，也不构成新增数据下载、训练或对外联系的授权。
+
+### 0.1 报告位置与版本
+
+- 题目：**《基于记忆与想像建模的视觉-语言目标跟踪方法研究》**；学生刘明卓，指导教师马丁，哈尔滨工业大学哈尔滨校区、计算学部、软件工程本科。
+- 课题来源：报告记载为国家自然科学基金青年基金项目“基于自然语言查询的视觉目标跟踪方法研究”的支撑课题，项目负责人马丁。
+- 编译入口：`/root/MVLM/tex/report.tex`；当前正文：`/root/MVLM/tex/body/report_harbin_bachelor_opening.tex`；封面信息：`/root/MVLM/tex/front/coverart.tex`，封面日期固定为 `2026.09.28`。
+- 参考文献：`/root/MVLM/tex/reference.bib`；四张插图：`/root/MVLM/tex/figures/`，分别为任务示意、MVLM 基线、改进总体框架与技术路线。
+- 已有 PDF：`/root/MVLM/tex/report.pdf`；目录另有多个 Word 文件，不能仅凭名称判断哪份最新，也未核实 PDF 与当前 TeX 内容完全同步。
+- `tex/_backup_20261008-235046/` 是历史备份，阅读与后续修改默认以备份目录外的当前源文件为准；模板类文件不是报告正文。
+- 使用 hithesis 的 `hithesisart` 本科开题报告模板，编译方式为 XeLaTeX → BibTeX → XeLaTeX → XeLaTeX，或在 `tex/` 下运行 `latexmk -xelatex report.tex`。当前主文件设置 `fontset=windows`，并显式引用 SimSun、SimHei；本服务器 TeX 工具链与字体尚未验证。`tex/README.md` 的 Windows/MiKTeX 路径属于原编写环境，不能直接当作本机配置。
+- 本次读取时 `git status --short` 显示 `?? tex/`，报告目录尚未纳入 Git 跟踪；本次只补写交接，不提交或修改报告。
+
+### 0.2 研究主线与改进边界
+
+报告以无模板、语言条件的 MVLM 为基线，主线为**“观测—记忆—想像—注入”**，面向遮挡、快速运动、相似物干扰和长序列漂移。报告明确区分：MVLM 已有的时间记忆是标量置信度的指数平滑，新增的是可存取目标外观、语义和时序状态的**显式内容记忆**，不能将基线描述成完全没有记忆。
+
+1. **内容记忆库**：构建感知—认知双流键值记忆，分别以外观、语义表征为键，以时序状态为值；带时间位置编码，通过注意力检索，容量受限时按冗余度、时间衰减等策略淘汰。以跟踪置信度与推演一致性双重门控写入；语言描述变更或目标切换时重置记忆。
+2. **记忆条件下的潜空间想像**：采用轻量 Transformer，以记忆读出、语言向量和当前视觉特征为条件，做单步未来状态推演。预测头 A 输出未来目标表征，预测头 B 输出候选框的前瞻可靠度权值。利用未来帧真值框内特征、下一帧候选框 IoU 与得分构造监督，不新增人工标注；推理时用预测与观测的一致性门控抑制幻觉。
+3. **融合注入与候选框筛选**：未来表征先与当前空间网格对齐，比较拼接、交叉注意力两种注入方式；以前瞻权值联合基线分类与相关度得分，研究加权 Top-K 与 BBOX 过滤。主要改动集中在候选框生成和筛选，保留基线置信度聚合及局部 ROI／全局重定位门控形式，视觉主干计划全程冻结。
+
+报告的方法学参照包括 STM、XMem 的内容记忆以及 MemoryVLA++ 的记忆与想像联合建模；拟采用满足在线逐帧预算的轻量表征预测器，具体层数、维度、损失权重与空间对齐实现仍待确定，不能把这些设想写成已完成的自主成果。
+
+### 0.2.1 当前确定的技术选型（2026-10-17 用户确认）
+
+以下选型是用户在方案讨论后明确要求记录的实现方向；上文是开题报告原方案摘要，如有差异，以本节的当前选型为准。记忆库首版已实现并完成 OTB 小规模真实短训，尚未充分训练；世界模型尚未实现，具体规模仍需实验确定。
+
+- **记忆库参考 XMem**：借鉴其分层记忆与长期信息管理思路，面向 MVLM 实现目标级的短期／长期显式内容记忆，不直接照搬视频分割中的整帧稠密记忆。记忆保存可靠观测的目标外观、语言相关内容与时序状态，通过检索和更新复用历史信息；短期保留近期动态，长期保留有代表性的外观。参考论文：<https://arxiv.org/abs/2207.07115>。
+- **世界模型计划采用残差 Transformer**：以历史内容记忆、语言和当前观测为条件，在目标潜空间中单步预测下一帧外观表征的残差及运动变化，并考虑运动不确定性；采用“当前表征＋预测残差”构造下一帧表征。第 t 帧定位使用上一帧生成的第 t 帧预测，定位完成后再预测第 t+1 帧，保持因果时序。
+- 当前主方案为确定性的潜空间残差预测，不是扩散或去噪模型；报告中“去噪式推演”等表述后续需与实际路线统一，本次不修改 TeX。预测候选框质量可作为独立的当前帧质量分支，不与世界模型的未来状态输出混为一谈。
+- 本地实现中的 `kmem` 实际是候选网格对应的置信度数组的指数平滑，并非全局单个标量；上文报告摘要中的“标量置信度”不应理解为整个跟踪器只保存一个数。新增内容记忆与该置信度记忆并存。
+
+### 0.3 训练、评测与时间安排
+
+- 阶段零：复现 MVLM，建立可复用评测链路；报告设定与论文指标差距控制在 **1 个百分点以内**后进入模块阶段。若无法完全对齐，报告也提出如实记录差异，以同一自复现基线的相对提升作为主要评价方式。当前测试集调参结果与原始配置基线必须分开记录，详见第 9 节。
+- 阶段一：冻结基线主干，训练内容记忆、潜空间推演器与预测头适配层；阶段二：联合微调并做消融。报告对于预测头适配层在阶段一已训练、阶段二又“解冻”的表述尚需进一步澄清，实际参数冻结范围应在实施前明确。
+- 计划训练集：TNL2K、LaSOT、VastTrack 的训练部分；计划评测集：TNL2K、LaSOT、OTB99-Lang、MGIT；指标 PRE、AUC、NPR。纯语言与“框+语言”方法须分别遵守对应协议比较。报告列出四个评测集不等于已授权下载 MGIT；实际下载授权与准备状态仍以第 1、10、11 节及实时检查为准。
+- 消融分四组：内容记忆（无／有／淘汰策略）、潜空间推演（无／视觉前瞻／权值前瞻／双头联合）、注入方式（拼接／交叉注意力）、筛选策略（原始／权值引导）；另做遮挡、快速运动、背景干扰、尺度变化属性分析，以及参数量、推理速度分析。
+- 报告计划周期：2026.09—2027.05；2026.09—10 基线复现，2026.10—2027.01 模块落地，2027.01—03 消融优化，2027.03—05 论文与答辩。
+
+### 0.4 与工作区现状的区别及待核对项
+
+- 开题报告是研究规划，实际进度以实验产物和实时核查为准。报告中“数据资源已具备”等描述不能解释为本机训练集已齐备：当前仅完成 OTB 小规模记忆训练检查，完整训练数据准备事项见第 10、11 节。
+- 正文的 NPR 公式写为归一化精度曲线在 `[0, 0.5]` 上的面积，且 `W_t` 写成宽高的对角矩阵；交接第 8 节记录当前仓库实际报告的是按宽高归一化后阈值 `0.2` 处的精确率。这里存在指标口径与归一化公式的待核对问题，后续应对照评测代码统一，不能直接按报告公式解释当前 NPR 数字。本次未改报告。
+- `tex/README.md` 标注参考文献 34 条，而当前正文称 40 篇，说明目录说明可能滞后；文献数量与引用有效性本次未逐条校验。
+- 报告中的研究动机、相关工作判断与性能预期属于原文陈述，本次仅阅读整理，没有开展文献事实核验、重新编译或实现新增网络模块。
 
 ## 1. 用户目标与当前任务
 
-- 用户希望使用论文官方权重，复现 MVLM 在测试集上的 PRE、NPR、AUC 等结果。不要重新克隆或覆盖已有权重。用户另咨询过重训资源，但尚未开始训练或授权新增训练集下载。
+- 用户希望使用论文官方权重，复现 MVLM 在测试集上的 PRE、NPR、AUC 等结果，并为开题报告中的结构改进准备基线。不要重新克隆或覆盖已有权重。已按用户要求完成 OTB 小规模记忆训练与独立子集评测；VastTrack 训练数据准备也已授权，完整训练尚未开展。
 - 已运行两个自带视频 Demo。
 - 用户已明确授权下载前三个数据集：OTB99-Lang、TNL2K 测试集、LaSOT 标准测试集。
-- TNL2K 仍在续传；LaSOT 测试集已下载、解压，待最终完整性校验；OTB 已完成评测和调参。用户现已授权下载 VastTrack 训练数据，任务已启动，详见第 11 节；MGIT 及其他训练数据尚未下载。
-- OTB 使用官方权重完成原始基线和 9 组调参实验。当前 YAML 是调参后配置，不能当作未经修改的官方默认配置；详见第 9 节。
+- LaSOT 已完成完整性校验、原始基线及 8 组参数实验；OTB 已完成原始基线、早期 9 组及后续 10 组调参实验，详见第 9 节。TNL2K 与 VastTrack 下载任务已启动，完成状态需实时核查；MGIT 及其他训练数据尚未下载。
+- 当前 YAML 是较早的 OTB 调参配置，既非官方默认，也非最新最优；原始配置及各实验快照应分别使用。
 - 用户经常询问实时进度和速度：应实际读文件、查进程，速度应采样约 20 秒的有效字节增长，不复述旧数字。
 
 ## 2. 环境与安装
@@ -22,7 +124,7 @@
 - 主要版本：PyTorch 1.13.0+cu117、torchvision 0.14.0+cu117、OpenCV 4.12.0、NumPy 1.24.4。
 - 补装系统库 `libgl1`、`libglib2.0-0`，解决 `cv2` 导入缺少 `libGL.so.1`。
 - 服务器有 8 张 RTX 3090（每张 24 GB）；已验证 CUDA 可用及 GPU 张量运算。
-- 最近磁盘检查：仓库所在 overlay 文件系统约 11 TB，总可用约 8.8 TB；inode 使用约 3%。这是容器可见容量，不保证等同账号配额。此前失败没有空间不足证据。
+- 下载或训练前重新检查磁盘容量、inode 与账号配额；历史可用空间不作为实时容量依据。此前失败没有空间不足证据。
 
 激活环境：
 
@@ -34,9 +136,9 @@ cd /root/MVLM
 
 也可直接用环境 Python 的绝对路径，不依赖 shell 激活。
 
-## 3. 已做代码修改（尚未提交）
+## 3. 已保存的复现适配与版本状态
 
-用 `git diff` 核查并保留这些修改，不能当成用户无关改动回滚：
+复现代码与实验摘要已保存于提交 `52f662f`，来源与毕设用途声明见 `d36160f`。下列为相对上游的主要适配，不再是全部未提交修改；用 Git 历史和当前 `git status` 区分，不要回滚已有成果：
 
 1. `lib/local_config.py`：工作区、输出路径及前三个数据集路径改为 `/root/MVLM/...`。
    - `lasot_dir = /root/MVLM/data/lasot`
@@ -48,10 +150,10 @@ cd /root/MVLM
 4. `lib/test/tracker/mvlm.py`：构建模型时传 `training=False`，随后加载官方跟踪权重。
 5. `tracking/demo.py`：将新接口 `torch.amp.autocast('cuda', ...)` 改为兼容 PyTorch 1.13 的 `torch.cuda.amp.autocast(...)`。
 6. `lib/test/evaluation/otb99langdataset.py`：将序列 `Human4_2` 的语言查询映射到 `Human4.txt`，保留序列名称及其第二目标真实框标注。
-7. `experiments/mvlm/mvlm_TF.yaml`：当前保留最高 AUC 的 OTB 调参配置，ALPHA_CORR=0.7、TAU=0.03、OMEGA=0.2、LAMBDA=0.4、PSI_OUT=0.1；其他配置不变。原始完整 YAML 备份在 `output/otb_parameter_trials/otb99_language_baseline.yaml`。
+7. `experiments/mvlm/mvlm_TF.yaml`：保留较早 OTB 调参配置，ALPHA_CORR=0.7、TAU=0.03、OMEGA=0.2、LAMBDA=0.4、PSI_OUT=0.1，并非最新最优。原始配置在 `reports/reproduction/original_config.yaml` 和 `output/otb_parameter_trials/otb99_language_baseline.yaml`；最新最优结果见第 9.8 节。
 8. 新增实验脚本：`tracking/run_otb_parameter_trial.py`（首次单变量实验）、`tracking/run_otb_parameter_sweep.py`（5 组自适应实验）、`tracking/run_otb_parameter_followup.py`（3 组补充实验），记录配置快照、运行命令、预测、日志、指标与每组缓存。第一个脚本要求输入仍为原始 TAU=0.1，不可在当前 YAML 上不加检查地重复执行。
 
-训练调用沿用默认 `training=True`。未创建提交或 PR。
+训练调用沿用默认 `training=True`。代码、精简报告与大型本地产物的保存范围见 `REPRODUCTION.md`；模型、数据、完整输出不纳入 Git。本次清理未创建提交或 PR。
 
 ## 4. 权重、Demo 和结果
 
@@ -90,7 +192,7 @@ cd /root/MVLM
 
 `--skip-selection` 实际会使用默认中心框初始化；它是否完全满足论文的纯语言协议，需要正式评测前核查，不能只依据 README 标签下结论。
 
-## 5. 数据集下载：位置、来源及最新快照
+## 5. 数据集下载：位置、来源与校验状态
 
 压缩包和分块目录：`/root/MVLM/downloads/`。解压后：
 
@@ -105,23 +207,19 @@ cd /root/MVLM
     └── airplane/airplane-1/...   # 按类别/序列组织
 ```
 
-> **注意：下表为 2026-10-17 10:09 的历史快照，已过期。**TNL2K 与 VastTrack 的最新进度见第 9.8 节。
+| 数据集 | 压缩包总字节数 | 已确认状态 |
+| --- | ---: | --- |
+| OTB99-Lang | 2,798,845,728 | 48 条测试序列、29,077 帧及标注校验通过，已完成评测与调参 |
+| TNL2K | 91,092,953,063 | 下载任务已启动，尚未记录完整校验及评测完成；实时进度查第 6 节所列文件 |
+| LaSOT | 49,830,545,913 | 下载、解压、全量校验、完整评测与调参均已完成，见第 9.4、9.5 节 |
 
-2026-10-17 10:09（上海时间）实际文件及进程快照：
-
-| 数据集 | 已下载（约 GB，十进制） | 压缩包总字节数 | 百分比 | 核实状态 |
-| --- | ---: | ---: | ---: | --- |
-| OTB99-Lang | 2.799 | 2,798,845,728 | 100% | 48 条评测序列、29,077 帧及框标注校验通过，已完成评测 |
-| TNL2K | 54.222 | 91,092,953,063 | 59.52% | PID 90965 正在下载，剩余约 36.871 GB |
-| LaSOT | 49.831 | 49,830,545,913 | 100% | 已解压；**已完成全量校验与完整评测**，见第 9.4 节 |
-
-最近一次 20 秒速度采样：TNL2K 3.229 MB/s，按该速度剩余纯下载约 3 小时 10 分钟，不包含校验和解压；速度会变化，不能沿用此估算作为实时结论。LaSOT 已结束下载。用户此前多次要求暂停和恢复，最终有效授权是继续下载。
+TNL2K 与 VastTrack 的有效授权是继续下载，保留已有分块。本文不保留易失效的下载百分比、速度或剩余时间。
 
 下载来源：
 
 - OTB 官方：<https://isis-data.science.uva.nl/zhenyang/cvpr17-langtracker/data/OTB_sentences.zip>。
   - 已读取 ZIP 中央目录确认包含 `OTB_sentences/OTB_videos/`、`OTB_query_test/`、`OTB_query_train/`。
-  - 数据目录含 99 个视频序列；当前评测加载器选用 48 条测试序列，不是评测全部 99 条。已验证这 48 条需要的 29,077 帧、框标注长度和语言文件，完成上述名称映射修复后可正常评测。其他训练划分未完成训练适配。
+  - 数据目录含 99 个视频目录；评测加载器选用 48 条测试序列，不是评测全部目录。已验证这 48 条需要的 29,077 帧、框标注长度和语言文件。训练加载器现已按包内 51 条训练语言标注适配（含 Jogging 双目标），并完成四序列短训检查，详见前部新记录。
 - TNL2K 公开第三方镜像：<https://huggingface.co/datasets/xche32/tnl2k>，文件 `tnl2k.tar.gz`。
   - 镜像包头是 `tnl2k/<sequence>/...`，解压到 `data/tnl2k/test/`。
   - 预期标准测试集 700 条；整个镜像尚未下载完，最终必须核实序列数及对应官方清单，不能仅凭镜像名称保证划分正确。
@@ -153,16 +251,16 @@ cd /root/MVLM
 - 已解压标记是对应包的 `.tar.extracted` 文件，避免重复解压。
 - 正式评测前必须确认图像、语言、框标注和序列划分完整。下载完毕不等于完成最终验证。
 
-当前使用两个独立任务，避免原脚本同时写共享状态的风险：
+测试集下载曾拆为独立任务，避免原脚本同时写共享状态的风险；VastTrack 的独立文件见第 11 节：
 
-| 数据集 | 独立状态文件 | 日志 | 快照 PID（可能变化） |
+| 数据集 | 独立状态文件 | 日志 | 说明 |
 | --- | --- | --- | --- |
-| TNL2K | `downloads/tnl2k_status.json` | `downloads/tnl2k_restart.log` | 90965（10 月 17 日 10:09 存活） |
+| TNL2K | `downloads/tnl2k_status.json` | `downloads/tnl2k_restart.log` | PID 动态查询，不使用历史 PID |
 | LaSOT | `downloads/lasot_status.json` | `downloads/lasot_restart.log` | 已正常结束，无需重启 |
 
 `downloads/dataset_status.json` 和 `dataset_download.log` 是早期总任务的记录，可能过期。独立任务调用 `d.tnl2k()` / `d.lasot()`，完成后通常只标记 extracted；**不会自动调用脚本的全量 `validate()`**。
 
-LaSOT 的状态可能仍显示上一包 extracting，但进程已在下载下一包；务必同时查进程及分块增长，不能只看状态字符串。
+状态文件可能滞后；务必同时查进程、最新日志和有效分块增长，不能只看状态字符串或进程存活就断言下载正常。
 
 检查进程：
 
@@ -179,8 +277,6 @@ cd /root/MVLM
 # TNL2K
 /root/miniconda3/envs/mvlm/bin/python -u -c 'import sys; sys.path.insert(0,"downloads"); import prepare_test_datasets as d; d.STATUS=d.DOWNLOADS/"tnl2k_status.json"; d.state={"tnl2k":{}}; d.tnl2k()' >> downloads/tnl2k_restart.log 2>&1
 
-# LaSOT（另一个进程）
-/root/miniconda3/envs/mvlm/bin/python -u -c 'import sys; sys.path.insert(0,"downloads"); import prepare_test_datasets as d; d.STATUS=d.DOWNLOADS/"lasot_status.json"; d.state={"lasot":{}}; d.lasot()' >> downloads/lasot_restart.log 2>&1
 ```
 
 统计进度的口径：
@@ -197,7 +293,7 @@ cd /root/MVLM
 - 多次失败是代理端口拒绝连接：`Failed to connect to 127.0.0.1 port 17891`；也有 SSL EOF、HTTP/2 CANCEL 和低速超时。
 - 10 月 16 日已通过 `/proc/net/tcp` 和进程 socket 确认端口由 `sshd` 监听，即 SSH 转发端口。服务器端未独立核实具体转发终点；用户确认继续使用笔记本 Clash。此前泛泛说不走笔记本流量的表述不适用，代理计费规则仍由实际服务决定。
 - 10 月 16 日按用户要求测试过 `curl --noproxy '*'` 直连 Hugging Face、HF Mirror 和实际存储节点 `us.aws.cdn.hf.co`，均超时，没有切换为直连。不要在未验证的情况下移除下载代理。用户随后明确要求继续使用笔记本 Clash。
-- 最近一次恢复前已验证代理可用且 Hugging Face 返回 HTTP 200；若用户关机/切换网络后停下，应重新检查端口与代理进程，但不要无授权查看或展示订阅凭证。
+- 若下载停下，应重新检查代理端口、进程、最新日志与有效字节增长；历史 HTTP 200 不证明当前代理可用，不要查看或展示订阅凭证。
 - 下载已使用独立 session 后台进程，未配置 tmux/systemd。SSH 转发和笔记本 Clash 仍需保持可用，任务后台化不能消除代理依赖。
 - 普通 exec 沙箱曾无法启动：`bwrap: No permissions to create a new namespace`。因此多数 shell 命令通过 `sandbox_permissions=require_escalated` 执行。
 - 自动审批曾返回超时或 403 Forbidden，甚至只读命令也未执行。应如实报告具体服务错误，不能推断成用户拒绝、命令危险或测试代码失败；之后用户要求重试时执行恢复正常。不要用旧数字冒充实时进度。
@@ -225,7 +321,7 @@ cd /root/MVLM
 | OTB99 | 84.3 | 60.7 |
 | MGIT | 55.5 | 63.5 |
 
-论文表 2 完整组件（A4）的 NPR：TNL2K 74.1、LaSOT 68.3、OTB99 75.4。OTB 已有实际评测结果，见第 9 节；其他数据集尚未评测。
+论文表 2 完整组件（A4）的 NPR：TNL2K 74.1、LaSOT 68.3、OTB99 75.4。OTB 与 LaSOT 已有实际评测结果，见第 9 节；TNL2K 与 MGIT 尚未评测。
 
 - PRE：中心误差不超过 20 像素的比例。
 - AUC：不同 IoU 阈值下成功率曲线的面积/离散均值，越高越好。
@@ -240,30 +336,15 @@ cd /root/MVLM
 后续推荐顺序：
 
 1. **重新检查当前下载任务和代理**，必要时按用户授权续传；保留所有分块。
-2. LaSOT 已解压，下一步可检查标准 280 条测试划分、SHA256、全部帧和标注，再进行小规模与完整评测；尚未执行。
-3. TNL2K 下载完成后检查 700 条测试划分、SHA256、语言标注及全部帧，不能只检查包大小。
-4. 小规模序列确认评测协议与结果格式，再完整评测；保存预测框、耗时、异常清单、指标和论文对照表。不要为整个测试集默认导出巨量视频。
-5. OTB 已用 8 GPU 完成多组评测。当前配置在 OTB 测试集上调过参，不应直接当作其他数据集的官方默认配置，也不能把调参结果宣称为独立论文复现。
-
-OTB 已完成的评测示例（当前 YAML 已修改；如需复跑原始基线，先使用原始配置备份，并取新实验名，避免已有结果被自动跳过）：
-
-```bash
-cd /root/MVLM
-conda activate mvlm
-python tracking/test.py mvlm mvlm_TF \
-  --dataset_name otb99_lang --weight_path models/MVLM_TF.pth.tar \
-  --exp_id otb99_language_baseline --mode single
-
-python tracking/analysis_results.py \
-  --tracker_name mvlm --tracker_param mvlm_TF \
-  --exp_id otb99_language_baseline --dataset otb99_lang
-```
+2. TNL2K 下载完成后检查 700 条测试划分、SHA256、语言标注及全部帧，不能只检查包大小。
+3. 对 TNL2K 先小规模确认评测协议与格式，再使用原始配置快照和新 exp_id 完整评测；保存预测框、耗时、异常清单、指标和论文对照表。不要为整个测试集默认导出巨量视频。
+4. LaSOT、OTB 已完成的基线与调参结果直接查第 9 节，无需重复执行已完成步骤。测试集调参配置不作为官方默认或独立复现证据；结构改进使用固定且明确记录的对照配置。
 
 新会话可直接提示：“请先阅读 `/root/MVLM/SESSION_HANDOFF.md`，检查当前下载任务和网络状态，接着完成三个测试集准备及 MVLM 官方权重评测。不要重复克隆、安装环境或从头下载已有数据。”
 
 ## 9. 已完成 OTB99-Lang 基线和参数实验
 
-### 9.1 测试条件及结果
+### 9.1 早期 OTB 实验条件及结果（历史记录）
 
 - 使用现有官方权重 `models/MVLM_TF.pth.tar` 和缓存 CLIP；没有重训或更换权重。
 - 仓库评测加载器为 48 条测试序列，共 29,077 帧。数据目录有 99 个视频，并不等于评测全部 99 条。
@@ -271,13 +352,13 @@ python tracking/analysis_results.py \
 - 原始基线完整跟踪用时约 201 秒。之后完成首次 TAU=0.0 实验，以及用户追加要求的 5+3 组实验，共 9 组调参实验，另有原始基线。
 - 所有完整实验均检查预测框帧数、有限数值、正宽高以及逐帧耗时文件，新增八组每组均验证 48 条序列和 29,077 帧。不是根据终端 Done 就推断完整。
 
-| 指标 | 原始基线 | 当前最高 AUC 配置 | 论文参考 | 最佳与论文差距（百分点） |
+| 指标 | 原始基线 | 早期最高 AUC 配置 | 论文参考 | 早期最佳与论文差距（百分点） |
 | --- | ---: | ---: | ---: | ---: |
 | AUC | 56.48 | 60.15 | 60.70 | -0.55 |
 | PRE | 79.03 | 83.40 | 84.30 | -0.90 |
 | NPR | 69.75 | 74.78 | 75.40 | -0.62 |
 
-当前最佳配置已写入 `experiments/mvlm/mvlm_TF.yaml`：
+该批次最佳配置保留在 `experiments/mvlm/mvlm_TF.yaml`，后续已被第 9.6 节实验超过：
 
 ```yaml
 TEST:
@@ -291,26 +372,26 @@ TEST:
 
 其余 YAML 字段保持原始值。训练代码没有因本次实验修改。
 
-### 9.2 结果与记录位置
+### 9.2 早期 OTB 结果与记录位置
 
 - 原始配置备份：`output/otb_parameter_trials/otb99_language_baseline.yaml`。
 - 基线 exp_id：`otb99_language_baseline`。
 - 基线指标：`output/otb99_language_baseline_metrics.txt`。
 - 基线日志：`output/otb99_language_baseline_test.log`。
 - 基线逐帧预测/耗时：`output/test/tracking_results/mvlm/otb99_language_baseline/otb99_lang/`。
-- 最佳 exp_id：`otb99_20261016_092909_06_less_memory`。ID 中时间来自服务器 UTC，面向用户日期时间按 Asia/Shanghai；不要把 ID 当作本地时间。
-- 最佳配置：`output/otb_parameter_trials/otb99_20261016_092909_06_less_memory.yaml`。
-- 最佳指标/日志：同目录下对应 `_metrics.txt`、`_test.log`。
-- 最佳逐帧预测/耗时：`output/test/tracking_results/mvlm/otb99_20261016_092909_06_less_memory/otb99_lang/`。
+- 早期最佳 exp_id：`otb99_20261016_092909_06_less_memory`。ID 中时间来自服务器 UTC，面向用户日期时间按 Asia/Shanghai；不要把 ID 当作本地时间。
+- 早期最佳配置：`output/otb_parameter_trials/otb99_20261016_092909_06_less_memory.yaml`。
+- 早期最佳指标/日志：同目录下对应 `_metrics.txt`、`_test.log`。
+- 早期最佳逐帧预测/耗时：`output/test/tracking_results/mvlm/otb99_20261016_092909_06_less_memory/otb99_lang/`。
 - 用户可读总记录：`output/otb_parameter_trials/实验记录.md`，包含所有参数、结果、调参依据、配置快照、运行命令和文件位置。
 - 机器可读事件记录：`output/otb_parameter_trials/experiments.jsonl`。同一 exp_id 有 running/completed 事件，读取时按 exp_id 取最后一条，不能把两个事件算作两次实验。
 - 总结：`output/otb_parameter_trials/调参总结.md`。
 - 两批运行日志：`output/otb_parameter_trials/sweep_progress.log`、`followup_progress.log`；已全部完成，没有继续调参的进程。
-- 每组保留独立的 `_eval_data.pkl`。官方分析脚本默认共享 `output/test/result_plots/otb99_lang/eval_data.pkl`，已切回最佳实验的缓存；后续分析会覆盖它，不能仅凭此共享路径判断是哪次实验。
+- 每组保留独立的 `_eval_data.pkl`。官方分析脚本默认共享 `output/test/result_plots/otb99_lang/eval_data.pkl`，后续分析会覆盖它，不能仅凭此共享路径判断是哪次实验。
 - `tracking/test.py` 遇到已有序列结果会跳过；真实重跑应取新 exp_id，不要误把复用旧预测当成新运行。
 - `tracking/analysis_results.py` 默认只打印 PRE/NPR/AUC 并保存缓存，不自动生成曲线图片；指标文本通过重定向保存。
 
-### 9.3 调参结论及解释边界
+### 9.3 早期 OTB 调参结论及解释边界
 
 - 固定原始其他参数时，TAU=0/0.03/0.06/0.1 的 AUC 为 58.95/59.30/58.33/56.48。
 - TAU=0.03 时，PSI_OUT 从 0 改为 0.1，AUC 59.30→59.69。
@@ -319,21 +400,21 @@ TEST:
 - 仅把 OMEGA 从 0.4 降到 0.2，AUC 60.02→60.15。
 - 在最佳邻域，TAU=0.01 得到 59.61，PSI_OUT=0.2 得到 59.21，均不保留。
 - 参数机制：TAU 控制候选集合及下一帧局部/全局搜索；PSI_OUT 控制 IoU≤阈值的干扰候选池；ALPHA_CORR 混合图文/分类差值；LAMBDA 控制记忆更新、OMEGA 控制当前决策对记忆的依赖。最终候选集合内仍按分类分数选择预测框，不是直接按置信度加权分数选最高框。
-- 代码中最终置信度可化为 `(1-OMEGA*LAMBDA)*当前置信度 + OMEGA*LAMBDA*上一帧记忆`；原始历史权重 16%，强记忆 42%，最佳 8%。原因解释是代码支持的推断，尚未做逐帧可视化验证。
-- 用户明确授权了测试集上的探索性调参。必须保留这个事实：最佳分数不是独立验证结果，不证明找回了作者原始设置，不保证能迁移到其他数据集；每组仅跑一次，未统计随机波动或置信区间。
+- 代码中最终置信度可化为 `(1-OMEGA*LAMBDA)*当前置信度 + OMEGA*LAMBDA*上一帧记忆`；原始历史权重 16%，强记忆 42%，该批次最佳 8%。原因解释是代码支持的推断，尚未做逐帧可视化验证。
+- 用户明确授权了测试集上的探索性调参。必须保留这个事实：最佳分数不是独立验证结果，不证明找回了作者原始设置，不保证能迁移到其他数据集；早期每组仅跑一次，未统计随机波动或置信区间。后续 LaSOT 同配置复跑见第 9.5 节。
 
-### 9.4 LaSOT 原始参数完整评测（10 月 17 日新增，此前版本缺记）
+### 9.4 LaSOT 原始参数完整评测
 
-本节由 2026-10-17 12:1x（上海时间）会话补写。原交接文档（10:09 快照）记录 LaSOT "尚未做最终全量校验或评测"，但该实验实际已于当日 **11:10:41（上海时间）完整跑完**，属于文档遗漏，不是新做的实验。
+本实验已于 2026-10-17 **11:10:41（上海时间）完整跑完**，数据校验与产物如下。
 
 - 实验：`lasot_language_original_mp16_20261017_103923`；`status.json` 标记 `status=completed`，`prediction_validation.json` 为 `checked=280, errors=[]`。
 - 产物目录：`output/lasot_evaluations/lasot_language_original_mp16_20261017_103923/`（含 `metrics.txt`、`结果说明.md`、`status.json`、`prediction_validation.json`、`config.yaml`、`runtime.yaml`、`archive_checksums.json`、`dataset_manifest.json`、`commands.json`、`code_changes.patch`、`eval_data.pkl`）。
 - 逐帧预测/耗时：`output/test/tracking_results/mvlm/lasot_language_original_mp16_20261017_103923/lasot/`。
-- 参数来源：`HEAD:experiments/mvlm/mvlm_TF.yaml` 的**原始发布参数**，即 ALPHA_CORR=1.0、TAU=0.1、OMEGA=0.4、LAMBDA=0.4、PSI_OUT=0.0。**与第 9 节 OTB 调参后的当前工作 YAML 不同**，不要混用。
+- 参数为**原始发布参数**：ALPHA_CORR=1.0、TAU=0.1、OMEGA=0.4、LAMBDA=0.4、PSI_OUT=0.0；实验配置保存在产物目录的 `config.yaml` 与对应实验 YAML。当前 HEAD 中的 `mvlm_TF.yaml` 已是调参配置，不能再从 HEAD 提取它冒充原始参数。
 - 规模：280 条序列、685,360 帧；8 张 RTX 3090，每卡 2 进程，共 16 进程，每进程 1 个 CPU 线程。
 - 数据校验：六个包 SHA256 全部匹配源元数据；全部帧非空；标注、语言、可见性长度已核；每序列首/中/末帧可解码。`status.json` 同时记录权重 SHA256 `91c31230f3d355f71104df8191e386632a39ce9d3bbc1f7ce5bf3772b369cc4f` 与 git commit `4186c8fd`。
 - 耗时：验证数据 10:39:24→10:40:41；推理 10:40:41→11:10:34（test.log 记录 1791.3 秒，FPS 约 41.9）；计算指标至 11:10:41。
-- 协议说明（原文）："Single baseline evaluation; no LaSOT tuning. Uses repository language-only evaluation protocol, including its first-frame handling." 即**未做 LaSOT 调参**，且沿用仓库语言评测协议（含首帧处理），第 8 节对该首帧计分细节的保留意见同样适用。
+- 协议说明（原文）："Single baseline evaluation; no LaSOT tuning. Uses repository language-only evaluation protocol, including its first-frame handling." 即**本次基线实验使用未调参配置**，沿用仓库语言评测协议（含首帧处理）；后续调参实验另见第 9.5 节，第 8 节对首帧计分细节的保留意见仍适用。
 
 结果：
 
@@ -343,7 +424,7 @@ TEST:
 | NPR | 64.15 | 68.3 | -4.15 |
 | AUC | 57.77 | 60.7 | -2.93 |
 
-对照 OTB（第 9 节）：OTB 用**测试集上调过参**的配置才做到 -0.55/-0.90/-0.62，而 LaSOT 用**原始参数**是 -2.9～-4.2。两者不能直接比：OTB 的接近程度部分来自在测试集上调参，LaSOT 才是未调参的纯净复现口径。**因此不能把 OTB 的成绩当作论文复现已整体达成的证据。**
+原始配置基线与测试集调参最佳结果必须分别比较，不能用调参后的接近程度证明官方默认配置已经独立复现；两数据集原始与最优结果见第 9.7 节。
 
 可复跑命令（注意：`experiments/mvlm/lasot_language_original_mp16_20261017_103923.yaml` 是原始参数快照，当前工作 YAML `mvlm_TF.yaml` 已是 OTB 调参后的值，复跑请显式指定参数快照或新 exp_id，避免与已有结果混淆）：
 
@@ -353,16 +434,14 @@ cd /root/MVLM
   lasot_language_original_mp16_20261017_103923 \
   --dataset_name lasot \
   --weight_path /root/MVLM/models/MVLM_TF.pth.tar \
-  --exp_id lasot_language_original_mp16_20261017_103923 \
+  --exp_id lasot_language_original_mp16_20261017_103923_rerun \
   --mode mp --threads 16 --num_gpus 8
 
 /root/miniconda3/envs/mvlm/bin/python -u -m tracking.analysis_results \
   --tracker_name mvlm \
   --tracker_param lasot_language_original_mp16_20261017_103923 \
-  --exp_id lasot_language_original_mp16_20261017_103923 --dataset lasot
+  --exp_id lasot_language_original_mp16_20261017_103923_rerun --dataset lasot
 ```
-
-下一步建议（未执行，仅建议）：差距既有可能是参数口径，也可能是第 8 节记录的 `tanh(分数差)` 与论文公式 (4)(5) 的尺度估计差异。建议先在 LaSOT 上用 OTB 调参配置跑一次对照（同规模约 30 分钟），以区分"参数"与"实现"两个来源，再决定是否动公式。
 
 ### 9.5 LaSOT 参数搜索（8 组，均已完成）
 
@@ -435,7 +514,7 @@ cd /root/MVLM
 
 两个已完成数据集均达到论文水平。若要让 OTB 也超过论文，剩余 0.14 的差距可能来自论文公式 (4)(5) 的尺度估计除法与代码 `tanh` 的差异，未修改实现。
 
-### 9.8 参数搜索结果核对与实时状态（18:0x 补记）
+### 9.8 参数搜索结果核对与最佳配置汇总
 
 #### 数字核对结果
 
@@ -447,7 +526,7 @@ cd /root/MVLM
 
 核对脚本思路：遍历 `output/lasot_parameter_trials/lasot_tune_*/status.json` 与 `output/otb_parameter_trials/otb_tune_*/status.json`，取 `metrics` 四舍五入到两位小数，与文档表格逐行比对。
 
-#### 两个数据集的最终最优配置（可直接引用）
+#### 两个数据集已搜索配置中的最优结果（测试集调参）
 
 | 数据集 | αcorr | τ | ω | λ | ψout | PRE | NPR | AUC | 论文 | 差距 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -456,37 +535,24 @@ cd /root/MVLM
 
 两组参数**除 ω/λ 的分配外完全相同**，而 ω·λ 乘积均为 0.04，因此在有效自由度上两个数据集收敛到同一组参数。LaSOT 用 (ω=0.1, λ=0.4)，OTB 用 (ω=0.4, λ=0.1)，二者 AUC 差异在 0.04 噪声量级内，可视为等价。
 
-#### 实时状态快照（与原第 5 节 10:09 旧快照对照）
-
-下载任务与既有章节相比已推进明显，**第 5 节的表格停留在 10:09**，应以本节为准：
-
-| 项目 | 10:09 旧快照 | 18:0x 实测 | 说明 |
-| --- | --- | --- | --- |
-| TNL2K | 59.52%（54.222 GB） | **84.57%，剩约 14.06 GB** | PID 仍为 90965，稳定推进 |
-| VastTrack | 未开始 | **2.827%（20.82 GB / 736.6 GB），第 1/14 卷** | PID 107980 |
-| LaSOT | 待校验 | 已完成评测与 8 组参数搜索 | 见 9.4、9.5 |
-| OTB99-Lang | 已完成 | 另完成 10 组新参数搜索 | 见 9.6 |
-
-两个下载进程在本次会话期间**全程未中断**，参数搜索实验未挤占其带宽（实验为纯本地 GPU 推理，不占出口带宽）。
-
 #### 关于 TNL2K 的提醒
 
-TNL2K 已接近完成（84.57%）。下载结束后**不会自动做全量校验**（见第 6 节：独立任务通常只标记 `extracted`，不调用 `validate()`）。正式评测前必须另行确认 700 条测试序列的划分、SHA256、语言标注与帧完整性，不能只看包大小。
+TNL2K 下载结束后**不会自动做全量校验**（见第 6 节：独立任务通常只标记 `extracted`，不调用 `validate()`）。正式评测前必须另行确认 700 条测试序列的划分、SHA256、语言标注与帧完整性，不能只看包大小。
 
 TNL2K 论文目标为 PRE 60.9 / AUC 57.8。若沿用本次在 LaSOT 与 OTB 上一致收敛的参数（α=0.5, τ=0.03, ω·λ=0.04, ψ=0.1），可作为该数据集的**首要试验配置**，但仍应从原始参数跑一次基线作为对照，且需注意仓库中 `TNL2K` 的 `TEST` 分支是否另有覆盖值。
 
 ## 10. 重训咨询：已核实条件，尚未启动
 
-- 用户希望通过改动网络结构完成毕设，已解释训练复现与加载现有 MVLM 权重微调不同；未启动训练。现已单独授权下载 VastTrack 训练数据；其他训练数据尚未新增下载。
+- 用户希望通过改动网络结构完成毕设，已解释训练复现与加载现有 MVLM 权重微调不同；目前只完成 OTB 的记忆模块小规模短训，未启动完整训练。现已单独授权下载 VastTrack 训练数据；其他训练数据尚未新增下载。
 - 论文训练数据是 LaSOT、TNL2K、VastTrack 的训练部分。当前完成/正在下载的 LaSOT、TNL2K 为测试镜像，不能代替训练集；仅 OTB 不足以复现作者训练，且不能用已评测的 48 条测试序列训练后宣称复现。
-- 骨干预训练文件 `pretrained/itpn/fast_itpn_base_clipl_e1600.pt` 当前缺失；推理因 `training=False` 不需要它，但正式训练会恢复加载要求。CLIP 缓存已存在。
+- 骨干预训练文件 `pretrained/itpn/fast_itpn_base_clipl_e1600.pt` 当前缺失；推理不需要。原始训练路径仍需该文件；新记忆训练路径从已有完整官方跟踪 checkpoint 初始化时跳过额外骨干加载，因此不被该缺失文件阻塞。CLIP 缓存已存在。
 - 论文设置：60 epoch、每 epoch 100,000 个采样样本、学习率 0.0005、AdamW、batch size 80，报告使用 4×RTX A6000 48 GB。官方 README 的配置为 FastITPN-Base/CLIP。
 - 重要实现差异：`lib/train/base_functions.py` 中 `BATCH_SIZE` 直接传入各进程 DataLoader，配合 DistributedSampler，当前是每卡 batch；8 卡直接用 80 会变成全局 640，不能默认为全局 80。论文正文的 batch 口径尚未确认。
 - 如果按全局 batch=80 规划，600 万次样本采样约 75,000 次更新。假设每步 0.5/1/2/5 秒，纯训练约 10.4/20.8/41.7/104 小时。这是条件估算，不是本机训练实测。建议准备数据后先跑 100～200 步测速度和峰值显存，再估总时长；推理耗时不能直接用来推算训练。
-- 当前服务器 8×3090、每卡 24 GB；系统内存约 440 GiB，10 月 16 日检查可用约 375 GiB，磁盘可用约 8.8 TB。多卡显存不是一张可直接使用的 192 GB 显卡，仍需验证每卡 batch。
+- 服务器配置记录为 8×3090、每卡 24 GB、系统内存约 440 GiB；训练前需重新检查 GPU 占用与可用内存、磁盘。多卡显存不能视为单卡 192 GB，仍需验证每卡 batch。
 - 曾建议每卡 batch 8～10 做短测，这是准备方案而非已验证可运行配置。训练器支持 CUDA AMP，但默认 `getattr(cfg.TRAIN,'AMP',False)` 为关闭，任何开启都要记录为训练设置变化。
-- OTB 训练加载器存在，但引用的 `lib/train/data_specs/otb99_train_split.txt` 等划分文件缺失，`DATA.USE_NLP` 中也没有所需 OTB99 项；若做训练练习需先补齐划分、路径和配置并严格隔离测试数据。
-- 目前只验证了推理环境和完整评测，不能把依赖安装成功或评测跑通等同训练流程已验证。
+- OTB 训练适配已补齐：划分文件缺失时，从包内 `OTB_query_train` 读取 51 条训练序列；`DATA.USE_NLP.OTB99` 可用，`DATA.TRAIN.OTB_SEQUENCES` 可选择训练子集。已核对与测试语言划分无重叠，并完成四序列记忆短训；训练／评测必须继续隔离。
+- 已验证原基线推理和完整评测，以及新增记忆模块的短小前后向与兼容性检查；尚未执行真实训练集的完整训练，不能把合成数据反传成功等同于训练效果或收敛已验证。
 
 ## 11. VastTrack 训练数据下载（10 月 17 日新授权）
 
@@ -498,7 +564,7 @@ TNL2K 论文目标为 PRE 60.9 / AUC 57.8。若沿用本次在 LaSOT 与 OTB 上
 - 下载脚本：`downloads/prepare_vasttrack.py`，复用现有 `prepare_test_datasets.py::download` 的 4 并发 Range 下载、分块续传及镜像 LFS SHA256 校验；复用的是下载函数，不会改写 TNL2K/LaSOT 状态。
 - 分卷和编号分块：`downloads/vasttrack/`；来源及大小/SHA256 清单：`downloads/vasttrack/source_manifest.json`。
 - 状态：`downloads/vasttrack/status.json`；日志：`downloads/vasttrack/download.log`；PID 文件：`downloads/vasttrack/download.pid`。
-- 初始后台 PID **107980**，采用独立 session，10 月 17 日约 10:58 采样确认存活，20 秒有效字节增加约 6.66 MB（0.33 MB/s），当时约 10.85 MB；这是启动快照，不代表实时进度。
+- 下载采用独立 session；实际 PID、状态与进度需查询现存进程和状态文件，不沿用初始启动快照。
 - `status.json` 的 downloaded_bytes 每 10 秒更新，采用已追加数字分块和完整分卷的保守计数，不含正在接收的 `.segment`；实时测速可按第 6 节的方法加上已验证 Content-Range 的有效 segment。
 - 所有分卷下载后逐卷校验 SHA256，按连续流读取解压，避免额外合并一份 736 GB 文件；安全检查绝对路径/`..`，不跟随压缩包链接。
 - 自动最终校验包括训练清单每条序列的语言非空、真实框四列和数值、按框数逐一检查所有 `00001.jpg` 等帧，并构造 `VastTrack(split='train')` 读取首帧。通过后才将 status 标为 `ready`，失败则保存错误和 `validation.json`，不能因下载达到 100% 就宣称能训练。

@@ -25,6 +25,7 @@ def update_settings(settings, cfg):
     settings.multi_modal_vision = getattr(cfg.DATA, "MULTI_MODAL_VISION", False)
     settings.multi_modal_language = getattr(cfg.DATA, "MULTI_MODAL_LANGUAGE", False)
     settings.use_nlp = cfg.DATA.USE_NLP
+    settings.otb_train_sequences = cfg.DATA.TRAIN.OTB_SEQUENCES
     train_type = getattr(cfg.TRAIN, "TYPE", None)
     if train_type == "peft":
         settings.fix_norm = True
@@ -59,6 +60,13 @@ def names2datasets(name_list: list, settings, image_loader):
                                        multi_modal_language=settings.multi_modal_language,
                                        use_nlp=settings.use_nlp['OTB99']
                                        ))
+            if settings.otb_train_sequences:
+                dataset = datasets[-1]
+                unknown = set(settings.otb_train_sequences) - set(dataset.sequence_list)
+                if unknown:
+                    raise ValueError('Requested sequences are not in the OTB training split: ' + str(sorted(unknown)))
+                dataset.sequence_list = list(settings.otb_train_sequences)
+                dataset.seq_per_class = dataset._build_class_list()
 
     return datasets
 
@@ -66,6 +74,9 @@ def names2datasets(name_list: list, settings, image_loader):
 def build_dataloaders(cfg, settings):
     settings.num_template = getattr(cfg.DATA.TEMPLATE, "NUMBER", 1)
     settings.num_search = getattr(cfg.DATA.SEARCH, "NUMBER", 1)
+    memory_enabled = cfg.MODEL.MEMORY.ENABLED
+    if memory_enabled and (cfg.DATA.SAMPLER_MODE != 'memory' or settings.num_search < 2):
+        raise ValueError('Memory training requires DATA.SAMPLER_MODE=memory and SEARCH.NUMBER >= 2')
     # Data transform
     transform_joint = tfm.Transform(tfm.ToGrayscale(probability=0.05),
                                     tfm.RandomHorizontalFlip(probability=0.5))
@@ -73,6 +84,9 @@ def build_dataloaders(cfg, settings):
     transform_train = tfm.Transform(tfm.ToTensorAndJitter(0.2),
                                     tfm.RandomHorizontalFlip_Norm(probability=0.5),
                                     tfm.Normalize(mean=cfg.DATA.MEAN, std=cfg.DATA.STD))
+    if memory_enabled:
+        transform_train = tfm.Transform(tfm.ToTensorAndJitter(0.2),
+                                        tfm.Normalize(mean=cfg.DATA.MEAN, std=cfg.DATA.STD))
 
     # The tracking pairs processing module
     output_sz = settings.output_sz
@@ -86,6 +100,7 @@ def build_dataloaders(cfg, settings):
                                                           transform=transform_train,
                                                           joint_transform=transform_joint,
                                                           multi_modal_language=settings.multi_modal_language,
+                                                          joint_sequence=memory_enabled,
                                                           settings=settings)
 
     # Train sampler and loader
@@ -97,6 +112,7 @@ def build_dataloaders(cfg, settings):
                                             max_gap=cfg.DATA.MAX_SAMPLE_INTERVAL, num_search_frames=settings.num_search,
                                             num_template_frames=settings.num_template, processing=data_processing_train,
                                             frame_sample_mode=sampler_mode,
+                                            memory_max_stride=cfg.DATA.MEMORY_MAX_STRIDE,
                                             multi_modal_language=settings.multi_modal_language
                                             )
 
@@ -111,7 +127,11 @@ def build_dataloaders(cfg, settings):
 
 def get_optimizer_scheduler(net, cfg):
     train_type = getattr(cfg.TRAIN, "TYPE", None)
-    if train_type == "peft":
+    if cfg.MODEL.MEMORY.ENABLED:
+        param_dicts = [{"params": [parameter for parameter in net.parameters() if parameter.requires_grad]}]
+        if not param_dicts[0]['params']:
+            raise ValueError('No trainable parameters in the memory model')
+    elif train_type == "peft":
         param_dicts = [
             {"params": [p for n, p in net.named_parameters() if "prompt" in n and p.requires_grad]},
         ]
