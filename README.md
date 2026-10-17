@@ -1,5 +1,15 @@
 # MVLM: Template-Free Tracking via Vision–Language Margin Confidence and Memory-Gated Tracking
 
+## 来源与用途声明
+
+本仓库基于 [inha-vllab/MVLM](https://github.com/inha-vllab/MVLM)，用于本人本科毕业设计中的实验复现、代码备份及后续模型改进。本仓库为个人研究版本，不代表 MVLM 官方项目。
+
+原始 MVLM 方法、模型架构及相关代码由原作者提供，不属于本人的原创成果；原论文引用保留在本文的 Citation 部分。当前个人新增或修改内容主要为运行环境适配、数据准备与校验脚本、评测工具、实验配置及实验记录，具体变更可通过 Git 提交历史和 [复现说明](REPRODUCTION.md) 查看。
+
+后续自主完成的模型结构改进及对应实验将单独说明，并在毕业设计中明确引用原论文、区分原项目成果与个人贡献。本声明仅用于说明来源和研究用途，不替代原项目及其依赖的适用许可或授权要求。
+
+---
+
 **CVPR 2026** &nbsp;|&nbsp; [Paper](추가예정) &nbsp;|&nbsp; [Project Page](https://mvlm-tft.github.io/)
 ## Highlights
 <p align="center">
