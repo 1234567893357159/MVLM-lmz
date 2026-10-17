@@ -103,8 +103,8 @@ def load_pretrained_tracker(model, pretrained):
     model.load_state_dict(state_dict, strict=False)
     return model
 
-def build_mvlm(cfg):
-    encoder = build_encoder(cfg)
+def build_mvlm(cfg, training=True):
+    encoder = build_encoder(cfg, training=training)
     if cfg.DATA.MULTI_MODAL_LANGUAGE:
         if cfg.MODEL.ENCODER.LANGUAGE_MODEL == 'CLIP':
             text_encoder = build_clip_textencoder(cfg, encoder) # CLIP

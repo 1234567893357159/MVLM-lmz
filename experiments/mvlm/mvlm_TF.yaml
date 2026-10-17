@@ -92,9 +92,9 @@ TEST:
     VASTTRACK: True
     LASOT: True
   MVLM:
-    ALPHA_CORR: 1.0 
-    TAU: 0.1 
-    OMEGA: 0.4 
-    LAMBDA: 0.4 
-    PSI_OUT: 0.0 
+    ALPHA_CORR: 0.7
+    TAU: 0.03
+    OMEGA: 0.2
+    LAMBDA: 0.4
+    PSI_OUT: 0.1
 

@@ -1,0 +1,191 @@
+{
+  "exp_id": "lasot_language_original_mp16_20261017_103923",
+  "dataset": "lasot",
+  "started_at": "2026-10-17T10:39:23.868470+08:00",
+  "status": "completed",
+  "parameter_source": "HEAD:experiments/mvlm/mvlm_TF.yaml (original published parameters)",
+  "results_dir": "/root/MVLM/output/test/tracking_results/mvlm/lasot_language_original_mp16_20261017_103923/lasot",
+  "artifact_dir": "/root/MVLM/output/lasot_evaluations/lasot_language_original_mp16_20261017_103923",
+  "runtime": {
+    "num_gpus": 8,
+    "workers_per_gpu": 2,
+    "cpu_threads_per_worker": 1
+  },
+  "workers": 16,
+  "note": "Single baseline evaluation; no LaSOT tuning. Uses repository language-only evaluation protocol, including its first-frame handling.",
+  "updated_at": "2026-10-17T11:10:41.760367+08:00",
+  "config_name": "lasot_language_original_mp16_20261017_103923",
+  "config_path": "/root/MVLM/experiments/mvlm/lasot_language_original_mp16_20261017_103923.yaml",
+  "config": {
+    "DATA": {
+      "MAX_SAMPLE_INTERVAL": 400,
+      "MULTI_MODAL_LANGUAGE": true,
+      "MULTI_MODAL_VISION": true,
+      "MEAN": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "SEARCH": {
+        "CENTER_JITTER": 3.5,
+        "FACTOR": 4.0,
+        "SCALE_JITTER": 0.5,
+        "SIZE": 224,
+        "NUMBER": 1
+      },
+      "STD": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "TEMPLATE": {
+        "CENTER_JITTER": 0,
+        "FACTOR": 2.0,
+        "SCALE_JITTER": 0,
+        "SIZE": 112,
+        "NUMBER": 1
+      },
+      "TRAIN": {
+        "DATASETS_NAME": [
+          "LASOT",
+          "VASTTRACK",
+          "TNL2K_train"
+        ],
+        "DATASETS_RATIO": [
+          1,
+          1,
+          1
+        ],
+        "SAMPLE_PER_EPOCH": 100000
+      },
+      "USE_NLP": {
+        "TNL2K": true,
+        "VASTTRACK": true,
+        "LASOT": true
+      }
+    },
+    "MODEL": {
+      "ENCODER": {
+        "TYPE": "fastitpnb",
+        "STRIDE": 16,
+        "PRETRAIN_TYPE": "pretrained/itpn/fast_itpn_base_clipl_e1600.pt",
+        "PATCHEMBED_INIT": "halfcopy",
+        "DROP_PATH": 0.1,
+        "LANGUAGE_MODEL": "CLIP"
+      },
+      "TEXT_ENCODER": {
+        "TYPE": "ViT-L/14",
+        "SLICING_MODE": "full"
+      },
+      "HEAD": {
+        "TYPE": "CENTER",
+        "NUM_CHANNELS": 256,
+        "CONV_TYPE": "normal",
+        "XAVIER_INIT": true
+      },
+      "PRETRAINED_MODEL": null
+    },
+    "TRAIN": {
+      "TYPE": "text_frozen",
+      "ENCODER_MULTIPLIER": 0.1,
+      "BATCH_SIZE": 80,
+      "EPOCH": 60,
+      "GRAD_CLIP_NORM": 0.1,
+      "LR": 0.0005,
+      "LR_DROP_EPOCH": 54,
+      "NUM_WORKER": 10,
+      "OPTIMIZER": "ADAMW",
+      "PRINT_INTERVAL": 50,
+      "SCHEDULER": {
+        "TYPE": "step",
+        "DECAY_RATE": 0.1
+      },
+      "WEIGHT_DECAY": 0.0001,
+      "CM_LOSS": true,
+      "CM_WEIGHT": 0.5
+    },
+    "TEST": {
+      "EPOCH": 60,
+      "SEARCH_FACTOR": 4.0,
+      "SEARCH_SIZE": 224,
+      "TEMPLATE_FACTOR": 2.0,
+      "TEMPLATE_SIZE": 112,
+      "WINDOW": true,
+      "NUM_TEMPLATES": 1,
+      "UPDATE_INTERVALS": {
+        "DEFAULT": 1
+      },
+      "UPDATE_THRESHOLD": {
+        "DEFAULT": 0.7
+      },
+      "MULTI_MODAL_VISION": {
+        "DEFAULT": true
+      },
+      "MULTI_MODAL_LANGUAGE": {
+        "DEFAULT": true
+      },
+      "USE_NLP": {
+        "DEFAULT": true,
+        "TNL2K": true,
+        "VASTTRACK": true,
+        "LASOT": true
+      },
+      "MVLM": {
+        "ALPHA_CORR": 1.0,
+        "TAU": 0.1,
+        "OMEGA": 0.4,
+        "LAMBDA": 0.4,
+        "PSI_OUT": 0.0
+      }
+    }
+  },
+  "git_commit": "4186c8fd171494bf4e9fd433fbbf5fa2ad9238a8",
+  "checkpoint": "/root/MVLM/models/MVLM_TF.pth.tar",
+  "checkpoint_sha256": "91c31230f3d355f71104df8191e386632a39ce9d3bbc1f7ce5bf3772b369cc4f",
+  "validated_sequences": 280,
+  "total_frames": 685360,
+  "validation": "All six archive SHA256 match source metadata; all expected frames nonempty; annotations/language/visibility lengths checked; first/middle/last images decoded per sequence.",
+  "commands": [
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.test",
+      "mvlm",
+      "lasot_language_original_mp16_20261017_103923",
+      "--dataset_name",
+      "lasot",
+      "--weight_path",
+      "/root/MVLM/models/MVLM_TF.pth.tar",
+      "--exp_id",
+      "lasot_language_original_mp16_20261017_103923",
+      "--mode",
+      "mp",
+      "--threads",
+      "16",
+      "--num_gpus",
+      "8"
+    ],
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.analysis_results",
+      "--tracker_name",
+      "mvlm",
+      "--tracker_param",
+      "lasot_language_original_mp16_20261017_103923",
+      "--exp_id",
+      "lasot_language_original_mp16_20261017_103923",
+      "--dataset",
+      "lasot"
+    ]
+  ],
+  "test_started_at": "2026-10-17T10:40:41.050864+08:00",
+  "completed_at": "2026-10-17T11:10:41.760288+08:00",
+  "metrics_percent": {
+    "PRE": 61.47,
+    "NPR": 64.15,
+    "AUC": 57.77
+  }
+}

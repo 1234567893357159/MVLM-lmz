@@ -1,0 +1,5 @@
+# LaSOT inference runtime only; model/scoring parameters come from the original Git HEAD YAML.
+# 8 RTX 3090 GPUs, 2 independent video tracking workers per GPU.
+num_gpus: 8
+workers_per_gpu: 2
+cpu_threads_per_worker: 1

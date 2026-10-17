@@ -1,0 +1,22 @@
+/root/miniconda3/envs/mvlm/lib/python3.8/site-packages/timm/models/registry.py:4: FutureWarning: Importing from timm.models.registry is deprecated, please import via timm.models
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.models", FutureWarning)
+/root/miniconda3/envs/mvlm/lib/python3.8/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+
+  0%|          | 0/280 [00:00<?, ?it/s]
+  0%|          | 1/280 [00:00<00:39,  7.02it/s]
+ 14%|█▎        | 38/280 [00:00<00:01, 188.53it/s]
+ 29%|██▉       | 82/280 [00:00<00:00, 292.88it/s]
+ 46%|████▌     | 128/280 [00:00<00:00, 354.78it/s]
+ 61%|██████    | 170/280 [00:00<00:00, 376.97it/s]
+ 78%|███████▊  | 217/280 [00:00<00:00, 404.57it/s]
+ 95%|█████████▌| 267/280 [00:00<00:00, 434.36it/s]
+100%|██████████| 280/280 [00:00<00:00, 363.84it/s]
+
+
+Computed results over 280 / 280 sequences
+
+Reporting results over 280 / 280 sequences
+
+lasot                                             | PRE | NPR | AUC |
+lasot_language_original_mp16_20261017_103923      | 61.47, 64.15, 57.77 |

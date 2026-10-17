@@ -1,0 +1,67 @@
+{
+  "label": "04_alpha03",
+  "exp_id": "lasot_tune_04_alpha03",
+  "batch": "20261017_055003",
+  "parameters": {
+    "ALPHA_CORR": 0.3,
+    "TAU": 0.03,
+    "OMEGA": 0.2,
+    "LAMBDA": 0.4,
+    "PSI_OUT": 0.1
+  },
+  "rationale": "在 03 基础上把 ALPHA_CORR 继续降到 0.3，01/03 显示 alpha 下降通道仍在改善，检验其单调性",
+  "status": "completed",
+  "started_at": "2026-10-17T13:50:03.354950+08:00",
+  "artifact_dir": "/root/MVLM/output/lasot_parameter_trials/lasot_tune_04_alpha03",
+  "results_dir": "/root/MVLM/output/test/tracking_results/mvlm/lasot_tune_04_alpha03/lasot",
+  "commands": [
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.test",
+      "mvlm",
+      "lasot_tune_04_alpha03",
+      "--dataset_name",
+      "lasot",
+      "--weight_path",
+      "/root/MVLM/models/MVLM_TF.pth.tar",
+      "--exp_id",
+      "lasot_tune_04_alpha03",
+      "--mode",
+      "mp",
+      "--threads",
+      "16",
+      "--num_gpus",
+      "8"
+    ],
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.analysis_results",
+      "--tracker_name",
+      "mvlm",
+      "--tracker_param",
+      "lasot_tune_04_alpha03",
+      "--exp_id",
+      "lasot_tune_04_alpha03",
+      "--dataset",
+      "lasot"
+    ]
+  ],
+  "runtime": {
+    "num_gpus": 8,
+    "workers_per_gpu": 2,
+    "cpu_threads_per_worker": 1
+  },
+  "warning": "LaSOT test-set parameter trial; NOT an independent reproduction result.",
+  "completed_at": "2026-10-17T14:19:33.512976+08:00",
+  "validated_sequences": 280,
+  "validated_frames": 685360,
+  "metrics": {
+    "PRE": 65.53,
+    "NPR": 68.32,
+    "AUC": 60.78
+  }
+}

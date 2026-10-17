@@ -1,0 +1,32 @@
+[
+  {
+    "file": "lasottest_0_49.tar.gz",
+    "size": 8392230369,
+    "sha256": "a3992b756f30a03a77ce67c5769c2804e96caf543a5a5f1346873aafca55e6ad"
+  },
+  {
+    "file": "lasottest_100_149.tar.gz",
+    "size": 7687590753,
+    "sha256": "8cb819be7185a59fd99f1b46350d5861f37dd99d3b17f34fe55b7175f8c6750d"
+  },
+  {
+    "file": "lasottest_150_199.tar.gz",
+    "size": 8424759830,
+    "sha256": "bf3ed4c2008b7d63414800fc30080984ac12cc4726e6f142eec45d92892afa4e"
+  },
+  {
+    "file": "lasottest_200_249.tar.gz",
+    "size": 10803891570,
+    "sha256": "0a9c7c65c5d5ad7a843849601f864e373c14c0fbc26f63dd8797bc1d6874ba3d"
+  },
+  {
+    "file": "lasottest_250_279.tar.gz",
+    "size": 7322110606,
+    "sha256": "032ed979ac0f1bd40e012a1e7f2ecf8060d1cfd7531bfdc9877cd8ba0855c0d9"
+  },
+  {
+    "file": "lasottest_50_99.tar.gz",
+    "size": 7199962785,
+    "sha256": "117f08d3b2bb4d78e009cbfbce0735ad3bffc6d76813b4ea90c3380175b5ae46"
+  }
+]

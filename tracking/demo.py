@@ -618,7 +618,7 @@ def main():
                 frame_rgb = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
                 t1 = time.perf_counter()
                 use_cuda = torch.cuda.is_available()
-                with torch.amp.autocast('cuda', enabled=args.half and use_cuda):
+                with torch.cuda.amp.autocast(enabled=args.half and use_cuda):
                     results = tracker.track(frame_rgb)
                 if use_cuda:
                     torch.cuda.synchronize()

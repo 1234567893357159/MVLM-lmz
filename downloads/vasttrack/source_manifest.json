@@ -1,0 +1,176 @@
+{
+  "repo": "xche32/vasttrack",
+  "source_url": "https://huggingface.co/datasets/xche32/vasttrack",
+  "official_url": "https://github.com/HengLan/VastTrack",
+  "total_bytes": 736604489019,
+  "files": [
+    {
+      "type": "file",
+      "oid": "ca072c3f1fb0a5348a8c40796a4ec4ca309aea53",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "2786e3f0e0d3da0a5304eb9c721b41571cb32e2236a052b106aae3cedaaacebe",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "f8f62988ed8edea8fe022d630c7be2d60650a76789797973a632e4647b7db58e",
+      "path": "vasttrack.tar.gz.part.aa"
+    },
+    {
+      "type": "file",
+      "oid": "3fbcab30c9124d9a535783d5d0f0c4bd7202b272",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "3cf683113636acaf90e684f49707a02927907ce49dae0b0f6e6ba5d4a177b70b",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "04f4d3d39145bef5ed847ed3cadb7fcbcef7af856f3397ba02ccc9c0a2dd9ba0",
+      "path": "vasttrack.tar.gz.part.ab"
+    },
+    {
+      "type": "file",
+      "oid": "4b5fcb42cde4fdde4a27b61e0cf96b03c1a0c805",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "a7df39ab139c30ab232d31bc7c49912afe49c7c2bd2f52a79d5b8847d86a4413",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "e6b54fee1962d7175276ae1d5f86119936c1cd5ed5d9f7cabe0acba21e3ef8e0",
+      "path": "vasttrack.tar.gz.part.ac"
+    },
+    {
+      "type": "file",
+      "oid": "a2a64267e1f34bb647585a829da15f89c36116e0",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "049bea657820bab0ee4ba3866709128e2a3afe8f9d403553b93f41147fb9c045",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "e2bbe087b6157f3c77fda4e70889a11d278c1a078b96d1d6408dc94c526727fa",
+      "path": "vasttrack.tar.gz.part.ad"
+    },
+    {
+      "type": "file",
+      "oid": "35ccd93b321106517bbee7c8c3cfb81942fe070f",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "83c980f65455c23c551ba29f550c7c5cc90e697c5e78507f2a58860fb9c1e7f3",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "c12b82e79c322e2b12068356a35a5c983665df96489a7ed767b9712fd3d418fc",
+      "path": "vasttrack.tar.gz.part.ae"
+    },
+    {
+      "type": "file",
+      "oid": "86a6bbde0fc5c8c46ffc8a5897af1a11a164491b",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "7cd372d629cdd201ae78388884fdc6b2330dbf9d379cf06ea51816f11e087650",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "55c7e6c9ad1ebf1407b7822f960ec11c8414a71f2995d35fe1c61763a6ee440a",
+      "path": "vasttrack.tar.gz.part.af"
+    },
+    {
+      "type": "file",
+      "oid": "16716b1c504c9a78e784e497f728a57e21faf3cc",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "b2cee877721ef3cc36656d510a8014456cb5bfab5bc835171a796977997bdabc",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "d16fb87770263028df65484e633a944531f8765ba16000abf2a7974d46abf98c",
+      "path": "vasttrack.tar.gz.part.ag"
+    },
+    {
+      "type": "file",
+      "oid": "df03f0742b93a31e3d7b1cd50b57d9e7a6d2e7e7",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "0d1238fe2421a004d01c0a0a940c864326f7f633b85cbac6aa0c39b456a7b22e",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "960077fa363e5dfff9db0ffea196b22e0ec18edb2a83091d8b08b70cb7346747",
+      "path": "vasttrack.tar.gz.part.ah"
+    },
+    {
+      "type": "file",
+      "oid": "4d55758f608e1875db9632e523341f5068933ba8",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "bd164aab85124213ad21d3d40162e20632037d17d494cde81f160c9fb7de8609",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "c2b3c2da718b29523d80df2fee472740dd2aff1f55158ecb885bd27c9a5944c8",
+      "path": "vasttrack.tar.gz.part.ai"
+    },
+    {
+      "type": "file",
+      "oid": "e06d1078200ca9d3ea1b27dcea3346efb6cb0b52",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "c82f48f2cbd58fec694eae4a2c30649621d9c9abe5164f5a3ea57747a48fa8b1",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "af6c993b578e5530f29d7ab14705784890ed4ce2e0a128ad42575b2d6d6b437b",
+      "path": "vasttrack.tar.gz.part.aj"
+    },
+    {
+      "type": "file",
+      "oid": "db3428de6d5ad86dd38776b84d66fc91b6c62814",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "7cfbbc026f7cdc5b2fc6e2281d2adcdbb56641ca2dcc28361d9ffd392ecb7020",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "2ab26efe07bcd70ceb43ff7f94e1c951f5ebd952dff9ddafb8ea24d311b8c3f1",
+      "path": "vasttrack.tar.gz.part.ak"
+    },
+    {
+      "type": "file",
+      "oid": "7034f38edb19310d3a097ea4651381e4dddc6469",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "9ce8c201fe4cbc8a14f226a9926d7d943e4e15bb8aaf1a1836abdf7e32ce041c",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "40085dbfeb30d0db083e974624b50b6e7c7f2785d4848a93d1bb0db1e311b90a",
+      "path": "vasttrack.tar.gz.part.al"
+    },
+    {
+      "type": "file",
+      "oid": "a5c01474082a7ac9e25e2a919bd73802fe3b75e3",
+      "size": 53687091200,
+      "lfs": {
+        "oid": "900f205bdcf2482063e1409ea2211a03dda0bd1457a51dcf7e2bfd5c2b985032",
+        "size": 53687091200,
+        "pointerSize": 136
+      },
+      "xetHash": "e92fde6025c279cc7448d8d83375aeb631da02191a8a048e66f500e8b16eb32a",
+      "path": "vasttrack.tar.gz.part.am"
+    },
+    {
+      "type": "file",
+      "oid": "b5ce7d4d10aa8e364da29bb14c44afde44e8f24a",
+      "size": 38672303419,
+      "lfs": {
+        "oid": "e555c46c7be28e44014f9b4286a8d2d658807ef17f5f52bcc8ca6b89373f2b8d",
+        "size": 38672303419,
+        "pointerSize": 136
+      },
+      "xetHash": "dbcc5f2246f7f5d4b4f4b0c7d55a5bdb7f10015bd00ff2944550d80b1228345e",
+      "path": "vasttrack.tar.gz.part.an"
+    }
+  ]
+}

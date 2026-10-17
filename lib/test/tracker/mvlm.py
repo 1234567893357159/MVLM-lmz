@@ -11,7 +11,7 @@ from lib.utils.box_ops import clip_box
 class MVLM(BaseTracker):
     def __init__(self, params, dataset_name):
         super(MVLM, self).__init__(params)
-        network = build_mvlm(params.cfg)
+        network = build_mvlm(params.cfg, training=False)
         ckpt = torch.load(self.params.checkpoint, map_location='cpu')
         state_dict = ckpt['net'] if 'net' in ckpt else ckpt
         network.load_state_dict(state_dict, strict=False)

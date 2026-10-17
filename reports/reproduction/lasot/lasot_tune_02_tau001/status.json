@@ -1,0 +1,67 @@
+{
+  "label": "02_tau001",
+  "exp_id": "lasot_tune_02_tau001",
+  "batch": "20261017_044757",
+  "parameters": {
+    "ALPHA_CORR": 0.7,
+    "TAU": 0.01,
+    "OMEGA": 0.2,
+    "LAMBDA": 0.4,
+    "PSI_OUT": 0.1
+  },
+  "rationale": "在 01 基础上只把 TAU 0.03 降到 0.01，检验更少触发全局重定位是否继续改善",
+  "status": "completed",
+  "started_at": "2026-10-17T12:47:57.911457+08:00",
+  "artifact_dir": "/root/MVLM/output/lasot_parameter_trials/lasot_tune_02_tau001",
+  "results_dir": "/root/MVLM/output/test/tracking_results/mvlm/lasot_tune_02_tau001/lasot",
+  "commands": [
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.test",
+      "mvlm",
+      "lasot_tune_02_tau001",
+      "--dataset_name",
+      "lasot",
+      "--weight_path",
+      "/root/MVLM/models/MVLM_TF.pth.tar",
+      "--exp_id",
+      "lasot_tune_02_tau001",
+      "--mode",
+      "mp",
+      "--threads",
+      "16",
+      "--num_gpus",
+      "8"
+    ],
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.analysis_results",
+      "--tracker_name",
+      "mvlm",
+      "--tracker_param",
+      "lasot_tune_02_tau001",
+      "--exp_id",
+      "lasot_tune_02_tau001",
+      "--dataset",
+      "lasot"
+    ]
+  ],
+  "runtime": {
+    "num_gpus": 8,
+    "workers_per_gpu": 2,
+    "cpu_threads_per_worker": 1
+  },
+  "warning": "LaSOT test-set parameter trial; NOT an independent reproduction result.",
+  "completed_at": "2026-10-17T13:17:38.153193+08:00",
+  "validated_sequences": 280,
+  "validated_frames": 685360,
+  "metrics": {
+    "PRE": 65.14,
+    "NPR": 67.89,
+    "AUC": 60.32
+  }
+}

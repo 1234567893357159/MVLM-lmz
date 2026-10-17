@@ -43,7 +43,9 @@ class OTB99LangDataset(BaseDataset):
         # NOTE: OTB has some weird annos which panda cannot handle
         ground_truth_rect = load_text(str(anno_path), delimiter=(',', None), dtype=np.float64, backend='numpy')
 
-        nlp_path = os.path.join(self.base_path, 'OTB_query_test', '{}.txt'.format(sequence_name))
+        # The language annotations use Human4 for the Human4_2 target.
+        query_name = {'Human4_2': 'Human4'}.get(sequence_name, sequence_name)
+        nlp_path = os.path.join(self.base_path, 'OTB_query_test', '{}.txt'.format(query_name))
         nlp_rect = load_text(str(nlp_path), delimiter=',', dtype=str)
         nlp_rect = str(nlp_rect)
 

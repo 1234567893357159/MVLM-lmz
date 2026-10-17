@@ -1,0 +1,62 @@
+{
+  "label": "06_tau004",
+  "exp_id": "otb_tune_06_tau004",
+  "batch": "20261017_084542",
+  "parameters": {
+    "ALPHA_CORR": 0.5,
+    "TAU": 0.04,
+    "OMEGA": 0.1,
+    "LAMBDA": 0.4,
+    "PSI_OUT": 0.1
+  },
+  "rationale": "OTB 上细化 tau 到 0.04，在 0.03 与 0.06 之间定位峰值",
+  "status": "completed",
+  "started_at": "2026-10-17T16:45:42.985160+08:00",
+  "artifact_dir": "/root/MVLM/output/otb_parameter_trials/otb_tune_06_tau004",
+  "results_dir": "/root/MVLM/output/test/tracking_results/mvlm/otb_tune_06_tau004/otb99_lang",
+  "commands": [
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.test",
+      "mvlm",
+      "otb_tune_06_tau004",
+      "--dataset_name",
+      "otb99_lang",
+      "--weight_path",
+      "/root/MVLM/models/MVLM_TF.pth.tar",
+      "--exp_id",
+      "otb_tune_06_tau004",
+      "--mode",
+      "mp",
+      "--threads",
+      "8",
+      "--num_gpus",
+      "8"
+    ],
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.analysis_results",
+      "--tracker_name",
+      "mvlm",
+      "--tracker_param",
+      "otb_tune_06_tau004",
+      "--exp_id",
+      "otb_tune_06_tau004",
+      "--dataset",
+      "otb99_lang"
+    ]
+  ],
+  "warning": "OTB99-Lang test-set parameter trial; NOT an independent reproduction result.",
+  "completed_at": "2026-10-17T16:49:55.900347+08:00",
+  "metrics": {
+    "PRE": 83.88,
+    "NPR": 75.22,
+    "AUC": 60.46
+  },
+  "validated_sequences": 48,
+  "validated_frames": 29077
+}

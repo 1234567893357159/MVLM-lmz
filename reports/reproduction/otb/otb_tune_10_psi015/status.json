@@ -1,0 +1,62 @@
+{
+  "label": "10_psi015",
+  "exp_id": "otb_tune_10_psi015",
+  "batch": "20261017_085338",
+  "parameters": {
+    "ALPHA_CORR": 0.5,
+    "TAU": 0.03,
+    "OMEGA": 0.1,
+    "LAMBDA": 0.4,
+    "PSI_OUT": 0.15
+  },
+  "rationale": "OTB 收官: psi_out 0.15，在 0.1 与 0.2 之间定位",
+  "status": "completed",
+  "started_at": "2026-10-17T16:53:38.194429+08:00",
+  "artifact_dir": "/root/MVLM/output/otb_parameter_trials/otb_tune_10_psi015",
+  "results_dir": "/root/MVLM/output/test/tracking_results/mvlm/otb_tune_10_psi015/otb99_lang",
+  "commands": [
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.test",
+      "mvlm",
+      "otb_tune_10_psi015",
+      "--dataset_name",
+      "otb99_lang",
+      "--weight_path",
+      "/root/MVLM/models/MVLM_TF.pth.tar",
+      "--exp_id",
+      "otb_tune_10_psi015",
+      "--mode",
+      "mp",
+      "--threads",
+      "8",
+      "--num_gpus",
+      "8"
+    ],
+    [
+      "/root/miniconda3/envs/mvlm/bin/python",
+      "-u",
+      "-m",
+      "tracking.analysis_results",
+      "--tracker_name",
+      "mvlm",
+      "--tracker_param",
+      "otb_tune_10_psi015",
+      "--exp_id",
+      "otb_tune_10_psi015",
+      "--dataset",
+      "otb99_lang"
+    ]
+  ],
+  "warning": "OTB99-Lang test-set parameter trial; NOT an independent reproduction result.",
+  "completed_at": "2026-10-17T16:57:20.683035+08:00",
+  "metrics": {
+    "PRE": 83.74,
+    "NPR": 75.04,
+    "AUC": 60.36
+  },
+  "validated_sequences": 48,
+  "validated_frames": 29077
+}

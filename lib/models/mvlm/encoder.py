@@ -39,11 +39,11 @@ class Encoder(EncoderBase):
                  search_size: int,
                  template_size: int,
                  open_layers: list,
-                 cfg=None):
+                 cfg=None, training=True):
 
         if "fastitpn" in name.lower():
             encoder = getattr(fastitpn_module, name)(
-                pretrained=is_main_process(),
+                pretrained=training and is_main_process(),
                 search_size=search_size,
                 template_size=template_size,
                 drop_rate=0.0,
@@ -76,10 +76,10 @@ class Encoder(EncoderBase):
 
 
 
-def build_encoder(cfg):
+def build_encoder(cfg, training=True):
     train_encoder = (cfg.TRAIN.ENCODER_MULTIPLIER > 0) and (cfg.TRAIN.FREEZE_ENCODER == False)
     encoder = Encoder(cfg.MODEL.ENCODER.TYPE, train_encoder,
                       cfg.DATA.SEARCH.SIZE,
                       cfg.DATA.TEMPLATE.SIZE,
-                      cfg.TRAIN.ENCODER_OPEN, cfg)
+                      cfg.TRAIN.ENCODER_OPEN, cfg, training=training)
     return encoder
