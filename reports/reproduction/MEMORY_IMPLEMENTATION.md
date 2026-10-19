@@ -2,11 +2,11 @@
 
 ## Status and scope
 
-Implemented on `codex/xmem-memory`. This is a target-level short/long-term memory inspired by XMem, not a port of its dense video segmentation model. The residual Transformer world model and candidate quality head are not implemented in this stage. No formal training or dataset-wide memory evaluation has been run, and no accuracy improvement is claimed.
+Implemented on `codex/xmem-memory`. This is a target-level short/long-term memory inspired by XMem, not a port of its dense video segmentation model. The residual Transformer world model and candidate quality head are not implemented in this stage. The initial frozen-head memory experiment and a later joint memory-plus-CENTER-head short run have both been completed. The current experiment design trains the memory module and CENTER head together while freezing the visual and text encoders. A 4,000-step run reached 60.8004 mean validation AUC at step 2,000 versus 60.7286 for the baseline; this small difference does not establish a reliable gain. The held-out test split has not been evaluated. A newer run configured to evaluate every 200 steps is paused before training (0 optimizer steps) because CUDA could not initialize the available GPUs.
 
 A subsequent real-data smoke experiment completed 20 optimizer updates on four OTB training sequences and evaluated three disjoint test sequences with the saved checkpoint. See `MEMORY_OTB_SMOKE_RESULTS.md`; this verifies the training/evaluation pipeline, not convergence. The OTB training loader now supports the downloaded training-query split and explicit subsets; zero/one-worker batch collation is covered by the checks.
 
-The original `mvlm_TF.yaml` is unchanged. Memory defaults to disabled. `mvlm_TF_memory.yaml` is a separate starting configuration, using the same inference confidence parameters as the existing working baseline; those parameters are not the original author defaults or the later tuning optimum. Compare experiments using identical fixed settings.
+The original `mvlm_TF.yaml` is unchanged. Memory defaults to disabled outside the memory experiment config. `mvlm_TF_memory.yaml` is the current joint-training starting configuration (`TRAIN.MEMORY_FREEZE_HEAD: False`), using the same inference confidence parameters as the existing working baseline; those parameters are not the original author defaults or the later tuning optimum. Compare experiments using identical fixed settings.
 
 ## Forward and update order
 
@@ -34,7 +34,7 @@ For the current 224-pixel FastITPN-B configuration, features are `[B,196,512]`; 
 
 The memory configuration initializes from `models/MVLM_TF.pth.tar`, including the learned text projection. It skips the extra backbone pretraining file because the complete baseline tracking checkpoint supplies the backbone. Missing baseline weights are rejected. CLIP still uses the existing cached pretrained model.
 
-The baseline encoder/text encoder are frozen and kept in eval mode. The CENTER head is also frozen/eval by default, but its forward remains differentiable with respect to adapter inputs. Only the new fusion/retrieval parameters are optimized initially. Set `TRAIN.MEMORY_FREEZE_HEAD: False` for a separately recorded joint-head adaptation experiment; provide an equal-training-budget baseline comparison.
+The current training plan freezes the baseline visual and text encoders and jointly optimizes the memory fusion/retrieval parameters and CENTER head. The CENTER head's BatchNorm parameters and running statistics update during training. `TRAIN.MEMORY_FREEZE_HEAD: True` belongs to the earlier frozen-head experiments; use `False` for the current joint-training configuration. The 4,000-step result is documented in `MEMORY_HEAD_SHORT_20261019.md`.
 
 `DATA.SAMPLER_MODE: memory` samples strictly increasing search frame IDs. It first attempts visible clips with frame stride 1--4; when none is found after bounded attempts, it uses consecutive entries from the visible-frame list, retaining their actual IDs. This initial sampler uses visible history and does not yet train on fully occluded frames.
 

@@ -27,6 +27,7 @@ class BaseTrainer:
 
         self.update_settings(settings)
 
+        self.global_step = 0
         self.epoch = 0
         self.stats = {}
 
@@ -96,6 +97,8 @@ class BaseTrainer:
                         if self._checkpoint_dir:
                             if self.settings.local_rank in [-1, 0]:
                                 self.save_checkpoint()
+                    if hasattr(self, "validate_checkpoint"):
+                        self.validate_checkpoint()
             except:
                 print('Training crashed at epoch {}'.format(epoch))
                 if fail_safe:
@@ -112,7 +115,7 @@ class BaseTrainer:
     def train_epoch(self):
         raise NotImplementedError
 
-    def save_checkpoint(self):
+    def save_checkpoint(self, step=None):
         """Saves a checkpoint of the network and other variables."""
 
         net = self.actor.net.module if multigpu.is_multi_gpu(self.actor.net) else self.actor.net
@@ -126,6 +129,7 @@ class BaseTrainer:
                      if not k.startswith('text_encoder.clip.')}
         state = {
             'epoch': self.epoch,
+            'global_step': self.global_step,
             'actor_type': actor_type,
             'net_type': net_type,
             'net': net_state,
@@ -143,10 +147,11 @@ class BaseTrainer:
             os.makedirs(directory)
 
         # First save as a tmp file
-        tmp_file_path = os.path.join(directory, '{}_ep{:04d}.tmp'.format(net_type, self.epoch))
+        filename = '{}_step{:06d}'.format(net_type, step) if step is not None else '{}_ep{:04d}'.format(net_type, self.epoch)
+        tmp_file_path = os.path.join(directory, filename + '.tmp')
         torch.save(state, tmp_file_path)
 
-        file_path = os.path.join(directory, '{}_ep{:04d}.pth.tar'.format(net_type, self.epoch))
+        file_path = os.path.join(directory, filename + '.pth.tar')
 
         # Now rename to actual checkpoint. os.replace is cross-platform atomic.
         os.replace(tmp_file_path, file_path)
@@ -227,6 +232,10 @@ class BaseTrainer:
         # Update the epoch in lr scheduler
         if 'epoch' in fields:
             self.lr_scheduler.last_epoch = self.epoch
+            if isinstance(self.lr_scheduler, torch.optim.lr_scheduler.LambdaLR):
+                rates = [base * fn(self.epoch) for base, fn in zip(self.lr_scheduler.base_lrs, self.lr_scheduler.lr_lambdas)]
+                for group, rate in zip(self.optimizer.param_groups, rates): group['lr'] = rate
+                self.lr_scheduler._last_lr = rates
         # 2021.1.10 Update the epoch in data_samplers
             for loader in self.loaders:
                 if isinstance(loader.sampler, DistributedSampler):

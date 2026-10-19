@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 import argparse
 import importlib
 import cv2 as cv
@@ -45,6 +46,7 @@ def run_training(script_name, config_name, cudnn_benchmark=True, local_rank=-1, 
             init_seeds(base_seed)
 
     settings = ws_settings.Settings()
+    settings.base_seed = base_seed
     settings.script_name = script_name
     settings.config_name = config_name
     settings.project_path = os.path.join('train', script_name, config_name)
@@ -73,7 +75,8 @@ def main():
     if local_rank == -1:
         local_rank = int(os.environ.get("LOCAL_RANK", -1))
     if local_rank != -1:
-        dist.init_process_group(backend='gloo' if os.name == 'nt' else 'nccl')
+        dist.init_process_group(backend='gloo' if os.name == 'nt' else 'nccl',
+                                timeout=timedelta(seconds=int(os.environ.get('MVLM_DISTRIBUTED_TIMEOUT_SECONDS', '1800'))))
         torch.cuda.set_device(local_rank)
     else:
         torch.cuda.set_device(0)

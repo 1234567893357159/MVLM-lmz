@@ -57,7 +57,7 @@ MODEL:
     LONG_DECAY: 0.01
 TRAIN:
   TYPE: memory
-  MEMORY_FREEZE_HEAD: True
+  MEMORY_FREEZE_HEAD: False
   MEMORY_PREDICTED_PROB: 0.5
   BATCH_SIZE: 2
   EPOCH: 10
@@ -93,3 +93,11 @@ TEST:
     OMEGA: 0.2
     LAMBDA: 0.4
     PSI_OUT: 0.1
+
+WANDB:
+  ENABLED: True
+  PROJECT: mvlm-memory
+  ENTITY: ''
+  NAME: ''
+  MODE: online
+  LOG_INTERVAL: 20

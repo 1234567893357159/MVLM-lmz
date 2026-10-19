@@ -117,6 +117,8 @@ class MVLM(nn.Module):
         for frame_index, search in enumerate(search_list):
             output = self.forward(template_list=template_list, search_list=[search], text_emb=text_emb,
                                   memory_state=memory_state, frame_ids=frame_ids[frame_index])
+            output['memory_short_entries'] = sum(len(bank) for bank in memory_state.short) / batch_size
+            output['memory_long_entries'] = sum(len(bank) for bank in memory_state.long) / batch_size
             outputs.append(output)
             if frame_index == len(search_list) - 1:
                 continue
@@ -135,7 +137,8 @@ class MVLM(nn.Module):
                 if memory_box_transforms is not None:
                     state_boxes = crop_boxes_to_image(write_boxes, memory_box_transforms[frame_index],
                                                        memory_image_sizes[frame_index])
-                memory_state.write(tokens, state_boxes, frame_ids[frame_index], qualities, roi_valid)
+                written = memory_state.write(tokens, state_boxes, frame_ids[frame_index], qualities, roi_valid)
+                output['memory_write_acceptance'] = sum(written) / batch_size
         return {'memory_sequence': outputs}
 
     def forward_textencoder(self, raw_text):

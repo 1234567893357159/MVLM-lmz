@@ -26,6 +26,12 @@ def update_settings(settings, cfg):
     settings.multi_modal_language = getattr(cfg.DATA, "MULTI_MODAL_LANGUAGE", False)
     settings.use_nlp = cfg.DATA.USE_NLP
     settings.otb_train_sequences = cfg.DATA.TRAIN.OTB_SEQUENCES
+    settings.custom_manifest = cfg.DATA.TRAIN.CUSTOM_MANIFEST
+    settings.save_every_epoch = cfg.TRAIN.SAVE_EVERY_EPOCH
+    settings.validate_every_epochs = cfg.TRAIN.VALIDATE_EVERY_EPOCHS
+    settings.checkpoint_interval_steps = cfg.TRAIN.CHECKPOINT_INTERVAL_STEPS
+    settings.long_clip_start_epoch = cfg.DATA.LONG_CLIP_START_EPOCH
+    settings.long_clip_frames = cfg.DATA.LONG_CLIP_FRAMES
     train_type = getattr(cfg.TRAIN, "TYPE", None)
     if train_type == "peft":
         settings.fix_norm = True
@@ -37,6 +43,12 @@ def names2datasets(name_list: list, settings, image_loader):
     assert isinstance(name_list, list)
     datasets = []
     for name in name_list:
+        if getattr(settings, 'custom_manifest', ''):
+            from lib.train.dataset.custom_tracking import CustomTrackingDataset
+            mapping = {'OTB99_train': 'otb99_lang', 'LASOT': 'lasot', 'TNL2K_train': 'tnl2k'}
+            if name not in mapping: raise ValueError('Unsupported custom dataset: ' + name)
+            datasets.append(CustomTrackingDataset(settings.custom_manifest, mapping[name], image_loader))
+            continue
         assert name in ["LASOT", "TNL2K_train", "OTB99_train", "VASTTRACK"]
         if name == "LASOT":
             datasets.append(Lasot(settings.env.lasot_dir, split='train', image_loader=image_loader,
@@ -209,7 +221,10 @@ def get_optimizer_scheduler(net, cfg):
                                       weight_decay=cfg.TRAIN.WEIGHT_DECAY)
     else:
         raise ValueError("Unsupported Optimizer")
-    if cfg.TRAIN.SCHEDULER.TYPE == 'step':
+    if cfg.TRAIN.SCHEDULER.TYPE == 'memory_stages':
+        lr_scheduler = torch.optim.lr_scheduler.LambdaLR(
+            optimizer, lambda epoch: 1.0 if epoch < 5 else (0.5 if epoch < 15 else 0.1))
+    elif cfg.TRAIN.SCHEDULER.TYPE == 'step':
         lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, cfg.TRAIN.LR_DROP_EPOCH)
     elif cfg.TRAIN.SCHEDULER.TYPE == "Mstep":
         lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer,

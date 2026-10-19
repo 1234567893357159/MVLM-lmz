@@ -1,4 +1,9 @@
 import os
+import json
+from pathlib import Path
+import shutil
+import subprocess
+import sys
 from collections import OrderedDict
 from lib.train.trainers import BaseTrainer
 from lib.train.admin import AverageMeter, StatValue
@@ -10,6 +15,7 @@ from torch.utils.data.distributed import DistributedSampler
 from torch.cuda.amp import autocast
 from torch.cuda.amp import GradScaler
 import lib.utils.misc as misc
+from lib.train.admin.wandb_logger import WandbLogger
 
 class LTRTrainer(BaseTrainer):
     def __init__(self, actor, loaders, optimizer, settings, lr_scheduler=None, use_amp=False):
@@ -38,6 +44,7 @@ class LTRTrainer(BaseTrainer):
         self.move_data_to_gpu = getattr(settings, 'move_data_to_gpu', True)
         self.settings = settings
         self.use_amp = use_amp
+        self.wandb_logger = WandbLogger(settings)
         if use_amp:
             self.scaler = GradScaler()
 
@@ -72,6 +79,7 @@ class LTRTrainer(BaseTrainer):
                 with autocast():
                     loss, stats = self.actor(data)
 
+            updated = False
             # backward pass and update weights
             if loader.training:
                 self.optimizer.zero_grad()
@@ -80,16 +88,33 @@ class LTRTrainer(BaseTrainer):
                     if self.settings.grad_clip_norm > 0:
                         torch.nn.utils.clip_grad_norm_(self.actor.net.parameters(), self.settings.grad_clip_norm)
                     self.optimizer.step()
+                    updated = True
                 else:
                     self.scaler.scale(loss).backward()
+                    previous_scale = self.scaler.get_scale()
                     self.scaler.step(self.optimizer)
                     self.scaler.update()
+                    updated = self.scaler.get_scale() >= previous_scale
 
             torch.cuda.synchronize()
 
             # update statistics
             batch_size = data['template_images'].shape[loader.stack_dim]
             self._update_stats(stats, batch_size, loader)
+
+            if updated:
+                self.global_step += 1
+                interval = getattr(self.settings, 'checkpoint_interval_steps', 0)
+                if interval and self.global_step % interval == 0 and self.settings.local_rank in [-1, 0]:
+                    self.save_checkpoint(step=self.global_step)
+            if self.wandb_logger.enabled and (
+                    (updated and self.global_step % self.wandb_logger.interval == 0)
+                    or i == len(loader)):
+                metrics = {loader.name + '/' + key: float(value) for key, value in stats.items()}
+                self.wandb_logger.log_metrics(metrics, self.global_step)
+                self.wandb_logger.log_runtime(self.global_step, self.epoch, self.optimizer,
+                                             batch_size, time.time() - self.prev_time,
+                                             self.device, loader.name)
 
             # print statistics
             self._print_stats(i, loader, batch_size)
@@ -101,6 +126,16 @@ class LTRTrainer(BaseTrainer):
 
     def train_epoch(self):
         """Do one epoch for each loader."""
+        # Called after checkpoint loading, so legacy checkpoints can recover a step axis.
+        if self.global_step == 0 and self.epoch > 1:
+            self.global_step = (self.epoch - 1) * sum(len(l) for l in self.loaders if l.training)
+        start = getattr(self.settings, 'long_clip_start_epoch', 0)
+        if start and self.epoch >= start:
+            for loader in self.loaders:
+                if loader.training:
+                    loader.dataset.num_search_frames = self.settings.long_clip_frames
+                    loader.dataset.processing.settings.num_search = self.settings.long_clip_frames
+        self.wandb_logger.start(self.actor.net)
         for loader in self.loaders:
             if self.epoch % loader.epoch_interval == 0:
                 # 2021.1.10 Set epoch
@@ -108,6 +143,13 @@ class LTRTrainer(BaseTrainer):
                     loader.sampler.set_epoch(self.epoch)
                 self.cycle_dataset(loader)
 
+        if self.wandb_logger.enabled:
+            epoch_metrics = {}
+            for name, values in self.stats.items():
+                for key, value in (values or {}).items():
+                    if hasattr(value, 'count') and value.count:
+                        epoch_metrics['epoch/' + name + '/' + key] = value.avg
+            self.wandb_logger.log_metrics(epoch_metrics, self.global_step)
         self._stats_new_epoch()
         if self.settings.local_rank in [-1, 0]:
             self._write_tensorboard()
@@ -174,3 +216,54 @@ class LTRTrainer(BaseTrainer):
             self.tensorboard_writer.write_info(self.settings.script_name, self.settings.description)
 
         self.tensorboard_writer.write_epoch(self.stats, self.epoch)
+
+    def validate_checkpoint(self):
+        interval = getattr(self.settings, 'validate_every_epochs', 0)
+        if not interval or self.epoch % interval:
+            return
+        error = None
+        if misc.is_main_process():
+            try:
+                root = Path(__file__).resolve().parents[3]
+                folder = Path(self.settings.save_dir) / 'validation'
+                checkpoint = Path(self._checkpoint_dir) / self.settings.project_path / ('MVLM_ep%04d.pth.tar' % self.epoch)
+                world = torch.distributed.get_world_size() if torch.distributed.is_initialized() else 1
+                # Avoid distributed-launch environment leaking into inference workers.
+                env = {k:v for k,v in os.environ.items() if k not in
+                       ['RANK','LOCAL_RANK','WORLD_SIZE','LOCAL_WORLD_SIZE','GROUP_RANK','ROLE_RANK','ROLE_WORLD_SIZE']}
+                for baseline in [True, False]:
+                    dest = folder / ('baseline' if baseline else ('epoch_%04d' % self.epoch))
+                    metrics_path = dest / 'metrics.json'
+                    if not metrics_path.exists():
+                        dest.mkdir(parents=True, exist_ok=True)
+                        command = [sys.executable, '-u', str(root / 'tracking/evaluate_memory_custom.py'),
+                                   '--manifest', self.settings.custom_manifest,
+                                   '--weights', '/root/MVLM/models/MVLM_TF.pth.tar' if baseline else str(checkpoint),
+                                   '--out', str(dest), '--config', self.settings.config_name, '--gpus', str(world)]
+                        if baseline: command.append('--baseline')
+                        with (dest/'evaluate.log').open('a') as log:
+                            subprocess.run(command, cwd=str(root), env=env, stdout=log,
+                                           stderr=subprocess.STDOUT, check=True, timeout=3600)
+                    result = json.loads(metrics_path.read_text())
+                    prefix = 'baseline' if baseline else 'val'
+                    metrics = {prefix+'/'+d+'/'+k:v for d,m in result['metrics'].items() for k,v in m.items()}
+                    metrics[prefix+'/mean_AUC'] = result['mean_AUC']
+                    if self.wandb_logger.run:
+                        self.wandb_logger.run.log(dict(metrics, global_step=self.global_step))
+                    if not baseline:
+                        best_file = folder/'best.json'
+                        best = json.loads(best_file.read_text()) if best_file.exists() else {'mean_AUC': -1}
+                        if result['mean_AUC'] > best['mean_AUC']:
+                            best_file.write_text(json.dumps({'epoch':self.epoch,'global_step':self.global_step,
+                                'mean_AUC':result['mean_AUC'],'metrics':result['metrics'],
+                                'checkpoint':str(checkpoint)},indent=2)+'\n')
+                            shutil.copy2(checkpoint, folder/'best.pth.tar')
+                        print('Validation epoch',self.epoch,'mean AUC',result['mean_AUC'],flush=True)
+            except Exception as exc:
+                error = repr(exc)
+        if torch.distributed.is_initialized():
+            messages = [error]
+            torch.distributed.broadcast_object_list(messages,src=0)
+            error = messages[0]
+        if error:
+            raise RuntimeError('Validation failed: '+error)

@@ -96,3 +96,11 @@ TEST:
     OMEGA: 0.2
     LAMBDA: 0.4
     PSI_OUT: 0.1
+
+WANDB:
+  ENABLED: True
+  PROJECT: mvlm-memory
+  ENTITY: ''
+  NAME: ''
+  MODE: online
+  LOG_INTERVAL: 20

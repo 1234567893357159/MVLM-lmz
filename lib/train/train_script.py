@@ -46,7 +46,7 @@ def run(settings):
             print("%s configuration:" % key, cfg[key])
             print('\n')
 
-    base_seed = 1234567890
+    base_seed = getattr(settings, "base_seed", None) or 1234567890
     if settings.local_rank != -1:
         init_seeds(base_seed + settings.local_rank)
     else:
@@ -54,6 +54,8 @@ def run(settings):
 
     # update settings based on cfg
     update_settings(settings, cfg)
+    settings.wandb_config = dict(cfg.WANDB)
+    settings.training_config = cfg
 
     # Record the training log
     log_dir = os.path.join(settings.save_dir, 'logs')
@@ -107,4 +109,10 @@ def run(settings):
     trainer = LTRTrainer(actor, [loader_train], optimizer, settings, lr_scheduler, use_amp=use_amp)
 
     # train
-    trainer.train(cfg.TRAIN.EPOCH, load_latest=True, fail_safe=not cfg.MODEL.MEMORY.ENABLED)
+    try:
+        trainer.train(cfg.TRAIN.EPOCH, load_latest=True, fail_safe=not cfg.MODEL.MEMORY.ENABLED)
+    except BaseException:
+        trainer.wandb_logger.finish(exit_code=1)
+        raise
+    else:
+        trainer.wandb_logger.finish()

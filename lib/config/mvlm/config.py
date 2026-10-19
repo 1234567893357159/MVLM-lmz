@@ -157,6 +157,24 @@ cfg.TEST.MVLM.PSI_OUT = 0.3
 
 
 
+# Explicit custom-data experiment and clip curriculum.
+cfg.DATA.TRAIN.CUSTOM_MANIFEST = ''
+cfg.DATA.LONG_CLIP_START_EPOCH = 0
+cfg.DATA.LONG_CLIP_FRAMES = 12
+cfg.TRAIN.SAVE_EVERY_EPOCH = False
+cfg.TRAIN.VALIDATE_EVERY_EPOCHS = 0
+cfg.TRAIN.CHECKPOINT_INTERVAL_STEPS = 0
+
+# Optional experiment monitoring. Credentials are managed by `wandb login`.
+cfg.WANDB = edict()
+cfg.WANDB.ENABLED = False
+cfg.WANDB.PROJECT = 'mvlm-memory'
+cfg.WANDB.ENTITY = ''
+cfg.WANDB.NAME = ''
+cfg.WANDB.MODE = 'online'
+cfg.WANDB.LOG_INTERVAL = 20
+
+
 def _edict2dict(dest_dict, src_edict):
     if isinstance(dest_dict, dict) and isinstance(src_edict, dict):
         for k, v in src_edict.items():

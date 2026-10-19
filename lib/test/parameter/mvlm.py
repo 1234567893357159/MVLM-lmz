@@ -1,6 +1,7 @@
 from lib.test.utils import TrackerParams
 import os
 import copy
+from pathlib import Path
 from lib.test.evaluation.environment import env_settings
 from lib.config.mvlm.config import cfg, update_config_from_file
 
@@ -10,7 +11,7 @@ def parameters(yaml_name: str, weight_path: str):
     workspace_dir = env_settings().workspace_dir
 
     # update default config from yaml file
-    yaml_file = os.path.join(workspace_dir, 'experiments', 'mvlm', '%s.yaml' % yaml_name)
+    yaml_file = str(Path(__file__).resolve().parents[3] / 'experiments' / 'mvlm' / (yaml_name + '.yaml'))
     update_config_from_file(yaml_file)
     params.cfg = copy.deepcopy(cfg)
     params.yaml_name = yaml_name

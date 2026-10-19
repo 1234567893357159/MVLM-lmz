@@ -46,6 +46,12 @@ class MVLM_Actor(BaseActor):
                       for name in statistics[0]}
             status['Memory/Gate'] = torch.stack([output['memory_gate'].detach().mean()
                                                for output in out_dict['memory_sequence']]).mean().item()
+            for key, label in [('memory_short_entries', 'ShortEntries'),
+                               ('memory_long_entries', 'LongEntries'),
+                               ('memory_write_acceptance', 'WriteAcceptance')]:
+                values = [output[key] for output in out_dict['memory_sequence'] if key in output]
+                if values: status['Memory/' + label] = sum(values) / len(values)
+            status['Memory/ClipFrames'] = len(out_dict['memory_sequence'])
             return mean_loss, status
         loss, status = self.compute_losses(out_dict, data)
         return loss, status
