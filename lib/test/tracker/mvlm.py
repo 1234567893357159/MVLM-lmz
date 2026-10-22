@@ -14,7 +14,11 @@ class MVLM(BaseTracker):
         network = build_mvlm(params.cfg, training=False)
         ckpt = torch.load(self.params.checkpoint, map_location='cpu')
         state_dict = ckpt['net'] if 'net' in ckpt else ckpt
-        network.load_state_dict(state_dict, strict=False)
+        if params.cfg.MODEL.WORLD.ENABLED:
+            from lib.models.mvlm.world_checkpoint import load_tracker_weights
+            load_tracker_weights(network, ckpt, require_world=True)
+        else:
+            network.load_state_dict(state_dict, strict=False)
         self.cfg = params.cfg
         if hasattr(params, 'device') and params.device:
             self.device = torch.device(params.device)
@@ -23,6 +27,10 @@ class MVLM(BaseTracker):
         self.network = network.to(self.device)
         self.network.eval()
         self.preprocessor = Preprocessor(self.device)
+        self.world_enabled = self.cfg.MODEL.WORLD.ENABLED
+        if self.world_enabled:
+            from lib.models.mvlm.world_state import WorldHistory
+            self.world_history = WorldHistory(self.cfg.MODEL.WORLD.HISTORY)
         self.state = None
 
         self.fx_sz = self.cfg.TEST.SEARCH_SIZE // self.cfg.MODEL.ENCODER.STRIDE
@@ -119,31 +127,50 @@ class MVLM(BaseTracker):
 
         self.kmem = None
         self.kmvlm = None
+        if self.world_enabled:
+            # Never insert the supplied first-frame ground-truth box into world history.
+            self.world_history.clear()
 
     def track(self, image, info: dict = None):
 
         H, W, _ = image.shape
         self.frame_id += 1
             
-        if self.flag:
+        if self.flag and not self.world_enabled:
             x_patch_arr, resize_factor = resize_sample_target(image, output_sz=self.params.search_size)  # (x1, y1, w, h)
             # crop region covers the entire image
-        else:
+        elif not self.world_enabled:
             x_patch_arr, resize_factor = sample_target(image, self.state, self.params.search_factor, output_sz=self.params.search_size)  # (x1, y1, w, h)
             # compute crop region in original image coordinates
             x, y, w, h = self.state
+
+        world_prediction, crop_regions = None, None
+        if self.world_enabled:
+            from lib.models.mvlm.world_state import search_crop
+            x_patch_arr, crop_region = search_crop(
+                image, self.params.search_size, self.params.search_factor,
+                None if self.flag else self.state)
+            crop_regions = crop_region.to(self.device).unsqueeze(0)
+            history = self.world_history.pack()
+            if history is not None:
+                with torch.no_grad():
+                    world_prediction = self.network.world_model(
+                        history, self.text_emb,
+                        torch.tensor([self.frame_id], device=self.device))
 
         search = self.preprocessor.process(x_patch_arr)
         if self.multi_modal_vision and (search.size(1) == 3):
             search = torch.cat((search, search), axis=1)
         search_list = [search]
 
+        world_kwargs = dict(world_prediction=world_prediction, crop_regions=crop_regions) if self.world_enabled else {}
         # run the encoder
         with torch.no_grad():
             out_dict = self.network(template_list=self.template_list,
                                     search_list=search_list,
                                     text_emb=self.text_emb,
                                     raw_text=[self.init_nlp] if self.init_nlp is not None else None,
+                                    **world_kwargs,
                                     )
 
         # add hann windows
@@ -213,7 +240,7 @@ class MVLM(BaseTracker):
 
         top1_box = pred_boxes[0][top1_idx]
 
-        if self.flag:
+        if self.flag and not self.world_enabled:
             box = (top1_box * self.params.search_size).tolist()  # (cx, cy, w, h)
             # resize_sample_target resizes (W, H) → (search_size, search_size)
             # per-axis scale factors needed for non-square images
@@ -229,10 +256,26 @@ class MVLM(BaseTracker):
             h_origin = h / h_scale
             pred_box = [cx_origin - 0.5 * w_origin, cy_origin - 0.5 * h_origin, w_origin, h_origin]
             self.state = clip_box(pred_box, H, W, margin=10)
-        else:
+        elif not self.world_enabled:
             box = top1_box.view(-1, 4)
             pred_box = (box.mean(dim=0) * self.params.search_size / resize_factor).tolist()  # (cx, cy, w, h) [0,1]
             self.state = clip_box(self.map_box_back(pred_box, resize_factor), H, W, margin=10)
+
+        if self.world_enabled:
+            from lib.models.mvlm.world_state import (crop_to_image, center_to_xywh,
+                                                     xywh_to_center, image_to_crop, extract_roi)
+            # Use the actual rounded crop geometry for world-enabled localization.
+            full_box = crop_to_image(top1_box[None], crop_regions)
+            pixel_scale = full_box.new_tensor([W, H, W, H])
+            self.state = clip_box((center_to_xywh(full_box)[0] * pixel_scale).tolist(), H, W, margin=10)
+            stored = xywh_to_center(full_box.new_tensor(self.state)[None] / pixel_scale)
+            roi_box = center_to_xywh(image_to_crop(stored, crop_regions))
+            roi, valid = extract_roi(out_dict['feat_x'], roi_box)
+            quality = cls_scores[top1_idx].detach().reshape(1).clamp(0, 1)
+            # Keep a missing observation marker when MVLM requests global re-localization.
+            valid &= selected_boxes[top1_idx].reshape(1)
+            self.world_history.append(roi, stored, quality, valid,
+                                      torch.tensor([self.frame_id], device=self.device))
 
         # LOCAL OR GLOBAL VIEW ON NEXT FRAME?
         if next_flag:
@@ -291,6 +334,16 @@ class MVLM(BaseTracker):
         }
 
         return results_dict
+
+    def set_language(self, description):
+        self.init_nlp = description
+        with torch.no_grad():
+            self.text_emb = self.network.text_encoder(description)
+        self.kmem = None
+        self.kmvlm = None
+        self.flag = True
+        if self.world_enabled:
+            self.world_history.clear()
 
     def map_box_back(self, pred_box: list, resize_factor: float):
         cx_prev, cy_prev = self.state[0] + 0.5 * self.state[2], self.state[1] + 0.5 * self.state[3]

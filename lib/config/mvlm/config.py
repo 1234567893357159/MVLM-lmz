@@ -35,6 +35,16 @@ cfg.MODEL.HEAD.XAVIER_INIT = True
 # MODEL.PRETRAINED_MODEL
 cfg.MODEL.PRETRAINED_MODEL = None
 
+# Optional one-step world model. Disabled for all existing experiments.
+cfg.MODEL.WORLD = edict()
+cfg.MODEL.WORLD.ENABLED = False
+cfg.MODEL.WORLD.HISTORY = 4
+cfg.MODEL.WORLD.HIDDEN = 256
+cfg.MODEL.WORLD.LAYERS = 2
+cfg.MODEL.WORLD.HEADS = 4
+cfg.MODEL.WORLD.FUSION_STRENGTH = 1.0
+cfg.MODEL.WORLD.MIN_QUALITY = 0.0
+
 # TRAIN
 cfg.TRAIN = edict()
 cfg.TRAIN.LR = 0.0001
@@ -61,6 +71,20 @@ cfg.TRAIN.SCHEDULER.TYPE = "step"
 cfg.TRAIN.SCHEDULER.DECAY_RATE = 0.1
 cfg.TRAIN.TYPE = "normal" # normal, peft, fft, text_frozen
 cfg.TRAIN.PRETRAINED_PATH = None
+
+# Standalone world-model training entry; the legacy trainer rejects these stages.
+cfg.TRAIN.WORLD = edict()
+cfg.TRAIN.WORLD.STAGE = 'A'
+cfg.TRAIN.WORLD.HEAD_LR = 0.00001
+cfg.TRAIN.WORLD.APPEARANCE_WEIGHT = 1.0
+cfg.TRAIN.WORLD.MOTION_WEIGHT = 1.0
+cfg.TRAIN.WORLD.FEATURE_WEIGHT = 0.1
+cfg.TRAIN.WORLD.PREDICTED_HISTORY_PROB = 0.5
+cfg.TRAIN.WORLD.HISTORY_RAMP_STEPS = 1000
+cfg.TRAIN.WORLD.CLIP_LENGTH = 8
+cfg.TRAIN.WORLD.MAX_STEPS = 4000
+cfg.TRAIN.WORLD.SAVE_INTERVAL = 200
+cfg.TRAIN.WORLD.SEED = 20261022
 
 # DATA
 cfg.DATA = edict()
@@ -179,3 +203,15 @@ def update_config_from_file(filename):
         _update_config(cfg, exp_config)
 
 
+
+
+# Capture defaults once, before any legacy global configuration mutation.
+from copy import deepcopy
+_DEFAULT_CFG = deepcopy(cfg)
+
+
+def load_config(filename):
+    result = deepcopy(_DEFAULT_CFG)
+    with open(filename) as handle:
+        _update_config(result, edict(yaml.safe_load(handle)))
+    return result

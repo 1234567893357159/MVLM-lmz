@@ -46,6 +46,9 @@ def run(settings):
             print("%s configuration:" % key, cfg[key])
             print('\n')
 
+    if cfg.MODEL.WORLD.ENABLED:
+        raise ValueError('Use tracking/train_world_model.py for world stages A/B')
+
     base_seed = 1234567890
     if settings.local_rank != -1:
         init_seeds(base_seed + settings.local_rank)

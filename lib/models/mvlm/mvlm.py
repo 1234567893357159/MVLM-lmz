@@ -10,7 +10,7 @@ from lib.models.mvlm.language.clip import build_clip_textencoder
 class MVLM(nn.Module):
     def __init__(self, text_encoder, encoder, head,
                  num_frames=1, num_template=1,
-                 head_type="CENTER"):
+                 head_type="CENTER", world_cfg=None):
         super().__init__()
         self.encoder = encoder
         self.text_encoder = text_encoder
@@ -23,11 +23,25 @@ class MVLM(nn.Module):
 
         self.head = head
 
+        self.world_model = None
+        self.imagination_fusion = None
+        self.world_stage = None
+        if world_cfg is not None and world_cfg.ENABLED:
+            if head_type != 'CENTER' or num_template != 1:
+                raise ValueError('World model currently supports CENTER and one template only')
+            from .world_model import WorldModel
+            from .imagination_fusion import ImaginationFusion
+            self.world_model = WorldModel(encoder.num_channels, world_cfg.HISTORY,
+                                          world_cfg.HIDDEN, world_cfg.LAYERS, world_cfg.HEADS)
+            self.imagination_fusion = ImaginationFusion(
+                encoder.num_channels, world_cfg.HIDDEN, world_cfg.HEADS,
+                world_cfg.FUSION_STRENGTH, world_cfg.MIN_QUALITY)
+
         self.num_frames = num_frames
         self.num_template = num_template
 
 
-    def forward(self, template_list=None, search_list=None, text_emb=None, raw_text=None):
+    def forward(self, template_list=None, search_list=None, text_emb=None, raw_text=None, world_prediction=None, crop_regions=None):
 
         auc_dict = {}
 
@@ -39,11 +53,41 @@ class MVLM(nn.Module):
             text_emb = None
 
         enc_dict = self.forward_encoder(template_list, search_list, text_emb)
-        head_dict = self.forward_head(enc_dict['feat_x'])
+        features = enc_dict['feat_x']
+        if world_prediction is not None:
+            if self.imagination_fusion is None or crop_regions is None:
+                raise ValueError('World prediction requires enabled fusion and crop coordinates')
+            features = self.imagination_fusion(features, world_prediction, crop_regions)
+            auc_dict['feat_x_world'] = features
+        head_dict = self.forward_head(features)
         auc_dict.update(enc_dict)
         auc_dict.update(head_dict)
 
         return auc_dict
+
+    def configure_world_stage(self, stage):
+        if self.world_model is None or stage not in ('A', 'B'):
+            raise ValueError('Enabled world model and stage A/B required')
+        self.world_stage = stage
+        for parameter in self.parameters():
+            parameter.requires_grad_(False)
+        modules = [self.world_model] if stage == 'A' else [self.imagination_fusion, self.head]
+        for module in modules:
+            module.requires_grad_(True)
+        self.train(self.training)
+
+    def train(self, mode=True):
+        super().train(mode)
+        if self.world_stage is not None:
+            self.encoder.eval()
+            if self.text_encoder is not None:
+                self.text_encoder.eval()
+            if self.world_stage == 'A':
+                self.head.eval()
+                self.imagination_fusion.eval()
+            else:
+                self.world_model.eval()
+        return self
 
     def forward_textencoder(self, raw_text):
         # Forward the encoder
@@ -104,6 +148,11 @@ def load_pretrained_tracker(model, pretrained):
     return model
 
 def build_mvlm(cfg, training=True):
+    if cfg.MODEL.WORLD.ENABLED:
+        if not cfg.MODEL.ENCODER.TEMPLATE_FREE or not cfg.DATA.MULTI_MODAL_LANGUAGE:
+            raise ValueError('World model requires template-free, language-conditioned MVLM')
+        if cfg.DATA.SEARCH.SIZE != cfg.TEST.SEARCH_SIZE:
+            raise ValueError('World training and inference require identical search feature grids')
     encoder = build_encoder(cfg, training=training)
     if cfg.DATA.MULTI_MODAL_LANGUAGE:
         if cfg.MODEL.ENCODER.LANGUAGE_MODEL == 'CLIP':
@@ -121,6 +170,7 @@ def build_mvlm(cfg, training=True):
         num_frames = cfg.DATA.SEARCH.NUMBER,
         num_template = cfg.DATA.TEMPLATE.NUMBER,
         head_type=cfg.MODEL.HEAD.TYPE,
+        world_cfg=cfg.MODEL.WORLD,
     )
     
     if cfg.MODEL.PRETRAINED_MODEL is not None:
