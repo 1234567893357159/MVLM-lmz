@@ -1,5 +1,6 @@
 """Explicit video-disjoint train/validation manifests, never benchmark test splits."""
 import hashlib
+from functools import lru_cache
 import json
 from pathlib import Path
 
@@ -12,6 +13,7 @@ from torch.utils.data import Dataset
 SPECS = Path(__file__).resolve().parents[1] / 'data_specs'
 
 
+@lru_cache(maxsize=3)
 def official_names(dataset):
     return set((SPECS / (dataset + '_train_split.txt')).read_text().splitlines())
 
@@ -29,8 +31,10 @@ def describe_sequence(dataset, root, name):
         raise ValueError('Only lasot, tnl2k and vasttrack official training data supported')
     if Path(name).name != name:
         raise ValueError('Sequence names cannot contain paths')
-    image_dir = directory / ('img' if dataset == 'lasot' else 'imgs')
-    frames = sorted(p.resolve() for p in image_dir.iterdir()
+    # Resolve shared ancestors once; still resolve individual symlink aliases.
+    # Repeating realpath for millions of regular frames makes startup very slow.
+    image_dir = (directory / ('img' if dataset == 'lasot' else 'imgs')).resolve()
+    frames = sorted(p.resolve() if p.is_symlink() else p for p in image_dir.iterdir()
                     if p.suffix.lower() in ('.jpg', '.jpeg', '.png'))
     annotation = directory / ('Groundtruth.txt' if dataset == 'vasttrack' else 'groundtruth.txt')
     boxes = np.loadtxt(str(annotation), delimiter=',', dtype=np.float32).reshape(-1, 4)

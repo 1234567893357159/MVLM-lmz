@@ -1,5 +1,19 @@
 # MVLM 会话交接记录
 
+> **最新：本地参数调试已完成（2026-10-26 19:26:32）**：用户要求调参尝试超过论文，并要求调试/训练不使用 W&B。固定 B 第 1000 步，13 组完整评测检查通过。最佳 AUC：OTB 59.6125、LaSOT 60.3647、TNL2K 57.1565；均未超过论文或此前调参官方基线。最终输出 `/root/MVLM/output/world_parameter_tuning_20261026_final`，汇总及最佳 YAML 已保存。后续不传 `--wandb-project`，设置 `WANDB_MODE=disabled`。旧 W&B 链接为历史；详情见 [参数调试记录](reports/reproduction/WORLD_PARAMETER_TRANSFER_20261026.md)。
+
+> **最新：跨数据集完整测试已完成（2026-10-26 16:22:57，北京时间）**：固定 B 第 1000 步最佳模型，与官方 MVLM 在 OTB99-Lang 48、LaSOT 280、TNL2K 700 序列上比较。六组完整预测检查通过，AUC 原始→世界模型分别为 56.48→57.57（+1.09 个百分点）、57.77→58.30（+0.53）、55.42→55.84（+0.42）；PRE/NPR 也均提高。LaSOT/TNL2K 原始基线部分复用核验过的预测并在当前标注上重新计分，世界模型三组全部本轮重新推理。输出 `/root/MVLM/output/world_crossdataset_eval_20261026_run01`；[评测 W&B](https://wandb.ai/2896287267-hit/mvlm-world-model/runs/k5l81qxf) 已同步结束，详细见 [测试记录](reports/reproduction/WORLD_CROSSDATASET_EVALUATION_20261026.md)。
+
+> **B 阶段已完成（2026-10-26 14:37:13，北京时间）**：8 卡 4000 步、20 次固定片段验证正常完成，W&B 已结束，GPU 已释放。最佳 B 为第 1000 步（片段损失 0.6265465），最终 4000 步为 0.7281143；最终权重有限且世界模型与 A 来源逐项未变。最佳模型、最终模型与审计均在 B 输出目录。完整视频对照结果见本文件顶部。详见 [B 训练最终记录](reports/reproduction/WORLD_STAGE_B_TRAINING_20261026.md)。下方运行中步数为旧快照。
+
+> **最新：用户授权并启动 B 阶段（2026-10-26）**：真实 8 卡短训通过，冻结 A 第 3200 步最佳世界模型及编码器，仅训练融合/CENTER。正式输出 `/root/MVLM/output/world_stage_b_vasttrack_8gpu_20261026_run01`，8 卡、全局 batch 16、4000 步；13:32:25（北京时间）已确认 52 步、`running`，线上指标已同步。[阶段 B W&B](https://wandb.ai/2896287267-hit/mvlm-world-model/runs/6kaexdvm)；初始化哈希、预检证据和命令见 [阶段 B 训练记录](reports/reproduction/WORLD_STAGE_B_TRAINING_20261026.md)。下方“阶段 B 未启动”是此前记录。
+
+> **阶段 A 最终完成（2026-10-26 13:22:32，北京时间）**：8 卡 4000 步、20 次固定片段验证全部结束，损失及最终权重有限，GPU 已释放。最佳片段损失为第 3200 步 0.2412911，最终第 4000 步 0.2431688；阶段 B 未启动，也未计算完整跟踪 AUC。完整证据见 [训练记录](reports/reproduction/WORLD_GPU_TRAINING_20261026.md) 与 [W&B](https://wandb.ai/2896287267-hit/mvlm-world-model/runs/s8tibgnj)。下方 72 步等状态均为历史快照。
+
+> **2026-10-26 后续更新：8 卡训练**：用户要求像 memory 分支一样使用全部 GPU。8 卡 NCCL/DDP 真实短训与恢复检查已通过；单卡预跑主动停止并保留 200/400 步权重，新运行每卡 2、全局 16、4000 步，输出 `/root/MVLM/output/world_stage_a_vasttrack_8gpu_20261026_run01`。12:06（北京时间）已确认实际完成 72 步、8 卡均有计算活动；[本轮 W&B](https://wandb.ai/2896287267-hit/mvlm-world-model/runs/s8tibgnj)。最新进度见 [训练记录最新节](reports/reproduction/WORLD_GPU_TRAINING_20261026.md)，下方单卡 run 为此前预跑。
+
+> **2026-10-26 更新（北京时间）**：用户已授权继续 `codex/world-model` 并尝试 GPU 训练，确认 W&B 目的地为 `2896287267-hit/mvlm-world-model`。GPU 集成检查和 4 步真实数据短训通过；最新启动记录见 [世界模型交接](WORLD_MODEL_HANDOFF.md) 和 [本次训练记录](reports/reproduction/WORLD_GPU_TRAINING_20261026.md)。旧记忆实验仍按原指令暂停。下方 2026-10-22 入口及继承正文为历史。
+
 > **本分支最新入口（2026-10-22，北京时间）**：当前为 `codex/world-model`，从 `main@5b68095` 创建；已按用户要求实现世界模型与两阶段训练／在线接入，CPU 检查通过，尚未启动正式训练；详见 `reports/reproduction/WORLD_MODEL_IMPLEMENTATION.md`。请先阅读 [世界模型交接](WORLD_MODEL_HANDOFF.md) 和 [分支说明](分支说明.md)。下文继承自 main，为复现和旧记忆实验历史，不代表本分支已实现这些模块，也不构成恢复旧实验的授权。
 
 更新时间：2026-10-17（Asia/Shanghai）；最新下载速度采样时间为当天 10:09。**12:1x 补写第 9.4 节（LaSOT 完整评测，此前版本遗漏）；17:0x 补写第 9.5 节（LaSOT 8 组参数搜索）；18:0x 补写第 9.6/9.7 节（OTB 10 组参数搜索与两数据集汇总）；18:0x 补写第 9.8 节（18 组数字全量核对通过、双数据集最优配置、下载实时状态；第 5 节下载表已过时，以 9.8 为准）。**本文是历史快照；新会话必须重新检查进程、网络和文件大小，不能将本文进度当成实时进度。
