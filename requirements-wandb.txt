@@ -1,0 +1,2 @@
+# Optional training monitoring; install into the existing training environment.
+wandb==0.22.3

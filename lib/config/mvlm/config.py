@@ -61,6 +61,7 @@ cfg.TRAIN.SCHEDULER.TYPE = "step"
 cfg.TRAIN.SCHEDULER.DECAY_RATE = 0.1
 cfg.TRAIN.TYPE = "normal" # normal, peft, fft, text_frozen
 cfg.TRAIN.PRETRAINED_PATH = None
+cfg.TRAIN.SAVE_EVERY_EPOCH = False
 
 # DATA
 cfg.DATA = edict()
@@ -86,6 +87,7 @@ cfg.DATA.TRAIN = edict()
 cfg.DATA.TRAIN.DATASETS_NAME = ["LASOT", "GOT10K_vottrain"]
 cfg.DATA.TRAIN.DATASETS_RATIO = [1, 1]
 cfg.DATA.TRAIN.SAMPLE_PER_EPOCH = 60000
+cfg.DATA.TRAIN.VASTTRACK_SPLIT = ''
 # DATA.SEARCH
 cfg.DATA.SEARCH = edict()
 cfg.DATA.SEARCH.NUMBER = 1  #number of search region, only support 1 for now.
@@ -137,6 +139,16 @@ cfg.TEST.MVLM.OMEGA = 0.9
 cfg.TEST.MVLM.LAMBDA = 0.9
 cfg.TEST.MVLM.PSI_OUT = 0.3
 
+
+
+# Optional monitoring; authentication is managed by wandb login.
+cfg.WANDB = edict()
+cfg.WANDB.ENABLED = False
+cfg.WANDB.PROJECT = 'mvlm-reproduction'
+cfg.WANDB.ENTITY = ''
+cfg.WANDB.NAME = ''
+cfg.WANDB.MODE = 'online'
+cfg.WANDB.LOG_INTERVAL = 20
 
 
 def _edict2dict(dest_dict, src_edict):

@@ -27,6 +27,7 @@ class BaseTrainer:
 
         self.update_settings(settings)
 
+        self.global_step = 0
         self.epoch = 0
         self.stats = {}
 
@@ -96,9 +97,9 @@ class BaseTrainer:
                         if self._checkpoint_dir:
                             if self.settings.local_rank in [-1, 0]:
                                 self.save_checkpoint()
-            except:
+            except Exception:
                 print('Training crashed at epoch {}'.format(epoch))
-                if fail_safe:
+                if fail_safe and i + 1 < num_tries:
                     self.epoch -= 1
                     load_latest = True
                     print('Traceback for the error!')
@@ -126,6 +127,7 @@ class BaseTrainer:
                      if not k.startswith('text_encoder.clip.')}
         state = {
             'epoch': self.epoch,
+            'global_step': self.global_step,
             'actor_type': actor_type,
             'net_type': net_type,
             'net': net_state,

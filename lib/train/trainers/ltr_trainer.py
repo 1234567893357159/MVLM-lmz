@@ -10,6 +10,7 @@ from torch.utils.data.distributed import DistributedSampler
 from torch.cuda.amp import autocast
 from torch.cuda.amp import GradScaler
 import lib.utils.misc as misc
+from lib.train.admin.wandb_logger import WandbLogger
 
 class LTRTrainer(BaseTrainer):
     def __init__(self, actor, loaders, optimizer, settings, lr_scheduler=None, use_amp=False):
@@ -38,6 +39,7 @@ class LTRTrainer(BaseTrainer):
         self.move_data_to_gpu = getattr(settings, 'move_data_to_gpu', True)
         self.settings = settings
         self.use_amp = use_amp
+        self.wandb_logger = WandbLogger(settings)
         if use_amp:
             self.scaler = GradScaler()
 
@@ -72,6 +74,9 @@ class LTRTrainer(BaseTrainer):
                 with autocast():
                     loss, stats = self.actor(data)
 
+            if not torch.isfinite(loss.detach()).all():
+                raise FloatingPointError('Non-finite loss at epoch {}, batch {}'.format(self.epoch, i))
+            updated = False
             # backward pass and update weights
             if loader.training:
                 self.optimizer.zero_grad()
@@ -80,16 +85,30 @@ class LTRTrainer(BaseTrainer):
                     if self.settings.grad_clip_norm > 0:
                         torch.nn.utils.clip_grad_norm_(self.actor.net.parameters(), self.settings.grad_clip_norm)
                     self.optimizer.step()
+                    updated = True
                 else:
                     self.scaler.scale(loss).backward()
+                    previous_scale = self.scaler.get_scale()
                     self.scaler.step(self.optimizer)
                     self.scaler.update()
+                    updated = self.scaler.get_scale() >= previous_scale
 
             torch.cuda.synchronize()
 
             # update statistics
             batch_size = data['template_images'].shape[loader.stack_dim]
             self._update_stats(stats, batch_size, loader)
+
+            if updated:
+                self.global_step += 1
+            if self.wandb_logger.enabled and (
+                    (updated and self.global_step % self.wandb_logger.interval == 0)
+                    or i == len(loader)):
+                metrics = {loader.name + '/' + key: float(value) for key, value in stats.items()}
+                self.wandb_logger.log_metrics(metrics, self.global_step)
+                self.wandb_logger.log_runtime(self.global_step, self.epoch, self.optimizer,
+                                             batch_size, time.time() - self.prev_time,
+                                             self.device, loader.name)
 
             # print statistics
             self._print_stats(i, loader, batch_size)
@@ -101,6 +120,11 @@ class LTRTrainer(BaseTrainer):
 
     def train_epoch(self):
         """Do one epoch for each loader."""
+        # Checkpoints created before W&B integration do not contain global_step.
+        if self.global_step == 0 and self.epoch > 1:
+            self.global_step = (self.epoch - 1) * sum(
+                len(loader) for loader in self.loaders if loader.training)
+        self.wandb_logger.start(self.actor.net)
         for loader in self.loaders:
             if self.epoch % loader.epoch_interval == 0:
                 # 2021.1.10 Set epoch
@@ -108,6 +132,13 @@ class LTRTrainer(BaseTrainer):
                     loader.sampler.set_epoch(self.epoch)
                 self.cycle_dataset(loader)
 
+        if self.wandb_logger.enabled:
+            metrics = {}
+            for name, values in self.stats.items():
+                for key, value in (values or {}).items():
+                    if hasattr(value, 'count') and value.count:
+                        metrics['epoch/' + name + '/' + key] = value.avg
+            self.wandb_logger.log_metrics(metrics, self.global_step)
         self._stats_new_epoch()
         if self.settings.local_rank in [-1, 0]:
             self._write_tensorboard()

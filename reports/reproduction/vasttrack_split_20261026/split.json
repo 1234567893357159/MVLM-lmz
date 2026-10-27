@@ -1,0 +1,12 @@
+{
+  "source_sequences": 46825,
+  "train_sequences": 46325,
+  "val_sequences": 500,
+  "selection": "SHA256(mvlm-vasttrack-20261026:<sequence>), lowest 500; whole-sequence holdout",
+  "path_overlap": 0,
+  "boundary": "No semantic/near-duplicate source-video audit; holdout reserved for subsequent validation, not automatically evaluated by current training logger.",
+  "sha256": {
+    "train": "126212fb7d40bfe76ecedb8f41ec3b5e9d15ec95ad9ad287e93e48ebcbeb1cd5",
+    "val": "90457546060ba767d57fa93be6c1a8f2bdb619ea960ec2a3fe11ccd5d4f05e4f"
+  }
+}

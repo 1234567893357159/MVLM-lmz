@@ -46,7 +46,8 @@ def names2datasets(name_list: list, settings, image_loader):
             datasets.append(VastTrack(settings.env.vasttrack_dir, split='train', image_loader=image_loader,
                                       multi_modal_vision=settings.multi_modal_vision,
                                       multi_modal_language=settings.multi_modal_language,
-                                      use_nlp=settings.use_nlp['VASTTRACK']))
+                                      use_nlp=settings.use_nlp['VASTTRACK'],
+                                      split_file=getattr(settings, 'vasttrack_split', '') or None))
         if name == "TNL2K_train":
             datasets.append(Tnl2k(settings.env.tnl2k_dir, split=None, image_loader=image_loader,
                                   multi_modal_vision=settings.multi_modal_vision,

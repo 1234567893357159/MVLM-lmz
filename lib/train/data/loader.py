@@ -79,7 +79,7 @@ def ltr_collate_stack1(batch):
             out = batch[0].new(storage)
             # Example: len(batch)=16, batch[0].shape=torch.Size([1,3,192,192])
             # out.storage() is allocated as a flat shared buffer (numel elements)
-        return torch.stack(batch, 1, out=out.resize_(0))
+        return torch.stack(batch, 1, out=out.resize_(0) if out is not None else None)
             # out.shape
             # torch.Size([1, 16, 3, 192, 192])
     elif elem_type.__module__ == 'numpy' and elem_type.__name__ != 'str_' \

@@ -54,6 +54,11 @@ def run(settings):
 
     # update settings based on cfg
     update_settings(settings, cfg)
+    settings.vasttrack_split = cfg.DATA.TRAIN.VASTTRACK_SPLIT
+    settings.save_every_epoch = cfg.TRAIN.SAVE_EVERY_EPOCH
+    settings.base_seed = base_seed
+    settings.wandb_config = dict(cfg.WANDB)
+    settings.training_config = cfg
 
     # Record the training log
     log_dir = os.path.join(settings.save_dir, 'logs')
@@ -98,8 +103,40 @@ def run(settings):
 
     # Optimizer, parameters, and learning rates
     optimizer, lr_scheduler = get_optimizer_scheduler(net, cfg)
+    if settings.local_rank in [-1, 0]:
+        os.makedirs(settings.save_dir, exist_ok=True)
+        import hashlib
+        import json
+        model = getattr(net, 'module', net)
+        groups = {}
+        initial = {}
+        for name, parameter in model.named_parameters():
+            group = ('clip' if name.startswith('text_encoder.clip.') else
+                     'text_projection' if name.startswith('text_encoder.text_proj.') else
+                     'encoder' if name.startswith('encoder.') else 'head')
+            entry = groups.setdefault(group, {'total': 0, 'trainable': 0})
+            entry['total'] += parameter.numel()
+            if parameter.requires_grad:
+                entry['trainable'] += parameter.numel()
+                if group not in initial:
+                    initial[group] = {'name': name, 'sha256': hashlib.sha256(
+                        parameter.detach().cpu().contiguous().numpy().tobytes()).hexdigest()}
+        if cfg.TRAIN.TYPE == 'text_frozen' and cfg.DATA.MULTI_MODAL_LANGUAGE:
+            assert groups['clip']['trainable'] == 0
+            assert groups['text_projection']['trainable'] > 0
+        with open(os.path.join(settings.save_dir, 'initialization.json'), 'w') as handle:
+            json.dump({'parameter_groups': groups, 'initial_parameter_samples': initial,
+                       'backbone_initialization': cfg.MODEL.ENCODER.PRETRAIN_TYPE,
+                       'tracker_initialization': cfg.MODEL.PRETRAINED_MODEL}, handle, indent=2)
+        print('Parameter groups:', groups, flush=True)
     use_amp = getattr(cfg.TRAIN, "AMP", False)
     trainer = LTRTrainer(actor, [loader_train], optimizer, settings, lr_scheduler, use_amp=use_amp)
 
     # train
-    trainer.train(cfg.TRAIN.EPOCH, load_latest=True, fail_safe=True)
+    try:
+        trainer.train(cfg.TRAIN.EPOCH, load_latest=True, fail_safe=True)
+    except BaseException:
+        trainer.wandb_logger.finish(exit_code=1)
+        raise
+    else:
+        trainer.wandb_logger.finish()

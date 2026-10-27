@@ -16,7 +16,7 @@ class VastTrack(BaseVideoDataset):
     """
 
     def __init__(self, root=None, image_loader=jpeg4py_loader, vid_ids=None, split=None, data_fraction=None,
-                 multi_modal_vision=False, multi_modal_language=False, use_nlp=False):
+                 multi_modal_vision=False, multi_modal_language=False, use_nlp=False, split_file=None):
         """
         args:
             root - path to the vasttrack dataset.
@@ -28,6 +28,7 @@ class VastTrack(BaseVideoDataset):
                     vid_ids or split option can be used at a time.
             data_fraction - Fraction of dataset to be used. The complete dataset is used by default
         """
+        self.split_file = split_file
         root = os.path.join(env_settings().vasttrack_dir, 'train') 
         super().__init__('VastTrack', root, image_loader)
 
@@ -52,7 +53,10 @@ class VastTrack(BaseVideoDataset):
                 raise ValueError('Cannot set both split_name and vid_ids.')
             ltr_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..')
             if split == 'train':
-                file_path = os.path.join(ltr_path, 'data_specs', 'vasttrack_train_split.txt')
+                file_path = self.split_file or os.path.join(ltr_path, 'data_specs', 'vasttrack_train_split.txt')
+                if not os.path.isabs(file_path):
+                    repo_root = os.path.abspath(os.path.join(ltr_path, '..', '..'))
+                    file_path = os.path.join(repo_root, file_path)
             else:
                 raise ValueError('Unknown split name.')
             # sequence_list = pandas.read_csv(file_path, header=None, squeeze=True).values.tolist()

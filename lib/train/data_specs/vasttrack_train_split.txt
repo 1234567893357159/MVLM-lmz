@@ -8529,10 +8529,8 @@ Crossbow Pistol-24
 Crossbow Pistol-25
 Crossbow Pistol-26
 Crossbow Pistol-28
-Crossbow Pistol-3
 Crossbow Pistol-30
 Crossbow Pistol-31
-Crossbow Pistol-4
 Crossbow Pistol-5
 Crossbow Pistol-6
 Crossbow Pistol-7
@@ -19624,7 +19622,6 @@ Head-52
 Head-53
 Head-54
 Head-55
-Head-56
 Head-57
 Head-58
 Head-59
@@ -21981,7 +21978,6 @@ Bo Staff Techniques-38
 Bo Staff Techniques-39
 Bo Staff Techniques-4
 Bo Staff Techniques-40
-Bo Staff Techniques-41
 Bo Staff Techniques-42
 Bo Staff Techniques-43
 Bo Staff Techniques-44
@@ -29461,12 +29457,9 @@ Crossbody Backpack-17
 Crossbody Backpack-18
 Crossbody Backpack-19
 Crossbody Backpack-20
-Crossbody Backpack-21
 Crossbody Backpack-22
 Crossbody Backpack-23
-Crossbody Backpack-24
 Crossbody Backpack-25
-Crossbody Backpack-26
 Crossbody Backpack-27
 Crossbody Backpack-28
 Crossbody Backpack-29
@@ -29534,7 +29527,6 @@ Blood Collection Set-2
 Blood Collection Set-3
 Blood Collection Set-4
 Blood Collection Set-5
-Blood Collection Set-6
 Blood Collection Set-7
 Blood Collection Set-8
 Blood Collection Set-9
@@ -31684,8 +31676,6 @@ Blood Tube Holder-3
 Blood Tube Holder-4
 Blood Tube Holder-5
 Blood Tube Holder-6
-Blood Tube Holder-7
-Blood Tube Holder-8
 Least Auklet-1
 Least Auklet-2
 Least Auklet-3
@@ -40750,7 +40740,6 @@ Caspian Tern-8
 Caspian Tern-9
 Hacksaw-1
 Hacksaw-2
-Hacksaw-3
 Hacksaw-4
 Hacksaw-5
 Hacksaw-6
