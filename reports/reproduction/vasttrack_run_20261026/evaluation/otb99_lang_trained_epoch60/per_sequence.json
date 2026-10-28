@@ -1,0 +1,674 @@
+[
+  {
+    "sequence": "Biker",
+    "frames": 142,
+    "AUC": 0.0335345405767941,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 4.5337760000000005,
+    "first_frame_prediction": [
+      240.0,
+      150.0,
+      59.0,
+      104.0
+    ]
+  },
+  {
+    "sequence": "Bird1",
+    "frames": 408,
+    "AUC": 12.53501400560224,
+    "PRE": 38.23529411764706,
+    "NPR": 14.950980392156863,
+    "total_inference_seconds": 13.008576,
+    "first_frame_prediction": [
+      376.0,
+      22.0,
+      174.0,
+      101.0
+    ]
+  },
+  {
+    "sequence": "Bird2",
+    "frames": 99,
+    "AUC": 45.64694564694565,
+    "PRE": 89.8989898989899,
+    "NPR": 60.60606060606061,
+    "total_inference_seconds": 3.9610249999999994,
+    "first_frame_prediction": [
+      74.0,
+      200.0,
+      77.0,
+      101.0
+    ]
+  },
+  {
+    "sequence": "BlurBody",
+    "frames": 334,
+    "AUC": 82.33532934131735,
+    "PRE": 96.10778443113772,
+    "NPR": 97.30538922155688,
+    "total_inference_seconds": 10.387701999999999,
+    "first_frame_prediction": [
+      375.0,
+      43.0,
+      118.0,
+      323.0
+    ]
+  },
+  {
+    "sequence": "BlurCar1",
+    "frames": 742,
+    "AUC": 82.56963162623539,
+    "PRE": 99.05660377358491,
+    "NPR": 99.05660377358491,
+    "total_inference_seconds": 22.829831,
+    "first_frame_prediction": [
+      237.0,
+      158.0,
+      128.0,
+      118.0
+    ]
+  },
+  {
+    "sequence": "BlurCar2",
+    "frames": 585,
+    "AUC": 74.0984940984941,
+    "PRE": 95.04273504273503,
+    "NPR": 95.2136752136752,
+    "total_inference_seconds": 17.083613,
+    "first_frame_prediction": [
+      219.0,
+      200.0,
+      143.0,
+      108.0
+    ]
+  },
+  {
+    "sequence": "BlurCar3",
+    "frames": 357,
+    "AUC": 72.9625183406696,
+    "PRE": 99.43977591036415,
+    "NPR": 98.8795518207283,
+    "total_inference_seconds": 9.998881,
+    "first_frame_prediction": [
+      211.0,
+      142.0,
+      295.0,
+      197.0
+    ]
+  },
+  {
+    "sequence": "BlurCar4",
+    "frames": 380,
+    "AUC": 82.88220551378446,
+    "PRE": 99.21052631578947,
+    "NPR": 99.73684210526315,
+    "total_inference_seconds": 11.354966000000001,
+    "first_frame_prediction": [
+      189.0,
+      199.0,
+      185.0,
+      161.0
+    ]
+  },
+  {
+    "sequence": "BlurFace",
+    "frames": 493,
+    "AUC": 65.34337873080267,
+    "PRE": 81.54158215010142,
+    "NPR": 99.59432048681542,
+    "total_inference_seconds": 15.66227,
+    "first_frame_prediction": [
+      234.0,
+      206.0,
+      110.0,
+      129.0
+    ]
+  },
+  {
+    "sequence": "BlurOwl",
+    "frames": 631,
+    "AUC": 80.15998792543958,
+    "PRE": 93.34389857369256,
+    "NPR": 92.70998415213946,
+    "total_inference_seconds": 21.240831,
+    "first_frame_prediction": [
+      349.0,
+      194.0,
+      63.0,
+      106.0
+    ]
+  },
+  {
+    "sequence": "Board",
+    "frames": 698,
+    "AUC": 60.45163050893711,
+    "PRE": 62.607449856733524,
+    "NPR": 71.77650429799426,
+    "total_inference_seconds": 21.717723,
+    "first_frame_prediction": [
+      157.0,
+      38.0,
+      104.0,
+      111.0
+    ]
+  },
+  {
+    "sequence": "Bolt2",
+    "frames": 293,
+    "AUC": 1.1214041930765482,
+    "PRE": 2.04778156996587,
+    "NPR": 0.3412969283276451,
+    "total_inference_seconds": 10.341173,
+    "first_frame_prediction": [
+      140.0,
+      62.0,
+      69.0,
+      85.0
+    ]
+  },
+  {
+    "sequence": "Box",
+    "frames": 1161,
+    "AUC": 31.938804807021864,
+    "PRE": 33.93626184323858,
+    "NPR": 35.83118001722653,
+    "total_inference_seconds": 35.000604,
+    "first_frame_prediction": [
+      102.0,
+      38.0,
+      181.0,
+      269.0
+    ]
+  },
+  {
+    "sequence": "Car1",
+    "frames": 1020,
+    "AUC": 18.26330532212885,
+    "PRE": 24.6078431372549,
+    "NPR": 23.333333333333332,
+    "total_inference_seconds": 32.06484,
+    "first_frame_prediction": [
+      19.0,
+      86.0,
+      74.0,
+      56.0
+    ]
+  },
+  {
+    "sequence": "Car2",
+    "frames": 913,
+    "AUC": 49.809628122881136,
+    "PRE": 66.59364731653888,
+    "NPR": 65.49835706462213,
+    "total_inference_seconds": 28.032874999999997,
+    "first_frame_prediction": [
+      167.0,
+      54.0,
+      65.0,
+      62.0
+    ]
+  },
+  {
+    "sequence": "Car24",
+    "frames": 3059,
+    "AUC": 65.48047136474727,
+    "PRE": 81.72605426610004,
+    "NPR": 79.92808107224583,
+    "total_inference_seconds": 80.40006,
+    "first_frame_prediction": [
+      160.0,
+      120.0,
+      30.0,
+      23.0
+    ]
+  },
+  {
+    "sequence": "Coupon",
+    "frames": 327,
+    "AUC": 69.75389544196882,
+    "PRE": 88.07339449541286,
+    "NPR": 85.93272171253822,
+    "total_inference_seconds": 9.107683000000002,
+    "first_frame_prediction": [
+      141.0,
+      62.0,
+      62.0,
+      96.0
+    ]
+  },
+  {
+    "sequence": "Crowds",
+    "frames": 347,
+    "AUC": 45.56058734733086,
+    "PRE": 79.2507204610951,
+    "NPR": 57.925072046109506,
+    "total_inference_seconds": 10.282884,
+    "first_frame_prediction": [
+      277.0,
+      282.0,
+      191.0,
+      95.0
+    ]
+  },
+  {
+    "sequence": "Dancer",
+    "frames": 225,
+    "AUC": 43.49206349206349,
+    "PRE": 41.333333333333336,
+    "NPR": 52.888888888888886,
+    "total_inference_seconds": 6.127546,
+    "first_frame_prediction": [
+      165.0,
+      71.0,
+      64.0,
+      136.0
+    ]
+  },
+  {
+    "sequence": "Dancer2",
+    "frames": 150,
+    "AUC": 60.5079365079365,
+    "PRE": 93.33333333333333,
+    "NPR": 68.0,
+    "total_inference_seconds": 4.168273999999999,
+    "first_frame_prediction": [
+      149.0,
+      33.0,
+      43.0,
+      187.0
+    ]
+  },
+  {
+    "sequence": "Diving",
+    "frames": 215,
+    "AUC": 72.91251384274639,
+    "PRE": 96.74418604651163,
+    "NPR": 92.09302325581396,
+    "total_inference_seconds": 6.021842000000001,
+    "first_frame_prediction": [
+      173.0,
+      27.0,
+      27.0,
+      147.0
+    ]
+  },
+  {
+    "sequence": "Dog",
+    "frames": 127,
+    "AUC": 32.02099737532808,
+    "PRE": 100.0,
+    "NPR": 7.874015748031496,
+    "total_inference_seconds": 3.5279,
+    "first_frame_prediction": [
+      38.0,
+      58.0,
+      104.0,
+      115.0
+    ]
+  },
+  {
+    "sequence": "DragonBaby",
+    "frames": 113,
+    "AUC": 14.075010535187529,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 3.088233,
+    "first_frame_prediction": [
+      84.0,
+      69.0,
+      158.0,
+      247.0
+    ]
+  },
+  {
+    "sequence": "Girl2",
+    "frames": 1500,
+    "AUC": 58.12380952380952,
+    "PRE": 87.6,
+    "NPR": 73.6,
+    "total_inference_seconds": 41.398099,
+    "first_frame_prediction": [
+      288.0,
+      136.0,
+      55.0,
+      168.0
+    ]
+  },
+  {
+    "sequence": "Gym",
+    "frames": 767,
+    "AUC": 66.98950766747377,
+    "PRE": 96.87092568448502,
+    "NPR": 84.61538461538461,
+    "total_inference_seconds": 22.389117,
+    "first_frame_prediction": [
+      148.0,
+      65.0,
+      80.0,
+      138.0
+    ]
+  },
+  {
+    "sequence": "Human2",
+    "frames": 1128,
+    "AUC": 12.212934819317796,
+    "PRE": 3.4574468085106385,
+    "NPR": 15.24822695035461,
+    "total_inference_seconds": 30.394015,
+    "first_frame_prediction": [
+      201.0,
+      316.0,
+      59.0,
+      92.0
+    ]
+  },
+  {
+    "sequence": "Human3",
+    "frames": 1698,
+    "AUC": 66.10017387402546,
+    "PRE": 90.75382803297998,
+    "NPR": 84.09893992932862,
+    "total_inference_seconds": 42.881859,
+    "first_frame_prediction": [
+      261.0,
+      307.0,
+      34.0,
+      71.0
+    ]
+  },
+  {
+    "sequence": "Human4_2",
+    "frames": 667,
+    "AUC": 14.521310773184837,
+    "PRE": 18.590704647676162,
+    "NPR": 16.79160419790105,
+    "total_inference_seconds": 18.300207,
+    "first_frame_prediction": [
+      75.0,
+      229.0,
+      45.0,
+      85.0
+    ]
+  },
+  {
+    "sequence": "Human5",
+    "frames": 713,
+    "AUC": 65.54464703132304,
+    "PRE": 84.01122019635343,
+    "NPR": 80.78541374474054,
+    "total_inference_seconds": 19.676731999999998,
+    "first_frame_prediction": [
+      129.0,
+      295.0,
+      310.0,
+      182.0
+    ]
+  },
+  {
+    "sequence": "Human6",
+    "frames": 792,
+    "AUC": 67.3941798941799,
+    "PRE": 97.22222222222221,
+    "NPR": 87.75252525252525,
+    "total_inference_seconds": 22.444004,
+    "first_frame_prediction": [
+      140.0,
+      201.0,
+      35.0,
+      124.0
+    ]
+  },
+  {
+    "sequence": "Human7",
+    "frames": 250,
+    "AUC": 80.1142857142857,
+    "PRE": 99.6,
+    "NPR": 99.2,
+    "total_inference_seconds": 7.289588999999999,
+    "first_frame_prediction": [
+      104.0,
+      109.0,
+      44.0,
+      119.0
+    ]
+  },
+  {
+    "sequence": "Human8",
+    "frames": 128,
+    "AUC": 65.21577380952381,
+    "PRE": 98.4375,
+    "NPR": 78.125,
+    "total_inference_seconds": 3.1957430000000002,
+    "first_frame_prediction": [
+      107.0,
+      97.0,
+      33.0,
+      89.0
+    ]
+  },
+  {
+    "sequence": "Human9",
+    "frames": 305,
+    "AUC": 55.26932084309133,
+    "PRE": 99.34426229508196,
+    "NPR": 73.44262295081967,
+    "total_inference_seconds": 8.512075,
+    "first_frame_prediction": [
+      91.0,
+      112.0,
+      35.0,
+      107.0
+    ]
+  },
+  {
+    "sequence": "Jump",
+    "frames": 122,
+    "AUC": 73.92661982825918,
+    "PRE": 99.18032786885246,
+    "NPR": 86.88524590163934,
+    "total_inference_seconds": 3.3565020000000003,
+    "first_frame_prediction": [
+      133.0,
+      55.0,
+      54.0,
+      160.0
+    ]
+  },
+  {
+    "sequence": "KiteSurf",
+    "frames": 84,
+    "AUC": 7.936507936507936,
+    "PRE": 10.714285714285714,
+    "NPR": 0.0,
+    "total_inference_seconds": 2.682389,
+    "first_frame_prediction": [
+      147.0,
+      37.0,
+      97.0,
+      142.0
+    ]
+  },
+  {
+    "sequence": "Man",
+    "frames": 134,
+    "AUC": 65.92039800995025,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "total_inference_seconds": 3.2506440000000003,
+    "first_frame_prediction": [
+      69.0,
+      49.0,
+      26.0,
+      33.0
+    ]
+  },
+  {
+    "sequence": "Panda",
+    "frames": 1000,
+    "AUC": 56.63333333333333,
+    "PRE": 98.4,
+    "NPR": 73.6,
+    "total_inference_seconds": 26.181905999999998,
+    "first_frame_prediction": [
+      51.0,
+      95.0,
+      39.0,
+      28.0
+    ]
+  },
+  {
+    "sequence": "RedTeam",
+    "frames": 1918,
+    "AUC": 65.87715378122051,
+    "PRE": 100.0,
+    "NPR": 74.50469238790407,
+    "total_inference_seconds": 45.08194399999999,
+    "first_frame_prediction": [
+      191.0,
+      85.0,
+      43.0,
+      21.0
+    ]
+  },
+  {
+    "sequence": "Rubik",
+    "frames": 1997,
+    "AUC": 63.0278751460524,
+    "PRE": 77.71657486229344,
+    "NPR": 71.75763645468203,
+    "total_inference_seconds": 47.623001,
+    "first_frame_prediction": [
+      272.0,
+      156.0,
+      82.0,
+      78.0
+    ]
+  },
+  {
+    "sequence": "Skater",
+    "frames": 160,
+    "AUC": 55.50595238095239,
+    "PRE": 78.125,
+    "NPR": 58.75,
+    "total_inference_seconds": 4.408604,
+    "first_frame_prediction": [
+      117.0,
+      49.0,
+      92.0,
+      163.0
+    ]
+  },
+  {
+    "sequence": "Skater2",
+    "frames": 435,
+    "AUC": 61.81718664477286,
+    "PRE": 87.58620689655172,
+    "NPR": 80.6896551724138,
+    "total_inference_seconds": 11.967494,
+    "first_frame_prediction": [
+      119.0,
+      54.0,
+      99.0,
+      153.0
+    ]
+  },
+  {
+    "sequence": "Skating2-1",
+    "frames": 473,
+    "AUC": 50.42786670693648,
+    "PRE": 72.72727272727273,
+    "NPR": 54.54545454545454,
+    "total_inference_seconds": 12.604441999999999,
+    "first_frame_prediction": [
+      284.0,
+      59.0,
+      86.0,
+      243.0
+    ]
+  },
+  {
+    "sequence": "Skating2-2",
+    "frames": 473,
+    "AUC": 54.49511728581496,
+    "PRE": 48.41437632135307,
+    "NPR": 38.47780126849894,
+    "total_inference_seconds": 12.020732,
+    "first_frame_prediction": [
+      343.0,
+      63.0,
+      103.0,
+      242.0
+    ]
+  },
+  {
+    "sequence": "Surfer",
+    "frames": 376,
+    "AUC": 8.371327254305976,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 9.585661,
+    "first_frame_prediction": [
+      252.0,
+      135.0,
+      87.0,
+      143.0
+    ]
+  },
+  {
+    "sequence": "Toy",
+    "frames": 271,
+    "AUC": 36.44350729221578,
+    "PRE": 54.24354243542435,
+    "NPR": 49.44649446494465,
+    "total_inference_seconds": 6.5722689999999995,
+    "first_frame_prediction": [
+      132.0,
+      79.0,
+      74.0,
+      160.0
+    ]
+  },
+  {
+    "sequence": "Trans",
+    "frames": 124,
+    "AUC": 73.27188940092167,
+    "PRE": 73.38709677419355,
+    "NPR": 83.87096774193549,
+    "total_inference_seconds": 3.452963,
+    "first_frame_prediction": [
+      178.0,
+      44.0,
+      175.0,
+      213.0
+    ]
+  },
+  {
+    "sequence": "Twinnings",
+    "frames": 472,
+    "AUC": 75.61541565778853,
+    "PRE": 99.78813559322035,
+    "NPR": 99.78813559322035,
+    "total_inference_seconds": 10.914423000000001,
+    "first_frame_prediction": [
+      118.0,
+      162.0,
+      80.0,
+      54.0
+    ]
+  },
+  {
+    "sequence": "Vase",
+    "frames": 271,
+    "AUC": 64.75136179933229,
+    "PRE": 69.74169741697416,
+    "NPR": 73.43173431734317,
+    "total_inference_seconds": 6.25415,
+    "first_frame_prediction": [
+      136.0,
+      89.0,
+      50.0,
+      61.0
+    ]
+  }
+]

@@ -1,0 +1,603 @@
+{
+  "date": "2026-10-28",
+  "scope": "Saved prediction analysis only; no new GPU evaluation",
+  "sequence_analysis": {
+    "otb99_lang": {
+      "sequences": 48,
+      "frames": 29077,
+      "mean_frames": 605.7708333333334,
+      "median_frames": 394.0,
+      "frames_min": 84,
+      "frames_max": 3059,
+      "frac_sequences_under_100": 0.041666666666666664,
+      "AUC": 52.69714052166254,
+      "AUC_frame_weighted": 55.46127932894107,
+      "AUC_under10_sequences": 4,
+      "AUC_under20_sequences": 9,
+      "by_sequence_length": [
+        {
+          "frame_range": [
+            0,
+            100
+          ],
+          "count": 2,
+          "AUC": 26.791726791726795
+        },
+        {
+          "frame_range": [
+            100,
+            300
+          ],
+          "count": 15,
+          "AUC": 49.28754991482376
+        },
+        {
+          "frame_range": [
+            300,
+            1000
+          ],
+          "count": 22,
+          "AUC": 59.0412809437425
+        },
+        {
+          "frame_range": [
+            1000,
+            1000000
+          ],
+          "count": 9,
+          "AUC": 48.62865133018411
+        }
+      ],
+      "first_iou_mean": 0.49994287720668373,
+      "first_iou_below01": 13,
+      "first_iou_below05": 20,
+      "AUC_first_iou_below01": 33.671907270584654,
+      "AUC_first_iou_atleast05": 64.72201977031986
+    },
+    "tnl2k": {
+      "sequences": 699,
+      "frames": 515708,
+      "mean_frames": 737.7796852646638,
+      "median_frames": 520,
+      "frames_min": 46,
+      "frames_max": 6485,
+      "frac_sequences_under_100": 0.032904148783977114,
+      "AUC": 37.14137735927277,
+      "AUC_frame_weighted": 36.75794571088035,
+      "AUC_under10_sequences": 119,
+      "AUC_under20_sequences": 219,
+      "by_sequence_length": [
+        {
+          "frame_range": [
+            0,
+            100
+          ],
+          "count": 23,
+          "AUC": 31.14942528481391
+        },
+        {
+          "frame_range": [
+            100,
+            300
+          ],
+          "count": 134,
+          "AUC": 35.842815696293584
+        },
+        {
+          "frame_range": [
+            300,
+            1000
+          ],
+          "count": 398,
+          "AUC": 38.40865794769387
+        },
+        {
+          "frame_range": [
+            1000,
+            1000000
+          ],
+          "count": 144,
+          "AUC": 35.8041862923295
+        }
+      ],
+      "first_iou_mean": 0.38679562617365215,
+      "first_iou_below01": 270,
+      "first_iou_below05": 420,
+      "AUC_first_iou_below01": 22.544779168267674,
+      "AUC_first_iou_atleast05": 54.21660691734354
+    },
+    "lasot": {
+      "sequences": 280,
+      "frames": 685360,
+      "mean_frames": 2447.714285714286,
+      "median_frames": 2102.0,
+      "frames_min": 1000,
+      "frames_max": 9999,
+      "frac_sequences_under_100": 0.0,
+      "AUC": 51.519291600689236,
+      "AUC_frame_weighted": 51.855604562357236,
+      "AUC_under10_sequences": 27,
+      "AUC_under20_sequences": 53,
+      "by_sequence_length": [
+        {
+          "frame_range": [
+            1000,
+            1000000
+          ],
+          "count": 280,
+          "AUC": 51.519291600689236
+        }
+      ],
+      "first_iou_mean": 0.44997232500408246,
+      "first_iou_below01": 90,
+      "first_iou_below05": 140,
+      "AUC_first_iou_below01": 33.22905399059687,
+      "AUC_first_iou_atleast05": 67.5738025343713
+    },
+    "vasttrack": {
+      "sequences": 500,
+      "frames": 39893,
+      "mean_frames": 79.786,
+      "median_frames": 48.0,
+      "frames_min": 6,
+      "frames_max": 1073,
+      "frac_sequences_under_100": 0.798,
+      "AUC": 70.42540682560285,
+      "AUC_frame_weighted": 72.61389666581829,
+      "AUC_under10_sequences": 46,
+      "AUC_under20_sequences": 61,
+      "by_sequence_length": [
+        {
+          "frame_range": [
+            0,
+            100
+          ],
+          "count": 399,
+          "AUC": 69.07838566478495
+        },
+        {
+          "frame_range": [
+            100,
+            300
+          ],
+          "count": 81,
+          "AUC": 75.85886230440263
+        },
+        {
+          "frame_range": [
+            300,
+            1000
+          ],
+          "count": 19,
+          "AUC": 74.83349967132533
+        },
+        {
+          "frame_range": [
+            1000,
+            1000000
+          ],
+          "count": 1,
+          "AUC": 84.02319214044128
+        }
+      ],
+      "first_iou_mean": 0.6929793225536466,
+      "first_iou_below01": 83,
+      "first_iou_below05": 114,
+      "AUC_first_iou_below01": 23.294817007052792,
+      "AUC_first_iou_atleast05": 81.7972039153555
+    },
+    "val_progress": {
+      "10": {
+        "AUC": 66.4442427697698,
+        "frame_weighted_AUC": 67.66704238325518
+      },
+      "20": {
+        "AUC": 67.63621626846648,
+        "frame_weighted_AUC": 69.47678435079818
+      },
+      "30": {
+        "AUC": 68.63201361733266,
+        "frame_weighted_AUC": 70.48091723327153
+      },
+      "40": {
+        "AUC": 68.31805271023822,
+        "frame_weighted_AUC": 70.54212267752602
+      },
+      "50": {
+        "AUC": 69.13317130481008,
+        "frame_weighted_AUC": 71.83119417275692
+      },
+      "60": {
+        "AUC": 70.42540682560285,
+        "frame_weighted_AUC": 72.61389666581829
+      }
+    },
+    "otb_paired": {
+      "trained_higher": 13,
+      "official_higher": 35,
+      "mean_delta": -7.827757089132716,
+      "worst10": [
+        {
+          "sequence": "KiteSurf",
+          "AUC_trained": 7.936507936507936,
+          "AUC_official": 75.34013605442176,
+          "AUC_delta": -67.40362811791383,
+          "first_iou_trained": 0.050094380717293455,
+          "first_iou_official": 0.06429070580013976,
+          "class": "face"
+        },
+        {
+          "sequence": "Biker",
+          "AUC_trained": 0.0335345405767941,
+          "AUC_official": 62.03890006706908,
+          "AUC_delta": -62.005365526492284,
+          "first_iou_trained": 0.0,
+          "first_iou_official": 0.0,
+          "class": "person head"
+        },
+        {
+          "sequence": "Surfer",
+          "AUC_trained": 8.371327254305976,
+          "AUC_official": 67.42654508611956,
+          "AUC_delta": -59.055217831813586,
+          "first_iou_trained": 0.04806687565308255,
+          "first_iou_official": 0.06177685950413223,
+          "class": "person head"
+        },
+        {
+          "sequence": "Human2",
+          "AUC_trained": 12.212934819317796,
+          "AUC_official": 69.63441404930767,
+          "AUC_delta": -57.42147922998987,
+          "first_iou_trained": 0.17580566801619432,
+          "first_iou_official": 0.8178090375841842,
+          "class": "person"
+        },
+        {
+          "sequence": "Human4_2",
+          "AUC_trained": 14.521310773184837,
+          "AUC_official": 56.60741058042408,
+          "AUC_delta": -42.08609980723924,
+          "first_iou_trained": 0.3656716417910448,
+          "first_iou_official": 0.5891980360065466,
+          "class": "person"
+        },
+        {
+          "sequence": "Bolt2",
+          "AUC_trained": 1.1214041930765482,
+          "AUC_official": 39.60669592068909,
+          "AUC_delta": -38.48529172761254,
+          "first_iou_trained": 0.0,
+          "first_iou_official": 0.03355849603651954,
+          "class": "person"
+        },
+        {
+          "sequence": "DragonBaby",
+          "AUC_trained": 14.075010535187529,
+          "AUC_official": 51.6645596291614,
+          "AUC_delta": -37.58954909397387,
+          "first_iou_trained": 0.09327115256495669,
+          "first_iou_official": 0.0,
+          "class": "face"
+        },
+        {
+          "sequence": "Car2",
+          "AUC_trained": 49.809628122881136,
+          "AUC_official": 66.75011735252698,
+          "AUC_delta": -16.94048922964585,
+          "first_iou_trained": 0.0,
+          "first_iou_official": 0.70995670995671,
+          "class": "car"
+        },
+        {
+          "sequence": "Human8",
+          "AUC_trained": 65.21577380952381,
+          "AUC_official": 80.43154761904762,
+          "AUC_delta": -15.21577380952381,
+          "first_iou_trained": 0.8180943214629451,
+          "first_iou_official": 0.7941454202077431,
+          "class": "person"
+        },
+        {
+          "sequence": "Vase",
+          "AUC_trained": 64.75136179933229,
+          "AUC_official": 78.59778597785979,
+          "AUC_delta": -13.8464241785275,
+          "first_iou_trained": 0.8704918032786885,
+          "first_iou_official": 0.8564516129032258,
+          "class": "other"
+        }
+      ],
+      "best5": [
+        {
+          "sequence": "BlurCar1",
+          "AUC_trained": 82.56963162623539,
+          "AUC_official": 72.89179822872546,
+          "AUC_delta": 9.677833397509929,
+          "first_iou_trained": 0.7368908898305084,
+          "first_iou_official": 0.7178511642063613,
+          "class": "car"
+        },
+        {
+          "sequence": "Crowds",
+          "AUC_trained": 45.56058734733086,
+          "AUC_official": 35.61136270069988,
+          "AUC_delta": 9.94922464663098,
+          "first_iou_trained": 0.0,
+          "first_iou_official": 0.0,
+          "class": "person"
+        },
+        {
+          "sequence": "Board",
+          "AUC_trained": 60.45163050893711,
+          "AUC_official": 49.822622458725604,
+          "AUC_delta": 10.629008050211503,
+          "first_iou_trained": 0.0,
+          "first_iou_official": 0.8662637940094587,
+          "class": "other"
+        },
+        {
+          "sequence": "Human9",
+          "AUC_trained": 55.26932084309133,
+          "AUC_official": 32.61514441842311,
+          "AUC_delta": 22.654176424668222,
+          "first_iou_trained": 0.8848975461674677,
+          "first_iou_official": 0.8296612177209192,
+          "class": "person"
+        },
+        {
+          "sequence": "BlurOwl",
+          "AUC_trained": 80.15998792543958,
+          "AUC_official": 36.09538902724323,
+          "AUC_delta": 44.06459889819635,
+          "first_iou_trained": 0.8385744234800838,
+          "first_iou_official": 0.1844532279314888,
+          "class": "other"
+        }
+      ],
+      "first_iou_mean_official": 0.5569341252740239,
+      "first_iou_below01_official": 8,
+      "first_iou_below05_official": 16,
+      "by_class": {
+        "bird": {
+          "count": 2,
+          "delta": -4.30937526525761
+        },
+        "car": {
+          "count": 7,
+          "delta": -2.7060525361273737
+        },
+        "dog": {
+          "count": 1,
+          "delta": 1.274840644919383
+        },
+        "face": {
+          "count": 4,
+          "delta": -28.065616702853134
+        },
+        "mammal": {
+          "count": 1,
+          "delta": -0.41904761904761045
+        },
+        "other": {
+          "count": 9,
+          "delta": 4.739323281821533
+        },
+        "person": {
+          "count": 21,
+          "delta": -7.1605182843288615
+        },
+        "person head": {
+          "count": 2,
+          "delta": -60.53029167915294
+        },
+        "vehicle": {
+          "count": 1,
+          "delta": -7.986990416604613
+        }
+      }
+    }
+  },
+  "evaluation_audit": {
+    "scope": "Read-only audit of saved predictions, evaluation code and official checkpoint metadata; no new GPU inference or modifications to repo/results.",
+    "trained_epoch60": [
+      {
+        "dataset": "otb99_lang",
+        "metrics": {
+          "AUC": 52.69714052166254,
+          "PRE": 71.00091296606855,
+          "NPR": 63.310071200545906
+        },
+        "sequences": 48,
+        "frames": 29077,
+        "excluded": [],
+        "evidence": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/otb99_lang_trained_epoch60/status.json"
+      },
+      {
+        "dataset": "tnl2k",
+        "metrics": {
+          "AUC": 37.14137735927277,
+          "PRE": 32.529225891269895,
+          "NPR": 49.37682329576661
+        },
+        "sequences": 699,
+        "frames": 515708,
+        "excluded": [
+          {
+            "sequence": "Fight_video_6-Done",
+            "reason": "empty language query"
+          }
+        ],
+        "evidence": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/tnl2k_trained_epoch60/status.json"
+      },
+      {
+        "dataset": "lasot",
+        "metrics": {
+          "AUC": 51.519291600689236,
+          "PRE": 50.25738201997884,
+          "NPR": 54.72417163200946
+        },
+        "sequences": 280,
+        "frames": 685360,
+        "excluded": [],
+        "evidence": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/lasot_trained_epoch60/status.json"
+      }
+    ],
+    "same_protocol_control": {
+      "dataset": "otb99_lang",
+      "official_AUC": 60.52489761079525,
+      "trained_AUC": 52.69714052166254,
+      "gap_pp": 7.827757089132708,
+      "historical_official_AUC_rounded": 60.56,
+      "evidence": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/otb99_lang_official_baseline/status.json"
+    },
+    "CPU_rescoring_original_metric_frame0_replaced_with_GT": {
+      "note": "This changes scoring only; does not rerun original initialization or change future trajectory. Matching original threshold dtype would alter tiny last-decimal rounding.",
+      "otb99_lang": {
+        "strict_AUC": 52.69714052166254,
+        "rescored_AUC": 52.861392237560615,
+        "delta_pp": 0.164251715898075
+      },
+      "tnl2k": {
+        "strict_AUC": 37.14137735927277,
+        "rescored_AUC": 37.302413246664365,
+        "delta_pp": 0.161035887391595
+      },
+      "lasot": {
+        "strict_AUC": 51.519291600689236,
+        "rescored_AUC": 51.54566668439262,
+        "delta_pp": 0.026375083703385
+      }
+    },
+    "CPU_rescoring_exclude_invalid_GT_frames_only": {
+      "note": "Diagnostic alternative, not replacing official reported metrics. Strict external scoring counts invalid frames as failures for AUC; VastTrack internal holdout drops invalid frames.",
+      "otb99_lang_AUC": 52.70229205209953,
+      "tnl2k_AUC": 40.67808067427666,
+      "lasot_AUC": 52.65491119864555
+    },
+    "first_frame_grounding_diagnostics": [
+      {
+        "dataset": "otb99_lang",
+        "model": "trained_epoch60",
+        "mean_IoU": 0.4999428772066838,
+        "recall_IoU_ge_0_5_percent": 58.333333333333336,
+        "IoU_lt_0_1_percent": 27.083333333333332,
+        "mean_AUC_first_frame_success": 64.72201977031986,
+        "mean_AUC_first_frame_failure": 35.862309573542305
+      },
+      {
+        "dataset": "otb99_lang",
+        "model": "official",
+        "mean_IoU": 0.5569341252740239,
+        "recall_IoU_ge_0_5_percent": 66.66666666666666,
+        "IoU_lt_0_1_percent": 16.666666666666664,
+        "mean_AUC_first_frame_success": 65.36112040585806,
+        "mean_AUC_first_frame_failure": 50.852452020669624
+      },
+      {
+        "dataset": "tnl2k",
+        "model": "trained_epoch60",
+        "mean_IoU": 0.38679562617365215,
+        "recall_IoU_ge_0_5_percent": 39.91416309012876,
+        "IoU_lt_0_1_percent": 38.62660944206009,
+        "mean_AUC_first_frame_success": 54.21660691734353,
+        "mean_AUC_first_frame_failure": 25.798546295697186
+      },
+      {
+        "dataset": "lasot",
+        "model": "trained_epoch60",
+        "mean_IoU": 0.4499723250040825,
+        "recall_IoU_ge_0_5_percent": 50.0,
+        "IoU_lt_0_1_percent": 32.142857142857146,
+        "mean_AUC_first_frame_success": 67.5738025343713,
+        "mean_AUC_first_frame_failure": 35.46478066700718
+      }
+    ],
+    "sequence_length_distribution": [
+      {
+        "dataset": "VastTrack holdout",
+        "sequences": 500,
+        "frames": 39893,
+        "valid_frames": 39290,
+        "mean_frames": 79.786,
+        "median_frames": 48.0,
+        "max_frames": 1073
+      },
+      {
+        "dataset": "OTB",
+        "mean_frames": 605.7708333333334,
+        "median_frames": 394.0,
+        "max_frames": 3059
+      },
+      {
+        "dataset": "TNL2K",
+        "mean_frames": 737.7796852646638,
+        "median_frames": 520.0,
+        "max_frames": 6485
+      },
+      {
+        "dataset": "LaSOT",
+        "mean_frames": 2447.714285714286,
+        "median_frames": 2102.0,
+        "max_frames": 9999
+      }
+    ],
+    "official_checkpoint_metadata": {
+      "path": "/root/MVLM/models/MVLM_TF.pth.tar",
+      "size_display": "342 MiB",
+      "root_keys": [
+        "net"
+      ],
+      "net_items": 658,
+      "contains_training_batch_world_size_or_optimizer": false
+    },
+    "code_findings": [
+      {
+        "finding": "Strict wrapper initializes full-image placeholder and predicts frame zero; model template_free assertion prevents accidental template use. Remaining wrapper supplies GT in info but current tracker.track never uses it outside disabled debug drawing.",
+        "evidence": "tracking/strict_language_eval.py:24; lib/test/tracker/mvlm.py:154"
+      },
+      {
+        "finding": "External metric implementation matches existing calc_seq_err_robust conventions except not overwriting predicted first frame. AUC thresholds 0:0.05:1, equal sequence weighting.",
+        "evidence": "tracking/strict_language_eval.py:55; lib/test/analysis/extract_results.py:36"
+      },
+      {
+        "finding": "VastTrack validation excludes invalid GT frames; external benchmark AUC uses all frames denominator. Their AUCs are not directly comparable even aside from dataset composition.",
+        "evidence": "tracking/strict_vasttrack_holdout_eval.py:55; tracking/strict_language_eval.py:70"
+      },
+      {
+        "finding": "Tracker checkpoint load uses strict=False without printed incompatibility. Parent has historical loading audit showing no missing/unexpected non-CLIP keys; this subtask has not independently instantiated model.",
+        "evidence": "lib/test/tracker/mvlm.py:14"
+      },
+      {
+        "finding": "TNL2K blank-language Fight_video_6-Done is excluded, 699 evaluated, recorded explicitly.",
+        "evidence": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/tnl2k_trained_epoch60/status.json"
+      },
+      {
+        "finding": "OTB48 uses OTB_query_test; 48 may be the standard OTB99-Lang test split (commonly51/48); original source confirmation delegated to parent. Do not assume48/99 means incomplete.",
+        "evidence": "lib/test/evaluation/otb99langdataset.py:52"
+      }
+    ],
+    "confirmed_conclusions": [
+      "OTB same-protocol same-config official control retains ~60.52, so evaluator does not globally depress every model to52.7.",
+      "First-frame scoring adjustment changes saved-result AUC by <0.17pp in all3 datasets; cannot explain ~8-21pp deficits.",
+      "Internal VastTrack validation videos much shorter than external benchmark videos; LaSOT mean sequence length is30.7 times holdout. This and different scoring make70.43 inappropriate as paper score comparison.",
+      "Learned E60 model frequently fails first-frame language grounding on external data. Correlation with later tracking failures is observed, no causal attribution to training data alone."
+    ],
+    "unproven_hypotheses": [
+      "Missing LaSOT/TNL2K training domains may account for significant gap, but no matched3dataset training ablation establishes magnitude or exclusivity.",
+      "Official-tuned confidence threshold and temporal parameters may be suboptimal for new checkpoint; must calibrate only on held-out validation to assess, not test tune.",
+      "Actual authors global batch/optimizer update budget cannot be recovered from released checkpoint.",
+      "Training crop supervision vs global retrieval calibration, longer-term drift and repeated same-source clips may matter but require further diagnostics."
+    ]
+  },
+  "tnl2k_partial_paired": {
+    "n": 199,
+    "note": "Partial official run is not random; this is paired on completed sequences only.",
+    "trained_AUC": 36.093452946525815,
+    "official_AUC": 54.92267889324034,
+    "trained_first_IoU": 0.36885064236453724,
+    "official_first_IoU": 0.5919626058124245,
+    "trained_first_IoU_below01": 74,
+    "official_first_IoU_below01": 43
+  }
+}

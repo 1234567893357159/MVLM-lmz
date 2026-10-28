@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "dataset": "lasot",
+  "weights": "/root/MVLM/output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0060.pth.tar",
+  "config": "vasttrack_e60_strict_lasot_20261028",
+  "protocol": "language-only: first frame predicted from full image; no GT initialization",
+  "note": "Historical parameters were tuned on these test sets; exploratory results.",
+  "started_at": 1793160332.6900723,
+  "sequences": 280,
+  "excluded": [],
+  "metrics": {
+    "AUC": 51.519291600689236,
+    "PRE": 50.25738201997884,
+    "NPR": 54.72417163200946
+  },
+  "frames": 685360,
+  "fps_including_initialization": 35.365092922523885,
+  "completed_at": 1793162186.3148649
+}

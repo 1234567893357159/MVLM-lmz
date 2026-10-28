@@ -1,0 +1,133 @@
+{
+  "status": "completed",
+  "started_at": 1793156988.053304,
+  "pid": 530810,
+  "epochs": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60
+  ],
+  "completed": [
+    {
+      "epoch": 10,
+      "metrics": {
+        "AUC": 66.4442427697698,
+        "PRE": 59.897763374548276,
+        "NPR": 74.47900532437832
+      },
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "result": "/root/MVLM/output/vasttrack_checkpoint_validation_20261028_run01/epoch_0010"
+    },
+    {
+      "epoch": 20,
+      "metrics": {
+        "AUC": 67.63621626846648,
+        "PRE": 61.89521291151088,
+        "NPR": 75.5285282223121
+      },
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "result": "/root/MVLM/output/vasttrack_checkpoint_validation_20261028_run01/epoch_0020"
+    },
+    {
+      "epoch": 30,
+      "metrics": {
+        "AUC": 68.63201361733267,
+        "PRE": 63.539755963037024,
+        "NPR": 76.59371281970316
+      },
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "result": "/root/MVLM/output/vasttrack_checkpoint_validation_20261028_run01/epoch_0030"
+    },
+    {
+      "epoch": 40,
+      "metrics": {
+        "AUC": 68.31805271023823,
+        "PRE": 63.60756399542258,
+        "NPR": 76.04482152468918
+      },
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "result": "/root/MVLM/output/vasttrack_checkpoint_validation_20261028_run01/epoch_0040"
+    },
+    {
+      "epoch": 50,
+      "metrics": {
+        "AUC": 69.13317130481008,
+        "PRE": 64.4867781487486,
+        "NPR": 76.43008813151484
+      },
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "result": "/root/MVLM/output/vasttrack_checkpoint_validation_20261028_run01/epoch_0050"
+    },
+    {
+      "epoch": 60,
+      "metrics": {
+        "AUC": 70.42540682560283,
+        "PRE": 66.8746292097233,
+        "NPR": 77.88089921183216
+      },
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "result": "/root/MVLM/output/vasttrack_checkpoint_validation_20261028_run01/epoch_0060"
+    }
+  ],
+  "prior_suite": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/suite_status.json",
+  "current": null,
+  "parameters": {
+    "ALPHA_CORR": 0.5,
+    "TAU": 0.03,
+    "OMEGA": 0.1,
+    "LAMBDA": 0.4,
+    "PSI_OUT": 0.1
+  },
+  "parameter_note": "fixed across all epochs; transferred from previous LaSOT best, not tuned on VastTrack",
+  "prior_status": "cancelled",
+  "prior_current_dataset": "tnl2k",
+  "prior_current_model": "official_baseline",
+  "command": [
+    "/root/miniconda3/envs/mvlm/bin/python",
+    "-u",
+    "-m",
+    "tracking.strict_language_eval",
+    "--dataset",
+    "lasot",
+    "--config",
+    "vasttrack_e60_strict_lasot_20261028",
+    "--exp-id",
+    "vasttrack_e60_strict_lasot_20261028_trained_epoch60",
+    "--weights",
+    "/root/MVLM/output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0060.pth.tar",
+    "--out",
+    "/root/MVLM/output/vasttrack_language_eval_20261028_run01/lasot_trained_epoch60",
+    "--threads",
+    "16",
+    "--gpus",
+    "8"
+  ],
+  "smoke_result": "/root/MVLM/output/vasttrack_checkpoint_validation_20261028_run01/smoke",
+  "validation_completed": true,
+  "deferred_lasot": {
+    "metrics": {
+      "AUC": 51.519291600689236,
+      "PRE": 50.25738201997884,
+      "NPR": 54.72417163200946
+    },
+    "sequences": 280,
+    "frames": 685360,
+    "result": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/lasot_trained_epoch60"
+  },
+  "finished_at": 1793162187.0194929
+}

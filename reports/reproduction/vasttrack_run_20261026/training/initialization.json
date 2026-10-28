@@ -1,0 +1,36 @@
+{
+  "parameter_groups": {
+    "encoder": {
+      "total": 84343936,
+      "trainable": 84343936
+    },
+    "clip": {
+      "total": 427616513,
+      "trainable": 0
+    },
+    "text_projection": {
+      "total": 393728,
+      "trainable": 393728
+    },
+    "head": {
+      "total": 4704645,
+      "trainable": 4704645
+    }
+  },
+  "initial_parameter_samples": {
+    "encoder": {
+      "name": "encoder.body.cls_token",
+      "sha256": "2696cb4f3ad4f433d419d1a776cd857778dea459254b2b24e5a5ba4aeb92b6b0"
+    },
+    "text_projection": {
+      "name": "text_encoder.text_proj.weight",
+      "sha256": "e478bf68ba8da0efafb74b00de29256b786969c820504cc1e33e2f28ea688845"
+    },
+    "head": {
+      "name": "head.conv1_ctr.0.weight",
+      "sha256": "6ebb20b406ffd7f2dbc78d5a8785c07558c8a9893f75397f709aa5cb52cf916c"
+    }
+  },
+  "backbone_initialization": "pretrained/itpn/fast_itpn_base_clipl_e1600.pt",
+  "tracker_initialization": null
+}

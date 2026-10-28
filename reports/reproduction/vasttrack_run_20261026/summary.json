@@ -1,0 +1,227 @@
+{
+  "snapshot_at": "2026-10-28T20:44:38+08:00",
+  "experiment": "VastTrack-only MVLM from pretrained backbone, frozen CLIP",
+  "training_run": "output/vasttrack_baseline_20261026_run01",
+  "evaluation_protocol": "strict language-only; first frame predicted without GT initialization",
+  "parameter_source": "historical dataset-specific test-tuned official-weight parameters, transferred unchanged; exploratory evaluation",
+  "score_unit": "percent",
+  "completed": [
+    {
+      "run": "otb99_lang_trained_epoch60",
+      "scope": "external_test",
+      "model": "vasttrack_only",
+      "epoch": 60,
+      "dataset": "otb99_lang",
+      "sequences": 48,
+      "frames": 29077,
+      "valid_frames": null,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 52.69714052166254,
+        "PRE": 71.00091296606855,
+        "NPR": 63.310071200545906
+      },
+      "config": "vasttrack_e60_strict_otb99_lang_20261028",
+      "metric_policy": "equal-sequence mean; invalid frames fail AUC/PRE; legacy non-LaSOT NPR convention",
+      "status": "completed",
+      "evidence": "evaluation/otb99_lang_trained_epoch60/status.json"
+    },
+    {
+      "run": "tnl2k_trained_epoch60",
+      "scope": "external_test",
+      "model": "vasttrack_only",
+      "epoch": 60,
+      "dataset": "tnl2k",
+      "sequences": 699,
+      "frames": 515708,
+      "valid_frames": null,
+      "excluded": 1,
+      "metrics": {
+        "AUC": 37.14137735927277,
+        "PRE": 32.529225891269895,
+        "NPR": 49.37682329576661
+      },
+      "config": "vasttrack_e60_strict_tnl2k_20261028",
+      "metric_policy": "equal-sequence mean; invalid frames fail AUC/PRE; legacy non-LaSOT NPR convention",
+      "status": "completed",
+      "evidence": "evaluation/tnl2k_trained_epoch60/status.json"
+    },
+    {
+      "run": "lasot_trained_epoch60",
+      "scope": "external_test",
+      "model": "vasttrack_only",
+      "epoch": 60,
+      "dataset": "lasot",
+      "sequences": 280,
+      "frames": 685360,
+      "valid_frames": null,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 51.519291600689236,
+        "PRE": 50.25738201997884,
+        "NPR": 54.72417163200946
+      },
+      "config": "vasttrack_e60_strict_lasot_20261028",
+      "metric_policy": "equal-sequence mean; invalid frames fail AUC/PRE; legacy non-LaSOT NPR convention",
+      "status": "completed",
+      "evidence": "evaluation/lasot_trained_epoch60/status.json"
+    },
+    {
+      "run": "otb99_lang_official_baseline",
+      "scope": "external_test",
+      "model": "official",
+      "epoch": null,
+      "dataset": "otb99_lang",
+      "sequences": 48,
+      "frames": 29077,
+      "valid_frames": null,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 60.52489761079525,
+        "PRE": 84.20232915306826,
+        "NPR": 75.01933284751415
+      },
+      "config": "vasttrack_e60_strict_otb99_lang_20261028",
+      "metric_policy": "equal-sequence mean; invalid frames fail AUC/PRE; legacy non-LaSOT NPR convention",
+      "status": "completed",
+      "evidence": "evaluation/otb99_lang_official_baseline/status.json"
+    },
+    {
+      "run": "epoch_0010",
+      "scope": "internal_validation",
+      "model": "vasttrack_only",
+      "epoch": 10,
+      "dataset": "vasttrack_holdout",
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 66.4442427697698,
+        "PRE": 59.897763374548276,
+        "NPR": 74.47900532437832
+      },
+      "config": "vasttrack_holdout_strict_common_20261028",
+      "metric_policy": "equal sequence weighting, exclude invalid GT frames; AUC thresholds 0:0.05:1; PRE@20px; NPR@0.20",
+      "status": "completed",
+      "evidence": "validation/epoch_0010/status.json"
+    },
+    {
+      "run": "epoch_0020",
+      "scope": "internal_validation",
+      "model": "vasttrack_only",
+      "epoch": 20,
+      "dataset": "vasttrack_holdout",
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 67.63621626846648,
+        "PRE": 61.89521291151088,
+        "NPR": 75.5285282223121
+      },
+      "config": "vasttrack_holdout_strict_common_20261028",
+      "metric_policy": "equal sequence weighting, exclude invalid GT frames; AUC thresholds 0:0.05:1; PRE@20px; NPR@0.20",
+      "status": "completed",
+      "evidence": "validation/epoch_0020/status.json"
+    },
+    {
+      "run": "epoch_0030",
+      "scope": "internal_validation",
+      "model": "vasttrack_only",
+      "epoch": 30,
+      "dataset": "vasttrack_holdout",
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 68.63201361733267,
+        "PRE": 63.539755963037024,
+        "NPR": 76.59371281970316
+      },
+      "config": "vasttrack_holdout_strict_common_20261028",
+      "metric_policy": "equal sequence weighting, exclude invalid GT frames; AUC thresholds 0:0.05:1; PRE@20px; NPR@0.20",
+      "status": "completed",
+      "evidence": "validation/epoch_0030/status.json"
+    },
+    {
+      "run": "epoch_0040",
+      "scope": "internal_validation",
+      "model": "vasttrack_only",
+      "epoch": 40,
+      "dataset": "vasttrack_holdout",
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 68.31805271023823,
+        "PRE": 63.60756399542258,
+        "NPR": 76.04482152468918
+      },
+      "config": "vasttrack_holdout_strict_common_20261028",
+      "metric_policy": "equal sequence weighting, exclude invalid GT frames; AUC thresholds 0:0.05:1; PRE@20px; NPR@0.20",
+      "status": "completed",
+      "evidence": "validation/epoch_0040/status.json"
+    },
+    {
+      "run": "epoch_0050",
+      "scope": "internal_validation",
+      "model": "vasttrack_only",
+      "epoch": 50,
+      "dataset": "vasttrack_holdout",
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 69.13317130481008,
+        "PRE": 64.4867781487486,
+        "NPR": 76.43008813151484
+      },
+      "config": "vasttrack_holdout_strict_common_20261028",
+      "metric_policy": "equal sequence weighting, exclude invalid GT frames; AUC thresholds 0:0.05:1; PRE@20px; NPR@0.20",
+      "status": "completed",
+      "evidence": "validation/epoch_0050/status.json"
+    },
+    {
+      "run": "epoch_0060",
+      "scope": "internal_validation",
+      "model": "vasttrack_only",
+      "epoch": 60,
+      "dataset": "vasttrack_holdout",
+      "sequences": 500,
+      "frames": 39893,
+      "valid_frames": 39290,
+      "excluded": 0,
+      "metrics": {
+        "AUC": 70.42540682560283,
+        "PRE": 66.8746292097233,
+        "NPR": 77.88089921183216
+      },
+      "config": "vasttrack_holdout_strict_common_20261028",
+      "metric_policy": "equal sequence weighting, exclude invalid GT frames; AUC thresholds 0:0.05:1; PRE@20px; NPR@0.20",
+      "status": "completed",
+      "evidence": "validation/epoch_0060/status.json"
+    }
+  ],
+  "cancelled": [
+    {
+      "dataset": "tnl2k",
+      "model": "official",
+      "status": "cancelled",
+      "full_test_metrics": null,
+      "evidence": "evaluation/tnl2k_official_baseline/status.json"
+    }
+  ],
+  "limitations": [
+    "Not the official three-dataset training recipe.",
+    "Internal validation is not an official VastTrack test benchmark.",
+    "Metric policies differ between internal validation and external tests.",
+    "Historical test-set parameter tuning prevents treating these as independent final reproduction results.",
+    "Only six epochs validated, and only epoch 60 externally tested.",
+    "Official checkpoint contains no batch/world-size metadata."
+  ]
+}

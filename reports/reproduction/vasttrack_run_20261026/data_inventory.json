@@ -1,0 +1,78 @@
+{
+  "snapshot_at": "2026-10-28T20:44:42+08:00",
+  "status_note": "Historical read-only snapshot; not live download progress. No download jobs modified.",
+  "datasets": [
+    {
+      "dataset": "VastTrack",
+      "local_root": "data/vasttrack/train",
+      "ready_for_this_experiment": true,
+      "usable_sequences": 46825,
+      "training_sequences": 46325,
+      "heldout_validation_sequences": 500,
+      "split": "reports/reproduction/vasttrack_split_20261026",
+      "split_audit": "reports/reproduction/VASTTRACK_PROTOCOL_AUDIT_20261028.json"
+    },
+    {
+      "dataset": "LaSOT",
+      "local_root": "data/lasot",
+      "test_sequences": 280,
+      "test_frames": 685360,
+      "test_evaluated": true,
+      "training": {
+        "status": "downloading",
+        "accepted_bytes": 133061745071,
+        "total_bytes": 247982205878,
+        "percent": 53.65777943618362,
+        "in_flight_bytes": 12169216,
+        "verified_archives": 41,
+        "archives_total": 70,
+        "expected_sequences": 1120,
+        "ready": false,
+        "status_source": "downloads/official_training/status.json"
+      }
+    },
+    {
+      "dataset": "TNL2K",
+      "local_root": "data/tnl2k",
+      "test_sequences_downloaded": 700,
+      "test_sequences_evaluated": 699,
+      "test_frames_evaluated": 515708,
+      "excluded_sequence": "Fight_video_6-Done: empty language query",
+      "training": {
+        "status": "downloading",
+        "accepted_bytes": 87011417134,
+        "total_bytes": 112183704174,
+        "percent": 77.56154761928961,
+        "in_flight_bytes": 13520896,
+        "verified_archives": 1,
+        "archives_total": 2,
+        "expected_sequences": 1300,
+        "ready": false,
+        "status_source": "downloads/official_training/status.json"
+      }
+    },
+    {
+      "dataset": "OTB99-Lang",
+      "local_root": "data/otb99_lang",
+      "video_directories": 99,
+      "standard_test_sequences": 48,
+      "test_frames": 29077,
+      "test_evaluated": true
+    },
+    {
+      "dataset": "MGIT",
+      "local_root": null,
+      "ready": false,
+      "evaluated": false
+    }
+  ],
+  "local_only_artifacts": [
+    "data/",
+    "models/",
+    "pretrained/",
+    "output/",
+    "downloads/official_training/"
+  ],
+  "original_predictions": "output/test/tracking_results/mvlm",
+  "checkpoints": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack"
+}

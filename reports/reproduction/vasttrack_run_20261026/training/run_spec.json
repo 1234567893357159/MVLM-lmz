@@ -1,0 +1,19 @@
+{
+  "git_branch": "codex/mvlm-reproduction",
+  "git_commit": "5b6809580bdf6ceca2a5ffa56987cc2e6798e74a",
+  "source": "/root/MVLM/output/vasttrack_baseline_20261026_run01/source",
+  "dataset": "VastTrack only",
+  "train_sequences": 46325,
+  "holdout_sequences": 500,
+  "validation_automatic": false,
+  "epochs": 60,
+  "samples_per_epoch": 100000,
+  "steps_per_epoch": 1250,
+  "target_optimizer_steps": 75000,
+  "gpu_count": 8,
+  "batch_per_gpu": 10,
+  "effective_global_batch": 80,
+  "gradient_accumulation": 1,
+  "initialization": "FastITPN backbone pretrained, frozen CLIP; random tracking head and language projection; no trained MVLM checkpoint",
+  "wandb_project": "mvlm-reproduction"
+}

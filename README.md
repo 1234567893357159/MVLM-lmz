@@ -8,6 +8,15 @@
 
 后续自主完成的模型结构改进及对应实验将单独说明，并在毕业设计中明确引用原论文、区分原项目成果与个人贡献。本声明仅用于说明来源和研究用途，不替代原项目及其依赖的适用许可或授权要求。
 
+## 本分支实验记录（2026-10-28）
+
+VastTrack-only 训练已完成 60 轮、75,000 次更新，并完成 6 个轮次的内部验证及第 60 轮的 language-only 外部评测。此实验使用单一训练数据集，不能当作论文三数据集训练的完整复现。下方 Main Results 保留论文原始成绩；本地训练成绩见以下独立记录。
+
+- [实验与文档总索引](reports/reproduction/README.md)
+- [当前分支说明](BRANCH_MVLM_REPRODUCTION.md)
+- [本轮结果、数据状态及复现入口](reports/reproduction/vasttrack_run_20261026/README.md)
+- [与论文的差距分析](reports/reproduction/VASTTRACK_RESULT_GAP_ANALYSIS_20261028.md)
+
 ---
 
 **CVPR 2026** &nbsp;|&nbsp; [Paper](추가예정) &nbsp;|&nbsp; [Project Page](https://mvlm-tft.github.io/)

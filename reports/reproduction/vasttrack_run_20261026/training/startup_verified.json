@@ -1,0 +1,9 @@
+{
+  "checked_at": "2026-10-26T23:34:41.487419+08:00",
+  "status": "training",
+  "global_step_at_least": 100,
+  "wandb_url": "https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/0jox3xdf",
+  "supervisor_pid": 105725,
+  "launcher_pid": 105862,
+  "note": "Formal run reinitialized from pretrained backbone after successful 20-step single GPU and 200-step 8 GPU checks."
+}

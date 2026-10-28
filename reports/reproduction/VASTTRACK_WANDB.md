@@ -2,6 +2,8 @@
 
 当前分支：`codex/mvlm-reproduction`。复用记忆分支的 W&B 日志组件，只接入原始训练循环，不引入新增记忆网络或旧实验评测逻辑。
 
+2026-10-28 更新：本轮训练已完成 60 轮、75,000 次更新。[W&B 训练页面](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/0jox3xdf)保留训练曲线；训练后的验证/测试成绩单独归档在[本轮结果](vasttrack_run_20261026/README.md)，没有回填到该 run。W&B 中的训练 IoU 不等价于跟踪测试 AUC。
+
 ## 配置
 
 `experiments/mvlm/mvlm_TF_vasttrack.yaml` 仅加载 VASTTRACK，启用在线监控，项目为 `mvlm-reproduction`，名称为 `vasttrack-from-pretrained-b80-20261026`。原有配置默认不启用 W&B。

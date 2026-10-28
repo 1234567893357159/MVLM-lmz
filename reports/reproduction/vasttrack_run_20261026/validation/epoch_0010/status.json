@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "dataset": "vasttrack_holdout",
+  "weights": "/root/MVLM/output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0010.pth.tar",
+  "config": "vasttrack_holdout_strict_common_20261028",
+  "validation_split_sha256": "90457546060ba767d57fa93be6c1a8f2bdb619ea960ec2a3fe11ccd5d4f05e4f",
+  "started_at": 1793157021.423565,
+  "protocol": "language-only; first frame predicted; no ground-truth initialization",
+  "metric_policy": "equal sequence weighting, exclude invalid GT frames; AUC thresholds 0:0.05:1; PRE@20px; NPR@0.20",
+  "sequences": 500,
+  "metrics": {
+    "AUC": 66.4442427697698,
+    "PRE": 59.897763374548276,
+    "NPR": 74.47900532437832
+  },
+  "frames": 39893,
+  "valid_frames": 39290,
+  "completed_at": 1793157574.1068187
+}

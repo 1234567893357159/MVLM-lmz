@@ -1,0 +1,3922 @@
+[
+  {
+    "sequence": "airplane-1",
+    "frames": 2788,
+    "AUC": 56.71756507481041,
+    "PRE": 58.787661406025826,
+    "NPR": 70.91104734576757,
+    "total_inference_seconds": 79.396141,
+    "first_frame_prediction": [
+      329.0,
+      196.0,
+      308.0,
+      101.0
+    ]
+  },
+  {
+    "sequence": "airplane-9",
+    "frames": 7971,
+    "AUC": 84.68316695640745,
+    "PRE": 99.54836281520511,
+    "NPR": 99.32254422280768,
+    "total_inference_seconds": 223.305912,
+    "first_frame_prediction": [
+      32.0,
+      270.0,
+      505.0,
+      105.0
+    ]
+  },
+  {
+    "sequence": "airplane-13",
+    "frames": 2971,
+    "AUC": 78.0160600086551,
+    "PRE": 99.7307303938068,
+    "NPR": 97.40828004039044,
+    "total_inference_seconds": 82.574123,
+    "first_frame_prediction": [
+      525.0,
+      363.0,
+      191.0,
+      64.0
+    ]
+  },
+  {
+    "sequence": "airplane-15",
+    "frames": 4500,
+    "AUC": 70.77777777777777,
+    "PRE": 98.97777777777777,
+    "NPR": 89.64444444444445,
+    "total_inference_seconds": 123.67531,
+    "first_frame_prediction": [
+      190.0,
+      212.0,
+      115.0,
+      42.0
+    ]
+  },
+  {
+    "sequence": "basketball-1",
+    "frames": 1088,
+    "AUC": 55.435924369747895,
+    "PRE": 85.9375,
+    "NPR": 65.16544117647058,
+    "total_inference_seconds": 30.132520999999997,
+    "first_frame_prediction": [
+      328.0,
+      145.0,
+      52.0,
+      72.0
+    ]
+  },
+  {
+    "sequence": "basketball-6",
+    "frames": 1794,
+    "AUC": 74.81021394064872,
+    "PRE": 93.9799331103679,
+    "NPR": 91.02564102564102,
+    "total_inference_seconds": 51.213792999999995,
+    "first_frame_prediction": [
+      478.0,
+      119.0,
+      186.0,
+      279.0
+    ]
+  },
+  {
+    "sequence": "basketball-7",
+    "frames": 2101,
+    "AUC": 85.57149656626096,
+    "PRE": 97.81056639695383,
+    "NPR": 97.76297001427892,
+    "total_inference_seconds": 57.152784000000004,
+    "first_frame_prediction": [
+      95.0,
+      128.0,
+      96.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "basketball-11",
+    "frames": 1851,
+    "AUC": 59.60227418898407,
+    "PRE": 72.44732576985413,
+    "NPR": 68.55753646677472,
+    "total_inference_seconds": 52.048951,
+    "first_frame_prediction": [
+      451.0,
+      297.0,
+      176.0,
+      240.0
+    ]
+  },
+  {
+    "sequence": "bear-2",
+    "frames": 6800,
+    "AUC": 92.41666666666666,
+    "PRE": 87.19117647058823,
+    "NPR": 100.0,
+    "total_inference_seconds": 220.075102,
+    "first_frame_prediction": [
+      529.0,
+      183.0,
+      674.0,
+      456.0
+    ]
+  },
+  {
+    "sequence": "bear-4",
+    "frames": 1974,
+    "AUC": 77.67646065518407,
+    "PRE": 69.25025329280649,
+    "NPR": 85.56231003039514,
+    "total_inference_seconds": 55.839321,
+    "first_frame_prediction": [
+      471.0,
+      317.0,
+      305.0,
+      211.0
+    ]
+  },
+  {
+    "sequence": "bear-6",
+    "frames": 1671,
+    "AUC": 64.37263115898662,
+    "PRE": 65.76900059844405,
+    "NPR": 65.82884500299222,
+    "total_inference_seconds": 49.149973,
+    "first_frame_prediction": [
+      577.0,
+      32.0,
+      196.0,
+      209.0
+    ]
+  },
+  {
+    "sequence": "bear-17",
+    "frames": 2413,
+    "AUC": 50.028614844197115,
+    "PRE": 54.57936179030253,
+    "NPR": 54.703688354745125,
+    "total_inference_seconds": 66.107346,
+    "first_frame_prediction": [
+      289.0,
+      84.0,
+      81.0,
+      121.0
+    ]
+  },
+  {
+    "sequence": "bicycle-2",
+    "frames": 2181,
+    "AUC": 68.97447653981355,
+    "PRE": 92.20541036221917,
+    "NPR": 82.71435121503897,
+    "total_inference_seconds": 62.425101999999995,
+    "first_frame_prediction": [
+      195.0,
+      167.0,
+      104.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "bicycle-7",
+    "frames": 2461,
+    "AUC": 79.17416458659855,
+    "PRE": 69.48394961397806,
+    "NPR": 87.32222673709875,
+    "total_inference_seconds": 73.160507,
+    "first_frame_prediction": [
+      503.0,
+      346.0,
+      321.0,
+      169.0
+    ]
+  },
+  {
+    "sequence": "bicycle-9",
+    "frames": 3001,
+    "AUC": 71.63961219276115,
+    "PRE": 86.87104298567144,
+    "NPR": 87.17094301899367,
+    "total_inference_seconds": 84.29307800000001,
+    "first_frame_prediction": [
+      159.0,
+      0.0,
+      161.0,
+      667.0
+    ]
+  },
+  {
+    "sequence": "bicycle-18",
+    "frames": 1355,
+    "AUC": 67.82287822878229,
+    "PRE": 77.49077490774908,
+    "NPR": 77.41697416974169,
+    "total_inference_seconds": 42.02225,
+    "first_frame_prediction": [
+      913.0,
+      363.0,
+      203.0,
+      221.0
+    ]
+  },
+  {
+    "sequence": "bird-2",
+    "frames": 4101,
+    "AUC": 41.706436293122465,
+    "PRE": 47.50060960741283,
+    "NPR": 44.720799804925626,
+    "total_inference_seconds": 108.414855,
+    "first_frame_prediction": [
+      195.0,
+      224.0,
+      45.0,
+      103.0
+    ]
+  },
+  {
+    "sequence": "bird-3",
+    "frames": 2311,
+    "AUC": 87.94584904494035,
+    "PRE": 96.23539593249676,
+    "NPR": 99.43747295543055,
+    "total_inference_seconds": 63.366964,
+    "first_frame_prediction": [
+      741.0,
+      263.0,
+      169.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "bird-15",
+    "frames": 1575,
+    "AUC": 40.6984126984127,
+    "PRE": 47.74603174603175,
+    "NPR": 47.23809523809524,
+    "total_inference_seconds": 42.874267,
+    "first_frame_prediction": [
+      219.0,
+      148.0,
+      59.0,
+      50.0
+    ]
+  },
+  {
+    "sequence": "bird-17",
+    "frames": 5000,
+    "AUC": 57.89047619047619,
+    "PRE": 29.28,
+    "NPR": 60.81999999999999,
+    "total_inference_seconds": 147.389382,
+    "first_frame_prediction": [
+      69.0,
+      150.0,
+      789.0,
+      567.0
+    ]
+  },
+  {
+    "sequence": "boat-3",
+    "frames": 5400,
+    "AUC": 74.60934744268077,
+    "PRE": 50.74074074074074,
+    "NPR": 97.98148148148148,
+    "total_inference_seconds": 156.243795,
+    "first_frame_prediction": [
+      643.0,
+      543.0,
+      102.0,
+      94.0
+    ]
+  },
+  {
+    "sequence": "boat-4",
+    "frames": 2251,
+    "AUC": 89.32961012036978,
+    "PRE": 94.80231008440693,
+    "NPR": 100.0,
+    "total_inference_seconds": 63.193343999999996,
+    "first_frame_prediction": [
+      462.0,
+      266.0,
+      316.0,
+      185.0
+    ]
+  },
+  {
+    "sequence": "boat-12",
+    "frames": 1860,
+    "AUC": 87.85970302099335,
+    "PRE": 90.05376344086021,
+    "NPR": 94.94623655913979,
+    "total_inference_seconds": 52.607488000000004,
+    "first_frame_prediction": [
+      252.0,
+      26.0,
+      448.0,
+      313.0
+    ]
+  },
+  {
+    "sequence": "boat-17",
+    "frames": 1761,
+    "AUC": 77.21532678943241,
+    "PRE": 81.99886428165814,
+    "NPR": 99.88642816581488,
+    "total_inference_seconds": 48.763886,
+    "first_frame_prediction": [
+      980.0,
+      374.0,
+      228.0,
+      88.0
+    ]
+  },
+  {
+    "sequence": "book-3",
+    "frames": 1800,
+    "AUC": 72.17195767195767,
+    "PRE": 22.166666666666668,
+    "NPR": 91.77777777777779,
+    "total_inference_seconds": 52.563522000000006,
+    "first_frame_prediction": [
+      297.0,
+      351.0,
+      686.0,
+      368.0
+    ]
+  },
+  {
+    "sequence": "book-10",
+    "frames": 1621,
+    "AUC": 87.18897799712111,
+    "PRE": 81.55459592843923,
+    "NPR": 89.080814312153,
+    "total_inference_seconds": 54.605696,
+    "first_frame_prediction": [
+      660.0,
+      32.0,
+      535.0,
+      676.0
+    ]
+  },
+  {
+    "sequence": "book-11",
+    "frames": 2071,
+    "AUC": 30.87535352141822,
+    "PRE": 31.57894736842105,
+    "NPR": 34.9589570255915,
+    "total_inference_seconds": 58.096884,
+    "first_frame_prediction": [
+      717.0,
+      197.0,
+      228.0,
+      275.0
+    ]
+  },
+  {
+    "sequence": "book-19",
+    "frames": 2881,
+    "AUC": 61.293201765260086,
+    "PRE": 55.81395348837209,
+    "NPR": 61.02047900034711,
+    "total_inference_seconds": 88.79516000000001,
+    "first_frame_prediction": [
+      350.0,
+      27.0,
+      441.0,
+      683.0
+    ]
+  },
+  {
+    "sequence": "bottle-1",
+    "frames": 3089,
+    "AUC": 75.53376805561979,
+    "PRE": 67.98316607316283,
+    "NPR": 86.66235027516996,
+    "total_inference_seconds": 91.139186,
+    "first_frame_prediction": [
+      120.0,
+      231.0,
+      492.0,
+      194.0
+    ]
+  },
+  {
+    "sequence": "bottle-12",
+    "frames": 2400,
+    "AUC": 2.8888888888888893,
+    "PRE": 2.4166666666666665,
+    "NPR": 1.7083333333333333,
+    "total_inference_seconds": 68.45022800000001,
+    "first_frame_prediction": [
+      512.0,
+      134.0,
+      85.0,
+      289.0
+    ]
+  },
+  {
+    "sequence": "bottle-14",
+    "frames": 7201,
+    "AUC": 13.077548753149365,
+    "PRE": 8.845993611998333,
+    "NPR": 12.720455492292738,
+    "total_inference_seconds": 211.40713599999998,
+    "first_frame_prediction": [
+      667.0,
+      2.0,
+      231.0,
+      544.0
+    ]
+  },
+  {
+    "sequence": "bottle-18",
+    "frames": 1800,
+    "AUC": 74.98148148148148,
+    "PRE": 88.0,
+    "NPR": 88.05555555555556,
+    "total_inference_seconds": 52.31899,
+    "first_frame_prediction": [
+      486.0,
+      100.0,
+      132.0,
+      60.0
+    ]
+  },
+  {
+    "sequence": "bus-2",
+    "frames": 1100,
+    "AUC": 87.7012987012987,
+    "PRE": 88.45454545454545,
+    "NPR": 97.81818181818181,
+    "total_inference_seconds": 32.752928,
+    "first_frame_prediction": [
+      257.0,
+      152.0,
+      290.0,
+      350.0
+    ]
+  },
+  {
+    "sequence": "bus-5",
+    "frames": 1680,
+    "AUC": 33.599773242630384,
+    "PRE": 37.38095238095238,
+    "NPR": 38.86904761904762,
+    "total_inference_seconds": 49.536473,
+    "first_frame_prediction": [
+      704.0,
+      259.0,
+      231.0,
+      201.0
+    ]
+  },
+  {
+    "sequence": "bus-17",
+    "frames": 1971,
+    "AUC": 77.41538015510618,
+    "PRE": 100.0,
+    "NPR": 99.84779299847793,
+    "total_inference_seconds": 55.262651000000005,
+    "first_frame_prediction": [
+      172.0,
+      64.0,
+      131.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "bus-19",
+    "frames": 1930,
+    "AUC": 69.05255366395264,
+    "PRE": 79.43005181347151,
+    "NPR": 80.82901554404145,
+    "total_inference_seconds": 51.574003000000005,
+    "first_frame_prediction": [
+      632.0,
+      257.0,
+      173.0,
+      109.0
+    ]
+  },
+  {
+    "sequence": "car-2",
+    "frames": 2046,
+    "AUC": 75.41544477028349,
+    "PRE": 91.78885630498533,
+    "NPR": 91.15347018572825,
+    "total_inference_seconds": 56.13821300000001,
+    "first_frame_prediction": [
+      664.0,
+      271.0,
+      98.0,
+      66.0
+    ]
+  },
+  {
+    "sequence": "car-6",
+    "frames": 2802,
+    "AUC": 75.12151184528058,
+    "PRE": 95.46752319771592,
+    "NPR": 96.35974304068522,
+    "total_inference_seconds": 82.758829,
+    "first_frame_prediction": [
+      491.0,
+      327.0,
+      127.0,
+      91.0
+    ]
+  },
+  {
+    "sequence": "car-9",
+    "frames": 3461,
+    "AUC": 69.25881592163013,
+    "PRE": 87.89367234903207,
+    "NPR": 86.275642877781,
+    "total_inference_seconds": 100.382046,
+    "first_frame_prediction": [
+      599.0,
+      372.0,
+      142.0,
+      100.0
+    ]
+  },
+  {
+    "sequence": "car-17",
+    "frames": 2251,
+    "AUC": 65.77182627826787,
+    "PRE": 83.78498445135494,
+    "NPR": 83.3851621501555,
+    "total_inference_seconds": 65.680762,
+    "first_frame_prediction": [
+      731.0,
+      421.0,
+      117.0,
+      70.0
+    ]
+  },
+  {
+    "sequence": "cat-1",
+    "frames": 2051,
+    "AUC": 51.46386199531007,
+    "PRE": 58.75182837640176,
+    "NPR": 61.48220380302292,
+    "total_inference_seconds": 58.954207,
+    "first_frame_prediction": [
+      265.0,
+      387.0,
+      148.0,
+      85.0
+    ]
+  },
+  {
+    "sequence": "cat-3",
+    "frames": 3571,
+    "AUC": 47.70972516702004,
+    "PRE": 20.38644637356483,
+    "NPR": 53.62643517222067,
+    "total_inference_seconds": 103.354087,
+    "first_frame_prediction": [
+      96.0,
+      314.0,
+      286.0,
+      194.0
+    ]
+  },
+  {
+    "sequence": "cat-18",
+    "frames": 1596,
+    "AUC": 69.7845804988662,
+    "PRE": 41.478696741854634,
+    "NPR": 71.2406015037594,
+    "total_inference_seconds": 47.602514,
+    "first_frame_prediction": [
+      172.0,
+      240.0,
+      324.0,
+      479.0
+    ]
+  },
+  {
+    "sequence": "cat-20",
+    "frames": 1261,
+    "AUC": 13.791019976586986,
+    "PRE": 2.775574940523394,
+    "NPR": 6.978588421887391,
+    "total_inference_seconds": 37.05639600000001,
+    "first_frame_prediction": [
+      124.0,
+      200.0,
+      284.0,
+      487.0
+    ]
+  },
+  {
+    "sequence": "cattle-2",
+    "frames": 2461,
+    "AUC": 39.010468063698454,
+    "PRE": 44.69727752945957,
+    "NPR": 43.47826086956522,
+    "total_inference_seconds": 69.23668699999999,
+    "first_frame_prediction": [
+      175.0,
+      188.0,
+      77.0,
+      51.0
+    ]
+  },
+  {
+    "sequence": "cattle-7",
+    "frames": 1780,
+    "AUC": 79.11717495987159,
+    "PRE": 83.53932584269663,
+    "NPR": 84.15730337078652,
+    "total_inference_seconds": 51.949524000000004,
+    "first_frame_prediction": [
+      469.0,
+      190.0,
+      553.0,
+      460.0
+    ]
+  },
+  {
+    "sequence": "cattle-12",
+    "frames": 1556,
+    "AUC": 68.8792997918962,
+    "PRE": 97.87917737789203,
+    "NPR": 75.12853470437018,
+    "total_inference_seconds": 40.622196,
+    "first_frame_prediction": [
+      77.0,
+      129.0,
+      35.0,
+      44.0
+    ]
+  },
+  {
+    "sequence": "cattle-13",
+    "frames": 2321,
+    "AUC": 4.809092960751728,
+    "PRE": 2.886686772942697,
+    "NPR": 1.6372253339077985,
+    "total_inference_seconds": 60.365781999999996,
+    "first_frame_prediction": [
+      908.0,
+      485.0,
+      84.0,
+      100.0
+    ]
+  },
+  {
+    "sequence": "spider-14",
+    "frames": 2761,
+    "AUC": 75.67996412617926,
+    "PRE": 89.02571532053604,
+    "NPR": 88.91705903658095,
+    "total_inference_seconds": 75.093868,
+    "first_frame_prediction": [
+      419.0,
+      411.0,
+      103.0,
+      125.0
+    ]
+  },
+  {
+    "sequence": "spider-16",
+    "frames": 1910,
+    "AUC": 23.093991523310894,
+    "PRE": 28.534031413612563,
+    "NPR": 27.43455497382199,
+    "total_inference_seconds": 55.396618,
+    "first_frame_prediction": [
+      553.0,
+      232.0,
+      134.0,
+      215.0
+    ]
+  },
+  {
+    "sequence": "spider-18",
+    "frames": 2120,
+    "AUC": 83.46361185983827,
+    "PRE": 98.91509433962264,
+    "NPR": 99.24528301886792,
+    "total_inference_seconds": 59.20406800000001,
+    "first_frame_prediction": [
+      452.0,
+      37.0,
+      120.0,
+      123.0
+    ]
+  },
+  {
+    "sequence": "spider-20",
+    "frames": 9999,
+    "AUC": 87.58971135208759,
+    "PRE": 99.6899689968997,
+    "NPR": 99.57995799579959,
+    "total_inference_seconds": 273.745386,
+    "first_frame_prediction": [
+      936.0,
+      156.0,
+      145.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "coin-3",
+    "frames": 1020,
+    "AUC": 39.64519140989729,
+    "PRE": 43.431372549019606,
+    "NPR": 43.333333333333336,
+    "total_inference_seconds": 28.216936,
+    "first_frame_prediction": [
+      430.0,
+      348.0,
+      116.0,
+      108.0
+    ]
+  },
+  {
+    "sequence": "coin-6",
+    "frames": 3120,
+    "AUC": 26.7948717948718,
+    "PRE": 26.185897435897438,
+    "NPR": 26.378205128205128,
+    "total_inference_seconds": 83.11347700000002,
+    "first_frame_prediction": [
+      209.0,
+      147.0,
+      79.0,
+      70.0
+    ]
+  },
+  {
+    "sequence": "coin-7",
+    "frames": 1681,
+    "AUC": 90.7679669131186,
+    "PRE": 99.16716240333136,
+    "NPR": 99.22665080309339,
+    "total_inference_seconds": 47.469387999999995,
+    "first_frame_prediction": [
+      606.0,
+      268.0,
+      170.0,
+      150.0
+    ]
+  },
+  {
+    "sequence": "coin-18",
+    "frames": 1100,
+    "AUC": 2.0865800865800868,
+    "PRE": 1.9090909090909092,
+    "NPR": 1.9090909090909092,
+    "total_inference_seconds": 32.563928000000004,
+    "first_frame_prediction": [
+      346.0,
+      229.0,
+      506.0,
+      330.0
+    ]
+  },
+  {
+    "sequence": "crab-3",
+    "frames": 1501,
+    "AUC": 6.376701246787856,
+    "PRE": 6.528980679546968,
+    "NPR": 6.7288474350433045,
+    "total_inference_seconds": 40.701562,
+    "first_frame_prediction": [
+      170.0,
+      75.0,
+      74.0,
+      104.0
+    ]
+  },
+  {
+    "sequence": "crab-6",
+    "frames": 1959,
+    "AUC": 77.15549721675296,
+    "PRE": 79.58141909137315,
+    "NPR": 81.82746299132211,
+    "total_inference_seconds": 58.089906,
+    "first_frame_prediction": [
+      849.0,
+      240.0,
+      280.0,
+      132.0
+    ]
+  },
+  {
+    "sequence": "crab-12",
+    "frames": 1721,
+    "AUC": 79.49697020004982,
+    "PRE": 91.86519465427078,
+    "NPR": 96.16502033701336,
+    "total_inference_seconds": 50.687286,
+    "first_frame_prediction": [
+      500.0,
+      155.0,
+      351.0,
+      256.0
+    ]
+  },
+  {
+    "sequence": "crab-18",
+    "frames": 1832,
+    "AUC": 86.46548138906218,
+    "PRE": 93.72270742358079,
+    "NPR": 98.08951965065502,
+    "total_inference_seconds": 52.689951,
+    "first_frame_prediction": [
+      47.0,
+      113.0,
+      110.0,
+      119.0
+    ]
+  },
+  {
+    "sequence": "surfboard-12",
+    "frames": 3259,
+    "AUC": 45.95333070325399,
+    "PRE": 93.46425283829396,
+    "NPR": 40.81006443694385,
+    "total_inference_seconds": 84.723645,
+    "first_frame_prediction": [
+      513.0,
+      424.0,
+      131.0,
+      95.0
+    ]
+  },
+  {
+    "sequence": "surfboard-4",
+    "frames": 1787,
+    "AUC": 72.41452820635809,
+    "PRE": 87.01734750979296,
+    "NPR": 85.33855623950755,
+    "total_inference_seconds": 49.118772,
+    "first_frame_prediction": [
+      441.0,
+      573.0,
+      220.0,
+      55.0
+    ]
+  },
+  {
+    "sequence": "surfboard-5",
+    "frames": 4383,
+    "AUC": 79.2455700053236,
+    "PRE": 94.9349760438056,
+    "NPR": 94.02235911476157,
+    "total_inference_seconds": 126.519023,
+    "first_frame_prediction": [
+      729.0,
+      346.0,
+      58.0,
+      122.0
+    ]
+  },
+  {
+    "sequence": "surfboard-8",
+    "frames": 2215,
+    "AUC": 77.76201225411157,
+    "PRE": 93.67945823927766,
+    "NPR": 94.13092550790067,
+    "total_inference_seconds": 64.63895,
+    "first_frame_prediction": [
+      425.0,
+      472.0,
+      115.0,
+      86.0
+    ]
+  },
+  {
+    "sequence": "cup-1",
+    "frames": 1433,
+    "AUC": 44.92406872030041,
+    "PRE": 41.45150034891835,
+    "NPR": 50.662944870900205,
+    "total_inference_seconds": 41.930044,
+    "first_frame_prediction": [
+      1098.0,
+      493.0,
+      150.0,
+      174.0
+    ]
+  },
+  {
+    "sequence": "cup-4",
+    "frames": 2191,
+    "AUC": 0.5303079698333008,
+    "PRE": 0.09128251939753537,
+    "NPR": 0.09128251939753537,
+    "total_inference_seconds": 65.377061,
+    "first_frame_prediction": [
+      218.0,
+      453.0,
+      493.0,
+      180.0
+    ]
+  },
+  {
+    "sequence": "cup-7",
+    "frames": 1370,
+    "AUC": 44.81056656239138,
+    "PRE": 0.656934306569343,
+    "NPR": 8.175182481751825,
+    "total_inference_seconds": 41.151617,
+    "first_frame_prediction": [
+      679.0,
+      61.0,
+      360.0,
+      459.0
+    ]
+  },
+  {
+    "sequence": "cup-17",
+    "frames": 1950,
+    "AUC": 91.5921855921856,
+    "PRE": 95.64102564102565,
+    "NPR": 97.43589743589743,
+    "total_inference_seconds": 54.078133,
+    "first_frame_prediction": [
+      668.0,
+      64.0,
+      160.0,
+      260.0
+    ]
+  },
+  {
+    "sequence": "deer-4",
+    "frames": 4501,
+    "AUC": 76.21269347552396,
+    "PRE": 32.48167073983559,
+    "NPR": 97.17840479893357,
+    "total_inference_seconds": 126.861898,
+    "first_frame_prediction": [
+      504.0,
+      234.0,
+      217.0,
+      221.0
+    ]
+  },
+  {
+    "sequence": "deer-8",
+    "frames": 2911,
+    "AUC": 56.66355858729614,
+    "PRE": 69.87289591205771,
+    "NPR": 69.52937135005153,
+    "total_inference_seconds": 83.74459200000001,
+    "first_frame_prediction": [
+      18.0,
+      207.0,
+      88.0,
+      46.0
+    ]
+  },
+  {
+    "sequence": "deer-10",
+    "frames": 1411,
+    "AUC": 17.495190847423306,
+    "PRE": 9.355067328136075,
+    "NPR": 18.214032600992205,
+    "total_inference_seconds": 39.861368999999996,
+    "first_frame_prediction": [
+      908.0,
+      397.0,
+      247.0,
+      282.0
+    ]
+  },
+  {
+    "sequence": "deer-14",
+    "frames": 2221,
+    "AUC": 62.16633434103043,
+    "PRE": 19.04547501125619,
+    "NPR": 56.28095452498874,
+    "total_inference_seconds": 60.820467,
+    "first_frame_prediction": [
+      188.0,
+      153.0,
+      94.0,
+      133.0
+    ]
+  },
+  {
+    "sequence": "dog-1",
+    "frames": 1168,
+    "AUC": 52.19748858447488,
+    "PRE": 64.21232876712328,
+    "NPR": 62.928082191780824,
+    "total_inference_seconds": 31.012552,
+    "first_frame_prediction": [
+      410.0,
+      342.0,
+      109.0,
+      106.0
+    ]
+  },
+  {
+    "sequence": "dog-7",
+    "frames": 1918,
+    "AUC": 58.021748845523604,
+    "PRE": 63.45151199165797,
+    "NPR": 63.816475495307614,
+    "total_inference_seconds": 52.241568,
+    "first_frame_prediction": [
+      367.0,
+      113.0,
+      275.0,
+      195.0
+    ]
+  },
+  {
+    "sequence": "dog-15",
+    "frames": 5009,
+    "AUC": 88.74882354618828,
+    "PRE": 99.26132960670793,
+    "NPR": 99.64064683569575,
+    "total_inference_seconds": 137.856871,
+    "first_frame_prediction": [
+      163.0,
+      110.0,
+      125.0,
+      249.0
+    ]
+  },
+  {
+    "sequence": "dog-19",
+    "frames": 1514,
+    "AUC": 57.43536516323834,
+    "PRE": 56.34081902245707,
+    "NPR": 63.14398943196829,
+    "total_inference_seconds": 44.665998,
+    "first_frame_prediction": [
+      544.0,
+      315.0,
+      452.0,
+      404.0
+    ]
+  },
+  {
+    "sequence": "guitar-3",
+    "frames": 2521,
+    "AUC": 32.536219565176324,
+    "PRE": 0.2776675922253074,
+    "NPR": 0.5156683855612851,
+    "total_inference_seconds": 70.36514700000001,
+    "first_frame_prediction": [
+      630.0,
+      238.0,
+      234.0,
+      206.0
+    ]
+  },
+  {
+    "sequence": "guitar-8",
+    "frames": 2190,
+    "AUC": 19.954337899543383,
+    "PRE": 2.4200913242009134,
+    "NPR": 2.054794520547945,
+    "total_inference_seconds": 64.02572599999999,
+    "first_frame_prediction": [
+      657.0,
+      350.0,
+      150.0,
+      150.0
+    ]
+  },
+  {
+    "sequence": "guitar-10",
+    "frames": 1890,
+    "AUC": 4.426807760141093,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 55.67136599999999,
+    "first_frame_prediction": [
+      84.0,
+      204.0,
+      394.0,
+      449.0
+    ]
+  },
+  {
+    "sequence": "guitar-16",
+    "frames": 1000,
+    "AUC": 24.276190476190475,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 28.5122,
+    "first_frame_prediction": [
+      155.0,
+      64.0,
+      164.0,
+      166.0
+    ]
+  },
+  {
+    "sequence": "person-1",
+    "frames": 5550,
+    "AUC": 87.75632775632775,
+    "PRE": 92.63063063063063,
+    "NPR": 97.67567567567568,
+    "total_inference_seconds": 163.62587,
+    "first_frame_prediction": [
+      437.0,
+      344.0,
+      219.0,
+      292.0
+    ]
+  },
+  {
+    "sequence": "person-5",
+    "frames": 2967,
+    "AUC": 33.36222254321344,
+    "PRE": 24.064711830131447,
+    "NPR": 32.96258847320526,
+    "total_inference_seconds": 85.994591,
+    "first_frame_prediction": [
+      391.0,
+      274.0,
+      109.0,
+      230.0
+    ]
+  },
+  {
+    "sequence": "person-10",
+    "frames": 3901,
+    "AUC": 78.34377021764871,
+    "PRE": 80.77416047167392,
+    "NPR": 87.59292489105358,
+    "total_inference_seconds": 112.702756,
+    "first_frame_prediction": [
+      532.0,
+      3.0,
+      203.0,
+      471.0
+    ]
+  },
+  {
+    "sequence": "person-12",
+    "frames": 1990,
+    "AUC": 43.12754247427614,
+    "PRE": 54.773869346733676,
+    "NPR": 45.778894472361806,
+    "total_inference_seconds": 56.106536,
+    "first_frame_prediction": [
+      58.0,
+      9.0,
+      64.0,
+      329.0
+    ]
+  },
+  {
+    "sequence": "pig-2",
+    "frames": 2671,
+    "AUC": 20.46495872778164,
+    "PRE": 13.32834144515163,
+    "NPR": 17.85847997004867,
+    "total_inference_seconds": 75.734017,
+    "first_frame_prediction": [
+      507.0,
+      250.0,
+      127.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "pig-10",
+    "frames": 2691,
+    "AUC": 48.16584381801774,
+    "PRE": 45.74507617985879,
+    "NPR": 50.68747677443329,
+    "total_inference_seconds": 82.301389,
+    "first_frame_prediction": [
+      521.0,
+      143.0,
+      254.0,
+      280.0
+    ]
+  },
+  {
+    "sequence": "pig-13",
+    "frames": 1838,
+    "AUC": 62.643142131716665,
+    "PRE": 67.46463547334058,
+    "NPR": 67.19260065288357,
+    "total_inference_seconds": 52.109027999999995,
+    "first_frame_prediction": [
+      149.0,
+      231.0,
+      178.0,
+      121.0
+    ]
+  },
+  {
+    "sequence": "pig-18",
+    "frames": 2401,
+    "AUC": 43.80714384879316,
+    "PRE": 36.8179925031237,
+    "NPR": 44.189920866305705,
+    "total_inference_seconds": 69.619959,
+    "first_frame_prediction": [
+      554.0,
+      240.0,
+      161.0,
+      120.0
+    ]
+  },
+  {
+    "sequence": "rubicCube-1",
+    "frames": 1800,
+    "AUC": 15.10846560846561,
+    "PRE": 13.222222222222221,
+    "NPR": 14.166666666666666,
+    "total_inference_seconds": 53.660268,
+    "first_frame_prediction": [
+      471.0,
+      347.0,
+      426.0,
+      372.0
+    ]
+  },
+  {
+    "sequence": "rubicCube-6",
+    "frames": 4291,
+    "AUC": 6.520846511524675,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 128.68276400000002,
+    "first_frame_prediction": [
+      498.0,
+      132.0,
+      291.0,
+      324.0
+    ]
+  },
+  {
+    "sequence": "rubicCube-14",
+    "frames": 1827,
+    "AUC": 88.11999895743737,
+    "PRE": 82.75862068965517,
+    "NPR": 98.68637110016421,
+    "total_inference_seconds": 53.948843,
+    "first_frame_prediction": [
+      232.0,
+      43.0,
+      327.0,
+      644.0
+    ]
+  },
+  {
+    "sequence": "rubicCube-19",
+    "frames": 2101,
+    "AUC": 25.896965163980873,
+    "PRE": 25.368871965730605,
+    "NPR": 25.98762494050452,
+    "total_inference_seconds": 57.909622,
+    "first_frame_prediction": [
+      119.0,
+      28.0,
+      223.0,
+      155.0
+    ]
+  },
+  {
+    "sequence": "swing-10",
+    "frames": 2189,
+    "AUC": 68.82246731492963,
+    "PRE": 52.26130653266332,
+    "NPR": 84.376427592508,
+    "total_inference_seconds": 61.23939300000001,
+    "first_frame_prediction": [
+      357.0,
+      145.0,
+      195.0,
+      283.0
+    ]
+  },
+  {
+    "sequence": "swing-14",
+    "frames": 2564,
+    "AUC": 7.267290691627666,
+    "PRE": 0.0390015600624025,
+    "NPR": 0.0,
+    "total_inference_seconds": 71.831322,
+    "first_frame_prediction": [
+      197.0,
+      8.0,
+      238.0,
+      621.0
+    ]
+  },
+  {
+    "sequence": "swing-17",
+    "frames": 2699,
+    "AUC": 7.140210660032817,
+    "PRE": 4.5201926639496115,
+    "NPR": 3.112263801407929,
+    "total_inference_seconds": 74.744425,
+    "first_frame_prediction": [
+      402.0,
+      167.0,
+      228.0,
+      321.0
+    ]
+  },
+  {
+    "sequence": "swing-20",
+    "frames": 1282,
+    "AUC": 19.207339722160313,
+    "PRE": 1.5600624024960998,
+    "NPR": 3.8221528861154446,
+    "total_inference_seconds": 36.85489,
+    "first_frame_prediction": [
+      640.0,
+      161.0,
+      290.0,
+      365.0
+    ]
+  },
+  {
+    "sequence": "drone-13",
+    "frames": 3715,
+    "AUC": 44.91700314042173,
+    "PRE": 54.347240915208616,
+    "NPR": 52.274562584118435,
+    "total_inference_seconds": 101.312397,
+    "first_frame_prediction": [
+      653.0,
+      526.0,
+      163.0,
+      113.0
+    ]
+  },
+  {
+    "sequence": "drone-15",
+    "frames": 1362,
+    "AUC": 58.464443045940854,
+    "PRE": 66.81350954478708,
+    "NPR": 64.83113069016153,
+    "total_inference_seconds": 36.945678,
+    "first_frame_prediction": [
+      573.0,
+      415.0,
+      119.0,
+      54.0
+    ]
+  },
+  {
+    "sequence": "drone-2",
+    "frames": 3133,
+    "AUC": 42.743148967215355,
+    "PRE": 54.80370252154485,
+    "NPR": 46.53686562400255,
+    "total_inference_seconds": 88.227625,
+    "first_frame_prediction": [
+      632.0,
+      331.0,
+      164.0,
+      70.0
+    ]
+  },
+  {
+    "sequence": "drone-7",
+    "frames": 2817,
+    "AUC": 49.03899792078706,
+    "PRE": 67.02165424210152,
+    "NPR": 58.64394746183883,
+    "total_inference_seconds": 75.40853899999999,
+    "first_frame_prediction": [
+      191.0,
+      159.0,
+      809.0,
+      273.0
+    ]
+  },
+  {
+    "sequence": "pool-12",
+    "frames": 1801,
+    "AUC": 63.71063694772745,
+    "PRE": 66.79622431982231,
+    "NPR": 67.51804553026096,
+    "total_inference_seconds": 52.44085,
+    "first_frame_prediction": [
+      487.0,
+      376.0,
+      180.0,
+      168.0
+    ]
+  },
+  {
+    "sequence": "pool-15",
+    "frames": 1338,
+    "AUC": 61.00078297387714,
+    "PRE": 67.2645739910314,
+    "NPR": 67.1150971599402,
+    "total_inference_seconds": 37.457755999999996,
+    "first_frame_prediction": [
+      664.0,
+      394.0,
+      62.0,
+      71.0
+    ]
+  },
+  {
+    "sequence": "pool-3",
+    "frames": 2256,
+    "AUC": 65.88568051334009,
+    "PRE": 86.92375886524822,
+    "NPR": 85.41666666666666,
+    "total_inference_seconds": 63.110510000000005,
+    "first_frame_prediction": [
+      553.0,
+      224.0,
+      79.0,
+      175.0
+    ]
+  },
+  {
+    "sequence": "pool-7",
+    "frames": 1634,
+    "AUC": 3.4417438946202714,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 49.397502,
+    "first_frame_prediction": [
+      129.0,
+      134.0,
+      773.0,
+      434.0
+    ]
+  },
+  {
+    "sequence": "rabbit-10",
+    "frames": 2098,
+    "AUC": 61.88660402197104,
+    "PRE": 64.63298379408961,
+    "NPR": 67.25452812202097,
+    "total_inference_seconds": 60.361616,
+    "first_frame_prediction": [
+      593.0,
+      211.0,
+      241.0,
+      167.0
+    ]
+  },
+  {
+    "sequence": "rabbit-13",
+    "frames": 2109,
+    "AUC": 83.11318837634626,
+    "PRE": 96.44381223328593,
+    "NPR": 99.95258416311049,
+    "total_inference_seconds": 62.034255,
+    "first_frame_prediction": [
+      464.0,
+      261.0,
+      355.0,
+      221.0
+    ]
+  },
+  {
+    "sequence": "rabbit-17",
+    "frames": 1478,
+    "AUC": 75.4977769186159,
+    "PRE": 75.23680649526388,
+    "NPR": 93.64005412719891,
+    "total_inference_seconds": 43.78112,
+    "first_frame_prediction": [
+      723.0,
+      306.0,
+      146.0,
+      215.0
+    ]
+  },
+  {
+    "sequence": "rabbit-19",
+    "frames": 2222,
+    "AUC": 79.95156658522995,
+    "PRE": 100.0,
+    "NPR": 99.81998199819982,
+    "total_inference_seconds": 62.859747,
+    "first_frame_prediction": [
+      260.0,
+      184.0,
+      58.0,
+      40.0
+    ]
+  },
+  {
+    "sequence": "racing-10",
+    "frames": 1508,
+    "AUC": 40.33724895793861,
+    "PRE": 40.9814323607427,
+    "NPR": 45.35809018567639,
+    "total_inference_seconds": 44.092405,
+    "first_frame_prediction": [
+      577.0,
+      126.0,
+      133.0,
+      68.0
+    ]
+  },
+  {
+    "sequence": "racing-15",
+    "frames": 1070,
+    "AUC": 81.28170894526033,
+    "PRE": 89.81308411214954,
+    "NPR": 91.49532710280374,
+    "total_inference_seconds": 30.834419999999998,
+    "first_frame_prediction": [
+      690.0,
+      235.0,
+      218.0,
+      141.0
+    ]
+  },
+  {
+    "sequence": "racing-16",
+    "frames": 2186,
+    "AUC": 77.77632553478847,
+    "PRE": 92.13174748398902,
+    "NPR": 91.76578225068619,
+    "total_inference_seconds": 63.192162,
+    "first_frame_prediction": [
+      621.0,
+      107.0,
+      110.0,
+      85.0
+    ]
+  },
+  {
+    "sequence": "racing-20",
+    "frames": 2941,
+    "AUC": 36.136072926280335,
+    "PRE": 45.22271336280177,
+    "NPR": 44.67868072084325,
+    "total_inference_seconds": 84.16506100000001,
+    "first_frame_prediction": [
+      599.0,
+      95.0,
+      147.0,
+      142.0
+    ]
+  },
+  {
+    "sequence": "robot-1",
+    "frames": 5609,
+    "AUC": 29.565579128781128,
+    "PRE": 30.05883401675878,
+    "NPR": 30.23711891602781,
+    "total_inference_seconds": 162.769792,
+    "first_frame_prediction": [
+      258.0,
+      87.0,
+      56.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "robot-19",
+    "frames": 5797,
+    "AUC": 26.148171878722167,
+    "PRE": 15.076763843367258,
+    "NPR": 17.21580127652234,
+    "total_inference_seconds": 166.90982300000002,
+    "first_frame_prediction": [
+      77.0,
+      99.0,
+      123.0,
+      118.0
+    ]
+  },
+  {
+    "sequence": "robot-5",
+    "frames": 2325,
+    "AUC": 2.136200716845878,
+    "PRE": 0.043010752688172046,
+    "NPR": 0.043010752688172046,
+    "total_inference_seconds": 71.844859,
+    "first_frame_prediction": [
+      135.0,
+      0.0,
+      467.0,
+      669.0
+    ]
+  },
+  {
+    "sequence": "robot-8",
+    "frames": 2371,
+    "AUC": 83.5693197565825,
+    "PRE": 90.6790383804302,
+    "NPR": 99.91564740615773,
+    "total_inference_seconds": 67.879593,
+    "first_frame_prediction": [
+      654.0,
+      422.0,
+      139.0,
+      167.0
+    ]
+  },
+  {
+    "sequence": "sepia-13",
+    "frames": 2756,
+    "AUC": 54.450895016932755,
+    "PRE": 56.02322206095791,
+    "NPR": 58.599419448476056,
+    "total_inference_seconds": 78.83798099999998,
+    "first_frame_prediction": [
+      516.0,
+      356.0,
+      253.0,
+      119.0
+    ]
+  },
+  {
+    "sequence": "sepia-16",
+    "frames": 1548,
+    "AUC": 86.71711578688324,
+    "PRE": 89.47028423772609,
+    "NPR": 97.86821705426357,
+    "total_inference_seconds": 46.021471,
+    "first_frame_prediction": [
+      639.0,
+      231.0,
+      125.0,
+      91.0
+    ]
+  },
+  {
+    "sequence": "sepia-6",
+    "frames": 1100,
+    "AUC": 89.6839826839827,
+    "PRE": 98.81818181818181,
+    "NPR": 99.90909090909092,
+    "total_inference_seconds": 31.689515,
+    "first_frame_prediction": [
+      493.0,
+      320.0,
+      302.0,
+      118.0
+    ]
+  },
+  {
+    "sequence": "sepia-8",
+    "frames": 3694,
+    "AUC": 58.074870446283555,
+    "PRE": 64.67244179750948,
+    "NPR": 69.27449918787222,
+    "total_inference_seconds": 105.69547,
+    "first_frame_prediction": [
+      230.0,
+      147.0,
+      158.0,
+      50.0
+    ]
+  },
+  {
+    "sequence": "sheep-3",
+    "frames": 2097,
+    "AUC": 32.40456888525558,
+    "PRE": 19.26561754887935,
+    "NPR": 23.08059132093467,
+    "total_inference_seconds": 60.338527,
+    "first_frame_prediction": [
+      522.0,
+      272.0,
+      383.0,
+      279.0
+    ]
+  },
+  {
+    "sequence": "sheep-5",
+    "frames": 1000,
+    "AUC": 12.404761904761905,
+    "PRE": 11.799999999999999,
+    "NPR": 10.100000000000001,
+    "total_inference_seconds": 27.592233,
+    "first_frame_prediction": [
+      461.0,
+      277.0,
+      177.0,
+      91.0
+    ]
+  },
+  {
+    "sequence": "sheep-7",
+    "frames": 1256,
+    "AUC": 29.936305732484076,
+    "PRE": 31.528662420382165,
+    "NPR": 31.60828025477707,
+    "total_inference_seconds": 35.758919,
+    "first_frame_prediction": [
+      741.0,
+      273.0,
+      112.0,
+      116.0
+    ]
+  },
+  {
+    "sequence": "sheep-9",
+    "frames": 1840,
+    "AUC": 2.08592132505176,
+    "PRE": 1.956521739130435,
+    "NPR": 0.5978260869565217,
+    "total_inference_seconds": 49.236556,
+    "first_frame_prediction": [
+      395.0,
+      260.0,
+      151.0,
+      71.0
+    ]
+  },
+  {
+    "sequence": "skateboard-16",
+    "frames": 3208,
+    "AUC": 12.027965799786248,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 88.418677,
+    "first_frame_prediction": [
+      698.0,
+      218.0,
+      206.0,
+      492.0
+    ]
+  },
+  {
+    "sequence": "skateboard-19",
+    "frames": 2262,
+    "AUC": 10.117468738158394,
+    "PRE": 1.9451812555260832,
+    "NPR": 1.8125552608311228,
+    "total_inference_seconds": 64.353043,
+    "first_frame_prediction": [
+      17.0,
+      107.0,
+      295.0,
+      409.0
+    ]
+  },
+  {
+    "sequence": "skateboard-3",
+    "frames": 1629,
+    "AUC": 62.86065070595457,
+    "PRE": 63.72007366482505,
+    "NPR": 68.75383670963782,
+    "total_inference_seconds": 45.517409,
+    "first_frame_prediction": [
+      975.0,
+      286.0,
+      154.0,
+      248.0
+    ]
+  },
+  {
+    "sequence": "skateboard-8",
+    "frames": 4112,
+    "AUC": 36.61293311098758,
+    "PRE": 47.68968871595331,
+    "NPR": 36.721789883268485,
+    "total_inference_seconds": 113.67693299999999,
+    "first_frame_prediction": [
+      120.0,
+      323.0,
+      202.0,
+      240.0
+    ]
+  },
+  {
+    "sequence": "tank-14",
+    "frames": 3336,
+    "AUC": 18.752141144227476,
+    "PRE": 17.23621103117506,
+    "NPR": 20.11390887290168,
+    "total_inference_seconds": 95.484166,
+    "first_frame_prediction": [
+      7.0,
+      214.0,
+      705.0,
+      246.0
+    ]
+  },
+  {
+    "sequence": "tank-16",
+    "frames": 3635,
+    "AUC": 81.02967184122618,
+    "PRE": 89.18844566712517,
+    "NPR": 96.2585969738652,
+    "total_inference_seconds": 105.86926400000002,
+    "first_frame_prediction": [
+      417.0,
+      278.0,
+      621.0,
+      188.0
+    ]
+  },
+  {
+    "sequence": "tank-6",
+    "frames": 1612,
+    "AUC": 69.36074678010164,
+    "PRE": 52.357320099255574,
+    "NPR": 81.88585607940446,
+    "total_inference_seconds": 47.074400999999995,
+    "first_frame_prediction": [
+      770.0,
+      314.0,
+      212.0,
+      111.0
+    ]
+  },
+  {
+    "sequence": "tank-9",
+    "frames": 1312,
+    "AUC": 33.34422183507549,
+    "PRE": 37.042682926829265,
+    "NPR": 36.96646341463415,
+    "total_inference_seconds": 37.696977000000004,
+    "first_frame_prediction": [
+      455.0,
+      242.0,
+      308.0,
+      144.0
+    ]
+  },
+  {
+    "sequence": "tiger-12",
+    "frames": 1040,
+    "AUC": 86.6529304029304,
+    "PRE": 84.90384615384615,
+    "NPR": 96.73076923076923,
+    "total_inference_seconds": 30.461458,
+    "first_frame_prediction": [
+      475.0,
+      272.0,
+      467.0,
+      212.0
+    ]
+  },
+  {
+    "sequence": "tiger-18",
+    "frames": 3107,
+    "AUC": 84.77784419207013,
+    "PRE": 87.86610878661088,
+    "NPR": 97.00675893144512,
+    "total_inference_seconds": 91.264303,
+    "first_frame_prediction": [
+      508.0,
+      85.0,
+      275.0,
+      367.0
+    ]
+  },
+  {
+    "sequence": "tiger-4",
+    "frames": 2877,
+    "AUC": 32.71595742920039,
+    "PRE": 18.039624608967674,
+    "NPR": 32.60340632603406,
+    "total_inference_seconds": 84.261449,
+    "first_frame_prediction": [
+      422.0,
+      219.0,
+      297.0,
+      159.0
+    ]
+  },
+  {
+    "sequence": "tiger-6",
+    "frames": 2295,
+    "AUC": 40.84863575059654,
+    "PRE": 18.736383442265794,
+    "NPR": 41.132897603485844,
+    "total_inference_seconds": 66.024286,
+    "first_frame_prediction": [
+      54.0,
+      325.0,
+      466.0,
+      109.0
+    ]
+  },
+  {
+    "sequence": "train-1",
+    "frames": 1150,
+    "AUC": 66.02898550724638,
+    "PRE": 71.82608695652173,
+    "NPR": 76.08695652173914,
+    "total_inference_seconds": 31.423145,
+    "first_frame_prediction": [
+      668.0,
+      343.0,
+      132.0,
+      73.0
+    ]
+  },
+  {
+    "sequence": "train-11",
+    "frames": 1080,
+    "AUC": 74.27248677248677,
+    "PRE": 92.68518518518518,
+    "NPR": 82.68518518518519,
+    "total_inference_seconds": 32.837180000000004,
+    "first_frame_prediction": [
+      671.0,
+      279.0,
+      200.0,
+      88.0
+    ]
+  },
+  {
+    "sequence": "train-20",
+    "frames": 1389,
+    "AUC": 79.55020741197846,
+    "PRE": 82.4334053275738,
+    "NPR": 91.4326853851692,
+    "total_inference_seconds": 39.094388,
+    "first_frame_prediction": [
+      32.0,
+      321.0,
+      834.0,
+      84.0
+    ]
+  },
+  {
+    "sequence": "train-7",
+    "frames": 1425,
+    "AUC": 25.356725146198833,
+    "PRE": 1.6842105263157894,
+    "NPR": 2.0350877192982457,
+    "total_inference_seconds": 38.061749000000006,
+    "first_frame_prediction": [
+      533.0,
+      295.0,
+      457.0,
+      58.0
+    ]
+  },
+  {
+    "sequence": "truck-16",
+    "frames": 7225,
+    "AUC": 59.25325424287363,
+    "PRE": 67.07266435986159,
+    "NPR": 67.46020761245674,
+    "total_inference_seconds": 206.693444,
+    "first_frame_prediction": [
+      465.0,
+      147.0,
+      717.0,
+      406.0
+    ]
+  },
+  {
+    "sequence": "truck-3",
+    "frames": 1270,
+    "AUC": 78.98012748406448,
+    "PRE": 33.70078740157481,
+    "NPR": 92.1259842519685,
+    "total_inference_seconds": 37.649864,
+    "first_frame_prediction": [
+      729.0,
+      319.0,
+      402.0,
+      231.0
+    ]
+  },
+  {
+    "sequence": "truck-6",
+    "frames": 5245,
+    "AUC": 33.56484633891689,
+    "PRE": 31.858913250714966,
+    "NPR": 39.942802669208774,
+    "total_inference_seconds": 150.025843,
+    "first_frame_prediction": [
+      461.0,
+      73.0,
+      182.0,
+      247.0
+    ]
+  },
+  {
+    "sequence": "truck-7",
+    "frames": 6515,
+    "AUC": 76.36589555238827,
+    "PRE": 100.0,
+    "NPR": 98.92555640828856,
+    "total_inference_seconds": 180.637864,
+    "first_frame_prediction": [
+      598.0,
+      450.0,
+      150.0,
+      150.0
+    ]
+  },
+  {
+    "sequence": "turtle-16",
+    "frames": 3307,
+    "AUC": 84.70632280732069,
+    "PRE": 87.75325068037496,
+    "NPR": 94.98034472331418,
+    "total_inference_seconds": 95.15480199999999,
+    "first_frame_prediction": [
+      538.0,
+      309.0,
+      127.0,
+      136.0
+    ]
+  },
+  {
+    "sequence": "turtle-5",
+    "frames": 1096,
+    "AUC": 89.62026416405978,
+    "PRE": 98.54014598540147,
+    "NPR": 99.72627737226277,
+    "total_inference_seconds": 31.918703,
+    "first_frame_prediction": [
+      578.0,
+      184.0,
+      280.0,
+      215.0
+    ]
+  },
+  {
+    "sequence": "turtle-8",
+    "frames": 1497,
+    "AUC": 29.248974138753702,
+    "PRE": 18.837675350701403,
+    "NPR": 27.187708750835004,
+    "total_inference_seconds": 42.576927,
+    "first_frame_prediction": [
+      583.0,
+      9.0,
+      212.0,
+      329.0
+    ]
+  },
+  {
+    "sequence": "turtle-9",
+    "frames": 7133,
+    "AUC": 78.83812995266801,
+    "PRE": 57.7036310107949,
+    "NPR": 97.99523342212252,
+    "total_inference_seconds": 205.6941,
+    "first_frame_prediction": [
+      668.0,
+      260.0,
+      109.0,
+      75.0
+    ]
+  },
+  {
+    "sequence": "umbrella-17",
+    "frames": 1001,
+    "AUC": 58.33690119404405,
+    "PRE": 53.64635364635365,
+    "NPR": 47.45254745254745,
+    "total_inference_seconds": 28.526640999999998,
+    "first_frame_prediction": [
+      485.0,
+      223.0,
+      161.0,
+      107.0
+    ]
+  },
+  {
+    "sequence": "umbrella-19",
+    "frames": 2868,
+    "AUC": 45.659825994554026,
+    "PRE": 51.35983263598326,
+    "NPR": 49.30264993026499,
+    "total_inference_seconds": 80.54729900000001,
+    "first_frame_prediction": [
+      104.0,
+      486.0,
+      390.0,
+      143.0
+    ]
+  },
+  {
+    "sequence": "umbrella-2",
+    "frames": 4794,
+    "AUC": 82.76118958221585,
+    "PRE": 72.65331664580727,
+    "NPR": 95.61952440550688,
+    "total_inference_seconds": 138.27239600000001,
+    "first_frame_prediction": [
+      739.0,
+      97.0,
+      412.0,
+      251.0
+    ]
+  },
+  {
+    "sequence": "umbrella-9",
+    "frames": 1615,
+    "AUC": 9.78328173374613,
+    "PRE": 6.563467492260062,
+    "NPR": 3.0959752321981426,
+    "total_inference_seconds": 43.450913,
+    "first_frame_prediction": [
+      388.0,
+      393.0,
+      84.0,
+      120.0
+    ]
+  },
+  {
+    "sequence": "yoyo-15",
+    "frames": 1000,
+    "AUC": 61.01428571428571,
+    "PRE": 67.30000000000001,
+    "NPR": 66.4,
+    "total_inference_seconds": 27.524378,
+    "first_frame_prediction": [
+      533.0,
+      492.0,
+      115.0,
+      90.0
+    ]
+  },
+  {
+    "sequence": "yoyo-17",
+    "frames": 1035,
+    "AUC": 50.43478260869565,
+    "PRE": 68.88888888888889,
+    "NPR": 60.48309178743961,
+    "total_inference_seconds": 27.389132,
+    "first_frame_prediction": [
+      651.0,
+      189.0,
+      173.0,
+      331.0
+    ]
+  },
+  {
+    "sequence": "yoyo-19",
+    "frames": 3207,
+    "AUC": 42.448809895021306,
+    "PRE": 61.98939819145619,
+    "NPR": 58.09167446211413,
+    "total_inference_seconds": 86.82162600000001,
+    "first_frame_prediction": [
+      643.0,
+      18.0,
+      159.0,
+      104.0
+    ]
+  },
+  {
+    "sequence": "yoyo-7",
+    "frames": 3806,
+    "AUC": 29.98523634361785,
+    "PRE": 44.1408302679979,
+    "NPR": 36.67892800840778,
+    "total_inference_seconds": 107.00688,
+    "first_frame_prediction": [
+      566.0,
+      41.0,
+      116.0,
+      106.0
+    ]
+  },
+  {
+    "sequence": "zebra-10",
+    "frames": 2008,
+    "AUC": 18.62312654145323,
+    "PRE": 11.404382470119522,
+    "NPR": 15.98605577689243,
+    "total_inference_seconds": 58.091023,
+    "first_frame_prediction": [
+      731.0,
+      175.0,
+      183.0,
+      207.0
+    ]
+  },
+  {
+    "sequence": "zebra-14",
+    "frames": 1673,
+    "AUC": 60.37628440497538,
+    "PRE": 79.43813508667064,
+    "NPR": 67.1249252839211,
+    "total_inference_seconds": 46.617368,
+    "first_frame_prediction": [
+      561.0,
+      372.0,
+      174.0,
+      75.0
+    ]
+  },
+  {
+    "sequence": "zebra-16",
+    "frames": 1282,
+    "AUC": 31.643265730629228,
+    "PRE": 25.741029641185648,
+    "NPR": 27.53510140405616,
+    "total_inference_seconds": 36.288591000000004,
+    "first_frame_prediction": [
+      583.0,
+      303.0,
+      264.0,
+      152.0
+    ]
+  },
+  {
+    "sequence": "zebra-17",
+    "frames": 2964,
+    "AUC": 86.2316046526573,
+    "PRE": 89.37246963562752,
+    "NPR": 94.02834008097166,
+    "total_inference_seconds": 83.25962799999999,
+    "first_frame_prediction": [
+      400.0,
+      322.0,
+      264.0,
+      273.0
+    ]
+  },
+  {
+    "sequence": "elephant-1",
+    "frames": 1889,
+    "AUC": 44.6595578411354,
+    "PRE": 34.621492853361566,
+    "NPR": 47.22075172048703,
+    "total_inference_seconds": 54.682809999999996,
+    "first_frame_prediction": [
+      458.0,
+      305.0,
+      250.0,
+      287.0
+    ]
+  },
+  {
+    "sequence": "elephant-12",
+    "frames": 1053,
+    "AUC": 37.168181612626064,
+    "PRE": 33.998100664767335,
+    "NPR": 38.36657169990503,
+    "total_inference_seconds": 30.041674,
+    "first_frame_prediction": [
+      174.0,
+      268.0,
+      238.0,
+      95.0
+    ]
+  },
+  {
+    "sequence": "elephant-16",
+    "frames": 2661,
+    "AUC": 10.162667096150749,
+    "PRE": 5.0732807215332585,
+    "NPR": 5.261180007515971,
+    "total_inference_seconds": 78.152055,
+    "first_frame_prediction": [
+      866.0,
+      243.0,
+      143.0,
+      328.0
+    ]
+  },
+  {
+    "sequence": "elephant-18",
+    "frames": 1494,
+    "AUC": 48.093963154204125,
+    "PRE": 45.58232931726908,
+    "NPR": 46.3186077643909,
+    "total_inference_seconds": 44.492964,
+    "first_frame_prediction": [
+      616.0,
+      168.0,
+      286.0,
+      373.0
+    ]
+  },
+  {
+    "sequence": "goldfish-3",
+    "frames": 2375,
+    "AUC": 35.38045112781955,
+    "PRE": 26.31578947368421,
+    "NPR": 19.789473684210527,
+    "total_inference_seconds": 66.584214,
+    "first_frame_prediction": [
+      314.0,
+      186.0,
+      170.0,
+      76.0
+    ]
+  },
+  {
+    "sequence": "goldfish-7",
+    "frames": 8000,
+    "AUC": 14.340476190476187,
+    "PRE": 9.9125,
+    "NPR": 10.137500000000001,
+    "total_inference_seconds": 226.46714200000002,
+    "first_frame_prediction": [
+      365.0,
+      245.0,
+      245.0,
+      154.0
+    ]
+  },
+  {
+    "sequence": "goldfish-8",
+    "frames": 2250,
+    "AUC": 53.03703703703704,
+    "PRE": 16.266666666666666,
+    "NPR": 59.46666666666667,
+    "total_inference_seconds": 65.240087,
+    "first_frame_prediction": [
+      287.0,
+      394.0,
+      546.0,
+      213.0
+    ]
+  },
+  {
+    "sequence": "goldfish-10",
+    "frames": 5602,
+    "AUC": 47.6828003604155,
+    "PRE": 45.805069617993574,
+    "NPR": 53.12388432702606,
+    "total_inference_seconds": 163.197432,
+    "first_frame_prediction": [
+      129.0,
+      133.0,
+      540.0,
+      445.0
+    ]
+  },
+  {
+    "sequence": "hat-1",
+    "frames": 3486,
+    "AUC": 4.539245417042319,
+    "PRE": 0.4302925989672977,
+    "NPR": 0.22948938611589212,
+    "total_inference_seconds": 99.558493,
+    "first_frame_prediction": [
+      627.0,
+      162.0,
+      229.0,
+      410.0
+    ]
+  },
+  {
+    "sequence": "hat-2",
+    "frames": 1465,
+    "AUC": 47.524784657890464,
+    "PRE": 77.95221843003412,
+    "NPR": 50.375426621160415,
+    "total_inference_seconds": 38.58694,
+    "first_frame_prediction": [
+      289.0,
+      87.0,
+      39.0,
+      86.0
+    ]
+  },
+  {
+    "sequence": "hat-5",
+    "frames": 8000,
+    "AUC": 10.20595238095238,
+    "PRE": 9.9125,
+    "NPR": 8.0125,
+    "total_inference_seconds": 228.74226199999998,
+    "first_frame_prediction": [
+      765.0,
+      156.0,
+      158.0,
+      453.0
+    ]
+  },
+  {
+    "sequence": "hat-18",
+    "frames": 2816,
+    "AUC": 88.36072781385282,
+    "PRE": 97.90482954545455,
+    "NPR": 99.609375,
+    "total_inference_seconds": 76.76534000000001,
+    "first_frame_prediction": [
+      573.0,
+      411.0,
+      138.0,
+      198.0
+    ]
+  },
+  {
+    "sequence": "kite-4",
+    "frames": 3223,
+    "AUC": 17.983836413870545,
+    "PRE": 11.697176543592926,
+    "NPR": 8.315234253800806,
+    "total_inference_seconds": 88.179512,
+    "first_frame_prediction": [
+      336.0,
+      46.0,
+      86.0,
+      103.0
+    ]
+  },
+  {
+    "sequence": "kite-6",
+    "frames": 3774,
+    "AUC": 52.81499987382341,
+    "PRE": 61.446740858505564,
+    "NPR": 61.976682564917866,
+    "total_inference_seconds": 104.11166499999999,
+    "first_frame_prediction": [
+      539.0,
+      256.0,
+      104.0,
+      160.0
+    ]
+  },
+  {
+    "sequence": "kite-10",
+    "frames": 3309,
+    "AUC": 14.5864813135892,
+    "PRE": 18.82744031429435,
+    "NPR": 17.407071622846782,
+    "total_inference_seconds": 86.101301,
+    "first_frame_prediction": [
+      283.0,
+      97.0,
+      54.0,
+      133.0
+    ]
+  },
+  {
+    "sequence": "kite-15",
+    "frames": 2103,
+    "AUC": 43.953082897448084,
+    "PRE": 78.64954826438422,
+    "NPR": 34.52211126961483,
+    "total_inference_seconds": 55.788588,
+    "first_frame_prediction": [
+      71.0,
+      140.0,
+      389.0,
+      182.0
+    ]
+  },
+  {
+    "sequence": "motorcycle-1",
+    "frames": 2241,
+    "AUC": 73.2984849450713,
+    "PRE": 66.26506024096386,
+    "NPR": 85.80990629183401,
+    "total_inference_seconds": 61.602085,
+    "first_frame_prediction": [
+      489.0,
+      294.0,
+      210.0,
+      111.0
+    ]
+  },
+  {
+    "sequence": "motorcycle-3",
+    "frames": 2487,
+    "AUC": 61.293966722193495,
+    "PRE": 50.70365902694009,
+    "NPR": 55.85042219541616,
+    "total_inference_seconds": 66.82232099999999,
+    "first_frame_prediction": [
+      94.0,
+      21.0,
+      349.0,
+      338.0
+    ]
+  },
+  {
+    "sequence": "motorcycle-9",
+    "frames": 1660,
+    "AUC": 79.11646586345383,
+    "PRE": 79.87951807228916,
+    "NPR": 94.57831325301204,
+    "total_inference_seconds": 45.336498,
+    "first_frame_prediction": [
+      36.0,
+      170.0,
+      223.0,
+      146.0
+    ]
+  },
+  {
+    "sequence": "motorcycle-18",
+    "frames": 2557,
+    "AUC": 32.459913961673834,
+    "PRE": 29.917872506843956,
+    "NPR": 29.292139225655067,
+    "total_inference_seconds": 70.300487,
+    "first_frame_prediction": [
+      619.0,
+      261.0,
+      502.0,
+      173.0
+    ]
+  },
+  {
+    "sequence": "mouse-1",
+    "frames": 1547,
+    "AUC": 31.652661064425768,
+    "PRE": 33.09631544925662,
+    "NPR": 21.396250808015512,
+    "total_inference_seconds": 41.38456599999999,
+    "first_frame_prediction": [
+      14.0,
+      318.0,
+      147.0,
+      83.0
+    ]
+  },
+  {
+    "sequence": "mouse-8",
+    "frames": 1275,
+    "AUC": 55.790849673202615,
+    "PRE": 51.13725490196078,
+    "NPR": 35.21568627450981,
+    "total_inference_seconds": 35.69865,
+    "first_frame_prediction": [
+      234.0,
+      143.0,
+      51.0,
+      44.0
+    ]
+  },
+  {
+    "sequence": "mouse-9",
+    "frames": 2818,
+    "AUC": 76.28341613437426,
+    "PRE": 93.08019872249822,
+    "NPR": 91.34137686302341,
+    "total_inference_seconds": 73.85477599999999,
+    "first_frame_prediction": [
+      216.0,
+      104.0,
+      32.0,
+      43.0
+    ]
+  },
+  {
+    "sequence": "mouse-17",
+    "frames": 1608,
+    "AUC": 36.818881781568344,
+    "PRE": 23.32089552238806,
+    "NPR": 26.368159203980102,
+    "total_inference_seconds": 44.878799,
+    "first_frame_prediction": [
+      140.0,
+      95.0,
+      197.0,
+      113.0
+    ]
+  },
+  {
+    "sequence": "flag-3",
+    "frames": 1904,
+    "AUC": 20.60074029611845,
+    "PRE": 3.0987394957983194,
+    "NPR": 8.088235294117647,
+    "total_inference_seconds": 55.815132000000006,
+    "first_frame_prediction": [
+      454.0,
+      71.0,
+      269.0,
+      367.0
+    ]
+  },
+  {
+    "sequence": "flag-9",
+    "frames": 4267,
+    "AUC": 81.20905732811052,
+    "PRE": 20.27185376142489,
+    "NPR": 100.0,
+    "total_inference_seconds": 122.542124,
+    "first_frame_prediction": [
+      535.0,
+      134.0,
+      444.0,
+      391.0
+    ]
+  },
+  {
+    "sequence": "flag-5",
+    "frames": 2230,
+    "AUC": 46.06448857569935,
+    "PRE": 50.224215246636774,
+    "NPR": 50.53811659192825,
+    "total_inference_seconds": 64.59232399999999,
+    "first_frame_prediction": [
+      426.0,
+      327.0,
+      177.0,
+      171.0
+    ]
+  },
+  {
+    "sequence": "flag-2",
+    "frames": 3209,
+    "AUC": 56.57303120687352,
+    "PRE": 37.86226238703646,
+    "NPR": 45.74633842318479,
+    "total_inference_seconds": 99.640761,
+    "first_frame_prediction": [
+      594.0,
+      454.0,
+      198.0,
+      117.0
+    ]
+  },
+  {
+    "sequence": "frog-3",
+    "frames": 2134,
+    "AUC": 89.55906636319008,
+    "PRE": 90.62792877225867,
+    "NPR": 97.8444236176195,
+    "total_inference_seconds": 68.56116999999999,
+    "first_frame_prediction": [
+      578.0,
+      272.0,
+      218.0,
+      119.0
+    ]
+  },
+  {
+    "sequence": "frog-4",
+    "frames": 1241,
+    "AUC": 80.24250796208895,
+    "PRE": 98.14665592264303,
+    "NPR": 98.14665592264303,
+    "total_inference_seconds": 36.994744,
+    "first_frame_prediction": [
+      218.0,
+      127.0,
+      176.0,
+      152.0
+    ]
+  },
+  {
+    "sequence": "frog-20",
+    "frames": 2257,
+    "AUC": 71.0002742789628,
+    "PRE": 69.11829862649535,
+    "NPR": 79.5303500221533,
+    "total_inference_seconds": 60.834920000000004,
+    "first_frame_prediction": [
+      242.0,
+      132.0,
+      91.0,
+      79.0
+    ]
+  },
+  {
+    "sequence": "frog-9",
+    "frames": 1211,
+    "AUC": 83.86614761511541,
+    "PRE": 98.84393063583815,
+    "NPR": 98.34847233691164,
+    "total_inference_seconds": 32.011359,
+    "first_frame_prediction": [
+      333.0,
+      157.0,
+      80.0,
+      89.0
+    ]
+  },
+  {
+    "sequence": "gametarget-1",
+    "frames": 2251,
+    "AUC": 52.14613610881936,
+    "PRE": 42.47001332741004,
+    "NPR": 54.775655264326964,
+    "total_inference_seconds": 60.522442,
+    "first_frame_prediction": [
+      444.0,
+      402.0,
+      275.0,
+      266.0
+    ]
+  },
+  {
+    "sequence": "gametarget-2",
+    "frames": 1834,
+    "AUC": 23.68749026328089,
+    "PRE": 29.825517993456923,
+    "NPR": 23.936750272628135,
+    "total_inference_seconds": 47.85987,
+    "first_frame_prediction": [
+      100.0,
+      171.0,
+      85.0,
+      49.0
+    ]
+  },
+  {
+    "sequence": "gametarget-7",
+    "frames": 1616,
+    "AUC": 16.931871758604437,
+    "PRE": 14.356435643564355,
+    "NPR": 11.757425742574256,
+    "total_inference_seconds": 43.549481,
+    "first_frame_prediction": [
+      94.0,
+      157.0,
+      177.0,
+      149.0
+    ]
+  },
+  {
+    "sequence": "gametarget-13",
+    "frames": 2930,
+    "AUC": 16.593531610596454,
+    "PRE": 27.781569965870307,
+    "NPR": 13.92491467576792,
+    "total_inference_seconds": 83.49917400000001,
+    "first_frame_prediction": [
+      62.0,
+      112.0,
+      51.0,
+      20.0
+    ]
+  },
+  {
+    "sequence": "hand-2",
+    "frames": 1641,
+    "AUC": 24.770029888859867,
+    "PRE": 4.996953077391835,
+    "NPR": 13.833028641072517,
+    "total_inference_seconds": 47.844691,
+    "first_frame_prediction": [
+      199.0,
+      100.0,
+      69.0,
+      82.0
+    ]
+  },
+  {
+    "sequence": "hand-3",
+    "frames": 3210,
+    "AUC": 17.022696929238982,
+    "PRE": 32.05607476635514,
+    "NPR": 14.392523364485982,
+    "total_inference_seconds": 90.90656200000001,
+    "first_frame_prediction": [
+      296.0,
+      179.0,
+      67.0,
+      168.0
+    ]
+  },
+  {
+    "sequence": "hand-9",
+    "frames": 1733,
+    "AUC": 3.1297227488802792,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 49.939764,
+    "first_frame_prediction": [
+      258.0,
+      125.0,
+      117.0,
+      150.0
+    ]
+  },
+  {
+    "sequence": "hand-16",
+    "frames": 4340,
+    "AUC": 5.002194426157559,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 131.461836,
+    "first_frame_prediction": [
+      757.0,
+      291.0,
+      437.0,
+      428.0
+    ]
+  },
+  {
+    "sequence": "helmet-5",
+    "frames": 1537,
+    "AUC": 19.035226322148898,
+    "PRE": 4.749512036434613,
+    "NPR": 4.879635653871177,
+    "total_inference_seconds": 43.262601,
+    "first_frame_prediction": [
+      353.0,
+      80.0,
+      75.0,
+      145.0
+    ]
+  },
+  {
+    "sequence": "helmet-11",
+    "frames": 2990,
+    "AUC": 60.57652492435102,
+    "PRE": 82.0066889632107,
+    "NPR": 78.59531772575251,
+    "total_inference_seconds": 84.43989400000001,
+    "first_frame_prediction": [
+      263.0,
+      29.0,
+      49.0,
+      53.0
+    ]
+  },
+  {
+    "sequence": "helmet-19",
+    "frames": 1408,
+    "AUC": 7.934253246753246,
+    "PRE": 1.278409090909091,
+    "NPR": 0.0,
+    "total_inference_seconds": 38.98651,
+    "first_frame_prediction": [
+      180.0,
+      50.0,
+      100.0,
+      116.0
+    ]
+  },
+  {
+    "sequence": "helmet-13",
+    "frames": 3121,
+    "AUC": 55.080026243115,
+    "PRE": 57.321371355334826,
+    "NPR": 61.74303107978212,
+    "total_inference_seconds": 91.125212,
+    "first_frame_prediction": [
+      374.0,
+      33.0,
+      403.0,
+      356.0
+    ]
+  },
+  {
+    "sequence": "licenseplate-6",
+    "frames": 1470,
+    "AUC": 4.220926465824425,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 42.66006900000001,
+    "first_frame_prediction": [
+      567.0,
+      313.0,
+      173.0,
+      138.0
+    ]
+  },
+  {
+    "sequence": "licenseplate-12",
+    "frames": 2685,
+    "AUC": 1.9987585350713841,
+    "PRE": 20.148975791433894,
+    "NPR": 5.437616387337058,
+    "total_inference_seconds": 76.296923,
+    "first_frame_prediction": [
+      417.0,
+      334.0,
+      126.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "licenseplate-13",
+    "frames": 3083,
+    "AUC": 0.9777118761873871,
+    "PRE": 1.5569250729808628,
+    "NPR": 0.09730781706130393,
+    "total_inference_seconds": 87.929404,
+    "first_frame_prediction": [
+      403.0,
+      229.0,
+      523.0,
+      276.0
+    ]
+  },
+  {
+    "sequence": "licenseplate-15",
+    "frames": 1478,
+    "AUC": 9.069527675752303,
+    "PRE": 15.020297699594046,
+    "NPR": 12.855209742895804,
+    "total_inference_seconds": 44.37452400000001,
+    "first_frame_prediction": [
+      225.0,
+      66.0,
+      712.0,
+      644.0
+    ]
+  },
+  {
+    "sequence": "electricfan-1",
+    "frames": 1646,
+    "AUC": 60.822773823988896,
+    "PRE": 17.922235722964764,
+    "NPR": 36.57351154313487,
+    "total_inference_seconds": 50.979196,
+    "first_frame_prediction": [
+      511.0,
+      60.0,
+      499.0,
+      623.0
+    ]
+  },
+  {
+    "sequence": "electricfan-10",
+    "frames": 1601,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 47.466433,
+    "first_frame_prediction": [
+      553.0,
+      8.0,
+      438.0,
+      657.0
+    ]
+  },
+  {
+    "sequence": "electricfan-18",
+    "frames": 1863,
+    "AUC": 13.020473890039108,
+    "PRE": 0.644122383252818,
+    "NPR": 6.333870101986045,
+    "total_inference_seconds": 57.655887,
+    "first_frame_prediction": [
+      90.0,
+      85.0,
+      486.0,
+      602.0
+    ]
+  },
+  {
+    "sequence": "electricfan-20",
+    "frames": 2305,
+    "AUC": 48.62927383534759,
+    "PRE": 22.29934924078091,
+    "NPR": 29.67462039045553,
+    "total_inference_seconds": 62.965312999999995,
+    "first_frame_prediction": [
+      252.0,
+      262.0,
+      147.0,
+      256.0
+    ]
+  },
+  {
+    "sequence": "chameleon-3",
+    "frames": 1080,
+    "AUC": 23.30246913580247,
+    "PRE": 1.4814814814814816,
+    "NPR": 2.685185185185185,
+    "total_inference_seconds": 30.139423999999998,
+    "first_frame_prediction": [
+      82.0,
+      121.0,
+      240.0,
+      202.0
+    ]
+  },
+  {
+    "sequence": "chameleon-6",
+    "frames": 1800,
+    "AUC": 0.021164021164021166,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 50.631665999999996,
+    "first_frame_prediction": [
+      576.0,
+      187.0,
+      152.0,
+      114.0
+    ]
+  },
+  {
+    "sequence": "chameleon-11",
+    "frames": 2921,
+    "AUC": 62.75085179569945,
+    "PRE": 22.18418349880178,
+    "NPR": 33.51591920575145,
+    "total_inference_seconds": 79.37623500000001,
+    "first_frame_prediction": [
+      250.0,
+      133.0,
+      253.0,
+      166.0
+    ]
+  },
+  {
+    "sequence": "chameleon-20",
+    "frames": 1650,
+    "AUC": 32.496392496392495,
+    "PRE": 19.757575757575758,
+    "NPR": 22.545454545454547,
+    "total_inference_seconds": 45.940983,
+    "first_frame_prediction": [
+      614.0,
+      38.0,
+      365.0,
+      360.0
+    ]
+  },
+  {
+    "sequence": "crocodile-3",
+    "frames": 4500,
+    "AUC": 85.9978835978836,
+    "PRE": 73.95555555555555,
+    "NPR": 98.46666666666667,
+    "total_inference_seconds": 128.445152,
+    "first_frame_prediction": [
+      243.0,
+      330.0,
+      166.0,
+      227.0
+    ]
+  },
+  {
+    "sequence": "crocodile-4",
+    "frames": 1277,
+    "AUC": 86.43024946862064,
+    "PRE": 73.6100234925607,
+    "NPR": 99.68676585747846,
+    "total_inference_seconds": 37.268096,
+    "first_frame_prediction": [
+      477.0,
+      260.0,
+      262.0,
+      316.0
+    ]
+  },
+  {
+    "sequence": "crocodile-10",
+    "frames": 1631,
+    "AUC": 69.27097019065137,
+    "PRE": 60.20846106683017,
+    "NPR": 81.42244022072347,
+    "total_inference_seconds": 45.093404,
+    "first_frame_prediction": [
+      726.0,
+      333.0,
+      203.0,
+      386.0
+    ]
+  },
+  {
+    "sequence": "crocodile-14",
+    "frames": 1500,
+    "AUC": 88.10158730158732,
+    "PRE": 99.2,
+    "NPR": 99.53333333333333,
+    "total_inference_seconds": 41.732234000000005,
+    "first_frame_prediction": [
+      243.0,
+      62.0,
+      352.0,
+      88.0
+    ]
+  },
+  {
+    "sequence": "gecko-1",
+    "frames": 2406,
+    "AUC": 47.458734117088234,
+    "PRE": 27.38985868661679,
+    "NPR": 3.657522859517872,
+    "total_inference_seconds": 68.284706,
+    "first_frame_prediction": [
+      215.0,
+      1.0,
+      149.0,
+      48.0
+    ]
+  },
+  {
+    "sequence": "gecko-5",
+    "frames": 1251,
+    "AUC": 39.88047657112405,
+    "PRE": 75.61950439648282,
+    "NPR": 21.90247801758593,
+    "total_inference_seconds": 34.68593,
+    "first_frame_prediction": [
+      80.0,
+      72.0,
+      37.0,
+      70.0
+    ]
+  },
+  {
+    "sequence": "gecko-16",
+    "frames": 1471,
+    "AUC": 8.135055517788354,
+    "PRE": 3.127124405166554,
+    "NPR": 7.0020394289598915,
+    "total_inference_seconds": 42.026301000000004,
+    "first_frame_prediction": [
+      845.0,
+      365.0,
+      189.0,
+      316.0
+    ]
+  },
+  {
+    "sequence": "gecko-19",
+    "frames": 2186,
+    "AUC": 82.45545244630331,
+    "PRE": 90.11893870082342,
+    "NPR": 91.72003659652333,
+    "total_inference_seconds": 63.991671,
+    "first_frame_prediction": [
+      559.0,
+      199.0,
+      400.0,
+      265.0
+    ]
+  },
+  {
+    "sequence": "fox-2",
+    "frames": 2365,
+    "AUC": 88.37410651364141,
+    "PRE": 99.66173361522199,
+    "NPR": 99.7463002114165,
+    "total_inference_seconds": 66.261722,
+    "first_frame_prediction": [
+      606.0,
+      312.0,
+      97.0,
+      105.0
+    ]
+  },
+  {
+    "sequence": "fox-3",
+    "frames": 2495,
+    "AUC": 60.90084931768298,
+    "PRE": 48.17635270541082,
+    "NPR": 57.394789579158314,
+    "total_inference_seconds": 69.225772,
+    "first_frame_prediction": [
+      80.0,
+      189.0,
+      87.0,
+      67.0
+    ]
+  },
+  {
+    "sequence": "fox-5",
+    "frames": 1728,
+    "AUC": 85.23203262786596,
+    "PRE": 85.18518518518519,
+    "NPR": 97.51157407407408,
+    "total_inference_seconds": 49.46968,
+    "first_frame_prediction": [
+      479.0,
+      210.0,
+      134.0,
+      249.0
+    ]
+  },
+  {
+    "sequence": "fox-20",
+    "frames": 4183,
+    "AUC": 55.35216238061087,
+    "PRE": 41.19053311020798,
+    "NPR": 57.92493425770978,
+    "total_inference_seconds": 119.680305,
+    "first_frame_prediction": [
+      496.0,
+      248.0,
+      140.0,
+      85.0
+    ]
+  },
+  {
+    "sequence": "giraffe-2",
+    "frames": 2103,
+    "AUC": 54.448293820619064,
+    "PRE": 53.067047075606276,
+    "NPR": 56.11031859248692,
+    "total_inference_seconds": 58.480017,
+    "first_frame_prediction": [
+      94.0,
+      94.0,
+      252.0,
+      265.0
+    ]
+  },
+  {
+    "sequence": "giraffe-10",
+    "frames": 1571,
+    "AUC": 79.08520505592433,
+    "PRE": 72.56524506683641,
+    "NPR": 90.07001909611712,
+    "total_inference_seconds": 42.580877,
+    "first_frame_prediction": [
+      420.0,
+      38.0,
+      562.0,
+      681.0
+    ]
+  },
+  {
+    "sequence": "giraffe-13",
+    "frames": 2087,
+    "AUC": 26.584069181098407,
+    "PRE": 32.00766650694777,
+    "NPR": 31.480594154288454,
+    "total_inference_seconds": 59.734453,
+    "first_frame_prediction": [
+      91.0,
+      188.0,
+      91.0,
+      72.0
+    ]
+  },
+  {
+    "sequence": "giraffe-15",
+    "frames": 1480,
+    "AUC": 41.56692406692407,
+    "PRE": 33.98648648648649,
+    "NPR": 44.189189189189186,
+    "total_inference_seconds": 47.347373000000005,
+    "first_frame_prediction": [
+      166.0,
+      9.0,
+      363.0,
+      709.0
+    ]
+  },
+  {
+    "sequence": "gorilla-4",
+    "frames": 2053,
+    "AUC": 60.51538978962262,
+    "PRE": 53.67754505601559,
+    "NPR": 71.06673161227472,
+    "total_inference_seconds": 58.472903,
+    "first_frame_prediction": [
+      7.0,
+      52.0,
+      120.0,
+      121.0
+    ]
+  },
+  {
+    "sequence": "gorilla-6",
+    "frames": 2873,
+    "AUC": 91.51210780170057,
+    "PRE": 81.44796380090497,
+    "NPR": 99.47789766794291,
+    "total_inference_seconds": 100.631741,
+    "first_frame_prediction": [
+      313.0,
+      115.0,
+      338.0,
+      604.0
+    ]
+  },
+  {
+    "sequence": "gorilla-9",
+    "frames": 1839,
+    "AUC": 18.483130065511794,
+    "PRE": 0.0543773790103317,
+    "NPR": 0.0543773790103317,
+    "total_inference_seconds": 51.669761,
+    "first_frame_prediction": [
+      144.0,
+      65.0,
+      136.0,
+      199.0
+    ]
+  },
+  {
+    "sequence": "gorilla-13",
+    "frames": 1605,
+    "AUC": 61.57246699302774,
+    "PRE": 64.92211838006232,
+    "NPR": 68.90965732087227,
+    "total_inference_seconds": 44.757248000000004,
+    "first_frame_prediction": [
+      202.0,
+      86.0,
+      86.0,
+      96.0
+    ]
+  },
+  {
+    "sequence": "hippo-1",
+    "frames": 2340,
+    "AUC": 87.30565730565729,
+    "PRE": 91.19658119658119,
+    "NPR": 100.0,
+    "total_inference_seconds": 68.839924,
+    "first_frame_prediction": [
+      178.0,
+      377.0,
+      1030.0,
+      137.0
+    ]
+  },
+  {
+    "sequence": "hippo-7",
+    "frames": 2472,
+    "AUC": 89.67676067190631,
+    "PRE": 98.05825242718447,
+    "NPR": 98.01779935275081,
+    "total_inference_seconds": 69.63358600000001,
+    "first_frame_prediction": [
+      359.0,
+      107.0,
+      74.0,
+      96.0
+    ]
+  },
+  {
+    "sequence": "hippo-9",
+    "frames": 1898,
+    "AUC": 83.49641226353555,
+    "PRE": 96.10115911485775,
+    "NPR": 95.73234984193888,
+    "total_inference_seconds": 53.134883,
+    "first_frame_prediction": [
+      687.0,
+      280.0,
+      241.0,
+      98.0
+    ]
+  },
+  {
+    "sequence": "hippo-20",
+    "frames": 1659,
+    "AUC": 89.66101208415856,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "total_inference_seconds": 42.784724,
+    "first_frame_prediction": [
+      219.0,
+      89.0,
+      120.0,
+      96.0
+    ]
+  },
+  {
+    "sequence": "horse-1",
+    "frames": 1313,
+    "AUC": 80.20890001088021,
+    "PRE": 77.53236862147753,
+    "NPR": 88.72810357958872,
+    "total_inference_seconds": 39.188643,
+    "first_frame_prediction": [
+      267.0,
+      56.0,
+      533.0,
+      644.0
+    ]
+  },
+  {
+    "sequence": "horse-4",
+    "frames": 1451,
+    "AUC": 80.41744609628827,
+    "PRE": 56.168159889731214,
+    "NPR": 90.144727773949,
+    "total_inference_seconds": 43.361447999999996,
+    "first_frame_prediction": [
+      374.0,
+      0.0,
+      203.0,
+      419.0
+    ]
+  },
+  {
+    "sequence": "horse-12",
+    "frames": 2194,
+    "AUC": 85.28454225810653,
+    "PRE": 85.46034639927073,
+    "NPR": 97.8577939835916,
+    "total_inference_seconds": 62.309211000000005,
+    "first_frame_prediction": [
+      258.0,
+      275.0,
+      198.0,
+      150.0
+    ]
+  },
+  {
+    "sequence": "horse-15",
+    "frames": 2377,
+    "AUC": 77.84522307029668,
+    "PRE": 58.4350021034918,
+    "NPR": 87.58939840134623,
+    "total_inference_seconds": 72.143324,
+    "first_frame_prediction": [
+      699.0,
+      201.0,
+      106.0,
+      158.0
+    ]
+  },
+  {
+    "sequence": "kangaroo-2",
+    "frames": 2348,
+    "AUC": 68.72515616127201,
+    "PRE": 77.17206132879046,
+    "NPR": 73.12606473594549,
+    "total_inference_seconds": 62.487781,
+    "first_frame_prediction": [
+      112.0,
+      5.0,
+      97.0,
+      218.0
+    ]
+  },
+  {
+    "sequence": "kangaroo-5",
+    "frames": 3119,
+    "AUC": 49.03738988381502,
+    "PRE": 56.268034626482844,
+    "NPR": 38.858608528374475,
+    "total_inference_seconds": 91.996388,
+    "first_frame_prediction": [
+      132.0,
+      115.0,
+      152.0,
+      66.0
+    ]
+  },
+  {
+    "sequence": "kangaroo-11",
+    "frames": 2553,
+    "AUC": 68.33790312051181,
+    "PRE": 87.85742264003133,
+    "NPR": 80.21934978456717,
+    "total_inference_seconds": 70.312354,
+    "first_frame_prediction": [
+      84.0,
+      134.0,
+      98.0,
+      225.0
+    ]
+  },
+  {
+    "sequence": "kangaroo-14",
+    "frames": 1363,
+    "AUC": 84.55787303916429,
+    "PRE": 89.43506969919297,
+    "NPR": 96.11151870873074,
+    "total_inference_seconds": 37.411505,
+    "first_frame_prediction": [
+      733.0,
+      130.0,
+      119.0,
+      147.0
+    ]
+  },
+  {
+    "sequence": "leopard-1",
+    "frames": 1119,
+    "AUC": 84.19932763096301,
+    "PRE": 60.14298480786417,
+    "NPR": 97.14030384271672,
+    "total_inference_seconds": 30.905264,
+    "first_frame_prediction": [
+      80.0,
+      371.0,
+      138.0,
+      116.0
+    ]
+  },
+  {
+    "sequence": "leopard-7",
+    "frames": 1432,
+    "AUC": 0.3890662410215483,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 35.734874000000005,
+    "first_frame_prediction": [
+      273.0,
+      168.0,
+      553.0,
+      386.0
+    ]
+  },
+  {
+    "sequence": "leopard-16",
+    "frames": 2233,
+    "AUC": 79.0053952615529,
+    "PRE": 60.94939543215405,
+    "NPR": 95.79041648007166,
+    "total_inference_seconds": 62.769739,
+    "first_frame_prediction": [
+      448.0,
+      180.0,
+      387.0,
+      217.0
+    ]
+  },
+  {
+    "sequence": "leopard-20",
+    "frames": 2764,
+    "AUC": 69.31293501481635,
+    "PRE": 38.169319826338636,
+    "NPR": 67.36613603473228,
+    "total_inference_seconds": 77.770123,
+    "first_frame_prediction": [
+      117.0,
+      70.0,
+      425.0,
+      363.0
+    ]
+  },
+  {
+    "sequence": "lion-1",
+    "frames": 1476,
+    "AUC": 82.88166214995482,
+    "PRE": 100.0,
+    "NPR": 99.93224932249322,
+    "total_inference_seconds": 38.018823,
+    "first_frame_prediction": [
+      584.0,
+      297.0,
+      70.0,
+      83.0
+    ]
+  },
+  {
+    "sequence": "lion-5",
+    "frames": 2451,
+    "AUC": 61.972761360766256,
+    "PRE": 70.093839249286,
+    "NPR": 66.09547123623011,
+    "total_inference_seconds": 62.718283,
+    "first_frame_prediction": [
+      149.0,
+      217.0,
+      58.0,
+      68.0
+    ]
+  },
+  {
+    "sequence": "lion-12",
+    "frames": 3479,
+    "AUC": 30.248155600268277,
+    "PRE": 6.812302385743029,
+    "NPR": 31.790744466800803,
+    "total_inference_seconds": 89.187242,
+    "first_frame_prediction": [
+      305.0,
+      247.0,
+      347.0,
+      229.0
+    ]
+  },
+  {
+    "sequence": "lion-20",
+    "frames": 1576,
+    "AUC": 66.41285956006769,
+    "PRE": 11.104060913705585,
+    "NPR": 68.59137055837563,
+    "total_inference_seconds": 47.466222,
+    "first_frame_prediction": [
+      17.0,
+      271.0,
+      751.0,
+      386.0
+    ]
+  },
+  {
+    "sequence": "lizard-1",
+    "frames": 2674,
+    "AUC": 50.05342451116572,
+    "PRE": 0.0,
+    "NPR": 5.160807778608826,
+    "total_inference_seconds": 81.813255,
+    "first_frame_prediction": [
+      357.0,
+      188.0,
+      910.0,
+      420.0
+    ]
+  },
+  {
+    "sequence": "lizard-3",
+    "frames": 4456,
+    "AUC": 44.34256647003505,
+    "PRE": 5.520646319569121,
+    "NPR": 17.66157989228007,
+    "total_inference_seconds": 115.62844799999999,
+    "first_frame_prediction": [
+      317.0,
+      135.0,
+      540.0,
+      554.0
+    ]
+  },
+  {
+    "sequence": "lizard-6",
+    "frames": 2027,
+    "AUC": 87.06039890055676,
+    "PRE": 74.44499259990133,
+    "NPR": 98.32264430192403,
+    "total_inference_seconds": 52.59884,
+    "first_frame_prediction": [
+      277.0,
+      180.0,
+      625.0,
+      536.0
+    ]
+  },
+  {
+    "sequence": "lizard-13",
+    "frames": 2803,
+    "AUC": 68.64923636240083,
+    "PRE": 41.81234391723154,
+    "NPR": 68.78344630752765,
+    "total_inference_seconds": 70.088035,
+    "first_frame_prediction": [
+      73.0,
+      255.0,
+      1171.0,
+      441.0
+    ]
+  },
+  {
+    "sequence": "microphone-2",
+    "frames": 4017,
+    "AUC": 10.482828929430871,
+    "PRE": 14.01543440378392,
+    "NPR": 0.09957679860592482,
+    "total_inference_seconds": 111.026653,
+    "first_frame_prediction": [
+      520.0,
+      129.0,
+      65.0,
+      196.0
+    ]
+  },
+  {
+    "sequence": "microphone-6",
+    "frames": 1767,
+    "AUC": 16.069744253105885,
+    "PRE": 10.35653650254669,
+    "NPR": 1.1884550084889642,
+    "total_inference_seconds": 44.248395,
+    "first_frame_prediction": [
+      153.0,
+      78.0,
+      225.0,
+      159.0
+    ]
+  },
+  {
+    "sequence": "microphone-14",
+    "frames": 2242,
+    "AUC": 10.587910454101355,
+    "PRE": 86.57448706512044,
+    "NPR": 0.0,
+    "total_inference_seconds": 54.059431,
+    "first_frame_prediction": [
+      578.0,
+      219.0,
+      106.0,
+      393.0
+    ]
+  },
+  {
+    "sequence": "microphone-16",
+    "frames": 2178,
+    "AUC": 10.682583409856138,
+    "PRE": 0.3213957759412305,
+    "NPR": 0.3673094582185491,
+    "total_inference_seconds": 53.47134,
+    "first_frame_prediction": [
+      639.0,
+      347.0,
+      88.0,
+      260.0
+    ]
+  },
+  {
+    "sequence": "monkey-3",
+    "frames": 1261,
+    "AUC": 23.107133416411767,
+    "PRE": 19.508326724821572,
+    "NPR": 19.42902458366376,
+    "total_inference_seconds": 28.862119999999997,
+    "first_frame_prediction": [
+      425.0,
+      150.0,
+      100.0,
+      107.0
+    ]
+  },
+  {
+    "sequence": "monkey-4",
+    "frames": 1435,
+    "AUC": 36.80769868923179,
+    "PRE": 35.81881533101045,
+    "NPR": 34.84320557491289,
+    "total_inference_seconds": 40.39686999999999,
+    "first_frame_prediction": [
+      170.0,
+      138.0,
+      91.0,
+      157.0
+    ]
+  },
+  {
+    "sequence": "monkey-9",
+    "frames": 4079,
+    "AUC": 20.88630500005837,
+    "PRE": 18.99975484187301,
+    "NPR": 19.8332924736455,
+    "total_inference_seconds": 106.36633800000001,
+    "first_frame_prediction": [
+      226.0,
+      214.0,
+      38.0,
+      41.0
+    ]
+  },
+  {
+    "sequence": "monkey-17",
+    "frames": 2260,
+    "AUC": 80.30973451327435,
+    "PRE": 65.79646017699115,
+    "NPR": 92.69911504424779,
+    "total_inference_seconds": 55.885152,
+    "first_frame_prediction": [
+      489.0,
+      293.0,
+      513.0,
+      347.0
+    ]
+  },
+  {
+    "sequence": "shark-2",
+    "frames": 3455,
+    "AUC": 21.37412997036731,
+    "PRE": 9.290882778581766,
+    "NPR": 16.67149059334298,
+    "total_inference_seconds": 83.059689,
+    "first_frame_prediction": [
+      755.0,
+      243.0,
+      281.0,
+      104.0
+    ]
+  },
+  {
+    "sequence": "shark-3",
+    "frames": 1000,
+    "AUC": 39.590476190476195,
+    "PRE": 14.6,
+    "NPR": 24.6,
+    "total_inference_seconds": 21.658789000000002,
+    "first_frame_prediction": [
+      500.0,
+      87.0,
+      178.0,
+      124.0
+    ]
+  },
+  {
+    "sequence": "shark-5",
+    "frames": 1510,
+    "AUC": 57.224850204982644,
+    "PRE": 30.927152317880797,
+    "NPR": 53.576158940397356,
+    "total_inference_seconds": 43.545054,
+    "first_frame_prediction": [
+      124.0,
+      414.0,
+      257.0,
+      69.0
+    ]
+  },
+  {
+    "sequence": "shark-6",
+    "frames": 1238,
+    "AUC": 53.01561658589121,
+    "PRE": 16.15508885298869,
+    "NPR": 42.24555735056543,
+    "total_inference_seconds": 33.430561999999995,
+    "first_frame_prediction": [
+      562.0,
+      344.0,
+      236.0,
+      130.0
+    ]
+  },
+  {
+    "sequence": "squirrel-8",
+    "frames": 1041,
+    "AUC": 45.61547962124331,
+    "PRE": 14.505283381364073,
+    "NPR": 29.106628242074926,
+    "total_inference_seconds": 28.180652000000002,
+    "first_frame_prediction": [
+      444.0,
+      331.0,
+      422.0,
+      268.0
+    ]
+  },
+  {
+    "sequence": "squirrel-11",
+    "frames": 1449,
+    "AUC": 41.88767294357357,
+    "PRE": 19.875776397515526,
+    "NPR": 39.958592132505174,
+    "total_inference_seconds": 36.304002999999994,
+    "first_frame_prediction": [
+      610.0,
+      259.0,
+      428.0,
+      365.0
+    ]
+  },
+  {
+    "sequence": "squirrel-13",
+    "frames": 2000,
+    "AUC": 44.39761904761904,
+    "PRE": 30.5,
+    "NPR": 27.950000000000003,
+    "total_inference_seconds": 47.376829,
+    "first_frame_prediction": [
+      604.0,
+      308.0,
+      201.0,
+      153.0
+    ]
+  },
+  {
+    "sequence": "squirrel-19",
+    "frames": 1205,
+    "AUC": 71.70519660146216,
+    "PRE": 74.52282157676349,
+    "NPR": 79.50207468879668,
+    "total_inference_seconds": 34.791066,
+    "first_frame_prediction": [
+      201.0,
+      209.0,
+      76.0,
+      114.0
+    ]
+  },
+  {
+    "sequence": "volleyball-1",
+    "frames": 1309,
+    "AUC": 60.50783949943613,
+    "PRE": 85.86707410236822,
+    "NPR": 78.76241405653171,
+    "total_inference_seconds": 35.970772,
+    "first_frame_prediction": [
+      2.0,
+      82.0,
+      236.0,
+      156.0
+    ]
+  },
+  {
+    "sequence": "volleyball-13",
+    "frames": 2042,
+    "AUC": 30.632899584907424,
+    "PRE": 41.674828599412336,
+    "NPR": 39.81390793339863,
+    "total_inference_seconds": 52.915185,
+    "first_frame_prediction": [
+      374.0,
+      173.0,
+      764.0,
+      448.0
+    ]
+  },
+  {
+    "sequence": "volleyball-18",
+    "frames": 2606,
+    "AUC": 7.148338997916895,
+    "PRE": 8.94090560245587,
+    "NPR": 8.17344589409056,
+    "total_inference_seconds": 69.62817,
+    "first_frame_prediction": [
+      303.0,
+      338.0,
+      279.0,
+      305.0
+    ]
+  },
+  {
+    "sequence": "volleyball-19",
+    "frames": 1467,
+    "AUC": 0.21099100853702082,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "total_inference_seconds": 33.757093999999995,
+    "first_frame_prediction": [
+      672.0,
+      384.0,
+      607.0,
+      207.0
+    ]
+  }
+]

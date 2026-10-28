@@ -1,0 +1,18 @@
+{
+  "status": "cancelled",
+  "dataset": "tnl2k",
+  "weights": "/root/MVLM/models/MVLM_TF.pth.tar",
+  "config": "vasttrack_e60_strict_tnl2k_20261028",
+  "protocol": "language-only: first frame predicted from full image; no GT initialization",
+  "note": "Historical parameters were tuned on these test sets; exploratory results.",
+  "started_at": 1793156424.9595733,
+  "sequences": 699,
+  "excluded": [
+    {
+      "sequence": "Fight_video_6-Done",
+      "reason": "empty language query"
+    }
+  ],
+  "reason": "User requested prioritizing trained-model checkpoints",
+  "cancelled_at": 1793156987.986808
+}

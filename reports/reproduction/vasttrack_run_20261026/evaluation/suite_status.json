@@ -1,0 +1,77 @@
+{
+  "status": "cancelled",
+  "started_at": 1793154081.1280394,
+  "pid": 523237,
+  "completed": [
+    {
+      "dataset": "otb99_lang",
+      "model": "trained_epoch60",
+      "metrics": {
+        "AUC": 52.69714052166254,
+        "PRE": 71.00091296606855,
+        "NPR": 63.310071200545906
+      },
+      "sequences": 48,
+      "frames": 29077,
+      "excluded": [],
+      "result": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/otb99_lang_trained_epoch60"
+    },
+    {
+      "dataset": "otb99_lang",
+      "model": "official_baseline",
+      "metrics": {
+        "AUC": 60.52489761079525,
+        "PRE": 84.20232915306826,
+        "NPR": 75.01933284751415
+      },
+      "sequences": 48,
+      "frames": 29077,
+      "excluded": [],
+      "result": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/otb99_lang_official_baseline"
+    },
+    {
+      "dataset": "tnl2k",
+      "model": "trained_epoch60",
+      "metrics": {
+        "AUC": 37.14137735927277,
+        "PRE": 32.529225891269895,
+        "NPR": 49.37682329576661
+      },
+      "sequences": 699,
+      "frames": 515708,
+      "excluded": [
+        {
+          "sequence": "Fight_video_6-Done",
+          "reason": "empty language query"
+        }
+      ],
+      "result": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/tnl2k_trained_epoch60"
+    }
+  ],
+  "current_dataset": "tnl2k",
+  "current_model": "official_baseline",
+  "current_output": "/root/MVLM/output/vasttrack_language_eval_20261028_run01/tnl2k_official_baseline",
+  "current_command": [
+    "/root/miniconda3/envs/mvlm/bin/python",
+    "-u",
+    "-m",
+    "tracking.strict_language_eval",
+    "--dataset",
+    "tnl2k",
+    "--config",
+    "vasttrack_e60_strict_tnl2k_20261028",
+    "--exp-id",
+    "vasttrack_e60_strict_tnl2k_20261028_official_baseline",
+    "--weights",
+    "/root/MVLM/models/MVLM_TF.pth.tar",
+    "--out",
+    "/root/MVLM/output/vasttrack_language_eval_20261028_run01/tnl2k_official_baseline",
+    "--threads",
+    "16",
+    "--gpus",
+    "8"
+  ],
+  "reason": "User requested stopping repeated official-weight evaluations and prioritizing checkpoint validation",
+  "cancelled_at": 1793156987.9873116,
+  "deferred": "trained epoch 60 LaSOT after checkpoint validation"
+}

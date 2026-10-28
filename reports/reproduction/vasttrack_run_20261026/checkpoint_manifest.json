@@ -1,0 +1,369 @@
+{
+  "snapshot_at": "2026-10-28T20:44:38+08:00",
+  "count": 60,
+  "total_size_bytes": 64444671148,
+  "sha256_policy": "Reverified epoch 60 during archival; other checkpoint hashes not computed.",
+  "checkpoints": [
+    {
+      "epoch": 1,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0001.pth.tar",
+      "size_bytes": 1074076277,
+      "modified_at": "2026-10-26T23:58:43.662347+08:00"
+    },
+    {
+      "epoch": 2,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0002.pth.tar",
+      "size_bytes": 1074076341,
+      "modified_at": "2026-10-27T00:25:21.003727+08:00"
+    },
+    {
+      "epoch": 3,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0003.pth.tar",
+      "size_bytes": 1074076341,
+      "modified_at": "2026-10-27T00:51:45.861307+08:00"
+    },
+    {
+      "epoch": 4,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0004.pth.tar",
+      "size_bytes": 1074076405,
+      "modified_at": "2026-10-27T01:18:31.942901+08:00"
+    },
+    {
+      "epoch": 5,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0005.pth.tar",
+      "size_bytes": 1074076469,
+      "modified_at": "2026-10-27T01:44:43.984390+08:00"
+    },
+    {
+      "epoch": 6,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0006.pth.tar",
+      "size_bytes": 1074076533,
+      "modified_at": "2026-10-27T02:10:40.722054+08:00"
+    },
+    {
+      "epoch": 7,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0007.pth.tar",
+      "size_bytes": 1074076597,
+      "modified_at": "2026-10-27T02:36:35.687859+08:00"
+    },
+    {
+      "epoch": 8,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0008.pth.tar",
+      "size_bytes": 1074076661,
+      "modified_at": "2026-10-27T03:02:46.109465+08:00"
+    },
+    {
+      "epoch": 9,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0009.pth.tar",
+      "size_bytes": 1074076661,
+      "modified_at": "2026-10-27T03:28:43.927265+08:00"
+    },
+    {
+      "epoch": 10,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0010.pth.tar",
+      "size_bytes": 1074076725,
+      "modified_at": "2026-10-27T03:54:37.533056+08:00"
+    },
+    {
+      "epoch": 11,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0011.pth.tar",
+      "size_bytes": 1074076789,
+      "modified_at": "2026-10-27T04:20:25.350795+08:00"
+    },
+    {
+      "epoch": 12,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0012.pth.tar",
+      "size_bytes": 1074076853,
+      "modified_at": "2026-10-27T04:46:14.144642+08:00"
+    },
+    {
+      "epoch": 13,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0013.pth.tar",
+      "size_bytes": 1074076917,
+      "modified_at": "2026-10-27T05:12:10.730460+08:00"
+    },
+    {
+      "epoch": 14,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0014.pth.tar",
+      "size_bytes": 1074076981,
+      "modified_at": "2026-10-27T05:38:04.524354+08:00"
+    },
+    {
+      "epoch": 15,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0015.pth.tar",
+      "size_bytes": 1074077045,
+      "modified_at": "2026-10-27T06:03:55.926040+08:00"
+    },
+    {
+      "epoch": 16,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0016.pth.tar",
+      "size_bytes": 1074077045,
+      "modified_at": "2026-10-27T06:29:48.751858+08:00"
+    },
+    {
+      "epoch": 17,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0017.pth.tar",
+      "size_bytes": 1074077109,
+      "modified_at": "2026-10-27T06:55:38.065724+08:00"
+    },
+    {
+      "epoch": 18,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0018.pth.tar",
+      "size_bytes": 1074077173,
+      "modified_at": "2026-10-27T07:21:21.627712+08:00"
+    },
+    {
+      "epoch": 19,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0019.pth.tar",
+      "size_bytes": 1074077237,
+      "modified_at": "2026-10-27T07:47:12.301618+08:00"
+    },
+    {
+      "epoch": 20,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0020.pth.tar",
+      "size_bytes": 1074077301,
+      "modified_at": "2026-10-27T08:12:55.255652+08:00"
+    },
+    {
+      "epoch": 21,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0021.pth.tar",
+      "size_bytes": 1074077365,
+      "modified_at": "2026-10-27T08:38:48.713687+08:00"
+    },
+    {
+      "epoch": 22,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0022.pth.tar",
+      "size_bytes": 1074077365,
+      "modified_at": "2026-10-27T09:04:37.751560+08:00"
+    },
+    {
+      "epoch": 23,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0023.pth.tar",
+      "size_bytes": 1074077429,
+      "modified_at": "2026-10-27T09:30:20.645329+08:00"
+    },
+    {
+      "epoch": 24,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0024.pth.tar",
+      "size_bytes": 1074077493,
+      "modified_at": "2026-10-27T09:56:05.231237+08:00"
+    },
+    {
+      "epoch": 25,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0025.pth.tar",
+      "size_bytes": 1074077557,
+      "modified_at": "2026-10-27T10:21:53.613159+08:00"
+    },
+    {
+      "epoch": 26,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0026.pth.tar",
+      "size_bytes": 1074077621,
+      "modified_at": "2026-10-27T10:47:52.059387+08:00"
+    },
+    {
+      "epoch": 27,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0027.pth.tar",
+      "size_bytes": 1074077685,
+      "modified_at": "2026-10-27T11:13:44.465016+08:00"
+    },
+    {
+      "epoch": 28,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0028.pth.tar",
+      "size_bytes": 1074077685,
+      "modified_at": "2026-10-27T11:39:32.382970+08:00"
+    },
+    {
+      "epoch": 29,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0029.pth.tar",
+      "size_bytes": 1074077749,
+      "modified_at": "2026-10-27T12:05:20.952776+08:00"
+    },
+    {
+      "epoch": 30,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0030.pth.tar",
+      "size_bytes": 1074077813,
+      "modified_at": "2026-10-27T12:31:07.902668+08:00"
+    },
+    {
+      "epoch": 31,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0031.pth.tar",
+      "size_bytes": 1074077877,
+      "modified_at": "2026-10-27T12:57:01.268328+08:00"
+    },
+    {
+      "epoch": 32,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0032.pth.tar",
+      "size_bytes": 1074077941,
+      "modified_at": "2026-10-27T13:22:53.254266+08:00"
+    },
+    {
+      "epoch": 33,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0033.pth.tar",
+      "size_bytes": 1074078005,
+      "modified_at": "2026-10-27T13:48:47.111902+08:00"
+    },
+    {
+      "epoch": 34,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0034.pth.tar",
+      "size_bytes": 1074078069,
+      "modified_at": "2026-10-27T14:14:43.885776+08:00"
+    },
+    {
+      "epoch": 35,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0035.pth.tar",
+      "size_bytes": 1074078069,
+      "modified_at": "2026-10-27T14:40:36.487427+08:00"
+    },
+    {
+      "epoch": 36,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0036.pth.tar",
+      "size_bytes": 1074078133,
+      "modified_at": "2026-10-27T15:06:36.809047+08:00"
+    },
+    {
+      "epoch": 37,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0037.pth.tar",
+      "size_bytes": 1074078197,
+      "modified_at": "2026-10-27T15:32:24.226658+08:00"
+    },
+    {
+      "epoch": 38,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0038.pth.tar",
+      "size_bytes": 1074078261,
+      "modified_at": "2026-10-27T15:58:13.864437+08:00"
+    },
+    {
+      "epoch": 39,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0039.pth.tar",
+      "size_bytes": 1074078325,
+      "modified_at": "2026-10-27T16:24:00.406144+08:00"
+    },
+    {
+      "epoch": 40,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0040.pth.tar",
+      "size_bytes": 1074078389,
+      "modified_at": "2026-10-27T16:49:50.515780+08:00"
+    },
+    {
+      "epoch": 41,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0041.pth.tar",
+      "size_bytes": 1074078389,
+      "modified_at": "2026-10-27T17:15:41.753642+08:00"
+    },
+    {
+      "epoch": 42,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0042.pth.tar",
+      "size_bytes": 1074078453,
+      "modified_at": "2026-10-27T17:41:32.027249+08:00"
+    },
+    {
+      "epoch": 43,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0043.pth.tar",
+      "size_bytes": 1074078517,
+      "modified_at": "2026-10-27T18:07:19.557127+08:00"
+    },
+    {
+      "epoch": 44,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0044.pth.tar",
+      "size_bytes": 1074078581,
+      "modified_at": "2026-10-27T18:33:11.130603+08:00"
+    },
+    {
+      "epoch": 45,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0045.pth.tar",
+      "size_bytes": 1074078645,
+      "modified_at": "2026-10-27T18:59:00.068417+08:00"
+    },
+    {
+      "epoch": 46,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0046.pth.tar",
+      "size_bytes": 1074078709,
+      "modified_at": "2026-10-27T19:24:51.350009+08:00"
+    },
+    {
+      "epoch": 47,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0047.pth.tar",
+      "size_bytes": 1074078773,
+      "modified_at": "2026-10-27T19:50:54.683513+08:00"
+    },
+    {
+      "epoch": 48,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0048.pth.tar",
+      "size_bytes": 1074078773,
+      "modified_at": "2026-10-27T20:18:18.568636+08:00"
+    },
+    {
+      "epoch": 49,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0049.pth.tar",
+      "size_bytes": 1074078837,
+      "modified_at": "2026-10-27T20:44:25.161678+08:00"
+    },
+    {
+      "epoch": 50,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0050.pth.tar",
+      "size_bytes": 1074078901,
+      "modified_at": "2026-10-27T21:10:24.875143+08:00"
+    },
+    {
+      "epoch": 51,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0051.pth.tar",
+      "size_bytes": 1074078965,
+      "modified_at": "2026-10-27T21:36:34.320290+08:00"
+    },
+    {
+      "epoch": 52,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0052.pth.tar",
+      "size_bytes": 1074079029,
+      "modified_at": "2026-10-27T22:02:42.445435+08:00"
+    },
+    {
+      "epoch": 53,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0053.pth.tar",
+      "size_bytes": 1074079093,
+      "modified_at": "2026-10-27T22:28:50.946584+08:00"
+    },
+    {
+      "epoch": 54,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0054.pth.tar",
+      "size_bytes": 1074079093,
+      "modified_at": "2026-10-27T22:55:13.531790+08:00"
+    },
+    {
+      "epoch": 55,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0055.pth.tar",
+      "size_bytes": 1074079157,
+      "modified_at": "2026-10-27T23:22:02.729373+08:00"
+    },
+    {
+      "epoch": 56,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0056.pth.tar",
+      "size_bytes": 1074079221,
+      "modified_at": "2026-10-27T23:49:16.394270+08:00"
+    },
+    {
+      "epoch": 57,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0057.pth.tar",
+      "size_bytes": 1074079285,
+      "modified_at": "2026-10-28T00:16:32.019181+08:00"
+    },
+    {
+      "epoch": 58,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0058.pth.tar",
+      "size_bytes": 1074079349,
+      "modified_at": "2026-10-28T00:42:58.980290+08:00"
+    },
+    {
+      "epoch": 59,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0059.pth.tar",
+      "size_bytes": 1074079413,
+      "modified_at": "2026-10-28T01:09:10.549462+08:00"
+    },
+    {
+      "epoch": 60,
+      "file": "output/vasttrack_baseline_20261026_run01/checkpoints/train/mvlm/mvlm_TF_vasttrack/MVLM_ep0060.pth.tar",
+      "size_bytes": 1074079477,
+      "modified_at": "2026-10-28T01:35:20.958627+08:00",
+      "sha256": "f0f7a7435fca39e82b645709b3f3fbe7ba5ea6eb99f1b17ab5dd9def6be0c56a"
+    }
+  ]
+}

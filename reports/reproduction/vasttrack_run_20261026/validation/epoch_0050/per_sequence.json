@@ -1,0 +1,7002 @@
+[
+  {
+    "sequence": "Accessory Box-5",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 80.15873015873015,
+    "PRE": 66.66666666666666,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      11.0,
+      87.0,
+      455.0,
+      691.0
+    ]
+  },
+  {
+    "sequence": "Actor-1",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 92.72486772486772,
+    "PRE": 97.22222222222221,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      390.0,
+      65.0,
+      473.0,
+      654.0
+    ]
+  },
+  {
+    "sequence": "Adhesive Tape-34",
+    "frames": 57,
+    "valid_frames": 57,
+    "AUC": 76.10693400167085,
+    "PRE": 57.89473684210527,
+    "NPR": 84.21052631578947,
+    "first_frame_prediction": [
+      643.0,
+      62.0,
+      268.0,
+      528.0
+    ]
+  },
+  {
+    "sequence": "Aerial Drones In Flight-29",
+    "frames": 433,
+    "valid_frames": 415,
+    "AUC": 59.59839357429719,
+    "PRE": 71.80722891566265,
+    "NPR": 67.71084337349397,
+    "first_frame_prediction": [
+      496.0,
+      108.0,
+      66.0,
+      123.0
+    ]
+  },
+  {
+    "sequence": "Aerial Silk Performers-14",
+    "frames": 156,
+    "valid_frames": 156,
+    "AUC": 85.6837606837607,
+    "PRE": 85.25641025641025,
+    "NPR": 99.35897435897436,
+    "first_frame_prediction": [
+      291.0,
+      187.0,
+      447.0,
+      424.0
+    ]
+  },
+  {
+    "sequence": "Air Ambulance-24",
+    "frames": 6,
+    "valid_frames": 6,
+    "AUC": 90.47619047619048,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      501.0,
+      180.0,
+      361.0,
+      165.0
+    ]
+  },
+  {
+    "sequence": "Air Swimmers-39",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 88.88888888888887,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      608.0,
+      269.0,
+      195.0,
+      140.0
+    ]
+  },
+  {
+    "sequence": "Aircraft Carrier-3",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 87.69841269841271,
+    "PRE": 95.83333333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      386.0,
+      31.0,
+      397.0,
+      521.0
+    ]
+  },
+  {
+    "sequence": "Airplane Model-4",
+    "frames": 15,
+    "valid_frames": 15,
+    "AUC": 93.96825396825396,
+    "PRE": 80.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      7.0,
+      0.0,
+      1264.0,
+      683.0
+    ]
+  },
+  {
+    "sequence": "Airplane Model-61",
+    "frames": 22,
+    "valid_frames": 22,
+    "AUC": 71.21212121212122,
+    "PRE": 4.545454545454546,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      8.0,
+      35.0,
+      1251.0,
+      573.0
+    ]
+  },
+  {
+    "sequence": "Airplane Model-92",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 86.66666666666666,
+    "PRE": 56.00000000000001,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      266.0,
+      188.0,
+      543.0,
+      396.0
+    ]
+  },
+  {
+    "sequence": "Akms-1",
+    "frames": 84,
+    "valid_frames": 84,
+    "AUC": 88.37868480725623,
+    "PRE": 69.04761904761905,
+    "NPR": 98.80952380952381,
+    "first_frame_prediction": [
+      226.0,
+      105.0,
+      944.0,
+      522.0
+    ]
+  },
+  {
+    "sequence": "Ambulance-2",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 94.10430839002268,
+    "PRE": 97.61904761904762,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      361.0,
+      85.0,
+      348.0,
+      420.0
+    ]
+  },
+  {
+    "sequence": "Ambulance-28",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 88.09523809523809,
+    "PRE": 91.66666666666666,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      517.0,
+      376.0,
+      107.0,
+      64.0
+    ]
+  },
+  {
+    "sequence": "Andinoacara Latifrons-3",
+    "frames": 477,
+    "valid_frames": 477,
+    "AUC": 60.547069981032244,
+    "PRE": 65.61844863731656,
+    "NPR": 64.57023060796647,
+    "first_frame_prediction": [
+      24.0,
+      232.0,
+      151.0,
+      103.0
+    ]
+  },
+  {
+    "sequence": "Anhinga-93",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 86.68430335097003,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      85.0,
+      65.0,
+      170.0,
+      349.0
+    ]
+  },
+  {
+    "sequence": "Arctic Wolf-17",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 90.34391534391534,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      488.0,
+      239.0,
+      166.0,
+      92.0
+    ]
+  },
+  {
+    "sequence": "Arena Of Valor-5",
+    "frames": 19,
+    "valid_frames": 19,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      585.0,
+      319.0,
+      125.0,
+      91.0
+    ]
+  },
+  {
+    "sequence": "As50-1",
+    "frames": 53,
+    "valid_frames": 53,
+    "AUC": 57.322551662174305,
+    "PRE": 11.320754716981133,
+    "NPR": 96.22641509433963,
+    "first_frame_prediction": [
+      341.0,
+      406.0,
+      481.0,
+      92.0
+    ]
+  },
+  {
+    "sequence": "Australian Dollar-3",
+    "frames": 112,
+    "valid_frames": 112,
+    "AUC": 14.498299319727895,
+    "PRE": 13.392857142857142,
+    "NPR": 14.285714285714285,
+    "first_frame_prediction": [
+      200.0,
+      52.0,
+      213.0,
+      427.0
+    ]
+  },
+  {
+    "sequence": "Azarass Capuchin-2",
+    "frames": 180,
+    "valid_frames": 180,
+    "AUC": 62.53968253968254,
+    "PRE": 25.0,
+    "NPR": 43.888888888888886,
+    "first_frame_prediction": [
+      395.0,
+      231.0,
+      381.0,
+      286.0
+    ]
+  },
+  {
+    "sequence": "Backhoe Loader-21",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 72.22222222222221,
+    "PRE": 50.0,
+    "NPR": 66.66666666666666,
+    "first_frame_prediction": [
+      557.0,
+      209.0,
+      311.0,
+      94.0
+    ]
+  },
+  {
+    "sequence": "Balalaika-9",
+    "frames": 96,
+    "valid_frames": 96,
+    "AUC": 86.35912698412697,
+    "PRE": 80.20833333333334,
+    "NPR": 96.875,
+    "first_frame_prediction": [
+      36.0,
+      306.0,
+      349.0,
+      313.0
+    ]
+  },
+  {
+    "sequence": "Balancing Machine-12",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 2.857142857142857,
+    "PRE": 0.0,
+    "NPR": 6.666666666666667,
+    "first_frame_prediction": [
+      668.0,
+      385.0,
+      199.0,
+      139.0
+    ]
+  },
+  {
+    "sequence": "Balancing Machine-79",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 57.90476190476191,
+    "PRE": 12.0,
+    "NPR": 76.0,
+    "first_frame_prediction": [
+      391.0,
+      262.0,
+      487.0,
+      330.0
+    ]
+  },
+  {
+    "sequence": "Ballet Dancer-13",
+    "frames": 150,
+    "valid_frames": 150,
+    "AUC": 87.42857142857142,
+    "PRE": 83.33333333333334,
+    "NPR": 98.0,
+    "first_frame_prediction": [
+      529.0,
+      176.0,
+      336.0,
+      468.0
+    ]
+  },
+  {
+    "sequence": "Ballpoint Pen Fish-6",
+    "frames": 142,
+    "valid_frames": 142,
+    "AUC": 89.77196512407781,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      132.0,
+      100.0,
+      239.0,
+      85.0
+    ]
+  },
+  {
+    "sequence": "Band Saw-13",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 75.13227513227514,
+    "PRE": 71.11111111111111,
+    "NPR": 87.77777777777777,
+    "first_frame_prediction": [
+      580.0,
+      314.0,
+      314.0,
+      184.0
+    ]
+  },
+  {
+    "sequence": "Banggai Cardinalfish-2",
+    "frames": 66,
+    "valid_frames": 66,
+    "AUC": 0.21645021645021645,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      570.0,
+      292.0,
+      287.0,
+      167.0
+    ]
+  },
+  {
+    "sequence": "Banjo-15",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 35.449735449735456,
+    "PRE": 33.33333333333333,
+    "NPR": 33.33333333333333,
+    "first_frame_prediction": [
+      358.0,
+      117.0,
+      908.0,
+      354.0
+    ]
+  },
+  {
+    "sequence": "Barred Cuckoo-dove-35",
+    "frames": 150,
+    "valid_frames": 150,
+    "AUC": 95.17460317460316,
+    "PRE": 99.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      250.0,
+      32.0,
+      863.0,
+      687.0
+    ]
+  },
+  {
+    "sequence": "Barrel Cactus-9",
+    "frames": 355,
+    "valid_frames": 355,
+    "AUC": 84.89604292421194,
+    "PRE": 94.92957746478872,
+    "NPR": 94.64788732394366,
+    "first_frame_prediction": [
+      955.0,
+      377.0,
+      323.0,
+      268.0
+    ]
+  },
+  {
+    "sequence": "Barrel Wheel-41",
+    "frames": 24,
+    "valid_frames": 22,
+    "AUC": 53.246753246753244,
+    "PRE": 72.72727272727273,
+    "NPR": 63.63636363636363,
+    "first_frame_prediction": [
+      169.0,
+      365.0,
+      44.0,
+      85.0
+    ]
+  },
+  {
+    "sequence": "Barrel Wheel-62",
+    "frames": 15,
+    "valid_frames": 15,
+    "AUC": 95.23809523809523,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      163.0,
+      551.0,
+      328.0,
+      167.0
+    ]
+  },
+  {
+    "sequence": "Bass Saxophone-46",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 72.22222222222223,
+    "PRE": 33.33333333333333,
+    "NPR": 96.66666666666667,
+    "first_frame_prediction": [
+      28.0,
+      88.0,
+      156.0,
+      280.0
+    ]
+  },
+  {
+    "sequence": "Baton-22",
+    "frames": 19,
+    "valid_frames": 18,
+    "AUC": 64.02116402116403,
+    "PRE": 55.55555555555556,
+    "NPR": 77.77777777777779,
+    "first_frame_prediction": [
+      183.0,
+      303.0,
+      1059.0,
+      248.0
+    ]
+  },
+  {
+    "sequence": "Batteries Box-26",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 88.19047619047619,
+    "PRE": 84.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      192.0,
+      0.0,
+      938.0,
+      648.0
+    ]
+  },
+  {
+    "sequence": "Bayonet-27",
+    "frames": 114,
+    "valid_frames": 114,
+    "AUC": 90.93567251461988,
+    "PRE": 80.7017543859649,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      348.0,
+      254.0,
+      780.0,
+      184.0
+    ]
+  },
+  {
+    "sequence": "Beach Volleyball-15",
+    "frames": 50,
+    "valid_frames": 46,
+    "AUC": 0.5175983436853002,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      549.0,
+      264.0,
+      115.0,
+      145.0
+    ]
+  },
+  {
+    "sequence": "Bean Bag Toss Game-10",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 86.40211640211642,
+    "PRE": 88.88888888888889,
+    "NPR": 98.88888888888889,
+    "first_frame_prediction": [
+      504.0,
+      96.0,
+      221.0,
+      570.0
+    ]
+  },
+  {
+    "sequence": "Bean Bag Toss Game-62",
+    "frames": 11,
+    "valid_frames": 11,
+    "AUC": 34.63203463203464,
+    "PRE": 36.36363636363637,
+    "NPR": 36.36363636363637,
+    "first_frame_prediction": [
+      98.0,
+      304.0,
+      219.0,
+      172.0
+    ]
+  },
+  {
+    "sequence": "Beaver-24",
+    "frames": 12,
+    "valid_frames": 12,
+    "AUC": 84.12698412698411,
+    "PRE": 25.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      0.0,
+      67.0,
+      731.0,
+      406.0
+    ]
+  },
+  {
+    "sequence": "Beer Bottle-23",
+    "frames": 65,
+    "valid_frames": 65,
+    "AUC": 53.406593406593416,
+    "PRE": 66.15384615384615,
+    "NPR": 55.38461538461539,
+    "first_frame_prediction": [
+      148.0,
+      196.0,
+      28.0,
+      101.0
+    ]
+  },
+  {
+    "sequence": "Bible-23",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 92.38095238095238,
+    "PRE": 98.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      527.0,
+      211.0,
+      338.0,
+      455.0
+    ]
+  },
+  {
+    "sequence": "Bible-50",
+    "frames": 93,
+    "valid_frames": 93,
+    "AUC": 93.394777265745,
+    "PRE": 96.7741935483871,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      446.0,
+      51.0,
+      419.0,
+      597.0
+    ]
+  },
+  {
+    "sequence": "Bigfin Reef Squid-2",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 85.18518518518519,
+    "PRE": 83.33333333333334,
+    "NPR": 94.44444444444444,
+    "first_frame_prediction": [
+      326.0,
+      327.0,
+      489.0,
+      276.0
+    ]
+  },
+  {
+    "sequence": "Black-Necked Swan-10",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 67.3469387755102,
+    "PRE": 52.38095238095239,
+    "NPR": 54.761904761904766,
+    "first_frame_prediction": [
+      181.0,
+      140.0,
+      241.0,
+      124.0
+    ]
+  },
+  {
+    "sequence": "Black-Tailed Gull-68",
+    "frames": 65,
+    "valid_frames": 64,
+    "AUC": 59.300595238095234,
+    "PRE": 57.8125,
+    "NPR": 68.75,
+    "first_frame_prediction": [
+      768.0,
+      329.0,
+      191.0,
+      129.0
+    ]
+  },
+  {
+    "sequence": "Blue Rock Thrush-10",
+    "frames": 115,
+    "valid_frames": 115,
+    "AUC": 89.10973084886128,
+    "PRE": 98.26086956521739,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      264.0,
+      117.0,
+      278.0,
+      243.0
+    ]
+  },
+  {
+    "sequence": "Bluethroat-19",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 84.23280423280424,
+    "PRE": 92.22222222222223,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      707.0,
+      196.0,
+      213.0,
+      270.0
+    ]
+  },
+  {
+    "sequence": "Bocce Ball Set-29",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 3.3730158730158735,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      330.0,
+      182.0,
+      490.0,
+      293.0
+    ]
+  },
+  {
+    "sequence": "Bocce Ball-9",
+    "frames": 44,
+    "valid_frames": 44,
+    "AUC": 64.17748917748918,
+    "PRE": 88.63636363636364,
+    "NPR": 75.0,
+    "first_frame_prediction": [
+      980.0,
+      488.0,
+      148.0,
+      151.0
+    ]
+  },
+  {
+    "sequence": "Bolt Cutter-9",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 60.91269841269842,
+    "PRE": 0.0,
+    "NPR": 41.66666666666667,
+    "first_frame_prediction": [
+      78.0,
+      194.0,
+      775.0,
+      397.0
+    ]
+  },
+  {
+    "sequence": "Bongos-25",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 60.105820105820094,
+    "PRE": 50.0,
+    "NPR": 62.22222222222222,
+    "first_frame_prediction": [
+      596.0,
+      172.0,
+      489.0,
+      499.0
+    ]
+  },
+  {
+    "sequence": "Book Bag-6",
+    "frames": 103,
+    "valid_frames": 103,
+    "AUC": 92.37170596393896,
+    "PRE": 85.43689320388349,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      90.0,
+      31.0,
+      1076.0,
+      676.0
+    ]
+  },
+  {
+    "sequence": "Bottle Cap-11",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 53.4920634920635,
+    "PRE": 56.666666666666664,
+    "NPR": 50.0,
+    "first_frame_prediction": [
+      457.0,
+      88.0,
+      58.0,
+      74.0
+    ]
+  },
+  {
+    "sequence": "Bowl-31",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 80.47619047619047,
+    "PRE": 100.0,
+    "NPR": 96.66666666666667,
+    "first_frame_prediction": [
+      661.0,
+      445.0,
+      153.0,
+      84.0
+    ]
+  },
+  {
+    "sequence": "Boxer-8",
+    "frames": 48,
+    "valid_frames": 45,
+    "AUC": 38.73015873015873,
+    "PRE": 6.666666666666667,
+    "NPR": 20.0,
+    "first_frame_prediction": [
+      519.0,
+      73.0,
+      288.0,
+      592.0
+    ]
+  },
+  {
+    "sequence": "Bracelet-11",
+    "frames": 15,
+    "valid_frames": 15,
+    "AUC": 78.73015873015873,
+    "PRE": 20.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      77.0,
+      158.0,
+      1075.0,
+      471.0
+    ]
+  },
+  {
+    "sequence": "Bracelet-75",
+    "frames": 34,
+    "valid_frames": 34,
+    "AUC": 90.3361344537815,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      427.0,
+      143.0,
+      509.0,
+      524.0
+    ]
+  },
+  {
+    "sequence": "Bracelet-94",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 93.31065759637188,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      482.0,
+      166.0,
+      271.0,
+      355.0
+    ]
+  },
+  {
+    "sequence": "Brick Tongs-7",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 81.64021164021165,
+    "PRE": 92.22222222222223,
+    "NPR": 91.11111111111111,
+    "first_frame_prediction": [
+      74.0,
+      411.0,
+      239.0,
+      56.0
+    ]
+  },
+  {
+    "sequence": "Brl-27",
+    "frames": 66,
+    "valid_frames": 66,
+    "AUC": 90.62049062049063,
+    "PRE": 98.48484848484848,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      232.0,
+      218.0,
+      149.0,
+      88.0
+    ]
+  },
+  {
+    "sequence": "Broom-30",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 30.423280423280424,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      37.0,
+      224.0,
+      498.0,
+      295.0
+    ]
+  },
+  {
+    "sequence": "Brown Bear-12",
+    "frames": 360,
+    "valid_frames": 360,
+    "AUC": 93.24074074074075,
+    "PRE": 90.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      548.0,
+      36.0,
+      571.0,
+      653.0
+    ]
+  },
+  {
+    "sequence": "Brown Bear-13",
+    "frames": 40,
+    "valid_frames": 40,
+    "AUC": 70.59523809523809,
+    "PRE": 70.0,
+    "NPR": 75.0,
+    "first_frame_prediction": [
+      316.0,
+      189.0,
+      581.0,
+      385.0
+    ]
+  },
+  {
+    "sequence": "Brown Bear-28",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 93.84920634920636,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      286.0,
+      34.0,
+      186.0,
+      154.0
+    ]
+  },
+  {
+    "sequence": "Brown-Mantled Tamarin-1",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 92.53968253968254,
+    "PRE": 98.88888888888889,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      483.0,
+      256.0,
+      336.0,
+      463.0
+    ]
+  },
+  {
+    "sequence": "Bugle-5",
+    "frames": 28,
+    "valid_frames": 28,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      693.0,
+      50.0,
+      301.0,
+      611.0
+    ]
+  },
+  {
+    "sequence": "Bugle-9",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 2.380952380952381,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      407.0,
+      152.0,
+      191.0,
+      497.0
+    ]
+  },
+  {
+    "sequence": "Bullock Cart-11",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 79.28571428571428,
+    "PRE": 25.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      449.0,
+      334.0,
+      618.0,
+      237.0
+    ]
+  },
+  {
+    "sequence": "Burmese Ferret-Badger-6",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 73.88888888888889,
+    "PRE": 48.333333333333336,
+    "NPR": 75.0,
+    "first_frame_prediction": [
+      129.0,
+      160.0,
+      584.0,
+      395.0
+    ]
+  },
+  {
+    "sequence": "Butterflyfish-26",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 75.39682539682539,
+    "PRE": 63.888888888888886,
+    "NPR": 86.11111111111111,
+    "first_frame_prediction": [
+      332.0,
+      308.0,
+      488.0,
+      346.0
+    ]
+  },
+  {
+    "sequence": "C-clamp-15",
+    "frames": 22,
+    "valid_frames": 22,
+    "AUC": 75.32467532467533,
+    "PRE": 36.36363636363637,
+    "NPR": 63.63636363636363,
+    "first_frame_prediction": [
+      139.0,
+      31.0,
+      416.0,
+      656.0
+    ]
+  },
+  {
+    "sequence": "Cable Cutter-3",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 90.21164021164022,
+    "PRE": 88.88888888888889,
+    "NPR": 96.29629629629629,
+    "first_frame_prediction": [
+      408.0,
+      84.0,
+      305.0,
+      634.0
+    ]
+  },
+  {
+    "sequence": "Camel-1",
+    "frames": 70,
+    "valid_frames": 70,
+    "AUC": 79.45578231292517,
+    "PRE": 81.42857142857143,
+    "NPR": 84.28571428571429,
+    "first_frame_prediction": [
+      90.0,
+      47.0,
+      466.0,
+      505.0
+    ]
+  },
+  {
+    "sequence": "Camera Wheel-4",
+    "frames": 66,
+    "valid_frames": 60,
+    "AUC": 57.61904761904761,
+    "PRE": 61.66666666666667,
+    "NPR": 61.66666666666667,
+    "first_frame_prediction": [
+      0.0,
+      221.0,
+      668.0,
+      360.0
+    ]
+  },
+  {
+    "sequence": "Candy Box-28",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 93.17460317460318,
+    "PRE": 96.66666666666667,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      0.0,
+      43.0,
+      358.0,
+      585.0
+    ]
+  },
+  {
+    "sequence": "Car Hubcap-77",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 92.26190476190477,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      442.0,
+      0.0,
+      275.0,
+      247.0
+    ]
+  },
+  {
+    "sequence": "Car Hubcap-79",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 94.84126984126982,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      96.0,
+      48.0,
+      1093.0,
+      440.0
+    ]
+  },
+  {
+    "sequence": "Car Hubcap-85",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 90.55555555555556,
+    "PRE": 98.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      104.0,
+      290.0,
+      531.0,
+      429.0
+    ]
+  },
+  {
+    "sequence": "Carpet Cleaner-22",
+    "frames": 34,
+    "valid_frames": 34,
+    "AUC": 89.91596638655463,
+    "PRE": 32.35294117647059,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      393.0,
+      15.0,
+      267.0,
+      660.0
+    ]
+  },
+  {
+    "sequence": "Carriage-22",
+    "frames": 183,
+    "valid_frames": 169,
+    "AUC": 76.89489997182305,
+    "PRE": 49.112426035502956,
+    "NPR": 90.53254437869822,
+    "first_frame_prediction": [
+      79.0,
+      405.0,
+      412.0,
+      242.0
+    ]
+  },
+  {
+    "sequence": "Cat-44",
+    "frames": 75,
+    "valid_frames": 75,
+    "AUC": 5.079365079365079,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      629.0,
+      346.0,
+      223.0,
+      372.0
+    ]
+  },
+  {
+    "sequence": "Cat-45",
+    "frames": 72,
+    "valid_frames": 72,
+    "AUC": 35.582010582010575,
+    "PRE": 22.22222222222222,
+    "NPR": 34.72222222222222,
+    "first_frame_prediction": [
+      634.0,
+      337.0,
+      268.0,
+      381.0
+    ]
+  },
+  {
+    "sequence": "Celesta-2",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 88.73015873015872,
+    "PRE": 70.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      115.0,
+      41.0,
+      1164.0,
+      678.0
+    ]
+  },
+  {
+    "sequence": "Chain Drive Sprocket-78",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 88.35978835978837,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      93.0,
+      2.0,
+      457.0,
+      126.0
+    ]
+  },
+  {
+    "sequence": "Cheetah-9",
+    "frames": 100,
+    "valid_frames": 100,
+    "AUC": 83.04761904761904,
+    "PRE": 46.0,
+    "NPR": 99.0,
+    "first_frame_prediction": [
+      642.0,
+      240.0,
+      250.0,
+      164.0
+    ]
+  },
+  {
+    "sequence": "Cherry Shrimp-14",
+    "frames": 78,
+    "valid_frames": 78,
+    "AUC": 71.48962148962148,
+    "PRE": 48.717948717948715,
+    "NPR": 94.87179487179486,
+    "first_frame_prediction": [
+      403.0,
+      325.0,
+      404.0,
+      120.0
+    ]
+  },
+  {
+    "sequence": "Chestnut-bellied Rock Thrush-8",
+    "frames": 108,
+    "valid_frames": 108,
+    "AUC": 90.87301587301587,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      415.0,
+      246.0,
+      297.0,
+      301.0
+    ]
+  },
+  {
+    "sequence": "Chicken-29",
+    "frames": 250,
+    "valid_frames": 250,
+    "AUC": 3.1428571428571437,
+    "PRE": 0.4,
+    "NPR": 0.4,
+    "first_frame_prediction": [
+      671.0,
+      503.0,
+      359.0,
+      216.0
+    ]
+  },
+  {
+    "sequence": "Chimaera-9",
+    "frames": 40,
+    "valid_frames": 40,
+    "AUC": 81.19047619047619,
+    "PRE": 87.5,
+    "NPR": 97.5,
+    "first_frame_prediction": [
+      438.0,
+      221.0,
+      605.0,
+      214.0
+    ]
+  },
+  {
+    "sequence": "Chinese Chess-11",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 4.166666666666666,
+    "PRE": 4.166666666666666,
+    "NPR": 4.166666666666666,
+    "first_frame_prediction": [
+      687.0,
+      238.0,
+      109.0,
+      215.0
+    ]
+  },
+  {
+    "sequence": "Cirrhilabrus Naokoae-4",
+    "frames": 851,
+    "valid_frames": 776,
+    "AUC": 47.747913598429065,
+    "PRE": 58.24742268041238,
+    "NPR": 58.50515463917526,
+    "first_frame_prediction": [
+      540.0,
+      153.0,
+      113.0,
+      89.0
+    ]
+  },
+  {
+    "sequence": "Cleaning Cloth-19",
+    "frames": 6,
+    "valid_frames": 6,
+    "AUC": 84.12698412698413,
+    "PRE": 83.33333333333334,
+    "NPR": 83.33333333333334,
+    "first_frame_prediction": [
+      6.0,
+      183.0,
+      353.0,
+      406.0
+    ]
+  },
+  {
+    "sequence": "Cleaning Cloth-21",
+    "frames": 34,
+    "valid_frames": 34,
+    "AUC": 51.40056022408963,
+    "PRE": 41.17647058823529,
+    "NPR": 55.88235294117647,
+    "first_frame_prediction": [
+      552.0,
+      457.0,
+      347.0,
+      262.0
+    ]
+  },
+  {
+    "sequence": "Cleaning Cloth-22",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 89.84126984126985,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      107.0,
+      221.0,
+      216.0,
+      158.0
+    ]
+  },
+  {
+    "sequence": "Cleaning Gloves-15",
+    "frames": 7,
+    "valid_frames": 7,
+    "AUC": 55.78231292517006,
+    "PRE": 42.857142857142854,
+    "NPR": 42.857142857142854,
+    "first_frame_prediction": [
+      2.0,
+      453.0,
+      202.0,
+      266.0
+    ]
+  },
+  {
+    "sequence": "Cleaning Gloves-30",
+    "frames": 159,
+    "valid_frames": 159,
+    "AUC": 69.03264450434263,
+    "PRE": 62.264150943396224,
+    "NPR": 76.72955974842768,
+    "first_frame_prediction": [
+      119.0,
+      75.0,
+      308.0,
+      286.0
+    ]
+  },
+  {
+    "sequence": "Cleistocactus-29",
+    "frames": 10,
+    "valid_frames": 10,
+    "AUC": 30.95238095238096,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      646.0,
+      0.0,
+      204.0,
+      323.0
+    ]
+  },
+  {
+    "sequence": "Cocktails-14",
+    "frames": 10,
+    "valid_frames": 10,
+    "AUC": 88.57142857142858,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      522.0,
+      129.0,
+      228.0,
+      303.0
+    ]
+  },
+  {
+    "sequence": "Collared Crow-42",
+    "frames": 444,
+    "valid_frames": 444,
+    "AUC": 89.55383955383954,
+    "PRE": 97.74774774774775,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      566.0,
+      230.0,
+      236.0,
+      247.0
+    ]
+  },
+  {
+    "sequence": "Collared Crow-44",
+    "frames": 72,
+    "valid_frames": 72,
+    "AUC": 86.1111111111111,
+    "PRE": 79.16666666666666,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      568.0,
+      238.0,
+      427.0,
+      329.0
+    ]
+  },
+  {
+    "sequence": "Collared Crow-6",
+    "frames": 156,
+    "valid_frames": 156,
+    "AUC": 90.3846153846154,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      639.0,
+      320.0,
+      181.0,
+      105.0
+    ]
+  },
+  {
+    "sequence": "Collared Peccary-8",
+    "frames": 44,
+    "valid_frames": 44,
+    "AUC": 87.98701298701297,
+    "PRE": 93.18181818181817,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      790.0,
+      252.0,
+      228.0,
+      188.0
+    ]
+  },
+  {
+    "sequence": "Common Redstart-29",
+    "frames": 163,
+    "valid_frames": 163,
+    "AUC": 94.6245983055799,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      437.0,
+      95.0,
+      222.0,
+      476.0
+    ]
+  },
+  {
+    "sequence": "Coracle-5",
+    "frames": 55,
+    "valid_frames": 55,
+    "AUC": 86.92640692640691,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      597.0,
+      295.0,
+      270.0,
+      147.0
+    ]
+  },
+  {
+    "sequence": "Coral Catshark-27",
+    "frames": 180,
+    "valid_frames": 180,
+    "AUC": 85.18518518518519,
+    "PRE": 95.0,
+    "NPR": 96.66666666666667,
+    "first_frame_prediction": [
+      448.0,
+      238.0,
+      156.0,
+      323.0
+    ]
+  },
+  {
+    "sequence": "Coral Catshark-4",
+    "frames": 53,
+    "valid_frames": 53,
+    "AUC": 54.35759209344114,
+    "PRE": 26.41509433962264,
+    "NPR": 56.60377358490566,
+    "first_frame_prediction": [
+      375.0,
+      43.0,
+      480.0,
+      509.0
+    ]
+  },
+  {
+    "sequence": "Cornflower-9",
+    "frames": 46,
+    "valid_frames": 46,
+    "AUC": 87.47412008281573,
+    "PRE": 73.91304347826086,
+    "NPR": 91.30434782608695,
+    "first_frame_prediction": [
+      20.0,
+      57.0,
+      313.0,
+      355.0
+    ]
+  },
+  {
+    "sequence": "Corsac Fox-16",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 88.95238095238095,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      640.0,
+      369.0,
+      70.0,
+      109.0
+    ]
+  },
+  {
+    "sequence": "Corsac Fox-24",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 95.03968253968254,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      183.0,
+      133.0,
+      854.0,
+      572.0
+    ]
+  },
+  {
+    "sequence": "Corydoras-16",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 83.06878306878308,
+    "PRE": 64.81481481481481,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      282.0,
+      182.0,
+      356.0,
+      207.0
+    ]
+  },
+  {
+    "sequence": "Cosmetic Gift Box-22",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 90.21164021164022,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      66.0,
+      311.0,
+      373.0,
+      358.0
+    ]
+  },
+  {
+    "sequence": "Cosmetics Case-27",
+    "frames": 12,
+    "valid_frames": 12,
+    "AUC": 73.80952380952381,
+    "PRE": 66.66666666666666,
+    "NPR": 91.66666666666666,
+    "first_frame_prediction": [
+      542.0,
+      48.0,
+      542.0,
+      475.0
+    ]
+  },
+  {
+    "sequence": "Croquet Set-34",
+    "frames": 63,
+    "valid_frames": 63,
+    "AUC": 69.46334089191232,
+    "PRE": 79.36507936507937,
+    "NPR": 74.60317460317461,
+    "first_frame_prediction": [
+      582.0,
+      459.0,
+      91.0,
+      239.0
+    ]
+  },
+  {
+    "sequence": "Cross Line Laser-13",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 58.23412698412697,
+    "PRE": 20.833333333333336,
+    "NPR": 56.25,
+    "first_frame_prediction": [
+      485.0,
+      194.0,
+      659.0,
+      524.0
+    ]
+  },
+  {
+    "sequence": "Crossbow Pistol-18",
+    "frames": 72,
+    "valid_frames": 72,
+    "AUC": 65.67460317460319,
+    "PRE": 9.722222222222223,
+    "NPR": 54.166666666666664,
+    "first_frame_prediction": [
+      304.0,
+      208.0,
+      499.0,
+      363.0
+    ]
+  },
+  {
+    "sequence": "Crossbow-32",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 18.333333333333332,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      492.0,
+      47.0,
+      660.0,
+      672.0
+    ]
+  },
+  {
+    "sequence": "Ctenopoma Acutirostre-13",
+    "frames": 50,
+    "valid_frames": 50,
+    "AUC": 82.3809523809524,
+    "PRE": 72.0,
+    "NPR": 92.0,
+    "first_frame_prediction": [
+      380.0,
+      88.0,
+      368.0,
+      247.0
+    ]
+  },
+  {
+    "sequence": "Ctenopoma Acutirostre-47",
+    "frames": 84,
+    "valid_frames": 84,
+    "AUC": 76.8140589569161,
+    "PRE": 46.42857142857143,
+    "NPR": 86.90476190476191,
+    "first_frame_prediction": [
+      300.0,
+      204.0,
+      745.0,
+      403.0
+    ]
+  },
+  {
+    "sequence": "Cupping-34",
+    "frames": 29,
+    "valid_frames": 29,
+    "AUC": 9.688013136288998,
+    "PRE": 6.896551724137931,
+    "NPR": 10.344827586206897,
+    "first_frame_prediction": [
+      387.0,
+      224.0,
+      169.0,
+      147.0
+    ]
+  },
+  {
+    "sequence": "Curling-22",
+    "frames": 35,
+    "valid_frames": 33,
+    "AUC": 80.37518037518038,
+    "PRE": 100.0,
+    "NPR": 93.93939393939394,
+    "first_frame_prediction": [
+      285.0,
+      147.0,
+      194.0,
+      69.0
+    ]
+  },
+  {
+    "sequence": "Dandelion Siphonophore-1",
+    "frames": 174,
+    "valid_frames": 174,
+    "AUC": 91.78981937602627,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      776.0,
+      345.0,
+      117.0,
+      155.0
+    ]
+  },
+  {
+    "sequence": "Daurian Hedgehog-22",
+    "frames": 37,
+    "valid_frames": 37,
+    "AUC": 89.83268983268982,
+    "PRE": 97.2972972972973,
+    "NPR": 97.2972972972973,
+    "first_frame_prediction": [
+      532.0,
+      0.0,
+      318.0,
+      404.0
+    ]
+  },
+  {
+    "sequence": "Deer Crossing Sign-6",
+    "frames": 21,
+    "valid_frames": 21,
+    "AUC": 94.10430839002268,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      144.0,
+      161.0,
+      582.0,
+      558.0
+    ]
+  },
+  {
+    "sequence": "Dhole-16",
+    "frames": 692,
+    "valid_frames": 692,
+    "AUC": 77.98651252408477,
+    "PRE": 76.73410404624278,
+    "NPR": 83.52601156069365,
+    "first_frame_prediction": [
+      353.0,
+      36.0,
+      279.0,
+      663.0
+    ]
+  },
+  {
+    "sequence": "Dial Indicator-88",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 89.84126984126985,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      213.0,
+      40.0,
+      182.0,
+      285.0
+    ]
+  },
+  {
+    "sequence": "Diamond Tail Flasher Wrasse-12",
+    "frames": 71,
+    "valid_frames": 71,
+    "AUC": 18.779342723004692,
+    "PRE": 9.859154929577464,
+    "NPR": 22.535211267605636,
+    "first_frame_prediction": [
+      350.0,
+      75.0,
+      766.0,
+      365.0
+    ]
+  },
+  {
+    "sequence": "Dilruba-17",
+    "frames": 80,
+    "valid_frames": 80,
+    "AUC": 90.53571428571429,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      652.0,
+      125.0,
+      131.0,
+      337.0
+    ]
+  },
+  {
+    "sequence": "Dilruba-25",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 89.04761904761904,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      530.0,
+      211.0,
+      225.0,
+      360.0
+    ]
+  },
+  {
+    "sequence": "Diver-33",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 84.72222222222221,
+    "PRE": 79.16666666666666,
+    "NPR": 95.83333333333334,
+    "first_frame_prediction": [
+      760.0,
+      260.0,
+      261.0,
+      406.0
+    ]
+  },
+  {
+    "sequence": "Diving Support Vessel-17",
+    "frames": 41,
+    "valid_frames": 41,
+    "AUC": 93.26364692218351,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      612.0,
+      167.0,
+      235.0,
+      105.0
+    ]
+  },
+  {
+    "sequence": "Diving Support Vessel-5",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 85.44973544973544,
+    "PRE": 58.333333333333336,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      204.0,
+      39.0,
+      397.0,
+      341.0
+    ]
+  },
+  {
+    "sequence": "Dota 2-21",
+    "frames": 62,
+    "valid_frames": 50,
+    "AUC": 8.666666666666666,
+    "PRE": 12.0,
+    "NPR": 12.0,
+    "first_frame_prediction": [
+      462.0,
+      176.0,
+      174.0,
+      191.0
+    ]
+  },
+  {
+    "sequence": "Dota 2-53",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 13.88888888888889,
+    "PRE": 12.5,
+    "NPR": 12.5,
+    "first_frame_prediction": [
+      569.0,
+      321.0,
+      165.0,
+      105.0
+    ]
+  },
+  {
+    "sequence": "Dota 2-61",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      433.0,
+      269.0,
+      243.0,
+      254.0
+    ]
+  },
+  {
+    "sequence": "Double Bass-15",
+    "frames": 29,
+    "valid_frames": 29,
+    "AUC": 87.35632183908046,
+    "PRE": 55.172413793103445,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      628.0,
+      0.0,
+      440.0,
+      710.0
+    ]
+  },
+  {
+    "sequence": "Doweling Jig-5",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 51.11111111111112,
+    "PRE": 6.666666666666667,
+    "NPR": 33.33333333333333,
+    "first_frame_prediction": [
+      554.0,
+      172.0,
+      404.0,
+      283.0
+    ]
+  },
+  {
+    "sequence": "Dragon Dance-27",
+    "frames": 150,
+    "valid_frames": 150,
+    "AUC": 82.28571428571429,
+    "PRE": 54.666666666666664,
+    "NPR": 96.0,
+    "first_frame_prediction": [
+      383.0,
+      74.0,
+      508.0,
+      470.0
+    ]
+  },
+  {
+    "sequence": "Drum Set-10",
+    "frames": 831,
+    "valid_frames": 831,
+    "AUC": 68.25396825396825,
+    "PRE": 27.67749699157641,
+    "NPR": 76.6546329723225,
+    "first_frame_prediction": [
+      99.0,
+      196.0,
+      480.0,
+      283.0
+    ]
+  },
+  {
+    "sequence": "Dumbo Octopus-14",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 90.56437389770723,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      596.0,
+      165.0,
+      153.0,
+      103.0
+    ]
+  },
+  {
+    "sequence": "Dumbo Octopus-32",
+    "frames": 72,
+    "valid_frames": 72,
+    "AUC": 91.33597883597885,
+    "PRE": 73.61111111111111,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      55.0,
+      47.0,
+      838.0,
+      672.0
+    ]
+  },
+  {
+    "sequence": "Earrings-69",
+    "frames": 26,
+    "valid_frames": 26,
+    "AUC": 63.55311355311355,
+    "PRE": 50.0,
+    "NPR": 53.84615384615385,
+    "first_frame_prediction": [
+      92.0,
+      285.0,
+      60.0,
+      71.0
+    ]
+  },
+  {
+    "sequence": "Electric Air Blower-24",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 54.421768707483,
+    "PRE": 19.047619047619047,
+    "NPR": 30.952380952380953,
+    "first_frame_prediction": [
+      179.0,
+      395.0,
+      185.0,
+      184.0
+    ]
+  },
+  {
+    "sequence": "Electric Broom-66",
+    "frames": 120,
+    "valid_frames": 120,
+    "AUC": 87.42063492063492,
+    "PRE": 88.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      261.0,
+      537.0,
+      674.0,
+      141.0
+    ]
+  },
+  {
+    "sequence": "Electric Broom-83",
+    "frames": 96,
+    "valid_frames": 96,
+    "AUC": 90.17857142857143,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      522.0,
+      90.0,
+      196.0,
+      625.0
+    ]
+  },
+  {
+    "sequence": "Electric Hedge Trimmer-22",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 38.888888888888886,
+    "PRE": 0.0,
+    "NPR": 3.3333333333333335,
+    "first_frame_prediction": [
+      0.0,
+      334.0,
+      1196.0,
+      124.0
+    ]
+  },
+  {
+    "sequence": "Electric Piano-16",
+    "frames": 50,
+    "valid_frames": 50,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      746.0,
+      238.0,
+      533.0,
+      474.0
+    ]
+  },
+  {
+    "sequence": "Electric Ultrasonic Toothbrush-35",
+    "frames": 15,
+    "valid_frames": 15,
+    "AUC": 75.55555555555556,
+    "PRE": 46.666666666666664,
+    "NPR": 86.66666666666667,
+    "first_frame_prediction": [
+      262.0,
+      373.0,
+      516.0,
+      201.0
+    ]
+  },
+  {
+    "sequence": "Electronic Product Box-28",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 77.38095238095238,
+    "PRE": 29.166666666666668,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      441.0,
+      117.0,
+      438.0,
+      295.0
+    ]
+  },
+  {
+    "sequence": "English Horn-8",
+    "frames": 49,
+    "valid_frames": 49,
+    "AUC": 68.90184645286685,
+    "PRE": 79.59183673469387,
+    "NPR": 67.3469387755102,
+    "first_frame_prediction": [
+      295.0,
+      390.0,
+      111.0,
+      156.0
+    ]
+  },
+  {
+    "sequence": "Enterprise-15",
+    "frames": 150,
+    "valid_frames": 150,
+    "AUC": 4.761904761904762,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      297.0,
+      203.0,
+      633.0,
+      199.0
+    ]
+  },
+  {
+    "sequence": "Espadrilles-11",
+    "frames": 429,
+    "valid_frames": 429,
+    "AUC": 67.11066711066711,
+    "PRE": 64.56876456876456,
+    "NPR": 67.36596736596736,
+    "first_frame_prediction": [
+      310.0,
+      136.0,
+      607.0,
+      554.0
+    ]
+  },
+  {
+    "sequence": "Espadrilles-3",
+    "frames": 426,
+    "valid_frames": 426,
+    "AUC": 90.90096132349653,
+    "PRE": 95.53990610328638,
+    "NPR": 99.76525821596243,
+    "first_frame_prediction": [
+      139.0,
+      303.0,
+      287.0,
+      416.0
+    ]
+  },
+  {
+    "sequence": "Eurasian Curlew-5",
+    "frames": 156,
+    "valid_frames": 156,
+    "AUC": 92.82661782661783,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      452.0,
+      23.0,
+      428.0,
+      642.0
+    ]
+  },
+  {
+    "sequence": "Eurasian Tree Sparrow-27",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 78.78306878306877,
+    "PRE": 70.0,
+    "NPR": 90.0,
+    "first_frame_prediction": [
+      321.0,
+      291.0,
+      366.0,
+      178.0
+    ]
+  },
+  {
+    "sequence": "Euro-22",
+    "frames": 72,
+    "valid_frames": 72,
+    "AUC": 12.367724867724867,
+    "PRE": 8.333333333333332,
+    "NPR": 11.11111111111111,
+    "first_frame_prediction": [
+      645.0,
+      0.0,
+      364.0,
+      168.0
+    ]
+  },
+  {
+    "sequence": "European Bee-Eaters-18",
+    "frames": 66,
+    "valid_frames": 66,
+    "AUC": 84.34343434343434,
+    "PRE": 95.45454545454545,
+    "NPR": 96.96969696969697,
+    "first_frame_prediction": [
+      709.0,
+      371.0,
+      178.0,
+      300.0
+    ]
+  },
+  {
+    "sequence": "Exercise Wheel-19",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 50.595238095238095,
+    "PRE": 70.83333333333334,
+    "NPR": 70.83333333333334,
+    "first_frame_prediction": [
+      96.0,
+      273.0,
+      173.0,
+      73.0
+    ]
+  },
+  {
+    "sequence": "Exit Sign-27",
+    "frames": 77,
+    "valid_frames": 77,
+    "AUC": 82.31292517006801,
+    "PRE": 46.75324675324675,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      294.0,
+      82.0,
+      683.0,
+      501.0
+    ]
+  },
+  {
+    "sequence": "Face-29",
+    "frames": 186,
+    "valid_frames": 186,
+    "AUC": 86.78955453149003,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      549.0,
+      251.0,
+      139.0,
+      148.0
+    ]
+  },
+  {
+    "sequence": "Falcated Duck-12",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 91.74603174603175,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      644.0,
+      272.0,
+      313.0,
+      81.0
+    ]
+  },
+  {
+    "sequence": "Fan-85",
+    "frames": 66,
+    "valid_frames": 66,
+    "AUC": 59.5959595959596,
+    "PRE": 4.545454545454546,
+    "NPR": 53.03030303030303,
+    "first_frame_prediction": [
+      263.0,
+      21.0,
+      560.0,
+      347.0
+    ]
+  },
+  {
+    "sequence": "Farmer-72",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 87.46031746031746,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      215.0,
+      163.0,
+      45.0,
+      117.0
+    ]
+  },
+  {
+    "sequence": "Ferris Wheel Axle-40",
+    "frames": 72,
+    "valid_frames": 72,
+    "AUC": 2.5132275132275135,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      255.0,
+      62.0,
+      586.0,
+      324.0
+    ]
+  },
+  {
+    "sequence": "Ferrule Fitting-2",
+    "frames": 23,
+    "valid_frames": 23,
+    "AUC": 92.33954451345755,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      244.0,
+      66.0,
+      235.0,
+      163.0
+    ]
+  },
+  {
+    "sequence": "Ferry-4",
+    "frames": 17,
+    "valid_frames": 17,
+    "AUC": 90.75630252100841,
+    "PRE": 82.35294117647058,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      219.0,
+      255.0,
+      473.0,
+      224.0
+    ]
+  },
+  {
+    "sequence": "Fidget Spinner-3",
+    "frames": 78,
+    "valid_frames": 67,
+    "AUC": 84.07960199004975,
+    "PRE": 89.55223880597015,
+    "NPR": 92.53731343283582,
+    "first_frame_prediction": [
+      649.0,
+      275.0,
+      141.0,
+      270.0
+    ]
+  },
+  {
+    "sequence": "Fidget Spinner-9",
+    "frames": 71,
+    "valid_frames": 70,
+    "AUC": 51.22448979591836,
+    "PRE": 55.714285714285715,
+    "NPR": 82.85714285714286,
+    "first_frame_prediction": [
+      454.0,
+      298.0,
+      125.0,
+      76.0
+    ]
+  },
+  {
+    "sequence": "Fire Truck-11",
+    "frames": 14,
+    "valid_frames": 14,
+    "AUC": 87.75510204081634,
+    "PRE": 57.14285714285714,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      328.0,
+      170.0,
+      383.0,
+      309.0
+    ]
+  },
+  {
+    "sequence": "Fire Truck-12",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 87.03703703703705,
+    "PRE": 83.33333333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      272.0,
+      221.0,
+      542.0,
+      253.0
+    ]
+  },
+  {
+    "sequence": "Firefighters-34",
+    "frames": 108,
+    "valid_frames": 108,
+    "AUC": 24.20634920634921,
+    "PRE": 41.66666666666667,
+    "NPR": 7.4074074074074066,
+    "first_frame_prediction": [
+      475.0,
+      452.0,
+      302.0,
+      172.0
+    ]
+  },
+  {
+    "sequence": "Fish Tank-10",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 91.53439153439153,
+    "PRE": 72.22222222222221,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      107.0,
+      5.0,
+      1172.0,
+      682.0
+    ]
+  },
+  {
+    "sequence": "Fishing Reel Spool-35",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 81.34920634920636,
+    "PRE": 20.833333333333336,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      588.0,
+      99.0,
+      399.0,
+      479.0
+    ]
+  },
+  {
+    "sequence": "Fistball-20",
+    "frames": 50,
+    "valid_frames": 48,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      575.0,
+      433.0,
+      336.0,
+      286.0
+    ]
+  },
+  {
+    "sequence": "Flammulina Velutipes-35",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 4.497354497354497,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      27.0,
+      119.0,
+      195.0,
+      441.0
+    ]
+  },
+  {
+    "sequence": "Floating Crane-30",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 62.698412698412696,
+    "PRE": 12.5,
+    "NPR": 77.08333333333334,
+    "first_frame_prediction": [
+      41.0,
+      31.0,
+      531.0,
+      366.0
+    ]
+  },
+  {
+    "sequence": "Floatplane-2",
+    "frames": 34,
+    "valid_frames": 34,
+    "AUC": 92.99719887955182,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      199.0,
+      141.0,
+      204.0,
+      63.0
+    ]
+  },
+  {
+    "sequence": "Flying Car-10",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 50.39682539682539,
+    "PRE": 33.33333333333333,
+    "NPR": 85.41666666666666,
+    "first_frame_prediction": [
+      327.0,
+      184.0,
+      345.0,
+      205.0
+    ]
+  },
+  {
+    "sequence": "Flying Car-34",
+    "frames": 225,
+    "valid_frames": 225,
+    "AUC": 87.17460317460318,
+    "PRE": 97.77777777777777,
+    "NPR": 99.55555555555556,
+    "first_frame_prediction": [
+      494.0,
+      245.0,
+      62.0,
+      37.0
+    ]
+  },
+  {
+    "sequence": "Fn M1935-10",
+    "frames": 96,
+    "valid_frames": 96,
+    "AUC": 92.55952380952381,
+    "PRE": 89.58333333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      63.0,
+      132.0,
+      1108.0,
+      571.0
+    ]
+  },
+  {
+    "sequence": "Folk Dancer-30",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 25.595238095238095,
+    "PRE": 8.333333333333332,
+    "NPR": 8.333333333333332,
+    "first_frame_prediction": [
+      484.0,
+      99.0,
+      301.0,
+      620.0
+    ]
+  },
+  {
+    "sequence": "Folk Dancer-61",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 63.04761904761905,
+    "PRE": 68.0,
+    "NPR": 72.0,
+    "first_frame_prediction": [
+      56.0,
+      338.0,
+      129.0,
+      300.0
+    ]
+  },
+  {
+    "sequence": "Football Boots-38",
+    "frames": 37,
+    "valid_frames": 37,
+    "AUC": 77.73487773487773,
+    "PRE": 54.054054054054056,
+    "NPR": 86.48648648648648,
+    "first_frame_prediction": [
+      375.0,
+      326.0,
+      509.0,
+      221.0
+    ]
+  },
+  {
+    "sequence": "Fork-Tailed Sunbird-25",
+    "frames": 300,
+    "valid_frames": 300,
+    "AUC": 83.42857142857144,
+    "PRE": 91.66666666666666,
+    "NPR": 93.0,
+    "first_frame_prediction": [
+      411.0,
+      321.0,
+      149.0,
+      242.0
+    ]
+  },
+  {
+    "sequence": "Formula Two-47",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 0.19047619047619047,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      291.0,
+      274.0,
+      590.0,
+      385.0
+    ]
+  },
+  {
+    "sequence": "Frisbee-116",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 87.89682539682539,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      457.0,
+      524.0,
+      346.0,
+      194.0
+    ]
+  },
+  {
+    "sequence": "Frog-16",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 90.74074074074075,
+    "PRE": 91.66666666666666,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      117.0,
+      153.0,
+      635.0,
+      376.0
+    ]
+  },
+  {
+    "sequence": "Ganoderma-20",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 90.9297052154195,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      35.0,
+      84.0,
+      206.0,
+      167.0
+    ]
+  },
+  {
+    "sequence": "Garden Cart Wheel-52",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 83.86243386243386,
+    "PRE": 88.88888888888889,
+    "NPR": 88.88888888888889,
+    "first_frame_prediction": [
+      49.0,
+      306.0,
+      196.0,
+      299.0
+    ]
+  },
+  {
+    "sequence": "Garden Cart Wheel-57",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 85.97883597883599,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      207.0,
+      401.0,
+      96.0,
+      90.0
+    ]
+  },
+  {
+    "sequence": "Gas Detector-40",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 95.0,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      332.0,
+      137.0,
+      233.0,
+      520.0
+    ]
+  },
+  {
+    "sequence": "German Blue Ram-4",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      458.0,
+      247.0,
+      202.0,
+      138.0
+    ]
+  },
+  {
+    "sequence": "Giant Armadillo-26",
+    "frames": 76,
+    "valid_frames": 76,
+    "AUC": 77.5062656641604,
+    "PRE": 84.21052631578947,
+    "NPR": 89.47368421052632,
+    "first_frame_prediction": [
+      306.0,
+      209.0,
+      256.0,
+      66.0
+    ]
+  },
+  {
+    "sequence": "Giant Armadillo-33",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 84.52380952380952,
+    "PRE": 95.0,
+    "NPR": 95.0,
+    "first_frame_prediction": [
+      417.0,
+      243.0,
+      104.0,
+      128.0
+    ]
+  },
+  {
+    "sequence": "Giant Panda-9",
+    "frames": 35,
+    "valid_frames": 35,
+    "AUC": 84.62585034013605,
+    "PRE": 97.14285714285714,
+    "NPR": 97.14285714285714,
+    "first_frame_prediction": [
+      309.0,
+      384.0,
+      181.0,
+      184.0
+    ]
+  },
+  {
+    "sequence": "Glock G23-24",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 83.17460317460316,
+    "PRE": 85.0,
+    "NPR": 90.0,
+    "first_frame_prediction": [
+      3.0,
+      215.0,
+      290.0,
+      320.0
+    ]
+  },
+  {
+    "sequence": "Gloomy Nudibranch-34",
+    "frames": 144,
+    "valid_frames": 144,
+    "AUC": 87.63227513227514,
+    "PRE": 79.16666666666666,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      520.0,
+      104.0,
+      369.0,
+      166.0
+    ]
+  },
+  {
+    "sequence": "Gloomy Octopus-3",
+    "frames": 180,
+    "valid_frames": 178,
+    "AUC": 64.07169609416799,
+    "PRE": 52.80898876404494,
+    "NPR": 79.21348314606742,
+    "first_frame_prediction": [
+      486.0,
+      376.0,
+      173.0,
+      90.0
+    ]
+  },
+  {
+    "sequence": "Goliath Tigerfish-27",
+    "frames": 102,
+    "valid_frames": 102,
+    "AUC": 86.97478991596638,
+    "PRE": 93.13725490196079,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      26.0,
+      265.0,
+      728.0,
+      289.0
+    ]
+  },
+  {
+    "sequence": "Grapefruit-88",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 86.56084656084656,
+    "PRE": 91.11111111111111,
+    "NPR": 92.22222222222223,
+    "first_frame_prediction": [
+      56.0,
+      302.0,
+      170.0,
+      154.0
+    ]
+  },
+  {
+    "sequence": "Grapsus Grapsus-12",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 89.8941798941799,
+    "PRE": 98.88888888888889,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      394.0,
+      331.0,
+      394.0,
+      136.0
+    ]
+  },
+  {
+    "sequence": "Grapsus Grapsus-30",
+    "frames": 294,
+    "valid_frames": 294,
+    "AUC": 89.95788791707159,
+    "PRE": 65.98639455782312,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      284.0,
+      272.0,
+      807.0,
+      447.0
+    ]
+  },
+  {
+    "sequence": "Gray Whale-1",
+    "frames": 12,
+    "valid_frames": 12,
+    "AUC": 79.36507936507937,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      385.0,
+      115.0,
+      111.0,
+      351.0
+    ]
+  },
+  {
+    "sequence": "Grevys Zebra-32",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 73.01587301587303,
+    "PRE": 47.61904761904761,
+    "NPR": 80.95238095238095,
+    "first_frame_prediction": [
+      383.0,
+      38.0,
+      783.0,
+      681.0
+    ]
+  },
+  {
+    "sequence": "Grill Pan-11",
+    "frames": 46,
+    "valid_frames": 46,
+    "AUC": 92.13250517598345,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      388.0,
+      84.0,
+      326.0,
+      334.0
+    ]
+  },
+  {
+    "sequence": "Grizzly Bear-10",
+    "frames": 32,
+    "valid_frames": 32,
+    "AUC": 93.89880952380952,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      829.0,
+      366.0,
+      157.0,
+      156.0
+    ]
+  },
+  {
+    "sequence": "Guatemalan Quetzal-11",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 94.1468253968254,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      32.0,
+      178.0,
+      354.0,
+      166.0
+    ]
+  },
+  {
+    "sequence": "Guinea Pig-4",
+    "frames": 120,
+    "valid_frames": 120,
+    "AUC": 84.96031746031747,
+    "PRE": 78.33333333333333,
+    "NPR": 99.16666666666667,
+    "first_frame_prediction": [
+      404.0,
+      86.0,
+      255.0,
+      257.0
+    ]
+  },
+  {
+    "sequence": "Gun Scope-63",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 77.18253968253967,
+    "PRE": 95.83333333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      149.0,
+      197.0,
+      588.0,
+      198.0
+    ]
+  },
+  {
+    "sequence": "Gun Scope-70",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 88.69047619047619,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      480.0,
+      330.0,
+      282.0,
+      67.0
+    ]
+  },
+  {
+    "sequence": "Gymnast-22",
+    "frames": 40,
+    "valid_frames": 40,
+    "AUC": 88.69047619047619,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      595.0,
+      318.0,
+      108.0,
+      285.0
+    ]
+  },
+  {
+    "sequence": "Gymnocalycium-29",
+    "frames": 120,
+    "valid_frames": 120,
+    "AUC": 62.817460317460316,
+    "PRE": 29.166666666666668,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      64.0,
+      211.0,
+      243.0,
+      232.0
+    ]
+  },
+  {
+    "sequence": "Gypsy Moth-1",
+    "frames": 84,
+    "valid_frames": 84,
+    "AUC": 19.387755102040817,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      209.0,
+      285.0,
+      133.0,
+      336.0
+    ]
+  },
+  {
+    "sequence": "Gyroscope-10",
+    "frames": 69,
+    "valid_frames": 69,
+    "AUC": 47.757073844030366,
+    "PRE": 46.3768115942029,
+    "NPR": 46.3768115942029,
+    "first_frame_prediction": [
+      515.0,
+      414.0,
+      153.0,
+      115.0
+    ]
+  },
+  {
+    "sequence": "Gyroscope-35",
+    "frames": 57,
+    "valid_frames": 57,
+    "AUC": 48.62155388471178,
+    "PRE": 49.122807017543856,
+    "NPR": 50.877192982456144,
+    "first_frame_prediction": [
+      527.0,
+      359.0,
+      149.0,
+      96.0
+    ]
+  },
+  {
+    "sequence": "Gyroscope-8",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 8.641975308641976,
+    "PRE": 7.4074074074074066,
+    "NPR": 7.4074074074074066,
+    "first_frame_prediction": [
+      518.0,
+      353.0,
+      122.0,
+      93.0
+    ]
+  },
+  {
+    "sequence": "Halichoeres Leucoxanthus-5",
+    "frames": 334,
+    "valid_frames": 305,
+    "AUC": 45.776736924277905,
+    "PRE": 54.42622950819672,
+    "NPR": 51.147540983606554,
+    "first_frame_prediction": [
+      62.0,
+      145.0,
+      110.0,
+      71.0
+    ]
+  },
+  {
+    "sequence": "Hamidashi-3",
+    "frames": 100,
+    "valid_frames": 100,
+    "AUC": 82.57142857142858,
+    "PRE": 46.0,
+    "NPR": 98.0,
+    "first_frame_prediction": [
+      229.0,
+      235.0,
+      1050.0,
+      288.0
+    ]
+  },
+  {
+    "sequence": "Hand Pedal Bike-8",
+    "frames": 29,
+    "valid_frames": 29,
+    "AUC": 84.72906403940887,
+    "PRE": 86.20689655172413,
+    "NPR": 89.65517241379311,
+    "first_frame_prediction": [
+      481.0,
+      267.0,
+      265.0,
+      393.0
+    ]
+  },
+  {
+    "sequence": "Hare-25",
+    "frames": 50,
+    "valid_frames": 50,
+    "AUC": 87.80952380952381,
+    "PRE": 82.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      415.0,
+      225.0,
+      334.0,
+      304.0
+    ]
+  },
+  {
+    "sequence": "Harlequin Sweetlips-30",
+    "frames": 30,
+    "valid_frames": 28,
+    "AUC": 81.97278911564626,
+    "PRE": 85.71428571428571,
+    "NPR": 89.28571428571429,
+    "first_frame_prediction": [
+      121.0,
+      43.0,
+      258.0,
+      292.0
+    ]
+  },
+  {
+    "sequence": "Harlequin Sweetlips-9",
+    "frames": 114,
+    "valid_frames": 114,
+    "AUC": 84.92063492063492,
+    "PRE": 96.49122807017544,
+    "NPR": 96.49122807017544,
+    "first_frame_prediction": [
+      562.0,
+      241.0,
+      120.0,
+      103.0
+    ]
+  },
+  {
+    "sequence": "Harp Guitar-4",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 78.04232804232802,
+    "PRE": 75.0,
+    "NPR": 97.22222222222221,
+    "first_frame_prediction": [
+      223.0,
+      358.0,
+      354.0,
+      232.0
+    ]
+  },
+  {
+    "sequence": "Harvester-19",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 82.8042328042328,
+    "PRE": 77.77777777777779,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      503.0,
+      261.0,
+      504.0,
+      312.0
+    ]
+  },
+  {
+    "sequence": "Harvester-27",
+    "frames": 110,
+    "valid_frames": 110,
+    "AUC": 90.86580086580088,
+    "PRE": 99.0909090909091,
+    "NPR": 99.0909090909091,
+    "first_frame_prediction": [
+      532.0,
+      379.0,
+      289.0,
+      142.0
+    ]
+  },
+  {
+    "sequence": "Hat-19",
+    "frames": 75,
+    "valid_frames": 75,
+    "AUC": 83.04761904761907,
+    "PRE": 73.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      433.0,
+      130.0,
+      393.0,
+      250.0
+    ]
+  },
+  {
+    "sequence": "Hat-9",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 77.46031746031746,
+    "PRE": 73.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      253.0,
+      198.0,
+      740.0,
+      374.0
+    ]
+  },
+  {
+    "sequence": "Height Gauge-57",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 57.67195767195767,
+    "PRE": 0.0,
+    "NPR": 72.22222222222221,
+    "first_frame_prediction": [
+      0.0,
+      0.0,
+      328.0,
+      607.0
+    ]
+  },
+  {
+    "sequence": "Helmet Jellyfish-1",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 76.85185185185185,
+    "PRE": 63.888888888888886,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      793.0,
+      300.0,
+      260.0,
+      294.0
+    ]
+  },
+  {
+    "sequence": "Helmet-176",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 87.03703703703705,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      69.0,
+      367.0,
+      168.0,
+      199.0
+    ]
+  },
+  {
+    "sequence": "Helmet-93",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 90.58956916099774,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      81.0,
+      120.0,
+      217.0,
+      329.0
+    ]
+  },
+  {
+    "sequence": "Hericium Erinaceus-30",
+    "frames": 110,
+    "valid_frames": 110,
+    "AUC": 63.030303030303024,
+    "PRE": 30.0,
+    "NPR": 69.0909090909091,
+    "first_frame_prediction": [
+      575.0,
+      285.0,
+      205.0,
+      272.0
+    ]
+  },
+  {
+    "sequence": "Heroes Of The Storm-12",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 53.174603174603185,
+    "PRE": 20.833333333333336,
+    "NPR": 33.33333333333333,
+    "first_frame_prediction": [
+      577.0,
+      261.0,
+      156.0,
+      127.0
+    ]
+  },
+  {
+    "sequence": "Heroes Of The Storm-50",
+    "frames": 12,
+    "valid_frames": 12,
+    "AUC": 62.30158730158729,
+    "PRE": 66.66666666666666,
+    "NPR": 66.66666666666666,
+    "first_frame_prediction": [
+      233.0,
+      189.0,
+      637.0,
+      319.0
+    ]
+  },
+  {
+    "sequence": "Hooded Merganser-8",
+    "frames": 156,
+    "valid_frames": 156,
+    "AUC": 90.32356532356532,
+    "PRE": 98.71794871794873,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      704.0,
+      211.0,
+      523.0,
+      258.0
+    ]
+  },
+  {
+    "sequence": "Horned Puffin-3",
+    "frames": 47,
+    "valid_frames": 47,
+    "AUC": 90.17223910840933,
+    "PRE": 80.85106382978722,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      466.0,
+      291.0,
+      346.0,
+      425.0
+    ]
+  },
+  {
+    "sequence": "Hospital Sign-9",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 3.8095238095238093,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      1025.0,
+      51.0,
+      230.0,
+      223.0
+    ]
+  },
+  {
+    "sequence": "Hot Chocolate-13",
+    "frames": 57,
+    "valid_frames": 57,
+    "AUC": 71.76274018379281,
+    "PRE": 26.31578947368421,
+    "NPR": 91.22807017543859,
+    "first_frame_prediction": [
+      437.0,
+      107.0,
+      737.0,
+      527.0
+    ]
+  },
+  {
+    "sequence": "Humpback Whale-8",
+    "frames": 114,
+    "valid_frames": 114,
+    "AUC": 88.05346700083541,
+    "PRE": 82.45614035087719,
+    "NPR": 95.6140350877193,
+    "first_frame_prediction": [
+      595.0,
+      296.0,
+      110.0,
+      120.0
+    ]
+  },
+  {
+    "sequence": "Humphead Parrotfish-10",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 45.952380952380956,
+    "PRE": 30.0,
+    "NPR": 50.0,
+    "first_frame_prediction": [
+      385.0,
+      70.0,
+      717.0,
+      327.0
+    ]
+  },
+  {
+    "sequence": "Humphead Parrotfish-15",
+    "frames": 33,
+    "valid_frames": 33,
+    "AUC": 4.9062049062049065,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      349.0,
+      202.0,
+      470.0,
+      290.0
+    ]
+  },
+  {
+    "sequence": "Hurling-8",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 26.111111111111114,
+    "PRE": 38.333333333333336,
+    "NPR": 31.666666666666664,
+    "first_frame_prediction": [
+      78.0,
+      108.0,
+      110.0,
+      87.0
+    ]
+  },
+  {
+    "sequence": "Hyena-24",
+    "frames": 10,
+    "valid_frames": 10,
+    "AUC": 73.8095238095238,
+    "PRE": 40.0,
+    "NPR": 80.0,
+    "first_frame_prediction": [
+      332.0,
+      136.0,
+      860.0,
+      522.0
+    ]
+  },
+  {
+    "sequence": "Ice Rescue Suit-13",
+    "frames": 15,
+    "valid_frames": 15,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      866.0,
+      58.0,
+      196.0,
+      632.0
+    ]
+  },
+  {
+    "sequence": "Impact Driver-6",
+    "frames": 63,
+    "valid_frames": 63,
+    "AUC": 83.29554043839758,
+    "PRE": 93.65079365079364,
+    "NPR": 96.82539682539682,
+    "first_frame_prediction": [
+      556.0,
+      381.0,
+      93.0,
+      157.0
+    ]
+  },
+  {
+    "sequence": "Inca Tern-3",
+    "frames": 75,
+    "valid_frames": 75,
+    "AUC": 91.36507936507937,
+    "PRE": 98.66666666666667,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      140.0,
+      30.0,
+      206.0,
+      576.0
+    ]
+  },
+  {
+    "sequence": "Indonesian Rupiah-54",
+    "frames": 144,
+    "valid_frames": 144,
+    "AUC": 93.45238095238095,
+    "PRE": 92.36111111111111,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      116.0,
+      99.0,
+      1032.0,
+      455.0
+    ]
+  },
+  {
+    "sequence": "Infrared Thermometer-21",
+    "frames": 29,
+    "valid_frames": 29,
+    "AUC": 89.49096880131364,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      406.0,
+      295.0,
+      117.0,
+      149.0
+    ]
+  },
+  {
+    "sequence": "Infrared Thermometer-48",
+    "frames": 19,
+    "valid_frames": 19,
+    "AUC": 78.94736842105262,
+    "PRE": 78.94736842105263,
+    "NPR": 84.21052631578947,
+    "first_frame_prediction": [
+      40.0,
+      317.0,
+      187.0,
+      310.0
+    ]
+  },
+  {
+    "sequence": "Insect Repellent Bottle-6",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 93.15476190476191,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      543.0,
+      542.0,
+      60.0,
+      143.0
+    ]
+  },
+  {
+    "sequence": "Interactive Fountains-12",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 72.93650793650794,
+    "PRE": 40.0,
+    "NPR": 93.33333333333333,
+    "first_frame_prediction": [
+      374.0,
+      229.0,
+      455.0,
+      377.0
+    ]
+  },
+  {
+    "sequence": "Interceptor-146",
+    "frames": 100,
+    "valid_frames": 100,
+    "AUC": 92.0,
+    "PRE": 99.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      542.0,
+      363.0,
+      80.0,
+      49.0
+    ]
+  },
+  {
+    "sequence": "Interceptor-163",
+    "frames": 50,
+    "valid_frames": 50,
+    "AUC": 90.76190476190477,
+    "PRE": 96.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      23.0,
+      240.0,
+      498.0,
+      198.0
+    ]
+  },
+  {
+    "sequence": "Interceptor-167",
+    "frames": 120,
+    "valid_frames": 120,
+    "AUC": 91.82539682539682,
+    "PRE": 99.16666666666667,
+    "NPR": 99.16666666666667,
+    "first_frame_prediction": [
+      641.0,
+      340.0,
+      170.0,
+      60.0
+    ]
+  },
+  {
+    "sequence": "Interceptor-213",
+    "frames": 59,
+    "valid_frames": 59,
+    "AUC": 84.58434221146085,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      683.0,
+      289.0,
+      132.0,
+      56.0
+    ]
+  },
+  {
+    "sequence": "Interceptor-26",
+    "frames": 55,
+    "valid_frames": 55,
+    "AUC": 60.6926406926407,
+    "PRE": 89.0909090909091,
+    "NPR": 80.0,
+    "first_frame_prediction": [
+      58.0,
+      82.0,
+      21.0,
+      15.0
+    ]
+  },
+  {
+    "sequence": "Interceptor-28",
+    "frames": 148,
+    "valid_frames": 148,
+    "AUC": 56.660231660231666,
+    "PRE": 80.4054054054054,
+    "NPR": 64.1891891891892,
+    "first_frame_prediction": [
+      115.0,
+      73.0,
+      88.0,
+      26.0
+    ]
+  },
+  {
+    "sequence": "Jackfruit-26",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      251.0,
+      429.0,
+      220.0,
+      241.0
+    ]
+  },
+  {
+    "sequence": "Jam Jar-22",
+    "frames": 41,
+    "valid_frames": 41,
+    "AUC": 93.96051103368175,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      277.0,
+      33.0,
+      401.0,
+      570.0
+    ]
+  },
+  {
+    "sequence": "Jam Jar-4",
+    "frames": 12,
+    "valid_frames": 12,
+    "AUC": 7.142857142857144,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      286.0,
+      256.0,
+      295.0,
+      293.0
+    ]
+  },
+  {
+    "sequence": "Jamaican Dollar-4",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 51.488095238095234,
+    "PRE": 8.333333333333332,
+    "NPR": 39.58333333333333,
+    "first_frame_prediction": [
+      0.0,
+      113.0,
+      265.0,
+      487.0
+    ]
+  },
+  {
+    "sequence": "Japanese White Eye-10",
+    "frames": 300,
+    "valid_frames": 300,
+    "AUC": 63.98412698412699,
+    "PRE": 70.0,
+    "NPR": 71.66666666666667,
+    "first_frame_prediction": [
+      280.0,
+      167.0,
+      259.0,
+      146.0
+    ]
+  },
+  {
+    "sequence": "Japanese White Eye-29",
+    "frames": 140,
+    "valid_frames": 140,
+    "AUC": 71.63265306122449,
+    "PRE": 66.42857142857143,
+    "NPR": 99.28571428571429,
+    "first_frame_prediction": [
+      709.0,
+      357.0,
+      182.0,
+      177.0
+    ]
+  },
+  {
+    "sequence": "Japanese Yen-43",
+    "frames": 84,
+    "valid_frames": 78,
+    "AUC": 88.27838827838829,
+    "PRE": 94.87179487179486,
+    "NPR": 94.87179487179486,
+    "first_frame_prediction": [
+      236.0,
+      416.0,
+      294.0,
+      181.0
+    ]
+  },
+  {
+    "sequence": "John Dory-10",
+    "frames": 132,
+    "valid_frames": 132,
+    "AUC": 88.67243867243867,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      587.0,
+      529.0,
+      205.0,
+      144.0
+    ]
+  },
+  {
+    "sequence": "Jump Rope-100",
+    "frames": 53,
+    "valid_frames": 53,
+    "AUC": 92.90206648697215,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      495.0,
+      95.0,
+      303.0,
+      536.0
+    ]
+  },
+  {
+    "sequence": "Jump Rope-51",
+    "frames": 92,
+    "valid_frames": 92,
+    "AUC": 87.88819875776399,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      639.0,
+      171.0,
+      207.0,
+      510.0
+    ]
+  },
+  {
+    "sequence": "Kelp Gull-9",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 58.377425044091716,
+    "PRE": 25.925925925925924,
+    "NPR": 59.25925925925925,
+    "first_frame_prediction": [
+      803.0,
+      230.0,
+      263.0,
+      190.0
+    ]
+  },
+  {
+    "sequence": "Kh2002-1",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 91.26984126984128,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      47.0,
+      118.0,
+      805.0,
+      201.0
+    ]
+  },
+  {
+    "sequence": "Kin-Ball-6",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 93.65079365079364,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      431.0,
+      210.0,
+      315.0,
+      301.0
+    ]
+  },
+  {
+    "sequence": "Kinkajou-22",
+    "frames": 29,
+    "valid_frames": 29,
+    "AUC": 76.68308702791462,
+    "PRE": 75.86206896551724,
+    "NPR": 89.65517241379311,
+    "first_frame_prediction": [
+      71.0,
+      311.0,
+      206.0,
+      226.0
+    ]
+  },
+  {
+    "sequence": "Kissing Gourami-23",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      134.0,
+      232.0,
+      362.0,
+      192.0
+    ]
+  },
+  {
+    "sequence": "Kusarigama-20",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 87.56613756613754,
+    "PRE": 72.22222222222221,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      412.0,
+      268.0,
+      720.0,
+      234.0
+    ]
+  },
+  {
+    "sequence": "Labrador Retriever-8",
+    "frames": 42,
+    "valid_frames": 40,
+    "AUC": 38.92857142857144,
+    "PRE": 40.0,
+    "NPR": 40.0,
+    "first_frame_prediction": [
+      912.0,
+      318.0,
+      267.0,
+      282.0
+    ]
+  },
+  {
+    "sequence": "Large-Billed Tern-10",
+    "frames": 85,
+    "valid_frames": 85,
+    "AUC": 7.450980392156863,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      649.0,
+      218.0,
+      293.0,
+      345.0
+    ]
+  },
+  {
+    "sequence": "Large-Tailed Nightjar-31",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 80.58201058201058,
+    "PRE": 28.888888888888886,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      144.0,
+      362.0,
+      799.0,
+      304.0
+    ]
+  },
+  {
+    "sequence": "Laundry Bag-12",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 85.71428571428571,
+    "PRE": 75.0,
+    "NPR": 95.83333333333334,
+    "first_frame_prediction": [
+      271.0,
+      269.0,
+      584.0,
+      423.0
+    ]
+  },
+  {
+    "sequence": "Lce Hockey-1",
+    "frames": 34,
+    "valid_frames": 29,
+    "AUC": 1.8062397372742198,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      615.0,
+      327.0,
+      449.0,
+      250.0
+    ]
+  },
+  {
+    "sequence": "Lego Building Set-104",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 66.78004535147393,
+    "PRE": 47.61904761904761,
+    "NPR": 78.57142857142857,
+    "first_frame_prediction": [
+      660.0,
+      43.0,
+      354.0,
+      539.0
+    ]
+  },
+  {
+    "sequence": "Lego Building Set-124",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 1.9274376417233559,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      571.0,
+      396.0,
+      308.0,
+      158.0
+    ]
+  },
+  {
+    "sequence": "Lemur-24",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 92.38095238095238,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      98.0,
+      0.0,
+      149.0,
+      521.0
+    ]
+  },
+  {
+    "sequence": "Lemur-49",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 73.41269841269842,
+    "PRE": 55.55555555555556,
+    "NPR": 80.55555555555556,
+    "first_frame_prediction": [
+      174.0,
+      28.0,
+      422.0,
+      619.0
+    ]
+  },
+  {
+    "sequence": "Leopard Bush Fish-25",
+    "frames": 40,
+    "valid_frames": 40,
+    "AUC": 86.19047619047619,
+    "PRE": 75.0,
+    "NPR": 97.5,
+    "first_frame_prediction": [
+      521.0,
+      150.0,
+      209.0,
+      352.0
+    ]
+  },
+  {
+    "sequence": "Lepomis Gulosus-2",
+    "frames": 138,
+    "valid_frames": 138,
+    "AUC": 87.7846790890269,
+    "PRE": 76.08695652173914,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      380.0,
+      293.0,
+      455.0,
+      250.0
+    ]
+  },
+  {
+    "sequence": "Lepomis Macrochirus-11",
+    "frames": 84,
+    "valid_frames": 84,
+    "AUC": 89.28571428571429,
+    "PRE": 89.28571428571429,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      198.0,
+      189.0,
+      314.0,
+      193.0
+    ]
+  },
+  {
+    "sequence": "Life Jacket-41",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 62.47619047619048,
+    "PRE": 60.0,
+    "NPR": 72.0,
+    "first_frame_prediction": [
+      470.0,
+      101.0,
+      158.0,
+      243.0
+    ]
+  },
+  {
+    "sequence": "Light Rail Train-15",
+    "frames": 15,
+    "valid_frames": 15,
+    "AUC": 78.73015873015873,
+    "PRE": 80.0,
+    "NPR": 86.66666666666667,
+    "first_frame_prediction": [
+      304.0,
+      227.0,
+      462.0,
+      172.0
+    ]
+  },
+  {
+    "sequence": "Lion Dance-31",
+    "frames": 292,
+    "valid_frames": 292,
+    "AUC": 90.3457273320287,
+    "PRE": 92.12328767123287,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      523.0,
+      63.0,
+      384.0,
+      348.0
+    ]
+  },
+  {
+    "sequence": "Lion Dance-67",
+    "frames": 108,
+    "valid_frames": 108,
+    "AUC": 91.53439153439153,
+    "PRE": 96.29629629629629,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      315.0,
+      393.0,
+      176.0,
+      161.0
+    ]
+  },
+  {
+    "sequence": "Lipstick-2",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 80.35714285714286,
+    "PRE": 95.83333333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      263.0,
+      309.0,
+      49.0,
+      189.0
+    ]
+  },
+  {
+    "sequence": "Lipstick-7",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 49.36507936507937,
+    "PRE": 40.0,
+    "NPR": 50.0,
+    "first_frame_prediction": [
+      101.0,
+      297.0,
+      157.0,
+      163.0
+    ]
+  },
+  {
+    "sequence": "Long Sword-2",
+    "frames": 45,
+    "valid_frames": 45,
+    "AUC": 2.9629629629629632,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      225.0,
+      363.0,
+      945.0,
+      97.0
+    ]
+  },
+  {
+    "sequence": "Luger P08-11",
+    "frames": 112,
+    "valid_frames": 112,
+    "AUC": 87.28741496598639,
+    "PRE": 82.14285714285714,
+    "NPR": 98.21428571428571,
+    "first_frame_prediction": [
+      525.0,
+      124.0,
+      395.0,
+      533.0
+    ]
+  },
+  {
+    "sequence": "Luggage Cart Wheel-2",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 59.183673469387756,
+    "PRE": 50.0,
+    "NPR": 50.0,
+    "first_frame_prediction": [
+      510.0,
+      284.0,
+      172.0,
+      230.0
+    ]
+  },
+  {
+    "sequence": "Luggage Cart Wheel-3",
+    "frames": 156,
+    "valid_frames": 153,
+    "AUC": 33.36445689386866,
+    "PRE": 10.457516339869281,
+    "NPR": 11.11111111111111,
+    "first_frame_prediction": [
+      531.0,
+      215.0,
+      216.0,
+      145.0
+    ]
+  },
+  {
+    "sequence": "Lux Meter-33",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 94.62081128747796,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      197.0,
+      69.0,
+      267.0,
+      618.0
+    ]
+  },
+  {
+    "sequence": "Magic Track-49",
+    "frames": 30,
+    "valid_frames": 29,
+    "AUC": 15.435139573070607,
+    "PRE": 10.344827586206897,
+    "NPR": 3.4482758620689653,
+    "first_frame_prediction": [
+      28.0,
+      193.0,
+      704.0,
+      282.0
+    ]
+  },
+  {
+    "sequence": "Magnificent Frigatebird-7",
+    "frames": 105,
+    "valid_frames": 105,
+    "AUC": 80.63492063492063,
+    "PRE": 93.33333333333333,
+    "NPR": 97.14285714285714,
+    "first_frame_prediction": [
+      17.0,
+      68.0,
+      179.0,
+      138.0
+    ]
+  },
+  {
+    "sequence": "Mandarinfish-10",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 86.5079365079365,
+    "PRE": 44.44444444444444,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      262.0,
+      17.0,
+      540.0,
+      491.0
+    ]
+  },
+  {
+    "sequence": "Marathon Runner-36",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 75.23809523809524,
+    "PRE": 80.0,
+    "NPR": 85.0,
+    "first_frame_prediction": [
+      176.0,
+      260.0,
+      58.0,
+      147.0
+    ]
+  },
+  {
+    "sequence": "Matsutake-79",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 86.66666666666666,
+    "PRE": 93.33333333333333,
+    "NPR": 96.66666666666667,
+    "first_frame_prediction": [
+      544.0,
+      262.0,
+      185.0,
+      182.0
+    ]
+  },
+  {
+    "sequence": "Mattock-9",
+    "frames": 37,
+    "valid_frames": 37,
+    "AUC": 85.84298584298585,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      321.0,
+      0.0,
+      83.0,
+      236.0
+    ]
+  },
+  {
+    "sequence": "Medical Cart Wheel-25",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 90.27777777777777,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      621.0,
+      436.0,
+      185.0,
+      202.0
+    ]
+  },
+  {
+    "sequence": "Medicine Bottle-4",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 83.21995464852607,
+    "PRE": 61.904761904761905,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      732.0,
+      80.0,
+      293.0,
+      465.0
+    ]
+  },
+  {
+    "sequence": "Melocactus-27",
+    "frames": 66,
+    "valid_frames": 66,
+    "AUC": 12.193362193362194,
+    "PRE": 9.090909090909092,
+    "NPR": 13.636363636363635,
+    "first_frame_prediction": [
+      363.0,
+      234.0,
+      501.0,
+      319.0
+    ]
+  },
+  {
+    "sequence": "Metal Lathe Chuck-12",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 91.26984126984128,
+    "PRE": 94.44444444444444,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      26.0,
+      0.0,
+      431.0,
+      416.0
+    ]
+  },
+  {
+    "sequence": "Micropterus Coosae-1",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 78.04232804232805,
+    "PRE": 63.888888888888886,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      70.0,
+      196.0,
+      474.0,
+      239.0
+    ]
+  },
+  {
+    "sequence": "Micropterus Salmoides-15",
+    "frames": 120,
+    "valid_frames": 120,
+    "AUC": 88.76984126984127,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      268.0,
+      513.0,
+      427.0,
+      205.0
+    ]
+  },
+  {
+    "sequence": "Miniature Schnauzer-13",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 94.44444444444446,
+    "PRE": 94.44444444444444,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      209.0,
+      176.0,
+      515.0,
+      533.0
+    ]
+  },
+  {
+    "sequence": "Mink-4",
+    "frames": 13,
+    "valid_frames": 13,
+    "AUC": 86.8131868131868,
+    "PRE": 84.61538461538461,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      289.0,
+      275.0,
+      334.0,
+      312.0
+    ]
+  },
+  {
+    "sequence": "Monkey-23",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 80.82010582010581,
+    "PRE": 41.66666666666667,
+    "NPR": 86.11111111111111,
+    "first_frame_prediction": [
+      607.0,
+      150.0,
+      515.0,
+      569.0
+    ]
+  },
+  {
+    "sequence": "Monowheel-16",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 74.07407407407408,
+    "PRE": 94.44444444444444,
+    "NPR": 94.44444444444444,
+    "first_frame_prediction": [
+      402.0,
+      97.0,
+      146.0,
+      541.0
+    ]
+  },
+  {
+    "sequence": "Moonlight Gourami-19",
+    "frames": 210,
+    "valid_frames": 94,
+    "AUC": 80.90172239108409,
+    "PRE": 76.59574468085107,
+    "NPR": 92.5531914893617,
+    "first_frame_prediction": [
+      353.0,
+      220.0,
+      247.0,
+      153.0
+    ]
+  },
+  {
+    "sequence": "Moonlight Gourami-21",
+    "frames": 1073,
+    "valid_frames": 887,
+    "AUC": 83.34675471090353,
+    "PRE": 80.15783540022548,
+    "NPR": 95.49041713641489,
+    "first_frame_prediction": [
+      225.0,
+      353.0,
+      424.0,
+      239.0
+    ]
+  },
+  {
+    "sequence": "Moose-20",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 92.11640211640211,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      484.0,
+      9.0,
+      194.0,
+      571.0
+    ]
+  },
+  {
+    "sequence": "Morel-9",
+    "frames": 30,
+    "valid_frames": 26,
+    "AUC": 45.05494505494506,
+    "PRE": 38.46153846153847,
+    "NPR": 30.76923076923077,
+    "first_frame_prediction": [
+      450.0,
+      268.0,
+      184.0,
+      148.0
+    ]
+  },
+  {
+    "sequence": "Musk Deer-7",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 91.7989417989418,
+    "PRE": 88.88888888888889,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      139.0,
+      15.0,
+      777.0,
+      647.0
+    ]
+  },
+  {
+    "sequence": "Muskrat-5",
+    "frames": 45,
+    "valid_frames": 45,
+    "AUC": 15.449735449735446,
+    "PRE": 2.2222222222222223,
+    "NPR": 15.555555555555555,
+    "first_frame_prediction": [
+      92.0,
+      473.0,
+      872.0,
+      107.0
+    ]
+  },
+  {
+    "sequence": "Nail Clippers-1",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 89.04761904761904,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      145.0,
+      40.0,
+      135.0,
+      265.0
+    ]
+  },
+  {
+    "sequence": "Nail Clippers-57",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 87.46031746031746,
+    "PRE": 53.333333333333336,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      274.0,
+      166.0,
+      729.0,
+      509.0
+    ]
+  },
+  {
+    "sequence": "Napo Saki-1",
+    "frames": 192,
+    "valid_frames": 192,
+    "AUC": 48.95833333333333,
+    "PRE": 2.083333333333333,
+    "NPR": 60.416666666666664,
+    "first_frame_prediction": [
+      232.0,
+      104.0,
+      409.0,
+      435.0
+    ]
+  },
+  {
+    "sequence": "Needle Disposal Container-1",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 90.63492063492065,
+    "PRE": 90.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      192.0,
+      129.0,
+      537.0,
+      559.0
+    ]
+  },
+  {
+    "sequence": "New Zealand Dollar-26",
+    "frames": 732,
+    "valid_frames": 726,
+    "AUC": 88.1017971927063,
+    "PRE": 69.6969696969697,
+    "NPR": 96.41873278236915,
+    "first_frame_prediction": [
+      168.0,
+      55.0,
+      955.0,
+      467.0
+    ]
+  },
+  {
+    "sequence": "Northern Lapwing-15",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 89.90929705215419,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      60.0,
+      222.0,
+      226.0,
+      238.0
+    ]
+  },
+  {
+    "sequence": "Notebook-3",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 47.98941798941799,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      777.0,
+      259.0,
+      299.0,
+      408.0
+    ]
+  },
+  {
+    "sequence": "Olive Sea Turtle-8",
+    "frames": 50,
+    "valid_frames": 50,
+    "AUC": 85.04761904761905,
+    "PRE": 80.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      483.0,
+      249.0,
+      274.0,
+      230.0
+    ]
+  },
+  {
+    "sequence": "Opalescent Nudibranch-6",
+    "frames": 162,
+    "valid_frames": 162,
+    "AUC": 58.43621399176955,
+    "PRE": 45.06172839506173,
+    "NPR": 64.81481481481481,
+    "first_frame_prediction": [
+      462.0,
+      376.0,
+      357.0,
+      113.0
+    ]
+  },
+  {
+    "sequence": "Orange-19",
+    "frames": 72,
+    "valid_frames": 72,
+    "AUC": 83.79629629629629,
+    "PRE": 72.22222222222221,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      646.0,
+      320.0,
+      436.0,
+      399.0
+    ]
+  },
+  {
+    "sequence": "Oriental Dollarbird-6",
+    "frames": 95,
+    "valid_frames": 95,
+    "AUC": 91.9298245614035,
+    "PRE": 97.89473684210527,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      607.0,
+      190.0,
+      175.0,
+      203.0
+    ]
+  },
+  {
+    "sequence": "Oyster Mushroom-14",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 88.62433862433863,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      473.0,
+      445.0,
+      314.0,
+      177.0
+    ]
+  },
+  {
+    "sequence": "Pacific Gull-8",
+    "frames": 336,
+    "valid_frames": 336,
+    "AUC": 91.82256235827664,
+    "PRE": 98.80952380952381,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      126.0,
+      158.0,
+      352.0,
+      239.0
+    ]
+  },
+  {
+    "sequence": "Painted Frogfish-3",
+    "frames": 132,
+    "valid_frames": 132,
+    "AUC": 91.52236652236651,
+    "PRE": 92.42424242424242,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      238.0,
+      0.0,
+      411.0,
+      461.0
+    ]
+  },
+  {
+    "sequence": "Painter-81",
+    "frames": 11,
+    "valid_frames": 11,
+    "AUC": 93.93939393939394,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      485.0,
+      269.0,
+      465.0,
+      450.0
+    ]
+  },
+  {
+    "sequence": "Panel Saw-3",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 34.04761904761905,
+    "PRE": 10.0,
+    "NPR": 30.0,
+    "first_frame_prediction": [
+      656.0,
+      46.0,
+      360.0,
+      291.0
+    ]
+  },
+  {
+    "sequence": "Paper Nautilus-1",
+    "frames": 180,
+    "valid_frames": 180,
+    "AUC": 89.81481481481482,
+    "PRE": 99.44444444444444,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      251.0,
+      214.0,
+      215.0,
+      157.0
+    ]
+  },
+  {
+    "sequence": "Paracheilinus Octotaenia-13",
+    "frames": 40,
+    "valid_frames": 40,
+    "AUC": 80.83333333333333,
+    "PRE": 85.0,
+    "NPR": 90.0,
+    "first_frame_prediction": [
+      507.0,
+      302.0,
+      183.0,
+      134.0
+    ]
+  },
+  {
+    "sequence": "Pear-41",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 92.38095238095238,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      709.0,
+      494.0,
+      224.0,
+      204.0
+    ]
+  },
+  {
+    "sequence": "Pencil-30",
+    "frames": 138,
+    "valid_frames": 138,
+    "AUC": 86.5079365079365,
+    "PRE": 98.55072463768117,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      1002.0,
+      344.0,
+      274.0,
+      372.0
+    ]
+  },
+  {
+    "sequence": "Pencil-39",
+    "frames": 180,
+    "valid_frames": 168,
+    "AUC": 89.3140589569161,
+    "PRE": 97.02380952380952,
+    "NPR": 99.40476190476191,
+    "first_frame_prediction": [
+      844.0,
+      342.0,
+      125.0,
+      324.0
+    ]
+  },
+  {
+    "sequence": "Pepper-3",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 14.285714285714285,
+    "PRE": 1.6666666666666667,
+    "NPR": 3.3333333333333335,
+    "first_frame_prediction": [
+      110.0,
+      273.0,
+      109.0,
+      107.0
+    ]
+  },
+  {
+    "sequence": "Pianist-30",
+    "frames": 600,
+    "valid_frames": 600,
+    "AUC": 90.03174603174602,
+    "PRE": 69.5,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      135.0,
+      120.0,
+      472.0,
+      588.0
+    ]
+  },
+  {
+    "sequence": "Piccolo-11",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 90.47619047619048,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      177.0,
+      163.0,
+      160.0,
+      65.0
+    ]
+  },
+  {
+    "sequence": "Pickup Truck-3",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 89.99999999999999,
+    "PRE": 95.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      94.0,
+      91.0,
+      1094.0,
+      534.0
+    ]
+  },
+  {
+    "sequence": "Pig-tailed Macaque-1",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 91.37566137566138,
+    "PRE": 87.77777777777777,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      524.0,
+      46.0,
+      478.0,
+      651.0
+    ]
+  },
+  {
+    "sequence": "Pig-tailed Macaque-25",
+    "frames": 31,
+    "valid_frames": 31,
+    "AUC": 75.26881720430107,
+    "PRE": 64.51612903225806,
+    "NPR": 77.41935483870968,
+    "first_frame_prediction": [
+      725.0,
+      307.0,
+      146.0,
+      155.0
+    ]
+  },
+  {
+    "sequence": "Pipa-9",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 82.85714285714285,
+    "PRE": 80.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      584.0,
+      215.0,
+      248.0,
+      448.0
+    ]
+  },
+  {
+    "sequence": "Plant Box-2",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 93.91534391534391,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      5.0,
+      72.0,
+      1209.0,
+      647.0
+    ]
+  },
+  {
+    "sequence": "Platform Shoes-30",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 84.92063492063492,
+    "PRE": 83.33333333333334,
+    "NPR": 94.44444444444444,
+    "first_frame_prediction": [
+      701.0,
+      130.0,
+      232.0,
+      245.0
+    ]
+  },
+  {
+    "sequence": "Plum Ak74-2",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 87.30158730158732,
+    "PRE": 66.66666666666666,
+    "NPR": 94.44444444444444,
+    "first_frame_prediction": [
+      408.0,
+      139.0,
+      247.0,
+      373.0
+    ]
+  },
+  {
+    "sequence": "Pokemon-36",
+    "frames": 12,
+    "valid_frames": 12,
+    "AUC": 71.03174603174602,
+    "PRE": 91.66666666666666,
+    "NPR": 91.66666666666666,
+    "first_frame_prediction": [
+      201.0,
+      130.0,
+      76.0,
+      82.0
+    ]
+  },
+  {
+    "sequence": "Polleni Grouper-2",
+    "frames": 84,
+    "valid_frames": 84,
+    "AUC": 69.50113378684807,
+    "PRE": 73.80952380952381,
+    "NPR": 76.19047619047619,
+    "first_frame_prediction": [
+      516.0,
+      301.0,
+      124.0,
+      194.0
+    ]
+  },
+  {
+    "sequence": "Popcorn Box-22",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 92.06349206349206,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      241.0,
+      103.0,
+      243.0,
+      287.0
+    ]
+  },
+  {
+    "sequence": "Potato-1",
+    "frames": 140,
+    "valid_frames": 140,
+    "AUC": 1.4625850340136053,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      24.0,
+      308.0,
+      102.0,
+      149.0
+    ]
+  },
+  {
+    "sequence": "Pottery Figurine-160",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 92.22222222222223,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      121.0,
+      152.0,
+      99.0,
+      123.0
+    ]
+  },
+  {
+    "sequence": "Pottery Figurine-60",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 73.46938775510205,
+    "PRE": 69.04761904761905,
+    "NPR": 90.47619047619048,
+    "first_frame_prediction": [
+      83.0,
+      398.0,
+      210.0,
+      138.0
+    ]
+  },
+  {
+    "sequence": "Ppq-29",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 90.7936507936508,
+    "PRE": 93.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      505.0,
+      206.0,
+      447.0,
+      340.0
+    ]
+  },
+  {
+    "sequence": "Pressure Cooker-2",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 79.86111111111113,
+    "PRE": 50.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      1.0,
+      249.0,
+      355.0,
+      330.0
+    ]
+  },
+  {
+    "sequence": "Pressure Gauge-12",
+    "frames": 52,
+    "valid_frames": 52,
+    "AUC": 35.8974358974359,
+    "PRE": 36.53846153846153,
+    "NPR": 36.53846153846153,
+    "first_frame_prediction": [
+      102.0,
+      137.0,
+      95.0,
+      73.0
+    ]
+  },
+  {
+    "sequence": "Prince Of Persia-1",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 79.04761904761905,
+    "PRE": 86.66666666666667,
+    "NPR": 86.66666666666667,
+    "first_frame_prediction": [
+      339.0,
+      342.0,
+      130.0,
+      138.0
+    ]
+  },
+  {
+    "sequence": "Printing Press Plate Cylinder-25",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 87.93650793650795,
+    "PRE": 96.66666666666667,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      73.0,
+      233.0,
+      1188.0,
+      318.0
+    ]
+  },
+  {
+    "sequence": "Protractor-67",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 89.68253968253967,
+    "PRE": 94.44444444444444,
+    "NPR": 94.44444444444444,
+    "first_frame_prediction": [
+      80.0,
+      278.0,
+      145.0,
+      132.0
+    ]
+  },
+  {
+    "sequence": "Pygmy Cormorant-1",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 82.22222222222221,
+    "PRE": 93.33333333333333,
+    "NPR": 93.33333333333333,
+    "first_frame_prediction": [
+      218.0,
+      280.0,
+      491.0,
+      383.0
+    ]
+  },
+  {
+    "sequence": "Quail Egg-26",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 1.5873015873015872,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      403.0,
+      228.0,
+      226.0,
+      149.0
+    ]
+  },
+  {
+    "sequence": "Raccoon-4",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 84.39153439153438,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      689.0,
+      431.0,
+      118.0,
+      203.0
+    ]
+  },
+  {
+    "sequence": "Racing Car-18",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 10.634920634920634,
+    "PRE": 10.0,
+    "NPR": 13.333333333333334,
+    "first_frame_prediction": [
+      642.0,
+      229.0,
+      124.0,
+      64.0
+    ]
+  },
+  {
+    "sequence": "Racing Car-19",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 90.36281179138321,
+    "PRE": 97.61904761904762,
+    "NPR": 97.61904761904762,
+    "first_frame_prediction": [
+      400.0,
+      278.0,
+      190.0,
+      109.0
+    ]
+  },
+  {
+    "sequence": "Radish-1",
+    "frames": 14,
+    "valid_frames": 14,
+    "AUC": 0.3401360544217687,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      93.0,
+      224.0,
+      98.0,
+      269.0
+    ]
+  },
+  {
+    "sequence": "Rapier-117",
+    "frames": 144,
+    "valid_frames": 133,
+    "AUC": 23.30827067669173,
+    "PRE": 15.037593984962406,
+    "NPR": 20.30075187969925,
+    "first_frame_prediction": [
+      559.0,
+      219.0,
+      323.0,
+      154.0
+    ]
+  },
+  {
+    "sequence": "Reciprocating Saw-20",
+    "frames": 35,
+    "valid_frames": 35,
+    "AUC": 52.244897959183675,
+    "PRE": 2.857142857142857,
+    "NPR": 5.714285714285714,
+    "first_frame_prediction": [
+      171.0,
+      68.0,
+      968.0,
+      505.0
+    ]
+  },
+  {
+    "sequence": "Reciprocating Saw-5",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 71.78130511463846,
+    "PRE": 64.81481481481481,
+    "NPR": 87.03703703703704,
+    "first_frame_prediction": [
+      81.0,
+      293.0,
+      276.0,
+      92.0
+    ]
+  },
+  {
+    "sequence": "Red Deer-15",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 85.03401360544215,
+    "PRE": 76.19047619047619,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      466.0,
+      284.0,
+      324.0,
+      298.0
+    ]
+  },
+  {
+    "sequence": "Red-Billed Blue Magpie-17",
+    "frames": 270,
+    "valid_frames": 270,
+    "AUC": 83.54497354497352,
+    "PRE": 92.5925925925926,
+    "NPR": 96.29629629629629,
+    "first_frame_prediction": [
+      380.0,
+      162.0,
+      97.0,
+      80.0
+    ]
+  },
+  {
+    "sequence": "Red-Billed Blue Magpie-49",
+    "frames": 75,
+    "valid_frames": 75,
+    "AUC": 76.76190476190476,
+    "PRE": 36.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      310.0,
+      207.0,
+      458.0,
+      272.0
+    ]
+  },
+  {
+    "sequence": "Red-Browed Finch-58",
+    "frames": 65,
+    "valid_frames": 65,
+    "AUC": 55.01831501831502,
+    "PRE": 50.76923076923077,
+    "NPR": 64.61538461538461,
+    "first_frame_prediction": [
+      872.0,
+      333.0,
+      372.0,
+      152.0
+    ]
+  },
+  {
+    "sequence": "Red-Tailed Black Shark-6",
+    "frames": 52,
+    "valid_frames": 52,
+    "AUC": 83.60805860805863,
+    "PRE": 88.46153846153845,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      558.0,
+      166.0,
+      323.0,
+      157.0
+    ]
+  },
+  {
+    "sequence": "Red-Winged Blackbird-16",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 93.38624338624338,
+    "PRE": 88.88888888888889,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      354.0,
+      192.0,
+      925.0,
+      479.0
+    ]
+  },
+  {
+    "sequence": "Remote Control Airplane-107",
+    "frames": 41,
+    "valid_frames": 41,
+    "AUC": 91.28919860627178,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      93.0,
+      299.0,
+      133.0,
+      71.0
+    ]
+  },
+  {
+    "sequence": "Remote Control Airplane-161",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 83.96825396825398,
+    "PRE": 98.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      293.0,
+      265.0,
+      468.0,
+      189.0
+    ]
+  },
+  {
+    "sequence": "Remote Control Airplane-4",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 90.47619047619048,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      467.0,
+      384.0,
+      285.0,
+      127.0
+    ]
+  },
+  {
+    "sequence": "Remote Control Airplane-67",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 91.46825396825398,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      399.0,
+      406.0,
+      307.0,
+      184.0
+    ]
+  },
+  {
+    "sequence": "Remote Control-22",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 90.39682539682539,
+    "PRE": 98.33333333333333,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      523.0,
+      528.0,
+      229.0,
+      75.0
+    ]
+  },
+  {
+    "sequence": "Remote Control-66",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 92.4867724867725,
+    "PRE": 97.77777777777777,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      354.0,
+      140.0,
+      291.0,
+      398.0
+    ]
+  },
+  {
+    "sequence": "Rescue Board-46",
+    "frames": 15,
+    "valid_frames": 15,
+    "AUC": 94.28571428571428,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      367.0,
+      287.0,
+      262.0,
+      261.0
+    ]
+  },
+  {
+    "sequence": "Rescue Snap Hook-68",
+    "frames": 849,
+    "valid_frames": 849,
+    "AUC": 52.139772281115036,
+    "PRE": 36.63133097762073,
+    "NPR": 53.71024734982333,
+    "first_frame_prediction": [
+      41.0,
+      544.0,
+      950.0,
+      175.0
+    ]
+  },
+  {
+    "sequence": "Ribbon Seal-20",
+    "frames": 155,
+    "valid_frames": 155,
+    "AUC": 92.62672811059909,
+    "PRE": 88.38709677419355,
+    "NPR": 98.70967741935483,
+    "first_frame_prediction": [
+      403.0,
+      71.0,
+      774.0,
+      543.0
+    ]
+  },
+  {
+    "sequence": "Richards Pipit-11",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 89.04761904761907,
+    "PRE": 75.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      283.0,
+      141.0,
+      552.0,
+      392.0
+    ]
+  },
+  {
+    "sequence": "Ring-54",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 93.80952380952381,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      418.0,
+      192.0,
+      426.0,
+      426.0
+    ]
+  },
+  {
+    "sequence": "Ring-88",
+    "frames": 270,
+    "valid_frames": 264,
+    "AUC": 86.90476190476191,
+    "PRE": 96.21212121212122,
+    "NPR": 98.48484848484848,
+    "first_frame_prediction": [
+      881.0,
+      209.0,
+      242.0,
+      309.0
+    ]
+  },
+  {
+    "sequence": "Rocket-123",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 75.39682539682539,
+    "PRE": 97.61904761904762,
+    "NPR": 90.47619047619048,
+    "first_frame_prediction": [
+      506.0,
+      308.0,
+      99.0,
+      169.0
+    ]
+  },
+  {
+    "sequence": "Rocket-5",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 79.73544973544972,
+    "PRE": 98.88888888888889,
+    "NPR": 97.77777777777777,
+    "first_frame_prediction": [
+      588.0,
+      336.0,
+      46.0,
+      109.0
+    ]
+  },
+  {
+    "sequence": "Rocket-95",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 74.25044091710757,
+    "PRE": 88.88888888888889,
+    "NPR": 88.88888888888889,
+    "first_frame_prediction": [
+      543.0,
+      256.0,
+      126.0,
+      219.0
+    ]
+  },
+  {
+    "sequence": "Roe Deer-17",
+    "frames": 40,
+    "valid_frames": 40,
+    "AUC": 91.78571428571428,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      425.0,
+      254.0,
+      165.0,
+      216.0
+    ]
+  },
+  {
+    "sequence": "Rower-10",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 57.936507936507944,
+    "PRE": 8.333333333333332,
+    "NPR": 50.0,
+    "first_frame_prediction": [
+      545.0,
+      124.0,
+      551.0,
+      238.0
+    ]
+  },
+  {
+    "sequence": "Rowing-30",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 8.88888888888889,
+    "PRE": 3.3333333333333335,
+    "NPR": 3.3333333333333335,
+    "first_frame_prediction": [
+      147.0,
+      266.0,
+      582.0,
+      324.0
+    ]
+  },
+  {
+    "sequence": "Ruan-6",
+    "frames": 90,
+    "valid_frames": 90,
+    "AUC": 90.8994708994709,
+    "PRE": 92.22222222222223,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      267.0,
+      115.0,
+      454.0,
+      585.0
+    ]
+  },
+  {
+    "sequence": "Ruger Gp100-10",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 77.33686067019401,
+    "PRE": 72.22222222222221,
+    "NPR": 85.18518518518519,
+    "first_frame_prediction": [
+      368.0,
+      523.0,
+      100.0,
+      88.0
+    ]
+  },
+  {
+    "sequence": "Ruger Gp100-30",
+    "frames": 68,
+    "valid_frames": 68,
+    "AUC": 52.03081232492997,
+    "PRE": 14.705882352941178,
+    "NPR": 14.705882352941178,
+    "first_frame_prediction": [
+      81.0,
+      419.0,
+      177.0,
+      122.0
+    ]
+  },
+  {
+    "sequence": "Ruger P90-11",
+    "frames": 180,
+    "valid_frames": 180,
+    "AUC": 77.24867724867727,
+    "PRE": 97.22222222222221,
+    "NPR": 88.88888888888889,
+    "first_frame_prediction": [
+      570.0,
+      475.0,
+      188.0,
+      109.0
+    ]
+  },
+  {
+    "sequence": "Sailboat-11",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 64.0,
+    "PRE": 68.0,
+    "NPR": 72.0,
+    "first_frame_prediction": [
+      675.0,
+      77.0,
+      120.0,
+      226.0
+    ]
+  },
+  {
+    "sequence": "Sailboat-5",
+    "frames": 6,
+    "valid_frames": 6,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      651.0,
+      0.0,
+      309.0,
+      586.0
+    ]
+  },
+  {
+    "sequence": "Sailing Dinghy-37",
+    "frames": 96,
+    "valid_frames": 96,
+    "AUC": 88.09523809523809,
+    "PRE": 98.95833333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      298.0,
+      0.0,
+      247.0,
+      327.0
+    ]
+  },
+  {
+    "sequence": "Salvia Splendens-20",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 80.3809523809524,
+    "PRE": 92.0,
+    "NPR": 92.0,
+    "first_frame_prediction": [
+      197.0,
+      189.0,
+      126.0,
+      70.0
+    ]
+  },
+  {
+    "sequence": "Sarangi-24",
+    "frames": 120,
+    "valid_frames": 120,
+    "AUC": 52.73809523809524,
+    "PRE": 59.166666666666664,
+    "NPR": 62.5,
+    "first_frame_prediction": [
+      445.0,
+      177.0,
+      128.0,
+      210.0
+    ]
+  },
+  {
+    "sequence": "Sarangi-8",
+    "frames": 360,
+    "valid_frames": 360,
+    "AUC": 75.75396825396824,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      139.0,
+      106.0,
+      122.0,
+      253.0
+    ]
+  },
+  {
+    "sequence": "Scalpel-6",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 76.75736961451248,
+    "PRE": 76.19047619047619,
+    "NPR": 90.47619047619048,
+    "first_frame_prediction": [
+      202.0,
+      157.0,
+      272.0,
+      174.0
+    ]
+  },
+  {
+    "sequence": "Scarf-51",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 60.58201058201058,
+    "PRE": 33.33333333333333,
+    "NPR": 72.22222222222221,
+    "first_frame_prediction": [
+      79.0,
+      129.0,
+      191.0,
+      510.0
+    ]
+  },
+  {
+    "sequence": "School Zone Sign-22",
+    "frames": 98,
+    "valid_frames": 98,
+    "AUC": 64.96598639455783,
+    "PRE": 8.16326530612245,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      196.0,
+      0.0,
+      218.0,
+      228.0
+    ]
+  },
+  {
+    "sequence": "School Zone Speed Limit Sign-34",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 94.97354497354496,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      567.0,
+      249.0,
+      139.0,
+      248.0
+    ]
+  },
+  {
+    "sequence": "Sepak Takraw-15",
+    "frames": 54,
+    "valid_frames": 43,
+    "AUC": 3.6544850498338874,
+    "PRE": 4.651162790697675,
+    "NPR": 4.651162790697675,
+    "first_frame_prediction": [
+      542.0,
+      575.0,
+      106.0,
+      60.0
+    ]
+  },
+  {
+    "sequence": "Sewing Thread-42",
+    "frames": 154,
+    "valid_frames": 154,
+    "AUC": 88.93011750154608,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      724.0,
+      430.0,
+      120.0,
+      139.0
+    ]
+  },
+  {
+    "sequence": "Sheep-33",
+    "frames": 29,
+    "valid_frames": 29,
+    "AUC": 54.8440065681445,
+    "PRE": 48.275862068965516,
+    "NPR": 51.724137931034484,
+    "first_frame_prediction": [
+      336.0,
+      144.0,
+      374.0,
+      335.0
+    ]
+  },
+  {
+    "sequence": "Shoes-66",
+    "frames": 138,
+    "valid_frames": 138,
+    "AUC": 18.357487922705314,
+    "PRE": 24.637681159420293,
+    "NPR": 16.666666666666664,
+    "first_frame_prediction": [
+      576.0,
+      364.0,
+      109.0,
+      259.0
+    ]
+  },
+  {
+    "sequence": "Shoes-94",
+    "frames": 68,
+    "valid_frames": 68,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      542.0,
+      365.0,
+      124.0,
+      261.0
+    ]
+  },
+  {
+    "sequence": "Shorts-3",
+    "frames": 50,
+    "valid_frames": 50,
+    "AUC": 4.9523809523809526,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      123.0,
+      513.0,
+      61.0,
+      123.0
+    ]
+  },
+  {
+    "sequence": "Siberian Rubythroat-17",
+    "frames": 66,
+    "valid_frames": 66,
+    "AUC": 87.73448773448774,
+    "PRE": 81.81818181818183,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      565.0,
+      196.0,
+      240.0,
+      359.0
+    ]
+  },
+  {
+    "sequence": "Sitar-6",
+    "frames": 420,
+    "valid_frames": 420,
+    "AUC": 85.29478458049886,
+    "PRE": 54.047619047619044,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      10.0,
+      289.0,
+      395.0,
+      340.0
+    ]
+  },
+  {
+    "sequence": "Skateboarder-19",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 88.66213151927438,
+    "PRE": 92.85714285714286,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      64.0,
+      231.0,
+      210.0,
+      321.0
+    ]
+  },
+  {
+    "sequence": "Ski Pole-1",
+    "frames": 119,
+    "valid_frames": 112,
+    "AUC": 19.982993197278912,
+    "PRE": 24.107142857142858,
+    "NPR": 22.321428571428573,
+    "first_frame_prediction": [
+      310.0,
+      455.0,
+      79.0,
+      115.0
+    ]
+  },
+  {
+    "sequence": "Ski Pole-42",
+    "frames": 41,
+    "valid_frames": 37,
+    "AUC": 27.15572715572716,
+    "PRE": 43.24324324324324,
+    "NPR": 29.72972972972973,
+    "first_frame_prediction": [
+      578.0,
+      297.0,
+      103.0,
+      322.0
+    ]
+  },
+  {
+    "sequence": "Ski Pole-58",
+    "frames": 90,
+    "valid_frames": 84,
+    "AUC": 39.625850340136054,
+    "PRE": 41.66666666666667,
+    "NPR": 42.857142857142854,
+    "first_frame_prediction": [
+      726.0,
+      439.0,
+      171.0,
+      276.0
+    ]
+  },
+  {
+    "sequence": "Skydiving Aircraft-7",
+    "frames": 34,
+    "valid_frames": 34,
+    "AUC": 87.81512605042016,
+    "PRE": 94.11764705882352,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      324.0,
+      213.0,
+      163.0,
+      141.0
+    ]
+  },
+  {
+    "sequence": "Snailfish-11",
+    "frames": 180,
+    "valid_frames": 180,
+    "AUC": 88.54497354497354,
+    "PRE": 94.44444444444444,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      730.0,
+      148.0,
+      108.0,
+      278.0
+    ]
+  },
+  {
+    "sequence": "Snow Leopard-23",
+    "frames": 198,
+    "valid_frames": 198,
+    "AUC": 87.39778739778741,
+    "PRE": 72.22222222222221,
+    "NPR": 99.4949494949495,
+    "first_frame_prediction": [
+      0.0,
+      248.0,
+      803.0,
+      279.0
+    ]
+  },
+  {
+    "sequence": "Snowmobile Track Wheel-16",
+    "frames": 29,
+    "valid_frames": 29,
+    "AUC": 77.33990147783251,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      338.0,
+      0.0,
+      181.0,
+      212.0
+    ]
+  },
+  {
+    "sequence": "Snowmobile Track Wheel-50",
+    "frames": 43,
+    "valid_frames": 43,
+    "AUC": 3.433001107419712,
+    "PRE": 2.3255813953488373,
+    "NPR": 2.3255813953488373,
+    "first_frame_prediction": [
+      546.0,
+      99.0,
+      183.0,
+      120.0
+    ]
+  },
+  {
+    "sequence": "Snowplow-19",
+    "frames": 53,
+    "valid_frames": 53,
+    "AUC": 90.92542677448337,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      683.0,
+      337.0,
+      156.0,
+      94.0
+    ]
+  },
+  {
+    "sequence": "Soap Box-25",
+    "frames": 54,
+    "valid_frames": 53,
+    "AUC": 11.410601976639713,
+    "PRE": 1.8867924528301887,
+    "NPR": 13.20754716981132,
+    "first_frame_prediction": [
+      247.0,
+      72.0,
+      514.0,
+      353.0
+    ]
+  },
+  {
+    "sequence": "Sousaphone-23",
+    "frames": 60,
+    "valid_frames": 59,
+    "AUC": 60.613397901533496,
+    "PRE": 33.89830508474576,
+    "NPR": 66.10169491525424,
+    "first_frame_prediction": [
+      116.0,
+      59.0,
+      221.0,
+      365.0
+    ]
+  },
+  {
+    "sequence": "South African Rand-15",
+    "frames": 162,
+    "valid_frames": 153,
+    "AUC": 90.81854964207908,
+    "PRE": 94.11764705882352,
+    "NPR": 95.42483660130719,
+    "first_frame_prediction": [
+      604.0,
+      310.0,
+      385.0,
+      358.0
+    ]
+  },
+  {
+    "sequence": "South Korean Won-3",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 94.97354497354496,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      416.0,
+      183.0,
+      635.0,
+      329.0
+    ]
+  },
+  {
+    "sequence": "Spectrophotometer-6",
+    "frames": 58,
+    "valid_frames": 58,
+    "AUC": 92.9392446633826,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      416.0,
+      315.0,
+      175.0,
+      88.0
+    ]
+  },
+  {
+    "sequence": "Spell-31",
+    "frames": 72,
+    "valid_frames": 72,
+    "AUC": 91.40211640211639,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      716.0,
+      227.0,
+      142.0,
+      279.0
+    ]
+  },
+  {
+    "sequence": "Sphynx Cat-2",
+    "frames": 108,
+    "valid_frames": 108,
+    "AUC": 2.7336860670194,
+    "PRE": 2.7777777777777777,
+    "NPR": 0.9259259259259258,
+    "first_frame_prediction": [
+      252.0,
+      300.0,
+      72.0,
+      82.0
+    ]
+  },
+  {
+    "sequence": "Spirit Level-39",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 77.52380952380953,
+    "PRE": 80.0,
+    "NPR": 84.0,
+    "first_frame_prediction": [
+      368.0,
+      466.0,
+      643.0,
+      218.0
+    ]
+  },
+  {
+    "sequence": "Sports Car-3",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 92.85714285714286,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      397.0,
+      199.0,
+      833.0,
+      466.0
+    ]
+  },
+  {
+    "sequence": "Spray Paint Wheel-54",
+    "frames": 144,
+    "valid_frames": 144,
+    "AUC": 77.38095238095238,
+    "PRE": 63.19444444444444,
+    "NPR": 84.02777777777779,
+    "first_frame_prediction": [
+      239.0,
+      32.0,
+      792.0,
+      637.0
+    ]
+  },
+  {
+    "sequence": "Spray Paint Wheel-70",
+    "frames": 55,
+    "valid_frames": 55,
+    "AUC": 61.38528138528139,
+    "PRE": 94.54545454545455,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      440.0,
+      388.0,
+      434.0,
+      313.0
+    ]
+  },
+  {
+    "sequence": "Squash-16",
+    "frames": 72,
+    "valid_frames": 68,
+    "AUC": 1.1904761904761905,
+    "PRE": 1.4705882352941175,
+    "NPR": 1.4705882352941175,
+    "first_frame_prediction": [
+      525.0,
+      151.0,
+      554.0,
+      353.0
+    ]
+  },
+  {
+    "sequence": "Squirrelfish-17",
+    "frames": 48,
+    "valid_frames": 46,
+    "AUC": 84.78260869565217,
+    "PRE": 91.30434782608695,
+    "NPR": 93.47826086956522,
+    "first_frame_prediction": [
+      255.0,
+      157.0,
+      384.0,
+      177.0
+    ]
+  },
+  {
+    "sequence": "Steamer-22",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 83.10657596371883,
+    "PRE": 83.33333333333334,
+    "NPR": 95.23809523809523,
+    "first_frame_prediction": [
+      605.0,
+      333.0,
+      261.0,
+      228.0
+    ]
+  },
+  {
+    "sequence": "Steel Drums-19",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 88.4920634920635,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      96.0,
+      195.0,
+      141.0,
+      127.0
+    ]
+  },
+  {
+    "sequence": "Strainer-2",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 29.894179894179896,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      184.0,
+      234.0,
+      100.0,
+      99.0
+    ]
+  },
+  {
+    "sequence": "Street Dancer-17",
+    "frames": 209,
+    "valid_frames": 209,
+    "AUC": 59.102301207564366,
+    "PRE": 46.411483253588514,
+    "NPR": 67.46411483253588,
+    "first_frame_prediction": [
+      232.0,
+      379.0,
+      551.0,
+      325.0
+    ]
+  },
+  {
+    "sequence": "Street Dancer-46",
+    "frames": 246,
+    "valid_frames": 246,
+    "AUC": 81.41695702671312,
+    "PRE": 81.70731707317073,
+    "NPR": 94.3089430894309,
+    "first_frame_prediction": [
+      445.0,
+      96.0,
+      262.0,
+      446.0
+    ]
+  },
+  {
+    "sequence": "Striped Burrfish-3",
+    "frames": 84,
+    "valid_frames": 84,
+    "AUC": 79.13832199546485,
+    "PRE": 97.61904761904762,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      286.0,
+      256.0,
+      186.0,
+      120.0
+    ]
+  },
+  {
+    "sequence": "Super Mario-25",
+    "frames": 6,
+    "valid_frames": 6,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      692.0,
+      447.0,
+      96.0,
+      113.0
+    ]
+  },
+  {
+    "sequence": "Sweeper Truck-8",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 92.53968253968254,
+    "PRE": 96.66666666666667,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      364.0,
+      275.0,
+      389.0,
+      326.0
+    ]
+  },
+  {
+    "sequence": "Sweeping Robot-21",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      2.0,
+      393.0,
+      170.0,
+      109.0
+    ]
+  },
+  {
+    "sequence": "Sword And Fairy-14",
+    "frames": 90,
+    "valid_frames": 89,
+    "AUC": 77.52808988764046,
+    "PRE": 85.39325842696628,
+    "NPR": 87.64044943820225,
+    "first_frame_prediction": [
+      563.0,
+      315.0,
+      175.0,
+      290.0
+    ]
+  },
+  {
+    "sequence": "Swordfish-5",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 71.03174603174604,
+    "PRE": 12.5,
+    "NPR": 97.91666666666666,
+    "first_frame_prediction": [
+      237.0,
+      12.0,
+      1042.0,
+      504.0
+    ]
+  },
+  {
+    "sequence": "Synthesizer-18",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 87.42857142857142,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      90.0,
+      213.0,
+      1122.0,
+      359.0
+    ]
+  },
+  {
+    "sequence": "Syringe-23",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 83.06878306878308,
+    "PRE": 41.66666666666667,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      162.0,
+      318.0,
+      1016.0,
+      252.0
+    ]
+  },
+  {
+    "sequence": "Taiko Drum-9",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 71.74603174603176,
+    "PRE": 63.33333333333333,
+    "NPR": 70.0,
+    "first_frame_prediction": [
+      77.0,
+      166.0,
+      317.0,
+      296.0
+    ]
+  },
+  {
+    "sequence": "Tango Dancer-25",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 24.28571428571428,
+    "PRE": 23.333333333333332,
+    "NPR": 26.666666666666668,
+    "first_frame_prediction": [
+      553.0,
+      115.0,
+      264.0,
+      517.0
+    ]
+  },
+  {
+    "sequence": "Tango Dancer-5",
+    "frames": 25,
+    "valid_frames": 25,
+    "AUC": 53.52380952380953,
+    "PRE": 24.0,
+    "NPR": 52.0,
+    "first_frame_prediction": [
+      773.0,
+      279.0,
+      179.0,
+      419.0
+    ]
+  },
+  {
+    "sequence": "Tasmanian Devil-26",
+    "frames": 10,
+    "valid_frames": 10,
+    "AUC": 81.90476190476188,
+    "PRE": 50.0,
+    "NPR": 80.0,
+    "first_frame_prediction": [
+      409.0,
+      193.0,
+      406.0,
+      475.0
+    ]
+  },
+  {
+    "sequence": "Terapon Jarbua-22",
+    "frames": 51,
+    "valid_frames": 51,
+    "AUC": 0.2801120448179272,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      263.0,
+      86.0,
+      631.0,
+      424.0
+    ]
+  },
+  {
+    "sequence": "The Witcher-9",
+    "frames": 108,
+    "valid_frames": 108,
+    "AUC": 85.49382716049384,
+    "PRE": 53.70370370370371,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      279.0,
+      202.0,
+      239.0,
+      517.0
+    ]
+  },
+  {
+    "sequence": "Thermometer-13",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 84.32539682539684,
+    "PRE": 83.33333333333334,
+    "NPR": 83.33333333333334,
+    "first_frame_prediction": [
+      616.0,
+      173.0,
+      305.0,
+      409.0
+    ]
+  },
+  {
+    "sequence": "Throw Bag-1",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 86.66666666666666,
+    "PRE": 95.0,
+    "NPR": 95.0,
+    "first_frame_prediction": [
+      272.0,
+      301.0,
+      78.0,
+      112.0
+    ]
+  },
+  {
+    "sequence": "Tiara-30",
+    "frames": 18,
+    "valid_frames": 18,
+    "AUC": 85.18518518518519,
+    "PRE": 61.111111111111114,
+    "NPR": 94.44444444444444,
+    "first_frame_prediction": [
+      458.0,
+      71.0,
+      394.0,
+      526.0
+    ]
+  },
+  {
+    "sequence": "Tiara-98",
+    "frames": 17,
+    "valid_frames": 17,
+    "AUC": 92.15686274509804,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      221.0,
+      210.0,
+      265.0,
+      98.0
+    ]
+  },
+  {
+    "sequence": "Tiger-21",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 87.6190476190476,
+    "PRE": 60.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      454.0,
+      129.0,
+      186.0,
+      404.0
+    ]
+  },
+  {
+    "sequence": "Tiger-9",
+    "frames": 50,
+    "valid_frames": 47,
+    "AUC": 81.56028368794327,
+    "PRE": 57.446808510638306,
+    "NPR": 95.74468085106383,
+    "first_frame_prediction": [
+      582.0,
+      274.0,
+      481.0,
+      190.0
+    ]
+  },
+  {
+    "sequence": "Timpani-16",
+    "frames": 39,
+    "valid_frames": 39,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      242.0,
+      243.0,
+      197.0,
+      115.0
+    ]
+  },
+  {
+    "sequence": "Timpani-19",
+    "frames": 51,
+    "valid_frames": 51,
+    "AUC": 7.002801120448179,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      209.0,
+      138.0,
+      426.0,
+      220.0
+    ]
+  },
+  {
+    "sequence": "Tire Swing-15",
+    "frames": 40,
+    "valid_frames": 40,
+    "AUC": 82.97619047619048,
+    "PRE": 67.5,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      447.0,
+      390.0,
+      257.0,
+      239.0
+    ]
+  },
+  {
+    "sequence": "Tissue Box-26",
+    "frames": 36,
+    "valid_frames": 36,
+    "AUC": 85.97883597883599,
+    "PRE": 69.44444444444444,
+    "NPR": 97.22222222222221,
+    "first_frame_prediction": [
+      397.0,
+      132.0,
+      639.0,
+      463.0
+    ]
+  },
+  {
+    "sequence": "Tortoise Beetle-5",
+    "frames": 48,
+    "valid_frames": 48,
+    "AUC": 87.5,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      34.0,
+      455.0,
+      91.0,
+      88.0
+    ]
+  },
+  {
+    "sequence": "Track And Field Athlete-28",
+    "frames": 100,
+    "valid_frames": 100,
+    "AUC": 71.95238095238095,
+    "PRE": 64.0,
+    "NPR": 82.0,
+    "first_frame_prediction": [
+      651.0,
+      241.0,
+      403.0,
+      236.0
+    ]
+  },
+  {
+    "sequence": "Tripod Stand-3",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 90.07936507936508,
+    "PRE": 95.83333333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      427.0,
+      319.0,
+      577.0,
+      307.0
+    ]
+  },
+  {
+    "sequence": "Trolley Bag-13",
+    "frames": 27,
+    "valid_frames": 27,
+    "AUC": 79.54144620811286,
+    "PRE": 48.148148148148145,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      82.0,
+      122.0,
+      156.0,
+      277.0
+    ]
+  },
+  {
+    "sequence": "Trumpet-17",
+    "frames": 44,
+    "valid_frames": 44,
+    "AUC": 84.84848484848486,
+    "PRE": 97.72727272727273,
+    "NPR": 97.72727272727273,
+    "first_frame_prediction": [
+      171.0,
+      176.0,
+      248.0,
+      181.0
+    ]
+  },
+  {
+    "sequence": "Trumpet-37",
+    "frames": 88,
+    "valid_frames": 88,
+    "AUC": 83.65800865800867,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      381.0,
+      197.0,
+      113.0,
+      97.0
+    ]
+  },
+  {
+    "sequence": "Trumpet-50",
+    "frames": 272,
+    "valid_frames": 272,
+    "AUC": 77.3109243697479,
+    "PRE": 97.79411764705883,
+    "NPR": 96.69117647058823,
+    "first_frame_prediction": [
+      520.0,
+      116.0,
+      117.0,
+      151.0
+    ]
+  },
+  {
+    "sequence": "Trumpet-9",
+    "frames": 23,
+    "valid_frames": 23,
+    "AUC": 84.05797101449275,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      423.0,
+      52.0,
+      92.0,
+      48.0
+    ]
+  },
+  {
+    "sequence": "Ukulele-31",
+    "frames": 120,
+    "valid_frames": 120,
+    "AUC": 87.53968253968254,
+    "PRE": 57.49999999999999,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      106.0,
+      85.0,
+      445.0,
+      394.0
+    ]
+  },
+  {
+    "sequence": "Vacuum Cleaner Brush Roller-19",
+    "frames": 23,
+    "valid_frames": 23,
+    "AUC": 64.80331262939958,
+    "PRE": 47.82608695652174,
+    "NPR": 73.91304347826086,
+    "first_frame_prediction": [
+      552.0,
+      56.0,
+      727.0,
+      533.0
+    ]
+  },
+  {
+    "sequence": "Vacuum Cleaner Brush Roller-59",
+    "frames": 30,
+    "valid_frames": 29,
+    "AUC": 20.361247947454846,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      960.0,
+      124.0,
+      269.0,
+      462.0
+    ]
+  },
+  {
+    "sequence": "Volleyball Player-3",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 4.648526077097505,
+    "PRE": 2.380952380952381,
+    "NPR": 2.380952380952381,
+    "first_frame_prediction": [
+      543.0,
+      308.0,
+      392.0,
+      183.0
+    ]
+  },
+  {
+    "sequence": "Volleyball Player-47",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 52.539682539682545,
+    "PRE": 63.33333333333333,
+    "NPR": 70.0,
+    "first_frame_prediction": [
+      566.0,
+      333.0,
+      118.0,
+      192.0
+    ]
+  },
+  {
+    "sequence": "Waiter-32",
+    "frames": 105,
+    "valid_frames": 105,
+    "AUC": 80.86167800453514,
+    "PRE": 76.19047619047619,
+    "NPR": 99.04761904761905,
+    "first_frame_prediction": [
+      262.0,
+      42.0,
+      175.0,
+      171.0
+    ]
+  },
+  {
+    "sequence": "Wallet-18",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 87.69841269841268,
+    "PRE": 95.83333333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      450.0,
+      218.0,
+      371.0,
+      248.0
+    ]
+  },
+  {
+    "sequence": "Water Filter Bottle-15",
+    "frames": 8,
+    "valid_frames": 8,
+    "AUC": 91.66666666666666,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      499.0,
+      454.0,
+      332.0,
+      252.0
+    ]
+  },
+  {
+    "sequence": "Water Filter Bottle-19",
+    "frames": 58,
+    "valid_frames": 58,
+    "AUC": 82.43021346469622,
+    "PRE": 56.896551724137936,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      520.0,
+      484.0,
+      171.0,
+      228.0
+    ]
+  },
+  {
+    "sequence": "Water Play Table-1",
+    "frames": 34,
+    "valid_frames": 24,
+    "AUC": 9.722222222222221,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      183.0,
+      15.0,
+      536.0,
+      603.0
+    ]
+  },
+  {
+    "sequence": "Water Walking Balls-2",
+    "frames": 78,
+    "valid_frames": 78,
+    "AUC": 81.80708180708181,
+    "PRE": 50.0,
+    "NPR": 89.74358974358975,
+    "first_frame_prediction": [
+      309.0,
+      73.0,
+      654.0,
+      589.0
+    ]
+  },
+  {
+    "sequence": "Wedges-58",
+    "frames": 120,
+    "valid_frames": 120,
+    "AUC": 75.51587301587303,
+    "PRE": 9.166666666666666,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      311.0,
+      208.0,
+      641.0,
+      362.0
+    ]
+  },
+  {
+    "sequence": "Whale Shark-13",
+    "frames": 42,
+    "valid_frames": 42,
+    "AUC": 86.05442176870748,
+    "PRE": 59.523809523809526,
+    "NPR": 92.85714285714286,
+    "first_frame_prediction": [
+      533.0,
+      74.0,
+      704.0,
+      546.0
+    ]
+  },
+  {
+    "sequence": "Wheelchair Wheel-46",
+    "frames": 20,
+    "valid_frames": 20,
+    "AUC": 0.0,
+    "PRE": 0.0,
+    "NPR": 0.0,
+    "first_frame_prediction": [
+      473.0,
+      394.0,
+      254.0,
+      250.0
+    ]
+  },
+  {
+    "sequence": "Wheelchair-177",
+    "frames": 15,
+    "valid_frames": 15,
+    "AUC": 66.66666666666666,
+    "PRE": 13.333333333333334,
+    "NPR": 53.333333333333336,
+    "first_frame_prediction": [
+      0.0,
+      36.0,
+      711.0,
+      663.0
+    ]
+  },
+  {
+    "sequence": "White-Fronted Tern-1",
+    "frames": 165,
+    "valid_frames": 165,
+    "AUC": 89.40836940836941,
+    "PRE": 97.57575757575758,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      247.0,
+      332.0,
+      464.0,
+      245.0
+    ]
+  },
+  {
+    "sequence": "White-Tailed Rubythroat-17",
+    "frames": 60,
+    "valid_frames": 60,
+    "AUC": 75.63492063492065,
+    "PRE": 38.333333333333336,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      444.0,
+      191.0,
+      223.0,
+      270.0
+    ]
+  },
+  {
+    "sequence": "Wok-24",
+    "frames": 55,
+    "valid_frames": 55,
+    "AUC": 80.86580086580088,
+    "PRE": 90.9090909090909,
+    "NPR": 98.18181818181819,
+    "first_frame_prediction": [
+      183.0,
+      101.0,
+      512.0,
+      308.0
+    ]
+  },
+  {
+    "sequence": "Xylophone-29",
+    "frames": 54,
+    "valid_frames": 54,
+    "AUC": 87.74250440917109,
+    "PRE": 100.0,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      91.0,
+      69.0,
+      475.0,
+      245.0
+    ]
+  },
+  {
+    "sequence": "Yoga Mat Bag-37",
+    "frames": 30,
+    "valid_frames": 30,
+    "AUC": 86.98412698412697,
+    "PRE": 96.66666666666667,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      145.0,
+      343.0,
+      703.0,
+      284.0
+    ]
+  },
+  {
+    "sequence": "Zebra Pleco-10",
+    "frames": 77,
+    "valid_frames": 77,
+    "AUC": 48.113790970933835,
+    "PRE": 49.35064935064935,
+    "NPR": 55.84415584415584,
+    "first_frame_prediction": [
+      572.0,
+      212.0,
+      166.0,
+      89.0
+    ]
+  },
+  {
+    "sequence": "Zebra-33",
+    "frames": 24,
+    "valid_frames": 24,
+    "AUC": 91.07142857142857,
+    "PRE": 95.83333333333334,
+    "NPR": 100.0,
+    "first_frame_prediction": [
+      545.0,
+      317.0,
+      289.0,
+      266.0
+    ]
+  }
+]

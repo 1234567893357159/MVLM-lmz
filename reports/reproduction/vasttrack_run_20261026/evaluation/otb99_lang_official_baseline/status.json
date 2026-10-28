@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "dataset": "otb99_lang",
+  "weights": "/root/MVLM/models/MVLM_TF.pth.tar",
+  "config": "vasttrack_e60_strict_otb99_lang_20261028",
+  "protocol": "language-only: first frame predicted from full image; no GT initialization",
+  "note": "Historical parameters were tuned on these test sets; exploratory results.",
+  "started_at": 1793154282.1823435,
+  "sequences": 48,
+  "excluded": [],
+  "metrics": {
+    "AUC": 60.52489761079525,
+    "PRE": 84.20232915306826,
+    "NPR": 75.01933284751415
+  },
+  "frames": 29077,
+  "fps_including_initialization": 37.68315893438558,
+  "completed_at": 1793154434.9644136
+}

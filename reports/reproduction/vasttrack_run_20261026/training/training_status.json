@@ -1,0 +1,40 @@
+{
+  "status": "completed",
+  "supervisor_pid": 105725,
+  "source": "/root/MVLM/output/vasttrack_baseline_20261026_run01/source",
+  "output": "/root/MVLM/output/vasttrack_baseline_20261026_run01",
+  "config": "mvlm_TF_vasttrack",
+  "world_size": 8,
+  "batch_size_per_rank": 10,
+  "global_batch_size": 80,
+  "target_epochs": 60,
+  "started_at": "2026-10-26T15:31:34.941987+00:00",
+  "command": [
+    "/root/miniconda3/envs/mvlm/bin/python",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nproc_per_node=8",
+    "lib/train/run_training.py",
+    "--script",
+    "mvlm",
+    "--config",
+    "mvlm_TF_vasttrack",
+    "--save_dir",
+    "/root/MVLM/output/vasttrack_baseline_20261026_run01"
+  ],
+  "updated_at": "2026-10-28T02:10:28.814766+00:00",
+  "launcher_pid": 105862,
+  "wandb": {
+    "id": "0jox3xdf",
+    "url": "https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/0jox3xdf",
+    "project": "mvlm-reproduction",
+    "entity": null,
+    "mode": "online"
+  },
+  "epoch": 60,
+  "batch": 1250,
+  "batches_per_epoch": 1250,
+  "approximate_global_step": 75000,
+  "exit_code": 0
+}
