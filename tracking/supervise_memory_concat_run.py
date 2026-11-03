@@ -22,6 +22,19 @@ def now():
     return dt.datetime.now(dt.timezone(dt.timedelta(hours=8))).isoformat()
 
 
+class DiskRun:
+    def __init__(self, out):
+        self.out=out
+        self.summary={'status':'training'}
+
+    def log(self, payload):
+        with (self.out/'wandb_queue.jsonl').open('a') as stream:
+            stream.write(json.dumps(payload)+'\n')
+
+    def finish(self, exit_code=0):
+        write_json(self.out/'wandb_summary.json',dict(self.summary,exit_code=exit_code))
+
+
 class Supervisor:
     def __init__(self, out):
         self.out = out
@@ -49,6 +62,9 @@ class Supervisor:
 
     def status(self, **values):
         self.state.update(values,updated_at=now())
+        online=self.out/'wandb_status.json'
+        if online.exists():
+            self.state['wandb_mode']=json.loads(online.read_text()).get('mode','pending_online')
         write_json(self.out/'training_status.json',self.state)
         text = ['# 记忆拼接 CENTER 双卡实验档案','',
             '状态：'+self.state['status']+'；更新时间：'+self.state['updated_at'],
@@ -75,30 +91,18 @@ class Supervisor:
         self.archive.write_text('\n'.join(text)+'\n')
 
     def open_wandb(self):
-        import wandb
-        os.environ.update({k:v for k,v in self.env.items() if k.startswith('WANDB_')})
-        options = dict(project=self.spec['wandb']['project'],entity=self.spec['wandb']['entity'],
-            id=self.spec['wandb']['id'],name=self.out.name,dir=str(self.out),resume='allow',
-            config=self.spec,settings=wandb.Settings(init_timeout=60))
-        try:
-            self.run = wandb.init(mode='online',**options)
-            self.state['wandb_mode']='online'
-        except Exception as error:
-            self.record('wandb_online_init_failed',error=str(error))
-            # Keep a complete W&B artifact even if the proxy is temporarily down.
-            options['resume']=None
-            self.run = wandb.init(mode='offline',**options)
-            self.state['wandb_mode']='offline'
-        self.run.define_metric('global_step')
-        self.run.define_metric('*',step_metric='global_step')
-        self.run.define_metric('train/*',step_metric='global_step')
-        self.run.define_metric('lr/*',step_metric='global_step')
-        self.run.define_metric('val/global_step')
-        self.run.define_metric('val/*',step_metric='val/global_step')
-        self.run.define_metric('baseline/*',step_metric='val/global_step')
-        self.run.summary['status']='training'
-        write_json(self.out/'wandb_status.json',dict(mode=self.state['wandb_mode'],
-            id=self.run.id,url=self.spec['wandb']['url'],local_dir=self.run.dir,updated_at=now()))
+        # Training owns only a durable queue. Network clients run in independent
+        # processes, so a proxy outage cannot stall or abort optimizer updates.
+        self.run = DiskRun(self.out)
+        for mode in ('offline', 'online'):
+            log = (self.out/('wandb_'+mode+'_uploader.log')).open('a')
+            command = [sys.executable, '-u', str(self.source/'tracking/log_memory_concat_wandb.py'),
+                       '--out', str(self.out), '--mode', mode]
+            child = subprocess.Popen(command, cwd=self.source, env=self.env,
+                stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+            log.close()
+            self.record('wandb_uploader_started', mode=mode, pid=child.pid)
+        self.state['wandb_mode']='pending_online_with_local_archive'
 
     def upload(self):
         metrics = self.out/'training_metrics.jsonl'

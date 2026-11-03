@@ -51,15 +51,19 @@
 
 ## 持续档案与W&B
 
-`tracking/supervise_memory_concat_run.py`为唯一后台监督进程，负责训练/验证队列与W&B上传；
-训练子进程不依赖W&B API，每20步写跨卡平均指标，本地记录独立保留。
+`tracking/supervise_memory_concat_run.py`为唯一训练/验证监督进程；W&B在线上传与离线备份
+由独立进程读取同一持久化队列。训练和监督均不等待W&B API，每20步写跨卡平均指标。
+首次在线初始化遇到代理TLS连接中断与超时，停在0步；首次失败记录与源码保留。
+随后修正为上传与训练解耦，并以新冻结源码恢复同一实验；没有混入预检更新或更改训练预算。
+新进程离线W&B检查已通过；在线上传后台独立重试，实际连接状态以`wandb_status.json`为准。
 
 - `EXPERIMENT_RECORD.md`：持续更新的人类可读过程档案。
 - `training_status.json` / `events.jsonl`：阶段、进程、步数和错误。
 - `run_spec.json` / `source_manifest.json` / `source/`：冻结配置、来源、哈希和独立源码。
 - `training_metrics.jsonl` / `resource_metrics.jsonl`：训练及GPU4、5资源指标。
 - `logs/` / `checkpoints/` / `validation/`：完整日志、500步检查点和预测/指标。
-- `wandb_status.json` / `wandb/`：独立W&B运行信息和本地记录；最终链接以运行元数据为准。
+- `wandb_queue.jsonl` / `wandb_status.json`：完整待上传指标和在线连接状态。
+- `wandb_offline/` / `wandb_offline_status.json`：独立离线W&B备份；`wandb_online/`为在线客户端记录。
 
 网络暂不可用时保留完整离线W&B记录并标注实际模式；不能以网页滞后替代本地训练状态。
 检查点包含模型（省略冻结CLIP）、AdamW、global_step、步数日程和各rank随机状态。
