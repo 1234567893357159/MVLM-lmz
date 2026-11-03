@@ -2,7 +2,9 @@
 
 本仓库保留官方 MVLM 的 Git 历史，保存环境适配、训练与评测工具、实验配置和结果证据。当前分支 `codex/mvlm-reproduction` 的完整导航见[实验与文档索引](reports/reproduction/README.md)。
 
-## 当前实验：VastTrack-only
+2026-11-03 更新：三数据集训练已完成60轮，并分两阶段续训至80轮（100,000次更新）。LaSOT/VastTrack/TNL2K 按1:1:1抽样，GPU4、5每卡batch40、全局80；当前GPU6、7逐轮评测E71～E80。详见[训练与监控记录](reports/reproduction/PAPER_CONTINUATION_TRAINING_20261103.md)、[评测进度快照](reports/reproduction/PAPER_CONTINUATION_TESTS_20261103.md)及[新W&B运行](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/jrhbvcza)。E61～E70完整评测中，E66三集平均AUC最高（58.381）；[分析报告](reports/reproduction/PAPER_CONTINUATION_ANALYSIS_20261103.md)记录了小幅续训收益和测试集选择的限制。在线W&B曾中断，训练完成情况以本地日志和检查点核验为准。
+
+## 此前实验：VastTrack-only
 
 2026-10-28 更新：训练已经完成 60 轮、75,000 次更新；每卡 batch 10，8 卡全局 batch 80。CLIP 冻结，FastITPN 骨干微调，语言投影和预测头从随机初始化开始训练。保留全部 60 个本地检查点；独立评测已完成。
 

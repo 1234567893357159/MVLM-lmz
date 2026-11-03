@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "supervisor_pid": 615714,
+  "source": "/root/MVLM/output/paper_reproduction_20261030_run01/source",
+  "output": "/root/MVLM/output/paper_reproduction_20261030_run01",
+  "config": "mvlm_TF_paper_reproduction",
+  "physical_gpus": [
+    "4",
+    "5"
+  ],
+  "world_size": 2,
+  "batch_size_per_rank": 40,
+  "global_batch_size": 80,
+  "target_epochs": 60,
+  "started_at": "2026-10-30T05:45:42.318311+00:00",
+  "command": [
+    "/root/miniconda3/envs/mvlm/bin/python",
+    "-u",
+    "-m",
+    "torch.distributed.run",
+    "--standalone",
+    "--nproc_per_node=2",
+    "-m",
+    "lib.train.run_training",
+    "--script",
+    "mvlm",
+    "--config",
+    "mvlm_TF_paper_reproduction",
+    "--save_dir",
+    "/root/MVLM/output/paper_reproduction_20261030_run01"
+  ],
+  "updated_at": "2026-11-01T04:12:37.927327+00:00",
+  "launcher_pid": 615715,
+  "wandb": {
+    "id": "7ln28ook",
+    "url": "https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/7ln28ook",
+    "project": "mvlm-reproduction",
+    "entity": "2896287267-hit",
+    "mode": "online"
+  },
+  "epoch": 60,
+  "batch": 1250,
+  "batches_per_epoch": 1250,
+  "approximate_global_step": 75000,
+  "exit_code": 0
+}

@@ -22,6 +22,8 @@ __pycache__/
 *.pth.tar
 *.pt
 *.ckpt
+# Full W&B event histories stay on the experiment server; commit summaries/plots.
+/reports/reproduction/paper_training_results_20261101/wandb_*history.json
 node_modules/
 # Keep downloader code and public source manifests, not downloaded content.
 /downloads/*

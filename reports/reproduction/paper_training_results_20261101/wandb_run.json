@@ -1,0 +1,201 @@
+{
+  "fetched_at": "2026-11-01T04:40:26.753951+00:00",
+  "url": "https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/7ln28ook",
+  "id": "7ln28ook",
+  "name": "paper-three-dataset-b80-2gpu-20261030",
+  "state": "crashed",
+  "created_at": "2026-10-30T05:46:16Z",
+  "summary": {
+    "_runtime": 115064.085863514,
+    "_step": 5232,
+    "_timestamp": 1793454241.811677,
+    "_wandb.runtime": 115064,
+    "epoch": 42,
+    "epoch/train/IoU": 0.8349709152936935,
+    "epoch/train/Loss/CM": 0.1049442592471838,
+    "epoch/train/Loss/Total": 0.8209331895947456,
+    "epoch/train/Loss/Tracking": 0.715988931620121,
+    "global_step": 51500,
+    "gpu/allocated_mib_rank0": 3612.966796875,
+    "gpu/peak_allocated_mib_rank0": 22303.3173828125,
+    "lr/group0": 0.0005,
+    "lr/group1": 5e-05,
+    "runtime/train/clips_per_second_rank0": 9.892643469344376,
+    "runtime/train/seconds_per_batch_rank0": 4.043408632278442,
+    "status": "training",
+    "train/IoU": 0.8509379625320435,
+    "train/Loss/CM": 0.09274940565228462,
+    "train/Loss/Total": 0.7463885247707367,
+    "train/Loss/Tracking": 0.6536391079425812
+  },
+  "config": {
+    "DATA": {
+      "STD": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "MEAN": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "TRAIN": {
+        "DATASETS_NAME": [
+          "LASOT",
+          "VASTTRACK",
+          "TNL2K_train"
+        ],
+        "DATASETS_RATIO": [
+          1,
+          1,
+          1
+        ],
+        "VASTTRACK_SPLIT": "lib/train/data_specs/vasttrack_train_split.txt",
+        "SAMPLE_PER_EPOCH": 100000,
+        "TNL2K_EXCLUDE_SEQUENCES": [
+          "Fight_game_004-Done"
+        ]
+      },
+      "LOADER": "tracking",
+      "SEARCH": {
+        "SIZE": 224,
+        "FACTOR": 4,
+        "NUMBER": 1,
+        "SCALE_JITTER": 0.5,
+        "CENTER_JITTER": 3.5
+      },
+      "USE_NLP": {
+        "COCO": false,
+        "LASOT": true,
+        "OTB99": false,
+        "TNL2K": true,
+        "GOT10K": false,
+        "REFCOCOG": false,
+        "VASTTRACK": true,
+        "TRACKINGNET": false
+      },
+      "TEMPLATE": {
+        "SIZE": 112,
+        "FACTOR": 2,
+        "NUMBER": 1,
+        "SCALE_JITTER": 0,
+        "CENTER_JITTER": 0
+      },
+      "SAMPLER_MODE": "order",
+      "MULTI_MODAL_VISION": true,
+      "MAX_SAMPLE_INTERVAL": 400,
+      "MULTI_MODAL_LANGUAGE": true
+    },
+    "TEST": {
+      "MVLM": {
+        "TAU": 0.1,
+        "OMEGA": 0.4,
+        "LAMBDA": 0.4,
+        "PSI_OUT": 0,
+        "ALPHA_CORR": 1
+      },
+      "EPOCH": 60,
+      "WINDOW": true,
+      "USE_NLP": {
+        "LASOT": true,
+        "TNL2K": true,
+        "DEFAULT": true,
+        "VASTTRACK": true
+      },
+      "SEARCH_SIZE": 224,
+      "NUM_TEMPLATES": 1,
+      "SEARCH_FACTOR": 4,
+      "TEMPLATE_SIZE": 112,
+      "TEMPLATE_FACTOR": 2,
+      "UPDATE_INTERVALS": {
+        "DEFAULT": 1
+      },
+      "UPDATE_THRESHOLD": {
+        "DEFAULT": 0.7
+      },
+      "MULTI_MODAL_VISION": {
+        "DEFAULT": true
+      },
+      "MULTI_MODAL_LANGUAGE": {
+        "DEFAULT": true
+      }
+    },
+    "MODEL": {
+      "HEAD": {
+        "TYPE": "CENTER",
+        "CONV_TYPE": "normal",
+        "XAVIER_INIT": true,
+        "NUM_CHANNELS": 256
+      },
+      "ENCODER": {
+        "TYPE": "fastitpnb",
+        "STRIDE": 16,
+        "POS_TYPE": "index",
+        "DROP_PATH": 0.1,
+        "CLASS_TOKEN": true,
+        "PRETRAIN_TYPE": "pretrained/itpn/fast_itpn_base_clipl_e1600.pt",
+        "TEMPLATE_FREE": true,
+        "LANGUAGE_MODEL": "CLIP",
+        "USE_CHECKPOINT": false,
+        "PATCHEMBED_INIT": "halfcopy",
+        "USE_LANGUAGE_TOKEN_MASK": false
+      },
+      "TEXT_ENCODER": {
+        "TYPE": "ViT-L/14",
+        "SLICING_MODE": "full"
+      },
+      "PRETRAINED_MODEL": null
+    },
+    "TRAIN": {
+      "LR": 0.0005,
+      "TYPE": "text_frozen",
+      "EPOCH": 60,
+      "FIX_BN": false,
+      "CM_LOSS": true,
+      "CE_WEIGHT": 1,
+      "CM_WEIGHT": 0.5,
+      "L1_WEIGHT": 5,
+      "OPTIMIZER": "ADAMW",
+      "SCHEDULER": {
+        "TYPE": "step",
+        "DECAY_RATE": 0.1
+      },
+      "BATCH_SIZE": 40,
+      "NUM_WORKER": 2,
+      "GIOU_WEIGHT": 2,
+      "ENCODER_OPEN": [],
+      "WEIGHT_DECAY": 0.0001,
+      "LR_DROP_EPOCH": 54,
+      "FREEZE_ENCODER": false,
+      "GRAD_CLIP_NORM": 0.1,
+      "PRINT_INTERVAL": 50,
+      "PRETRAINED_PATH": null,
+      "SAVE_EVERY_EPOCH": true,
+      "ENCODER_MULTIPLIER": 0.1
+    },
+    "WANDB": {
+      "MODE": "online",
+      "NAME": "paper-three-dataset-b80-2gpu-20261030",
+      "ENTITY": "2896287267-hit",
+      "ENABLED": true,
+      "PROJECT": "mvlm-reproduction",
+      "LOG_INTERVAL": 20
+    },
+    "monitoring": {
+      "seed": 1234567890,
+      "script": "mvlm",
+      "save_dir": "/root/MVLM/output/paper_reproduction_20261030_run01",
+      "git_dirty": true,
+      "git_branch": "codex/mvlm-reproduction",
+      "git_commit": "8350dec94a8d50a623312c31c61dc8a46306cfd5",
+      "world_size": 2,
+      "config_name": "mvlm_TF_paper_reproduction",
+      "parameters_total": 517058822,
+      "global_batch_size": 80,
+      "batch_size_per_rank": 40,
+      "parameters_trainable": 89442309,
+      "vasttrack_split_sha256": "9fb45e980d26aafd59925a3b8ed56653488b89af8aa5c92635fb41d588932bc0"
+    }
+  }
+}

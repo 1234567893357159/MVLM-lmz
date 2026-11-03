@@ -1,0 +1,78 @@
+{
+  "config": "/root/MVLM/experiments/mvlm/mvlm_TF_paper_reproduction.yaml",
+  "config_sha256": "b98870c5c36e578ca2bc92cfc01e1d9ce23064c57013e64094ef90ef75d2b9f3",
+  "global_batch": 80,
+  "world_size_assumption": 8,
+  "datasets": [
+    {
+      "name": "lasot",
+      "sequences": 1120,
+      "ordered_sequence_list_sha256": "0ae7df00644ee36794ac1d67f123612eb6341b4e94fef933169607d650ade893",
+      "excluded_sequences": [],
+      "sample_shapes": [
+        [
+          1,
+          6,
+          224,
+          224
+        ],
+        [
+          1,
+          6,
+          224,
+          224
+        ]
+      ]
+    },
+    {
+      "name": "vasttrack",
+      "sequences": 46825,
+      "ordered_sequence_list_sha256": "9fb45e980d26aafd59925a3b8ed56653488b89af8aa5c92635fb41d588932bc0",
+      "excluded_sequences": [],
+      "sample_shapes": [
+        [
+          1,
+          6,
+          224,
+          224
+        ],
+        [
+          1,
+          6,
+          224,
+          224
+        ]
+      ]
+    },
+    {
+      "name": "tnl2k",
+      "sequences": 1299,
+      "ordered_sequence_list_sha256": "35761e6a8247585505ad3aaf622f734cfa5b75ac8235946b3eaaad0d8e6cb624",
+      "excluded_sequences": [
+        "Fight_game_004-Done"
+      ],
+      "sample_shapes": [
+        [
+          1,
+          6,
+          224,
+          224
+        ],
+        [
+          1,
+          6,
+          224,
+          224
+        ]
+      ]
+    }
+  ],
+  "source_files_preserved": true,
+  "training_launched": false,
+  "changes_from_official_yaml": [
+    "DATA.TRAIN.TNL2K_EXCLUDE_SEQUENCES",
+    "DATA.TRAIN.VASTTRACK_SPLIT",
+    "TRAIN.BATCH_SIZE",
+    "TRAIN.SAVE_EVERY_EPOCH"
+  ]
+}

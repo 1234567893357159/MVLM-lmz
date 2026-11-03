@@ -1,0 +1,660 @@
+{
+  "as_of_beijing": "2026-11-01T22:13:20.638092+08:00",
+  "scope": "CPU analysis of saved same-main-protocol predictions; diagnostic epoch40, not final selected model; first actual predicted box is frame index1 because index0 is GT in main protocol. No new inference or parameter tuning.",
+  "comparison": {
+    "otb99_lang": {
+      "sequences": 48,
+      "summary": {
+        "trained_e40": {
+          "AUC": 56.69069038957205,
+          "first_actual_prediction_iou_at_least_05_pct": 58.333333333333336,
+          "first_actual_prediction_iou_below_01_pct": 18.75,
+          "mean_valid_frame_near_failure_pct": 13.57025321726694
+        },
+        "official": {
+          "AUC": 60.5583515799565,
+          "first_actual_prediction_iou_at_least_05_pct": 64.58333333333334,
+          "first_actual_prediction_iou_below_01_pct": 16.666666666666664,
+          "mean_valid_frame_near_failure_pct": 7.92915894347843
+        }
+      },
+      "official_better_sequences": 26,
+      "trained_better_sequences": 22,
+      "top_official_advantages": [
+        {
+          "sequence": "Board",
+          "frames": 698,
+          "trained_e40": {
+            "AUC": 9.653431573202347,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.8836206896551724
+          },
+          "official": {
+            "AUC": 47.61904761904761,
+            "first_actual_prediction_iou": 0.8586462706308586,
+            "valid_frame_near_failure_fraction": 0.34195402298850575
+          },
+          "auc_gap_official_minus_trained": 37.965616045845266
+        },
+        {
+          "sequence": "Human5",
+          "frames": 713,
+          "trained_e40": {
+            "AUC": 32.565284178187405,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.5926966292134831
+          },
+          "official": {
+            "AUC": 69.87243705336272,
+            "first_actual_prediction_iou": 0.2151639344262295,
+            "valid_frame_near_failure_fraction": 0.07865168539325842
+          },
+          "auc_gap_official_minus_trained": 37.30715287517531
+        },
+        {
+          "sequence": "DragonBaby",
+          "frames": 113,
+          "trained_e40": {
+            "AUC": 21.913190054782973,
+            "first_actual_prediction_iou": 0.10360517011534226,
+            "valid_frame_near_failure_fraction": 0.16071428571428573
+          },
+          "official": {
+            "AUC": 53.687315634218294,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.10714285714285714
+          },
+          "auc_gap_official_minus_trained": 31.77412557943532
+        },
+        {
+          "sequence": "Human9",
+          "frames": 305,
+          "trained_e40": {
+            "AUC": 5.823575331772053,
+            "first_actual_prediction_iou": 0.47408666100254887,
+            "valid_frame_near_failure_fraction": 0.8453947368421053
+          },
+          "official": {
+            "AUC": 37.595628415300546,
+            "first_actual_prediction_iou": 0.8252022554547683,
+            "valid_frame_near_failure_fraction": 0.5098684210526315
+          },
+          "auc_gap_official_minus_trained": 31.77205308352849
+        },
+        {
+          "sequence": "KiteSurf",
+          "frames": 84,
+          "trained_e40": {
+            "AUC": 48.92290249433107,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.2891566265060241
+          },
+          "official": {
+            "AUC": 76.24716553287982,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.012048192771084338
+          },
+          "auc_gap_official_minus_trained": 27.32426303854875
+        },
+        {
+          "sequence": "Human4_2",
+          "frames": 667,
+          "trained_e40": {
+            "AUC": 36.85300207039337,
+            "first_actual_prediction_iou": 0.26767091541135574,
+            "valid_frame_near_failure_fraction": 0.4444444444444444
+          },
+          "official": {
+            "AUC": 56.65024630541872,
+            "first_actual_prediction_iou": 0.5776173285198556,
+            "valid_frame_near_failure_fraction": 0.18618618618618618
+          },
+          "auc_gap_official_minus_trained": 19.797244235025346
+        },
+        {
+          "sequence": "Girl2",
+          "frames": 1500,
+          "trained_e40": {
+            "AUC": 51.35873015873016,
+            "first_actual_prediction_iou": 0.6696420093058589,
+            "valid_frame_near_failure_fraction": 0.11207471647765177
+          },
+          "official": {
+            "AUC": 65.87619047619047,
+            "first_actual_prediction_iou": 0.7131581576581077,
+            "valid_frame_near_failure_fraction": 0.01467645096731154
+          },
+          "auc_gap_official_minus_trained": 14.517460317460312
+        },
+        {
+          "sequence": "Bolt2",
+          "frames": 293,
+          "trained_e40": {
+            "AUC": 26.36112465464001,
+            "first_actual_prediction_iou": 0.009630432165643433,
+            "valid_frame_near_failure_fraction": 0.4657534246575342
+          },
+          "official": {
+            "AUC": 39.9154883796522,
+            "first_actual_prediction_iou": 0.03415101150399422,
+            "valid_frame_near_failure_fraction": 0.3082191780821918
+          },
+          "auc_gap_official_minus_trained": 13.554363725012191
+        }
+      ],
+      "top_trained_advantages": [
+        {
+          "sequence": "BlurOwl",
+          "frames": 631,
+          "trained_e40": {
+            "AUC": 81.88815938419742,
+            "first_actual_prediction_iou": 0.879162702188392,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "official": {
+            "AUC": 35.72560561467059,
+            "first_actual_prediction_iou": 0.29388763119983535,
+            "valid_frame_near_failure_fraction": 0.0031746031746031746
+          },
+          "auc_gap_official_minus_trained": -46.16255376952683
+        },
+        {
+          "sequence": "Trans",
+          "frames": 124,
+          "trained_e40": {
+            "AUC": 73.963133640553,
+            "first_actual_prediction_iou": 0.7296960637767813,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "official": {
+            "AUC": 64.66973886328725,
+            "first_actual_prediction_iou": 0.8250355618776671,
+            "valid_frame_near_failure_fraction": 0.016260162601626018
+          },
+          "auc_gap_official_minus_trained": -9.293394777265746
+        },
+        {
+          "sequence": "BlurFace",
+          "frames": 493,
+          "trained_e40": {
+            "AUC": 74.28764609291993,
+            "first_actual_prediction_iou": 0.7108451110470148,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "official": {
+            "AUC": 69.08142567371776,
+            "first_actual_prediction_iou": 0.6937282734646582,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "auc_gap_official_minus_trained": -5.206220419202168
+        },
+        {
+          "sequence": "Surfer",
+          "frames": 376,
+          "trained_e40": {
+            "AUC": 72.20111448834852,
+            "first_actual_prediction_iou": 0.18620689655172415,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "official": {
+            "AUC": 67.75582573454913,
+            "first_actual_prediction_iou": 0.07191780821917808,
+            "valid_frame_near_failure_fraction": 0.0026666666666666666
+          },
+          "auc_gap_official_minus_trained": -4.445288753799389
+        },
+        {
+          "sequence": "BlurCar4",
+          "frames": 380,
+          "trained_e40": {
+            "AUC": 83.37092731829574,
+            "first_actual_prediction_iou": 0.8479989309814926,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "official": {
+            "AUC": 79.08521303258146,
+            "first_actual_prediction_iou": 0.7503802018526199,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "auc_gap_official_minus_trained": -4.285714285714278
+        }
+      ]
+    },
+    "lasot": {
+      "sequences": 280,
+      "summary": {
+        "trained_e40": {
+          "AUC": 58.77232324034688,
+          "first_actual_prediction_iou_at_least_05_pct": 57.14285714285714,
+          "first_actual_prediction_iou_below_01_pct": 32.5,
+          "mean_valid_frame_near_failure_pct": 23.21985640239424
+        },
+        "official": {
+          "AUC": 61.06297767255393,
+          "first_actual_prediction_iou_at_least_05_pct": 58.92857142857143,
+          "first_actual_prediction_iou_below_01_pct": 29.28571428571429,
+          "mean_valid_frame_near_failure_pct": 21.389390082166766
+        }
+      },
+      "official_better_sequences": 180,
+      "trained_better_sequences": 100,
+      "top_official_advantages": [
+        {
+          "sequence": "basketball-1",
+          "frames": 1088,
+          "trained_e40": {
+            "AUC": 0.08753501400560225,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 1.0
+          },
+          "official": {
+            "AUC": 70.91211484593838,
+            "first_actual_prediction_iou": 0.018473505104521146,
+            "valid_frame_near_failure_fraction": 0.04151291512915129
+          },
+          "auc_gap_official_minus_trained": 70.82457983193278
+        },
+        {
+          "sequence": "rubicCube-6",
+          "frames": 4291,
+          "trained_e40": {
+            "AUC": 5.43773790103317,
+            "first_actual_prediction_iou": 0.012193613811184487,
+            "valid_frame_near_failure_fraction": 0.9515824279641002
+          },
+          "official": {
+            "AUC": 69.30896338959728,
+            "first_actual_prediction_iou": 0.7461939102564102,
+            "valid_frame_near_failure_fraction": 0.10085025980160604
+          },
+          "auc_gap_official_minus_trained": 63.87122548856411
+        },
+        {
+          "sequence": "monkey-3",
+          "frames": 1261,
+          "trained_e40": {
+            "AUC": 19.372380197122467,
+            "first_actual_prediction_iou": 0.08824365167523443,
+            "valid_frame_near_failure_fraction": 0.43719806763285024
+          },
+          "official": {
+            "AUC": 72.65586647029946,
+            "first_actual_prediction_iou": 0.8590275160196005,
+            "valid_frame_near_failure_fraction": 0.09178743961352658
+          },
+          "auc_gap_official_minus_trained": 53.28348627317699
+        },
+        {
+          "sequence": "hat-2",
+          "frames": 1465,
+          "trained_e40": {
+            "AUC": 12.465464001300179,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.8143835616438356
+          },
+          "official": {
+            "AUC": 63.331708109865104,
+            "first_actual_prediction_iou": 0.2777777777777778,
+            "valid_frame_near_failure_fraction": 0.030136986301369864
+          },
+          "auc_gap_official_minus_trained": 50.86624410856493
+        },
+        {
+          "sequence": "robot-5",
+          "frames": 2325,
+          "trained_e40": {
+            "AUC": 0.31746031746031744,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.997793468667255
+          },
+          "official": {
+            "AUC": 50.14848950332821,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.2586054721977052
+          },
+          "auc_gap_official_minus_trained": 49.83102918586789
+        },
+        {
+          "sequence": "truck-6",
+          "frames": 5245,
+          "trained_e40": {
+            "AUC": 42.851695492305595,
+            "first_actual_prediction_iou": 0.8081238012663882,
+            "valid_frame_near_failure_fraction": 0.4771084337349398
+          },
+          "official": {
+            "AUC": 83.07866902719144,
+            "first_actual_prediction_iou": 0.9030963802878326,
+            "valid_frame_near_failure_fraction": 0.01706827309236948
+          },
+          "auc_gap_official_minus_trained": 40.22697353488584
+        },
+        {
+          "sequence": "book-3",
+          "frames": 1800,
+          "trained_e40": {
+            "AUC": 42.22751322751323,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.434130072262368
+          },
+          "official": {
+            "AUC": 80.84126984126983,
+            "first_actual_prediction_iou": 0.6869533985035939,
+            "valid_frame_near_failure_fraction": 0.0016675931072818232
+          },
+          "auc_gap_official_minus_trained": 38.61375661375661
+        },
+        {
+          "sequence": "monkey-17",
+          "frames": 2260,
+          "trained_e40": {
+            "AUC": 43.64306784660767,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.12439132359451084
+          },
+          "official": {
+            "AUC": 79.10029498525074,
+            "first_actual_prediction_iou": 0.786141179420738,
+            "valid_frame_near_failure_fraction": 0.010624169986719787
+          },
+          "auc_gap_official_minus_trained": 35.45722713864307
+        }
+      ],
+      "top_trained_advantages": [
+        {
+          "sequence": "book-11",
+          "frames": 2071,
+          "trained_e40": {
+            "AUC": 74.78558782276792,
+            "first_actual_prediction_iou": 0.7037770644081689,
+            "valid_frame_near_failure_fraction": 0.1106280193236715
+          },
+          "official": {
+            "AUC": 0.5150490906164494,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.9951690821256038
+          },
+          "auc_gap_official_minus_trained": -74.27053873215148
+        },
+        {
+          "sequence": "bear-6",
+          "frames": 1671,
+          "trained_e40": {
+            "AUC": 73.0130232823231,
+            "first_actual_prediction_iou": 0.40753852561432735,
+            "valid_frame_near_failure_fraction": 0.08508088675853805
+          },
+          "official": {
+            "AUC": 7.001795332136446,
+            "first_actual_prediction_iou": 0.03040487483117128,
+            "valid_frame_near_failure_fraction": 0.8562013181545836
+          },
+          "auc_gap_official_minus_trained": -66.01122795018665
+        },
+        {
+          "sequence": "racing-16",
+          "frames": 2186,
+          "trained_e40": {
+            "AUC": 80.68226375637173,
+            "first_actual_prediction_iou": 0.5595573650694227,
+            "valid_frame_near_failure_fraction": 0.04181985294117647
+          },
+          "official": {
+            "AUC": 42.98130963272775,
+            "first_actual_prediction_iou": 0.718562874251497,
+            "valid_frame_near_failure_fraction": 0.4733455882352941
+          },
+          "auc_gap_official_minus_trained": -37.700954123643974
+        },
+        {
+          "sequence": "chameleon-11",
+          "frames": 2921,
+          "trained_e40": {
+            "AUC": 76.17417388043886,
+            "first_actual_prediction_iou": 0.5349693251533743,
+            "valid_frame_near_failure_fraction": 0.09828767123287671
+          },
+          "official": {
+            "AUC": 46.4403906033485,
+            "first_actual_prediction_iou": 0.47550759948949994,
+            "valid_frame_near_failure_fraction": 0.3291095890410959
+          },
+          "auc_gap_official_minus_trained": -29.73378327709036
+        },
+        {
+          "sequence": "gametarget-2",
+          "frames": 1834,
+          "trained_e40": {
+            "AUC": 41.603053435114504,
+            "first_actual_prediction_iou": 0.1532967032967033,
+            "valid_frame_near_failure_fraction": 0.4272880404267266
+          },
+          "official": {
+            "AUC": 13.46004050475152,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.7714766984839978
+          },
+          "auc_gap_official_minus_trained": -28.143012930362985
+        }
+      ]
+    },
+    "tnl2k": {
+      "sequences": 700,
+      "summary": {
+        "trained_e40": {
+          "AUC": 55.66634635030928,
+          "first_actual_prediction_iou_at_least_05_pct": 61.945636623748214,
+          "first_actual_prediction_iou_below_01_pct": 25.75107296137339,
+          "mean_valid_frame_near_failure_pct": 21.73176722300918
+        },
+        "official": {
+          "AUC": 57.61924901627561,
+          "first_actual_prediction_iou_at_least_05_pct": 66.95278969957081,
+          "first_actual_prediction_iou_below_01_pct": 22.603719599427755,
+          "mean_valid_frame_near_failure_pct": 20.40910990120608
+        }
+      },
+      "official_better_sequences": 482,
+      "trained_better_sequences": 212,
+      "top_official_advantages": [
+        {
+          "sequence": "RaceCar_video_01-Done",
+          "frames": 152,
+          "trained_e40": {
+            "AUC": 7.424812030075188,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.7086092715231788
+          },
+          "official": {
+            "AUC": 82.39348370927318,
+            "first_actual_prediction_iou": 0.8945521799439715,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "auc_gap_official_minus_trained": 74.968671679198
+        },
+        {
+          "sequence": "RaceCar_video_02-Done",
+          "frames": 364,
+          "trained_e40": {
+            "AUC": 0.8241758241758242,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 1.0
+          },
+          "official": {
+            "AUC": 69.06070120355835,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.1763085399449036
+          },
+          "auc_gap_official_minus_trained": 68.23652537938253
+        },
+        {
+          "sequence": "INF_basketball2",
+          "frames": 75,
+          "trained_e40": {
+            "AUC": 1.2698412698412698,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 1.0
+          },
+          "official": {
+            "AUC": 68.5079365079365,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.1891891891891892
+          },
+          "auc_gap_official_minus_trained": 67.23809523809524
+        },
+        {
+          "sequence": "monitor_manypeople",
+          "frames": 618,
+          "trained_e40": {
+            "AUC": 3.7062721528740945,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.9497568881685575
+          },
+          "official": {
+            "AUC": 67.86099553089844,
+            "first_actual_prediction_iou": 0.5720883534136546,
+            "valid_frame_near_failure_fraction": 0.1426256077795786
+          },
+          "auc_gap_official_minus_trained": 64.15472337802434
+        },
+        {
+          "sequence": "test_020_RedCar_video_C01_done",
+          "frames": 1037,
+          "trained_e40": {
+            "AUC": 0.39032006245121,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 1.0
+          },
+          "official": {
+            "AUC": 63.677274188363874,
+            "first_actual_prediction_iou": 0.8208541320022186,
+            "valid_frame_near_failure_fraction": 0.1711065573770492
+          },
+          "auc_gap_official_minus_trained": 63.286954125912665
+        },
+        {
+          "sequence": "JordanBasketball_video_06-Done",
+          "frames": 128,
+          "trained_e40": {
+            "AUC": 14.694940476190476,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.7716535433070866
+          },
+          "official": {
+            "AUC": 76.48809523809523,
+            "first_actual_prediction_iou": 0.8740601503759399,
+            "valid_frame_near_failure_fraction": 0.0
+          },
+          "auc_gap_official_minus_trained": 61.79315476190475
+        },
+        {
+          "sequence": "NBA2k_Kawayi_video_10-Done",
+          "frames": 238,
+          "trained_e40": {
+            "AUC": 25.010004001600638,
+            "first_actual_prediction_iou": 0.7425466893039049,
+            "valid_frame_near_failure_fraction": 0.679324894514768
+          },
+          "official": {
+            "AUC": 82.25290116046419,
+            "first_actual_prediction_iou": 0.7739924358822834,
+            "valid_frame_near_failure_fraction": 0.029535864978902954
+          },
+          "auc_gap_official_minus_trained": 57.242897158863556
+        },
+        {
+          "sequence": "INF_elecbike2",
+          "frames": 582,
+          "trained_e40": {
+            "AUC": 0.18818523973163148,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 1.0
+          },
+          "official": {
+            "AUC": 52.029127802323686,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.2719449225473322
+          },
+          "auc_gap_official_minus_trained": 51.840942562592055
+        }
+      ],
+      "top_trained_advantages": [
+        {
+          "sequence": "INF_walkingnight",
+          "frames": 426,
+          "trained_e40": {
+            "AUC": 75.98926894701542,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.03058823529411765
+          },
+          "official": {
+            "AUC": 5.298457411133468,
+            "first_actual_prediction_iou": 0.009719972228650776,
+            "valid_frame_near_failure_fraction": 0.851764705882353
+          },
+          "auc_gap_official_minus_trained": -70.69081153588195
+        },
+        {
+          "sequence": "INF_greentruck",
+          "frames": 129,
+          "trained_e40": {
+            "AUC": 58.43484680693983,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.09375
+          },
+          "official": {
+            "AUC": 0.7751937984496124,
+            "first_actual_prediction_iou": 0.021983948228277764,
+            "valid_frame_near_failure_fraction": 1.0
+          },
+          "auc_gap_official_minus_trained": -57.65965300849022
+        },
+        {
+          "sequence": "CrowedPeople_video_01-Done",
+          "frames": 976,
+          "trained_e40": {
+            "AUC": 71.37490241998438,
+            "first_actual_prediction_iou": 0.6545227779965865,
+            "valid_frame_near_failure_fraction": 0.042224510813594233
+          },
+          "official": {
+            "AUC": 16.04215456674473,
+            "first_actual_prediction_iou": 0.5928697463806628,
+            "valid_frame_near_failure_fraction": 0.7033985581874357
+          },
+          "auc_gap_official_minus_trained": -55.33274785323965
+        },
+        {
+          "sequence": "INF_blackwoman",
+          "frames": 498,
+          "trained_e40": {
+            "AUC": 72.14572576018358,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.026156941649899398
+          },
+          "official": {
+            "AUC": 20.567986230636834,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.7344064386317908
+          },
+          "auc_gap_official_minus_trained": -51.57773952954675
+        },
+        {
+          "sequence": "INF_birds",
+          "frames": 270,
+          "trained_e40": {
+            "AUC": 77.05467372134038,
+            "first_actual_prediction_iou": 0.9166666666666666,
+            "valid_frame_near_failure_fraction": 0.026022304832713755
+          },
+          "official": {
+            "AUC": 28.800705467372133,
+            "first_actual_prediction_iou": 0.0,
+            "valid_frame_near_failure_fraction": 0.49070631970260226
+          },
+          "auc_gap_official_minus_trained": -48.253968253968246
+        }
+      ]
+    }
+  }
+}

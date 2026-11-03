@@ -1,0 +1,14 @@
+{
+  "header": 1,
+  "run": 1,
+  "environment": 2,
+  "files": 1,
+  "telemetry": 4,
+  "config": 1,
+  "summary": 15243,
+  "metric": 17,
+  "stats": 22288,
+  "history": 7620,
+  "exit": 1,
+  "exit_code": 0
+}

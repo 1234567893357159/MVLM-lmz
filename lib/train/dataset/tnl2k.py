@@ -22,7 +22,8 @@ class Tnl2k(BaseVideoDataset):
     """
 
     def __init__(self, root=None, image_loader=jpeg4py_loader, vid_ids=None, split=None, data_fraction=None,
-                 multi_modal_vision=False, multi_modal_language=False, use_nlp=False):
+                 multi_modal_vision=False, multi_modal_language=False, use_nlp=False,
+                 exclude_sequences=None):
         """
         args:
             root - path to the lasot dataset.
@@ -33,6 +34,7 @@ class Tnl2k(BaseVideoDataset):
             split - If split='train', the official train split (protocol-II) is used for training. Note: Only one of
                     vid_ids or split option can be used at a time.
             data_fraction - Fraction of dataset to be used. The complete dataset is used by default
+            exclude_sequences - Training sequence names to skip without changing source files.
         """
         root = os.path.join(env_settings().tnl2k_dir, 'train')
         super().__init__('Tnl2k', root, image_loader)
@@ -40,6 +42,13 @@ class Tnl2k(BaseVideoDataset):
         self.sequence_path = [f for f in os.listdir(self.root)]
         self.block_list = ['CM', 'INF']
         self.sequence_list = self._build_sequence_list(vid_ids, split)
+        if isinstance(exclude_sequences, str):
+            raise TypeError('exclude_sequences must be a sequence of names, not a string')
+        excluded = set(exclude_sequences or ())
+        self.excluded_sequence_list = [s for s in self.sequence_list if s in excluded]
+        self.sequence_list = [s for s in self.sequence_list if s not in excluded]
+        if not self.sequence_list:
+            raise ValueError('No TNL2K training sequences remain after exclusions')
         if data_fraction is not None:
             self.sequence_list = random.sample(self.sequence_list, int(len(self.sequence_list) * data_fraction))
         self.multi_modal_vision = multi_modal_vision

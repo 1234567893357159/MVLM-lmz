@@ -88,6 +88,9 @@ cfg.DATA.TRAIN.DATASETS_NAME = ["LASOT", "GOT10K_vottrain"]
 cfg.DATA.TRAIN.DATASETS_RATIO = [1, 1]
 cfg.DATA.TRAIN.SAMPLE_PER_EPOCH = 60000
 cfg.DATA.TRAIN.VASTTRACK_SPLIT = ''
+# This mirrored training clip has 957 images but only 816 annotation rows.
+# Preserve its source files; exclude it before training samples are selected.
+cfg.DATA.TRAIN.TNL2K_EXCLUDE_SEQUENCES = ['Fight_game_004-Done']
 # DATA.SEARCH
 cfg.DATA.SEARCH = edict()
 cfg.DATA.SEARCH.NUMBER = 1  #number of search region, only support 1 for now.

@@ -1,0 +1,94 @@
+{
+  "checked_at": "2026-10-30T13:23:58.651085+08:00",
+  "config": "/root/MVLM/experiments/mvlm/mvlm_TF_paper_reproduction.yaml",
+  "config_sha256": "b98870c5c36e578ca2bc92cfc01e1d9ce23064c57013e64094ef90ef75d2b9f3",
+  "scope": "Fresh count/name checks of every training image directory; full annotation and language reads; first/middle/last image file sizes in every sequence. Sample image decoding and augmentation through the configured training sampler. Not full per-image decoding or archive rehashing.",
+  "datasets": [
+    {
+      "name": "lasot",
+      "sequences": 1120,
+      "frames": 2831982,
+      "checked": 1120,
+      "excluded_sequences": [],
+      "ordered_sequence_list_sha256": "0ae7df00644ee36794ac1d67f123612eb6341b4e94fef933169607d650ade893",
+      "problems": [],
+      "augmented_sample_shapes": [
+        [
+          1,
+          6,
+          224,
+          224
+        ],
+        [
+          1,
+          6,
+          224,
+          224
+        ]
+      ]
+    },
+    {
+      "name": "vasttrack",
+      "sequences": 46825,
+      "frames": 3805290,
+      "checked": 46825,
+      "excluded_sequences": [],
+      "ordered_sequence_list_sha256": "9fb45e980d26aafd59925a3b8ed56653488b89af8aa5c92635fb41d588932bc0",
+      "problems": [],
+      "augmented_sample_shapes": [
+        [
+          1,
+          6,
+          224,
+          224
+        ],
+        [
+          1,
+          6,
+          224,
+          224
+        ]
+      ]
+    },
+    {
+      "name": "tnl2k",
+      "sequences": 1299,
+      "frames": 727345,
+      "checked": 1299,
+      "excluded_sequences": [
+        "Fight_game_004-Done"
+      ],
+      "ordered_sequence_list_sha256": "35761e6a8247585505ad3aaf622f734cfa5b75ac8235946b3eaaad0d8e6cb624",
+      "problems": [],
+      "augmented_sample_shapes": [
+        [
+          1,
+          6,
+          224,
+          224
+        ],
+        [
+          1,
+          6,
+          224,
+          224
+        ]
+      ]
+    }
+  ],
+  "problems": [],
+  "training_launched": false,
+  "source_invalid_sequence_preserved": true,
+  "archive_marker_checks": {
+    "lasot": {
+      "archives": 70,
+      "problems": []
+    },
+    "tnl2k": {
+      "archives": 2,
+      "problems": []
+    }
+  },
+  "data_ready": true,
+  "finished_at": "2026-10-30T13:25:50.926576+08:00"
+}

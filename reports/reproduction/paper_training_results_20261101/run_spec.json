@@ -1,0 +1,49 @@
+{
+  "started_preparation_at": "2026-10-30T13:45:39.393751+08:00",
+  "git_commit": "8350dec94a8d50a623312c31c61dc8a46306cfd5",
+  "git_branch": "codex/mvlm-reproduction",
+  "source": "/root/MVLM/output/paper_reproduction_20261030_run01/source",
+  "physical_gpus": [
+    4,
+    5
+  ],
+  "world_size": 2,
+  "batch_per_rank": 40,
+  "global_batch": 80,
+  "loader_workers_per_rank": 2,
+  "cpu_compute_threads_per_process": 1,
+  "epochs": 60,
+  "samples_per_epoch": 100000,
+  "updates_per_epoch": 1250,
+  "target_updates": 75000,
+  "datasets": [
+    {
+      "name": "lasot",
+      "sequences": 1120,
+      "list_sha256": "0ae7df00644ee36794ac1d67f123612eb6341b4e94fef933169607d650ade893",
+      "excluded_sequences": []
+    },
+    {
+      "name": "vasttrack",
+      "sequences": 46825,
+      "list_sha256": "9fb45e980d26aafd59925a3b8ed56653488b89af8aa5c92635fb41d588932bc0",
+      "excluded_sequences": []
+    },
+    {
+      "name": "tnl2k",
+      "sequences": 1299,
+      "list_sha256": "35761e6a8247585505ad3aaf622f734cfa5b75ac8235946b3eaaad0d8e6cb624",
+      "excluded_sequences": [
+        "Fight_game_004-Done"
+      ]
+    }
+  ],
+  "initialization": "pretrained FastITPN backbone and CLIP only; random projection and CENTER; no tracker or preflight weights",
+  "backbone_sha256": "626fd426dd89b2681d8b3942fa00e05fffb467af111c7bbd6a0a4b8bc0afc388",
+  "clip_sha256": "b8cca3fd41ae0c99ba7e8951adf17d267cdb84cd88be6f7c2e0eca1737a03836",
+  "config_sha256": "e4fb49f89ba92115a48f1cace548cae7347e7ef7e5c1a263cd3339549f0acb8c",
+  "wandb_project": "mvlm-reproduction",
+  "wandb_entity": "2896287267-hit",
+  "seed": 1234567890,
+  "batch_interpretation": "global 80 is an explicit paper interpretation; per-rank batch and BatchNorm differ from the earlier eight-rank plan"
+}
