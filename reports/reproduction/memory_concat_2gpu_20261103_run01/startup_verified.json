@@ -1,0 +1,56 @@
+{
+  "captured_at": "2026-11-03T16:31:06.489915+00:00",
+  "training": {
+    "status": "training_to_1000",
+    "supervisor_pid": 757893,
+    "started_at": "2026-11-04T00:19:10.895743+08:00",
+    "global_step": 120,
+    "target_steps": 4000,
+    "physical_gpus": [
+      4,
+      5
+    ],
+    "batch_per_rank": 40,
+    "global_batch": 80,
+    "wandb_url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58",
+    "updated_at": "2026-11-04T00:31:02.536838+08:00",
+    "wandb_mode": "online",
+    "worker_pid": 757897
+  },
+  "last_training_metrics": {
+    "global_step": 120,
+    "epoch": 0.12,
+    "updated_at": "2026-11-03T16:29:28.765587+00:00",
+    "train/GradNorm": 0.3852319672703743,
+    "train/IoU": 0.8703833352774382,
+    "train/Loss/Total": 0.5565541561692953,
+    "train/Loss/Tracking": 0.5565541561692953,
+    "train/Memory/ClipFrames": 4.0,
+    "train/Memory/EmptyFraction": 0.26343749389052395,
+    "train/Memory/Gate": 0.34816383942961693,
+    "train/Memory/LongEntries": 1.07421875,
+    "train/Memory/ReadoutToVisualNorm": 0.11221615057438611,
+    "train/Memory/ShortEntries": 1.441875,
+    "train/Memory/WriteAcceptance": 0.9629166666666668,
+    "lr/memory": 6.400000000000001e-05,
+    "lr/center": 6.4000000000000006e-06,
+    "seconds_per_update": 5.028465221251826,
+    "peak_allocated_mib": 3129.4130859375,
+    "allocated_mib": 1597.78466796875,
+    "clips_per_second_global": 15.909426928498107
+  },
+  "online_verified": {
+    "state": "running",
+    "global_step": 100,
+    "loss": 0.5717070700600744,
+    "iou": 0.8678575374186039
+  },
+  "local_backup": {
+    "mode": "offline",
+    "id": "65be0b58",
+    "url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58",
+    "local_dir": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/wandb_offline/wandb/offline-run-20261103_161913-65be0b58/files",
+    "queued_step": 120,
+    "updated_at": "2026-11-03T16:31:05.773421+00:00"
+  }
+}
