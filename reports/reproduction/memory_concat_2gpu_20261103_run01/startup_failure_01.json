@@ -1,0 +1,16 @@
+{
+  "status": "failed",
+  "supervisor_pid": 757282,
+  "started_at": "2026-11-04T00:07:31.560570+08:00",
+  "global_step": 0,
+  "target_steps": 4000,
+  "physical_gpus": [
+    4,
+    5
+  ],
+  "batch_per_rank": 40,
+  "global_batch": 80,
+  "wandb_url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58",
+  "updated_at": "2026-11-04T00:09:46.020404+08:00",
+  "error": "CommError('Run initialization has timed out after 60.0 sec. Please try increasing the timeout with the `init_timeout` setting: `wandb.init(settings=wandb.Settings(init_timeout=120))`.')"
+}

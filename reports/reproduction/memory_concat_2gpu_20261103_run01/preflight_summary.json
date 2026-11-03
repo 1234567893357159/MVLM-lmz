@@ -1,0 +1,146 @@
+{
+  "rank1_final_audit": {
+    "status": "passed",
+    "rank": 1,
+    "start_step": 0,
+    "final_step": 10,
+    "frozen_encoder_text_unchanged": true,
+    "bn_statistics_unchanged": true,
+    "changed_memory_parameters": [
+      "roi_position",
+      "visual_proj.weight",
+      "visual_proj.bias",
+      "text_proj.weight",
+      "text_proj.bias",
+      "appearance_key.weight",
+      "appearance_key.bias",
+      "semantic_key.0.weight",
+      "semantic_key.0.bias",
+      "semantic_key.2.weight",
+      "semantic_key.2.bias",
+      "value_proj.weight",
+      "value_proj.bias",
+      "stream_gate.weight",
+      "stream_gate.bias",
+      "output_gate.weight",
+      "output_gate.bias"
+    ],
+    "new_channel_norms": {
+      "conv1_ctr": 0.003438194515183568,
+      "conv1_offset": 0.004559447057545185,
+      "conv1_size": 0.003909619525074959
+    },
+    "peak_allocated_mib": 3129.41259765625,
+    "completed_at": "2026-11-03T15:54:58.829441+00:00"
+  },
+  "rank0_final_audit": {
+    "status": "passed",
+    "rank": 0,
+    "start_step": 0,
+    "final_step": 10,
+    "frozen_encoder_text_unchanged": true,
+    "bn_statistics_unchanged": true,
+    "changed_memory_parameters": [
+      "roi_position",
+      "visual_proj.weight",
+      "visual_proj.bias",
+      "text_proj.weight",
+      "text_proj.bias",
+      "appearance_key.weight",
+      "appearance_key.bias",
+      "semantic_key.0.weight",
+      "semantic_key.0.bias",
+      "semantic_key.2.weight",
+      "semantic_key.2.bias",
+      "value_proj.weight",
+      "value_proj.bias",
+      "stream_gate.weight",
+      "stream_gate.bias",
+      "output_gate.weight",
+      "output_gate.bias"
+    ],
+    "new_channel_norms": {
+      "conv1_ctr": 0.003438194515183568,
+      "conv1_offset": 0.004559447057545185,
+      "conv1_size": 0.003909619525074959
+    },
+    "peak_allocated_mib": 3129.41259765625,
+    "completed_at": "2026-11-03T15:54:58.418823+00:00"
+  },
+  "training_metrics": [
+    {
+      "global_step": 10,
+      "epoch": 0.01,
+      "updated_at": "2026-11-03T15:54:46.347913+00:00",
+      "train/GradNorm": 0.5500088930130005,
+      "train/IoU": 0.8709704592823981,
+      "train/Loss/Total": 0.545080229267478,
+      "train/Loss/Tracking": 0.545080229267478,
+      "train/Memory/ClipFrames": 4.0,
+      "train/Memory/EmptyFraction": 0.25874999463558196,
+      "train/Memory/Gate": 0.32507940679788594,
+      "train/Memory/LongEntries": 1.0775000000000001,
+      "train/Memory/ReadoutToVisualNorm": 0.06465762592852116,
+      "train/Memory/ShortEntries": 1.444375,
+      "train/Memory/WriteAcceptance": 0.9608333333333333,
+      "lr/memory": 1.4500000000000002e-05,
+      "lr/center": 1.4500000000000003e-06,
+      "seconds_per_update": 6.029949015600141,
+      "peak_allocated_mib": 3129.41259765625,
+      "allocated_mib": 1597.78466796875,
+      "clips_per_second_global": 13.267110516694453
+    }
+  ],
+  "validation_smoke": {
+    "scope": "engineering_3x30",
+    "baseline": true,
+    "sequences": 3,
+    "weights": "/root/MVLM/models/MVLM_TF.pth.tar",
+    "manifest": "output/memory_concat_2gpu_20261103_run01/split/quick_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 88.73015873015872,
+        "PRE": 100.0,
+        "NPR": 100.0
+      },
+      "vasttrack": {
+        "AUC": 48.67724867724868,
+        "PRE": 33.33333333333333,
+        "NPR": 11.11111111111111
+      },
+      "tnl2k": {
+        "AUC": 83.4920634920635,
+        "PRE": 100.0,
+        "NPR": 96.66666666666667
+      }
+    },
+    "mean_AUC": 73.63315696649029,
+    "seconds": 26.36254308791831,
+    "per_sequence": {
+      "lasot": [
+        {
+          "name": "dog-12",
+          "AUC": 88.73015873015872,
+          "PRE": 100.0,
+          "NPR": 100.0
+        }
+      ],
+      "vasttrack": [
+        {
+          "name": "Bicycle Lane Sign-75",
+          "AUC": 48.67724867724868,
+          "PRE": 33.33333333333333,
+          "NPR": 11.11111111111111
+        }
+      ],
+      "tnl2k": [
+        {
+          "name": "CM_elecbike_done---",
+          "AUC": 83.4920634920635,
+          "PRE": 100.0,
+          "NPR": 96.66666666666667
+        }
+      ]
+    }
+  }
+}

@@ -2,7 +2,15 @@
 
 用户已授权启动，实验目录：
 `/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01`。
-本轮从官方 MVLM 初始化，不使用预检权重；正式状态以目录中的实时档案与状态文件为准。
+本轮从官方 MVLM 初始化，不使用预检权重；正式训练监督于北京时间2026-11-04 00:19启动。
+正式状态以目录中的实时档案与状态文件为准。
+
+- [W&B在线监控](https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58)
+- [持续过程档案](/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/EXPERIMENT_RECORD.md)
+- [实时状态](/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/training_status.json)
+- [可随Git浏览的精确配置、清单和预检证据](memory_concat_2gpu_20261103_run01/)
+
+正式可训练参数7,132,807个，其中记忆658,690、CENTER6,474,117；两卡冻结哈希相同。
 
 ## 实际参数
 
@@ -55,7 +63,8 @@
 由独立进程读取同一持久化队列。训练和监督均不等待W&B API，每20步写跨卡平均指标。
 首次在线初始化遇到代理TLS连接中断与超时，停在0步；首次失败记录与源码保留。
 随后修正为上传与训练解耦，并以新冻结源码恢复同一实验；没有混入预检更新或更改训练预算。
-新进程离线W&B检查已通过；在线上传后台独立重试，实际连接状态以`wandb_status.json`为准。
+新进程离线W&B检查已通过；独立在线客户端已成功连接并恢复run `65be0b58`。
+在线上传仍保留自动重试，实际连接与入队步数以`wandb_status.json`为准。
 
 - `EXPERIMENT_RECORD.md`：持续更新的人类可读过程档案。
 - `training_status.json` / `events.jsonl`：阶段、进程、步数和错误。

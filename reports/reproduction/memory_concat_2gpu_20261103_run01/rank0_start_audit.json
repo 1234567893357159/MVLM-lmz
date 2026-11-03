@@ -1,0 +1,22 @@
+{
+  "rank": 0,
+  "step": 0,
+  "batch_per_rank": 40,
+  "global_batch": 80,
+  "clip_frames": 4,
+  "frozen_sha256": "5de7ade0ff02b66dd3e282c6114804f91fb3839f7e2376b8a0a04fca24f48684",
+  "bn_frozen": true,
+  "trainable_parameters": 7132807,
+  "groups": [
+    {
+      "name": "memory",
+      "peak_lr": 0.0001,
+      "parameters": 658690
+    },
+    {
+      "name": "center",
+      "peak_lr": 1e-05,
+      "parameters": 6474117
+    }
+  ]
+}

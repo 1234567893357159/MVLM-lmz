@@ -1,0 +1,49 @@
+{
+  "counts": {
+    "lasot": {
+      "source": 1120,
+      "train": 1090,
+      "val": 30
+    },
+    "vasttrack": {
+      "source": 46825,
+      "train": 46765,
+      "val": 60
+    },
+    "tnl2k": {
+      "source": 1299,
+      "train": 1239,
+      "val": 60
+    }
+  },
+  "sources": {
+    "lasot": {
+      "path": "/root/MVLM/output/paper_reproduction_20261030_run01/split/lasot_train.txt",
+      "sha256": "0ae7df00644ee36794ac1d67f123612eb6341b4e94fef933169607d650ade893",
+      "training_sha256": "c6bbcc5514d454fd3614f425246c064734059f7cd58a6e797d5f1cd6030511f1",
+      "validation_sha256": "0d1d59bd616723aa9200c546946adba3a8a3f513306283fd19e773614dd209e4"
+    },
+    "vasttrack": {
+      "path": "/root/MVLM/output/paper_reproduction_20261030_run01/split/vasttrack_train.txt",
+      "sha256": "9fb45e980d26aafd59925a3b8ed56653488b89af8aa5c92635fb41d588932bc0",
+      "training_sha256": "dada518aaf69ad646cbc50e091ffd4a9de91a27903dfa86c733bfa0194131f21",
+      "validation_sha256": "5a7798f178cd8ffa0050a8ae77241ea72829c53b128d8aed7de25e1b8bff92ba"
+    },
+    "tnl2k": {
+      "path": "/root/MVLM/output/paper_reproduction_20261030_run01/split/tnl2k_train.txt",
+      "sha256": "35761e6a8247585505ad3aaf622f734cfa5b75ac8235946b3eaaad0d8e6cb624",
+      "training_sha256": "7c62d1b75d784b177b742a50faceb8f2200894560d79ec9f031ea7c512ed9266",
+      "validation_sha256": "1976dc88741dc34ec955211a1218ce17b314425a474cd9178301733cbcc973a6"
+    }
+  },
+  "validation_manifest_sha256": "d60c872342fe58ce5b69b38e4219df4bc2cf192c1cde9f42540260e3d64d411d",
+  "quick_manifest_sha256": "1ce2bb34f9030b0b798af338936c393e8cee89ebb3820ee34db0a60961154f3d",
+  "decoded_validation_images": 450,
+  "baseline_checkpoint_sha256": "91c31230f3d355f71104df8191e386632a39ce9d3bbc1f7ce5bf3772b369cc4f",
+  "known_exclusions": {
+    "tnl2k": [
+      "Fight_game_004-Done"
+    ],
+    "vasttrack": "11 missing-frame videos absent from canonical list"
+  }
+}
