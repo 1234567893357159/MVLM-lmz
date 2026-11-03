@@ -7,6 +7,7 @@ from lib.utils.box_ops import box_xyxy_to_cxcywh
 from lib.models.mvlm.language.clip import build_clip_textencoder
 from .memory import TargetMemoryBank, extract_target_tokens, crop_boxes_to_image
 from .memory_fusion import MemoryFusion
+from .checkpoint import prepare_memory_checkpoint
 
 
 class MVLM(nn.Module):
@@ -37,7 +38,8 @@ class MVLM(nn.Module):
             self.memory_fusion = MemoryFusion(
                 encoder.num_channels, memory_cfg.HIDDEN_DIM, memory_cfg.KEY_DIM,
                 memory_cfg.ROI_SIZE, memory_cfg.USE_SEMANTIC,
-                memory_cfg.SHORT_DECAY, memory_cfg.LONG_DECAY)
+                memory_cfg.SHORT_DECAY, memory_cfg.LONG_DECAY,
+                fusion_mode=memory_cfg.FUSION_MODE)
             if memory_cfg.ROI_SIZE < 1 or memory_cfg.HIDDEN_DIM < 1 or memory_cfg.KEY_DIM < 1:
                 raise ValueError('Memory dimensions and ROI size must be positive')
             if memory_cfg.SHORT_CAPACITY < 0 or memory_cfg.LONG_CAPACITY < 0:
@@ -92,6 +94,11 @@ class MVLM(nn.Module):
                 frame_ids = torch.zeros(batch_size, dtype=torch.long, device=head_features.device)
             head_features, memory_gate = self.memory_fusion(head_features, text_emb, memory_state, frame_ids)
             auc_dict.update(feat_x_mem=head_features, memory_gate=memory_gate)
+        elif getattr(self.head, 'memory_channels', 0):
+            # Disabling retrieval in a concat model still requires the expanded
+            # head interface; its memory inputs are all zero for this ablation.
+            padding = head_features.new_zeros(*head_features.shape[:2], self.head.memory_channels)
+            head_features = torch.cat((head_features, padding), dim=-1)
         head_dict = self.forward_head(head_features)
         auc_dict.update(enc_dict)
         auc_dict.update(head_dict)
@@ -196,6 +203,7 @@ def load_pretrained_tracker(model, pretrained):
     for key in keys_to_remove:
         del state_dict[key]
 
+    state_dict = prepare_memory_checkpoint(model, state_dict, allow_baseline=True)
     incompatible = model.load_state_dict(state_dict, strict=False)
     if model.memory_enabled:
         missing_base = [name for name in incompatible.missing_keys
@@ -206,6 +214,11 @@ def load_pretrained_tracker(model, pretrained):
     return model
 
 def build_mvlm(cfg, training=True):
+    if (training and cfg.MODEL.MEMORY.ENABLED
+            and cfg.MODEL.MEMORY.FUSION_MODE == 'concat'
+            and cfg.TRAIN.MEMORY_FREEZE_HEAD):
+        raise ValueError('Concat memory requires TRAIN.MEMORY_FREEZE_HEAD=False: '
+                         'the new zero-initialized CENTER input weights must be trained')
     encoder = build_encoder(cfg, training=training and cfg.MODEL.PRETRAINED_MODEL is None)
     if cfg.DATA.MULTI_MODAL_LANGUAGE:
         if cfg.MODEL.ENCODER.LANGUAGE_MODEL == 'CLIP':

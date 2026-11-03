@@ -1,5 +1,9 @@
 # MVLM 复现工作区
 
+当前为 `codex/xmem-concat-center` 结构改造分支，已实现记忆读出直接拼接至扩展 CENTER，
+尚未启动新训练。当前入口见 [分支说明](codex-xmem-concat-center分支说明.md)。
+下方复现状态和结果保留自原 xmem 分支的历史快照，不代表主目录的最新训练/评测进度。
+
 本仓库保留官方 MVLM 的 Git 历史，保存当前复现适配、评测脚本与实验配置。
 
 - `SESSION_HANDOFF.md`：详细交接历史，下载进度仅为历史快照。

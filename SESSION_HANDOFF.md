@@ -1,5 +1,19 @@
 # MVLM 会话交接记录
 
+## 当前开发分支：记忆拼接 CENTER（2026-11-03）
+
+当前分支 `codex/xmem-concat-center` 从 `codex/xmem-memory` 的 `a115a99` 新建，
+开发位置为独立 worktree；以 `git branch --show-current` 和 `pwd` 确认实际路径。
+下面记忆分支交接条目是历史记录，原分支、主目录和正在运行的续训检查点评测均保留。
+本次新增 `MODEL.MEMORY.FUSION_MODE=concat`：512 维当前特征与 256 维门控检索结果拼接，
+CENTER 三个分支首层扩大至 768 输入，旧视觉权重保留、新增通道零初始化。
+配置 `mvlm_TF_memory_concat`；实现与验证见 `reports/reproduction/MEMORY_CONCAT_CENTER.md`。
+中文总入口为 `codex-xmem-concat-center分支说明.md`；GitHub 发布目标为个人仓库
+`origin` 的同名分支，不更新 `main` 或 `codex/xmem-memory`。
+尚未启动新训练或恢复此前暂停的密集验证实验。
+
+## 原 xmem 分支历史交接记录（以下保留历史时间与状态）
+
 最新运行（2026-10-19上海时间）：用户已要求暂停每200步检查的新实验；后台监督程序已终止，状态`paused`，更新步数0。W&B run okgvc2hi；显卡恢复后不会自动开训。上一轮最佳2000步平均AUC60.8004。
 
 最新状态（2026-10-19）：20,000步训练及逐项诊断均完成。原配置平均AUC58.72，基线60.73；缩小融合或严格写入的完整验证均约61.07。最新细节见文末“记忆模块逐项诊断已完成”；历史下载/训练状态不代表当前状态。

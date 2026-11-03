@@ -131,8 +131,12 @@ class Corner_Predictor(nn.Module):
 
 class CenterPredictor(nn.Module, ):
     def __init__(self, inplanes=64, channel=256, feat_sz=20, stride=16,
-                 conv_type='normal', freeze_bn=False, xavier_init=True):
+                 conv_type='normal', freeze_bn=False, xavier_init=True,
+                 memory_channels=0):
         super(CenterPredictor, self).__init__()
+        if not 0 <= memory_channels < inplanes:
+            raise ValueError('CENTER memory channels must leave a nonempty visual input')
+        self.memory_channels = memory_channels
         self.feat_sz = feat_sz
         self.stride = stride
         self.img_sz = self.feat_sz * self.stride
@@ -171,6 +175,10 @@ class CenterPredictor(nn.Module, ):
             for p in self.parameters():
                 if p.dim() > 1:
                     nn.init.xavier_uniform_(p)
+        if memory_channels:
+            visual_channels = inplanes - memory_channels
+            for layer in (self.conv1_ctr, self.conv1_offset, self.conv1_size):
+                nn.init.zeros_(layer[0].weight[:, visual_channels:])
 
     def forward(self, x, gt_score_map=None):
         """ Forward pass with input x. """
@@ -372,13 +380,19 @@ def build_head(cfg, encoder):
         return corner_head
     elif cfg.MODEL.HEAD.TYPE == "CENTER":
         in_channel = num_channels_enc
+        memory_channels = 0
+        if (cfg.MODEL.MEMORY.ENABLED
+                and cfg.MODEL.MEMORY.FUSION_MODE == 'concat'):
+            memory_channels = cfg.MODEL.MEMORY.HIDDEN_DIM
+            in_channel += memory_channels
         out_channel = cfg.MODEL.HEAD.NUM_CHANNELS
         feat_sz = int(cfg.DATA.SEARCH.SIZE / stride)
         conv_type = cfg.MODEL.HEAD.CONV_TYPE
         center_head = CenterPredictor(inplanes=in_channel, channel=out_channel,
                                       feat_sz=feat_sz, stride=stride,
                                       conv_type=conv_type,
-                                      xavier_init=cfg.MODEL.HEAD.XAVIER_INIT)
+                                      xavier_init=cfg.MODEL.HEAD.XAVIER_INIT,
+                                      memory_channels=memory_channels)
         return center_head
     else:
         raise ValueError("HEAD TYPE %s is not supported." % cfg.MODEL.HEAD.TYPE)

@@ -1,13 +1,15 @@
 import os
+from pathlib import Path
 
 class EnvSettings:
     def __init__(self):
+        workspace = Path(__file__).resolve().parents[1]
         # ── Workspace & output ─────────────────────────────────────────────
-        self.workspace_dir       = '/root/MVLM'
-        self.tensorboard_dir     = '/root/MVLM/tensorboard'
-        self.results_dir         = '/root/MVLM/output/test/tracking_results'
-        self.result_plot_dir     = '/root/MVLM/output/test/result_plots'
-        self.save_dir            = '/root/MVLM/output'
+        self.workspace_dir       = str(workspace)
+        self.tensorboard_dir     = str(workspace / 'tensorboard')
+        self.results_dir         = str(workspace / 'output/test/tracking_results')
+        self.result_plot_dir     = str(workspace / 'output/test/result_plots')
+        self.save_dir            = str(workspace / 'output')
 
         # ── Dataset roots (split sub-dirs are handled in each dataset class) ─
         self.lasot_dir       = '/root/MVLM/data/lasot'

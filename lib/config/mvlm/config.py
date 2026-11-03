@@ -37,6 +37,7 @@ cfg.MODEL.PRETRAINED_MODEL = None
 
 cfg.MODEL.MEMORY = edict()
 cfg.MODEL.MEMORY.ENABLED = False
+cfg.MODEL.MEMORY.FUSION_MODE = 'residual' # residual or concat (expanded CENTER input)
 cfg.MODEL.MEMORY.SHORT_CAPACITY = 8
 cfg.MODEL.MEMORY.LONG_CAPACITY = 16
 cfg.MODEL.MEMORY.ROI_SIZE = 2
@@ -214,6 +215,9 @@ def update_config_from_file(filename):
         exp_config = edict(yaml.safe_load(f))
         if 'MEMORY' not in exp_config.get('MODEL', {}):
             cfg.MODEL.MEMORY.ENABLED = False
+        # Older memory YAMLs select the original residual architecture, even
+        # when a concat tracker was configured earlier in the same process.
+        cfg.MODEL.MEMORY.FUSION_MODE = 'residual'
         _update_config(cfg, exp_config)
 
 

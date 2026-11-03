@@ -1,5 +1,9 @@
 # MVLM: Template-Free Tracking via Vision–Language Margin Confidence and Memory-Gated Tracking
 
+本开发分支 `codex/xmem-concat-center` 实现记忆通道直接拼接至扩展 CENTER 头，
+用途、改动及验证见 [分支说明](codex-xmem-concat-center分支说明.md)，
+命令及检查点细节见 [拼接实验说明](reports/reproduction/MEMORY_CONCAT_CENTER.md)。
+
 ## 来源与用途声明
 
 本仓库基于 [inha-vllab/MVLM](https://github.com/inha-vllab/MVLM)，用于本人本科毕业设计中的实验复现、代码备份及后续模型改进。本仓库为个人研究版本，不代表 MVLM 官方项目。

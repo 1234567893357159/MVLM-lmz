@@ -1,5 +1,9 @@
 # codex/xmem-memory 分支说明
 
+当前 checkout 为派生开发分支 `codex/xmem-concat-center`。
+其新增记忆直接拼接至扩展 CENTER 输入，详见
+[拼接实验说明](reports/reproduction/MEMORY_CONCAT_CENTER.md)。下文保留原记忆分支历史说明。
+
 日期：2026-10-19；开发分支：`codex/xmem-memory`。
 
 本文是 `codex/xmem-memory` 分支的中文总说明，记录分支用途、代码改动、配置入口、验证结果与后续工作。后续本分支新增功能、训练或评测结果应同步更新本文。

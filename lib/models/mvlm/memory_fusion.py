@@ -5,8 +5,12 @@ from torch import nn
 
 class MemoryFusion(nn.Module):
     def __init__(self, channels, hidden_dim=256, key_dim=128, roi_size=2,
-                 use_semantic=True, short_decay=0.1, long_decay=0.01):
+                 use_semantic=True, short_decay=0.1, long_decay=0.01,
+                 fusion_mode='residual'):
         super().__init__()
+        if fusion_mode not in ('residual', 'concat'):
+            raise ValueError('Unknown memory fusion mode: ' + str(fusion_mode))
+        self.fusion_mode = fusion_mode
         self.roi_size = roi_size
         self.use_semantic = use_semantic
         self.short_decay = short_decay
@@ -20,9 +24,10 @@ class MemoryFusion(nn.Module):
         self.roi_position = nn.Parameter(torch.zeros(roi_size * roi_size, hidden_dim))
         self.stream_gate = nn.Linear(hidden_dim * 2, 1)
         self.output_gate = nn.Linear(hidden_dim * 2, 1)
-        self.output_proj = nn.Linear(hidden_dim, channels)
-        nn.init.zeros_(self.output_proj.weight)
-        nn.init.zeros_(self.output_proj.bias)
+        if fusion_mode == 'residual':
+            self.output_proj = nn.Linear(hidden_dim, channels)
+            nn.init.zeros_(self.output_proj.weight)
+            nn.init.zeros_(self.output_proj.bias)
 
     def _semantic(self, visual, language):
         language = language.expand_as(visual)
@@ -56,5 +61,10 @@ class MemoryFusion(nn.Module):
             retrieved = appearance
         gate = torch.sigmoid(self.output_gate(torch.cat((visual, retrieved), -1)))
         has_memory = valid.any(-1).view(-1, 1, 1)
+        if self.fusion_mode == 'concat':
+            # Keep current tokens intact and let each CENTER branch learn its
+            # own use of the gated readout. No residual/output projection.
+            readout = gate * retrieved * has_memory.to(features.dtype)
+            return torch.cat((features, readout), dim=-1), gate * has_memory.to(features.dtype)
         delta = self.output_proj(gate * retrieved) * has_memory.to(features.dtype)
         return features + delta, gate * has_memory.to(features.dtype)

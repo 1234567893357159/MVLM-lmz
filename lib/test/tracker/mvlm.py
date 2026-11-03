@@ -5,6 +5,7 @@ from lib.test.tracker.utils import Preprocessor, sample_target, transform_image_
 import cv2
 from lib.test.utils.hann import hann2d
 from lib.models.mvlm import build_mvlm
+from lib.models.mvlm.checkpoint import prepare_memory_checkpoint
 from lib.utils.box_ops import clip_box
 from lib.models.mvlm.memory import extract_target_tokens
 import warnings
@@ -16,6 +17,8 @@ class MVLM(BaseTracker):
         network = build_mvlm(params.cfg, training=False)
         ckpt = torch.load(self.params.checkpoint, map_location='cpu')
         state_dict = ckpt['net'] if 'net' in ckpt else ckpt
+        state_dict = prepare_memory_checkpoint(
+            network, state_dict, allow_baseline=params.cfg.TEST.MEMORY_ALLOW_UNTRAINED)
         incompatible = network.load_state_dict(state_dict, strict=False)
         if network.memory_enabled:
             missing_memory = [name for name in incompatible.missing_keys if name.startswith('memory_fusion.')]
