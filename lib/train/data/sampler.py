@@ -203,6 +203,8 @@ class TrackingSampler(torch.utils.data.Dataset):
 
             count_valid += 1
             if count_valid   > 200:
+                if self.frame_sample_mode == 'memory':
+                    raise RuntimeError('Memory sampler failed 200 times; inspect logged data errors')
                 print("too large count_valid, check the sampler, current count_valid: "+str(count_valid))
 
         return data

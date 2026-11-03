@@ -1,6 +1,7 @@
 import torch
 from torch.utils.data.distributed import DistributedSampler
 import torch.nn as nn
+from pathlib import Path
 
 # datasets related
 from lib.train.dataset import Lasot, VastTrack, Otb99_lang, Tnl2k
@@ -27,6 +28,7 @@ def update_settings(settings, cfg):
     settings.use_nlp = cfg.DATA.USE_NLP
     settings.otb_train_sequences = cfg.DATA.TRAIN.OTB_SEQUENCES
     settings.custom_manifest = cfg.DATA.TRAIN.CUSTOM_MANIFEST
+    settings.sequence_lists = dict(cfg.DATA.TRAIN.SEQUENCE_LISTS)
     settings.save_every_epoch = cfg.TRAIN.SAVE_EVERY_EPOCH
     settings.validate_every_epochs = cfg.TRAIN.VALIDATE_EVERY_EPOCHS
     settings.checkpoint_interval_steps = cfg.TRAIN.CHECKPOINT_INTERVAL_STEPS
@@ -80,6 +82,18 @@ def names2datasets(name_list: list, settings, image_loader):
                 dataset.sequence_list = list(settings.otb_train_sequences)
                 dataset.seq_per_class = dataset._build_class_list()
 
+    for name, dataset in zip(name_list, datasets):
+        path = getattr(settings, 'sequence_lists', {}).get(name)
+        if path:
+            selected = Path(path).read_text().splitlines()
+            if not selected or len(selected) != len(set(selected)):
+                raise ValueError('Empty or duplicate training sequences: ' + path)
+            unknown = set(selected) - set(dataset.sequence_list)
+            if unknown:
+                raise ValueError('Unknown training sequences in {}: {}'.format(name, sorted(unknown)[:5]))
+            dataset.sequence_list = selected
+            if hasattr(dataset, '_build_class_list'):
+                dataset.seq_per_class = dataset._build_class_list()
     return datasets
 
 

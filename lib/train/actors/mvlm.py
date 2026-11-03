@@ -52,6 +52,15 @@ class MVLM_Actor(BaseActor):
                 values = [output[key] for output in out_dict['memory_sequence'] if key in output]
                 if values: status['Memory/' + label] = sum(values) / len(values)
             status['Memory/ClipFrames'] = len(out_dict['memory_sequence'])
+            if self.cfg.MODEL.MEMORY.FUSION_MODE == 'concat':
+                ratios, empty = [], []
+                for output in out_dict['memory_sequence']:
+                    visual = output['feat_x']
+                    readout = output['feat_x_mem'][..., visual.shape[-1]:]
+                    ratios.append((readout.norm(dim=(1, 2)) / visual.norm(dim=(1, 2)).clamp_min(1e-8)).mean())
+                    empty.append((output['memory_gate'].sum(dim=(1, 2)) == 0).float().mean())
+                status['Memory/ReadoutToVisualNorm'] = torch.stack(ratios).detach().mean().item()
+                status['Memory/EmptyFraction'] = torch.stack(empty).detach().mean().item()
             return mean_loss, status
         loss, status = self.compute_losses(out_dict, data)
         return loss, status

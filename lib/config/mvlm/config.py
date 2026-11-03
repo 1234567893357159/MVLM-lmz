@@ -76,6 +76,8 @@ cfg.TRAIN.SCHEDULER.DECAY_RATE = 0.1
 cfg.TRAIN.TYPE = "normal" # normal, peft, fft, text_frozen
 cfg.TRAIN.PRETRAINED_PATH = None
 cfg.TRAIN.MEMORY_FREEZE_HEAD = True
+cfg.TRAIN.MEMORY_FREEZE_BN_STATS = False
+cfg.TRAIN.MEMORY_HEAD_LR = 0.00001
 cfg.TRAIN.MEMORY_PREDICTED_PROB = 0.5
 
 # DATA
@@ -103,6 +105,7 @@ cfg.DATA.TRAIN = edict()
 cfg.DATA.TRAIN.DATASETS_NAME = ["LASOT", "GOT10K_vottrain"]
 cfg.DATA.TRAIN.DATASETS_RATIO = [1, 1]
 cfg.DATA.TRAIN.OTB_SEQUENCES = []
+cfg.DATA.TRAIN.SEQUENCE_LISTS = edict(LASOT='', VASTTRACK='', TNL2K_train='')
 cfg.DATA.TRAIN.SAMPLE_PER_EPOCH = 60000
 # DATA.SEARCH
 cfg.DATA.SEARCH = edict()
@@ -218,6 +221,9 @@ def update_config_from_file(filename):
         # Older memory YAMLs select the original residual architecture, even
         # when a concat tracker was configured earlier in the same process.
         cfg.MODEL.MEMORY.FUSION_MODE = 'residual'
+        cfg.TRAIN.MEMORY_FREEZE_BN_STATS = False
+        cfg.TRAIN.MEMORY_HEAD_LR = 0.00001
+        cfg.DATA.TRAIN.SEQUENCE_LISTS = edict(LASOT='', VASTTRACK='', TNL2K_train='')
         _update_config(cfg, exp_config)
 
 

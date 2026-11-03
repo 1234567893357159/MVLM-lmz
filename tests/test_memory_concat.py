@@ -21,6 +21,7 @@ from lib.train.actors.mvlm import MVLM_Actor
 from lib.utils import TensorDict
 from lib.utils.box_ops import giou_loss
 from lib.utils.focal_loss import FocalLoss
+from lib.train.memory_run_utils import memory_optimizer, set_step_lr, bn_state, assert_bn_unchanged
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -213,6 +214,41 @@ class MemoryConcatTests(unittest.TestCase):
         self.assertEqual(Path(env.workspace_dir), ROOT)
         self.assertEqual(Path(env.results_dir), ROOT / 'output/test/tracking_results')
         self.assertEqual(Path(env.lasot_dir), Path('/root/MVLM/data/lasot'))
+
+    def test_frozen_bn_affine_training_and_optimizer_groups(self):
+        self.config.TRAIN.MEMORY_FREEZE_BN_STATS = True
+        model = self.initialized_model().train()
+        model.train()
+        before = bn_state(model)
+        for module in model.head.modules():
+            if isinstance(module, nn.BatchNorm2d):
+                self.assertFalse(module.training)
+                self.assertTrue(module.weight.requires_grad and module.bias.requires_grad)
+        optimizer = memory_optimizer(model, self.config)
+        groups = [{id(p) for p in g['params']} for g in optimizer.param_groups]
+        self.assertFalse(groups[0] & groups[1])
+        self.assertEqual(groups[0] | groups[1], {id(p) for p in model.parameters() if p.requires_grad})
+        output = model(search_list=[torch.randn(2, 3, 64, 64)])
+        output['score_map'].mean().backward()
+        self.assertIsNotNone(model.head.conv1_ctr[1].weight.grad)
+        optimizer.step()
+        assert_bn_unchanged(model, before)
+
+    def test_step_learning_rates_at_schedule_boundaries(self):
+        optimizer = memory_optimizer(self.initialized_model(), self.config)
+        for step, factor in ((1,.1045),(200,1.),(201,1.),(3000,1.),(3001,.1),(4000,.1)):
+            set_step_lr(optimizer, step)
+            self.assertAlmostEqual(optimizer.param_groups[0]['lr'], self.config.TRAIN.LR*factor)
+            self.assertAlmostEqual(optimizer.param_groups[1]['lr'], self.config.TRAIN.MEMORY_HEAD_LR*factor)
+
+    def test_run_specific_bn_and_sequence_lists_do_not_leak_to_old_yaml(self):
+        from lib.config.mvlm.config import update_config_from_file
+        path=Path(self.temp.name)/'run.yaml'
+        path.write_text('TRAIN:\n  MEMORY_FREEZE_BN_STATS: true\nDATA:\n  TRAIN:\n    SEQUENCE_LISTS:\n      LASOT: frozen-list.txt\n')
+        update_config_from_file(str(path))
+        old=parameters('mvlm_TF_memory',self.baseline_path).cfg
+        self.assertFalse(old.TRAIN.MEMORY_FREEZE_BN_STATS)
+        self.assertTrue(all(not value for value in old.DATA.TRAIN.SEQUENCE_LISTS.values()))
 
 
 if __name__ == '__main__':

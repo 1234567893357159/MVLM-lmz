@@ -11,6 +11,9 @@
 
 当前完成代码实现与 CPU 工程验证，尚未训练 concat 模型，也没有 concat 的跟踪精度结果。
 原 xmem 分支及主目录 `/root/MVLM` 的训练检查点评测保持独立。
+用户随后已授权正式双卡训练；实际配置、预检和实时档案入口见
+[双卡正式实验记录](reports/reproduction/MEMORY_CONCAT_TRAINING_20261103.md)。
+下述首轮方案保留原建议，正式实验以运行记录为准。
 两卡训练的冻结范围、参数、数据与验证建议见
 [首轮训练方案](reports/reproduction/MEMORY_CONCAT_TWO_GPU_PLAN_20261103.md)；该方案尚未启动，
 与下方已提供的历史示例配置不同，正式执行前需完成文档列出的配置与训练支持。

@@ -32,6 +32,7 @@ class MVLM(nn.Module):
         self.memory_enabled = memory_cfg is not None and memory_cfg.ENABLED
         self.freeze_memory_backbone = False
         self.freeze_memory_head = False
+        self.freeze_memory_bn_stats = False
         if self.memory_enabled:
             if head_type != 'CENTER':
                 raise ValueError('Content memory currently supports the CENTER head only')
@@ -62,6 +63,10 @@ class MVLM(nn.Module):
                 self.text_encoder.eval()
         if self.freeze_memory_head:
             self.head.eval()
+        elif self.freeze_memory_bn_stats:
+            for module in self.head.modules():
+                if isinstance(module, nn.modules.batchnorm._BatchNorm):
+                    module.eval()
         return self
 
 
@@ -247,6 +252,7 @@ def build_mvlm(cfg, training=True):
             raise ValueError('Memory training requires MODEL.PRETRAINED_MODEL with baseline tracking weights')
         model.freeze_memory_backbone = True
         model.freeze_memory_head = cfg.TRAIN.MEMORY_FREEZE_HEAD
+        model.freeze_memory_bn_stats = cfg.TRAIN.MEMORY_FREEZE_BN_STATS
         for parameter in model.encoder.parameters():
             parameter.requires_grad_(False)
         if model.text_encoder is not None:
