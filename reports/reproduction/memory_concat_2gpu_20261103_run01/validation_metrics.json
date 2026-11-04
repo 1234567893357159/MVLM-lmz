@@ -1,0 +1,236 @@
+{
+  "baseline_full150": {
+    "scope": "full150",
+    "baseline": true,
+    "sequences": 150,
+    "weights": "/root/MVLM/models/MVLM_TF.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/validation_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 81.60611479796798,
+        "PRE": 91.15486898588436,
+        "NPR": 90.60766280962012
+      },
+      "vasttrack": {
+        "AUC": 78.61370032831363,
+        "PRE": 74.04609262932995,
+        "NPR": 88.61048853141787
+      },
+      "tnl2k": {
+        "AUC": 75.07939974732768,
+        "PRE": 80.53550613445272,
+        "NPR": 92.19026742043441
+      }
+    },
+    "mean_AUC": 78.43307162453642,
+    "seconds": 765.6467995349085
+  },
+  "baseline_quick30": {
+    "scope": "quick30",
+    "baseline": true,
+    "sequences": 30,
+    "weights": "/root/MVLM/models/MVLM_TF.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/quick_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 82.88040701483412,
+        "PRE": 89.19587230256782,
+        "NPR": 92.99576552179647
+      },
+      "vasttrack": {
+        "AUC": 73.42408085623876,
+        "PRE": 71.69379615780599,
+        "NPR": 76.7053807030984
+      },
+      "tnl2k": {
+        "AUC": 68.2428177718488,
+        "PRE": 88.18940499993896,
+        "NPR": 79.77122388741631
+      }
+    },
+    "mean_AUC": 74.84910188097389,
+    "seconds": 198.75044009799603
+  },
+  "step001000_full150": {
+    "scope": "full150",
+    "baseline": false,
+    "sequences": 150,
+    "weights": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step001000.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/validation_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 81.62041618180858,
+        "PRE": 91.49303888819028,
+        "NPR": 90.92744409045476
+      },
+      "vasttrack": {
+        "AUC": 77.22562777166077,
+        "PRE": 73.36496875324534,
+        "NPR": 87.05787567678485
+      },
+      "tnl2k": {
+        "AUC": 75.05350176360882,
+        "PRE": 80.55387425235217,
+        "NPR": 92.14818404405902
+      }
+    },
+    "mean_AUC": 77.96651523902607,
+    "seconds": 1068.7312926100567
+  },
+  "step001000_quick30": {
+    "scope": "quick30",
+    "baseline": false,
+    "sequences": 30,
+    "weights": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step001000.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/quick_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 82.59302707829332,
+        "PRE": 89.04660940128079,
+        "NPR": 92.91110740414383
+      },
+      "vasttrack": {
+        "AUC": 73.61279032056018,
+        "PRE": 72.61535610924656,
+        "NPR": 77.4176455566905
+      },
+      "tnl2k": {
+        "AUC": 69.41445435258012,
+        "PRE": 89.74460233616824,
+        "NPR": 81.1465542767504
+      }
+    },
+    "mean_AUC": 75.20675725047788,
+    "seconds": 261.364327821997
+  },
+  "step002000_full150": {
+    "scope": "full150",
+    "baseline": false,
+    "sequences": 150,
+    "weights": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step002000.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/validation_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 81.32493135497778,
+        "PRE": 91.16810732789092,
+        "NPR": 90.60415334081286
+      },
+      "vasttrack": {
+        "AUC": 77.03577928810829,
+        "PRE": 73.01315712943644,
+        "NPR": 87.09093109565548
+      },
+      "tnl2k": {
+        "AUC": 74.61119693120686,
+        "PRE": 80.20543262434302,
+        "NPR": 91.66841914957413
+      }
+    },
+    "mean_AUC": 77.6573025247643,
+    "seconds": 1043.2633330540266
+  },
+  "step002000_quick30": {
+    "scope": "quick30",
+    "baseline": false,
+    "sequences": 30,
+    "weights": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step002000.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/quick_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 82.45915892821012,
+        "PRE": 88.88609317822463,
+        "NPR": 92.76207704718351
+      },
+      "vasttrack": {
+        "AUC": 72.99257934432994,
+        "PRE": 72.49482495500754,
+        "NPR": 77.20478485699694
+      },
+      "tnl2k": {
+        "AUC": 68.93281232959687,
+        "PRE": 89.71087672274723,
+        "NPR": 80.67320315217623
+      }
+    },
+    "mean_AUC": 74.7948502007123,
+    "seconds": 268.72429056989495
+  },
+  "step003000_quick30": {
+    "scope": "quick30",
+    "baseline": false,
+    "sequences": 30,
+    "weights": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step003000.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/quick_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 82.68345339453062,
+        "PRE": 89.07303101744938,
+        "NPR": 92.92845959277916
+      },
+      "vasttrack": {
+        "AUC": 73.35216534903032,
+        "PRE": 71.69555283979442,
+        "NPR": 77.49325239757123
+      },
+      "tnl2k": {
+        "AUC": 68.90315474921339,
+        "PRE": 89.54751066248711,
+        "NPR": 80.57569604835359
+      }
+    },
+    "mean_AUC": 74.97959116425811,
+    "seconds": 266.3052171699237
+  },
+  "step004000_full150": {
+    "scope": "full150",
+    "baseline": false,
+    "sequences": 150,
+    "weights": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step004000.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/validation_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 81.09180467334029,
+        "PRE": 90.88834889089647,
+        "NPR": 90.41360356538942
+      },
+      "vasttrack": {
+        "AUC": 78.49731052106976,
+        "PRE": 74.75240220886059,
+        "NPR": 88.68947636184713
+      },
+      "tnl2k": {
+        "AUC": 74.6641786304382,
+        "PRE": 80.24500444750119,
+        "NPR": 91.84861764406969
+      }
+    },
+    "mean_AUC": 78.08443127494941,
+    "seconds": 1067.0778779580723
+  },
+  "step004000_quick30": {
+    "scope": "quick30",
+    "baseline": false,
+    "sequences": 30,
+    "weights": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step004000.pth.tar",
+    "manifest": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/quick_manifest.json",
+    "metrics": {
+      "lasot": {
+        "AUC": 82.51335606789888,
+        "PRE": 89.0051996731076,
+        "NPR": 92.88160612200792
+      },
+      "vasttrack": {
+        "AUC": 73.15183623912054,
+        "PRE": 71.67946661640482,
+        "NPR": 77.11556931676314
+      },
+      "tnl2k": {
+        "AUC": 68.74816546660655,
+        "PRE": 89.3108789865086,
+        "NPR": 80.9080292135652
+      }
+    },
+    "mean_AUC": 74.80445259120866,
+    "seconds": 269.8082246390404
+  }
+}

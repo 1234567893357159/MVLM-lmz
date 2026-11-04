@@ -1,0 +1,8 @@
+{
+  "mode": "offline",
+  "id": "65be0b58",
+  "url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58",
+  "completed": true,
+  "training_status": "completed",
+  "local_dir": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/wandb_offline/wandb/offline-run-20261103_161913-65be0b58/files"
+}

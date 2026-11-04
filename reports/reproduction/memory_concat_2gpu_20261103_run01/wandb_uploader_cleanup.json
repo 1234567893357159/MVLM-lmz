@@ -1,0 +1,12 @@
+[
+  {
+    "pid": 757896,
+    "action": "terminated_stalled_online_uploader",
+    "signal": "SIGTERM"
+  },
+  {
+    "pid": 757901,
+    "action": "terminated_stalled_online_uploader",
+    "signal": "SIGTERM"
+  }
+]

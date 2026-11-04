@@ -1,0 +1,189 @@
+{
+  "reviewed_at": "2026-11-04T12:31:36.770875+08:00",
+  "run_id": "memory_concat_2gpu_20261103_run01",
+  "training_status": "completed",
+  "global_step": 4000,
+  "started_at": "2026-11-04T00:19:10.895743+08:00",
+  "completed_at": "2026-11-04T07:32:22.923097+08:00",
+  "total_elapsed_seconds": 25992.027354,
+  "metric_records": 200,
+  "all_20_step_intervals_present": true,
+  "nonfinite_numeric_metric_count": 0,
+  "completed_stages": [
+    {
+      "stage": "training_to_1000",
+      "exit_code": 0,
+      "time": "2026-11-04T01:44:57.705897+08:00"
+    },
+    {
+      "stage": "baseline_quick30",
+      "exit_code": 0,
+      "time": "2026-11-04T01:48:30.655676+08:00"
+    },
+    {
+      "stage": "step001000_quick30",
+      "exit_code": 0,
+      "time": "2026-11-04T01:53:06.701228+08:00"
+    },
+    {
+      "stage": "training_to_2000",
+      "exit_code": 0,
+      "time": "2026-11-04T03:18:54.535115+08:00"
+    },
+    {
+      "stage": "step002000_quick30",
+      "exit_code": 0,
+      "time": "2026-11-04T03:23:35.196250+08:00"
+    },
+    {
+      "stage": "baseline_full150",
+      "exit_code": 0,
+      "time": "2026-11-04T03:36:34.126362+08:00"
+    },
+    {
+      "stage": "step002000_full150",
+      "exit_code": 0,
+      "time": "2026-11-04T03:54:11.212360+08:00"
+    },
+    {
+      "stage": "training_to_3000",
+      "exit_code": 0,
+      "time": "2026-11-04T05:21:36.019360+08:00"
+    },
+    {
+      "stage": "step003000_quick30",
+      "exit_code": 0,
+      "time": "2026-11-04T05:26:17.173732+08:00"
+    },
+    {
+      "stage": "training_to_4000",
+      "exit_code": 0,
+      "time": "2026-11-04T06:51:41.615682+08:00"
+    },
+    {
+      "stage": "step004000_quick30",
+      "exit_code": 0,
+      "time": "2026-11-04T06:56:22.523865+08:00"
+    },
+    {
+      "stage": "step004000_full150",
+      "exit_code": 0,
+      "time": "2026-11-04T07:14:22.749246+08:00"
+    },
+    {
+      "stage": "step001000_full150",
+      "exit_code": 0,
+      "time": "2026-11-04T07:32:22.900410+08:00"
+    }
+  ],
+  "checkpoints": [
+    {
+      "name": "MVLM_step000500.pth.tar",
+      "bytes": 424870065
+    },
+    {
+      "name": "MVLM_step001000.pth.tar",
+      "bytes": 424870065
+    },
+    {
+      "name": "MVLM_step001500.pth.tar",
+      "bytes": 424870065
+    },
+    {
+      "name": "MVLM_step002000.pth.tar",
+      "bytes": 424870065
+    },
+    {
+      "name": "MVLM_step002500.pth.tar",
+      "bytes": 424870065
+    },
+    {
+      "name": "MVLM_step003000.pth.tar",
+      "bytes": 424870065
+    },
+    {
+      "name": "MVLM_step003500.pth.tar",
+      "bytes": 424870065
+    },
+    {
+      "name": "MVLM_step004000.pth.tar",
+      "bytes": 424870065
+    }
+  ],
+  "best_trained_checkpoint": {
+    "step": 4000,
+    "path": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step004000.pth.tar",
+    "sha256": "005807b6de6ae0391b18d097c495c0b33022182bc7bdea69148df6238f52478e",
+    "bytes": 424870065
+  },
+  "baseline_full150": {
+    "lasot": {
+      "AUC": 81.60611479796798,
+      "PRE": 91.15486898588436,
+      "NPR": 90.60766280962012
+    },
+    "vasttrack": {
+      "AUC": 78.61370032831363,
+      "PRE": 74.04609262932995,
+      "NPR": 88.61048853141787
+    },
+    "tnl2k": {
+      "AUC": 75.07939974732768,
+      "PRE": 80.53550613445272,
+      "NPR": 92.19026742043441
+    }
+  },
+  "baseline_mean_AUC": 78.43307162453642,
+  "best_trained_full150": {
+    "lasot": {
+      "AUC": 81.09180467334029,
+      "PRE": 90.88834889089647,
+      "NPR": 90.41360356538942
+    },
+    "vasttrack": {
+      "AUC": 78.49731052106976,
+      "PRE": 74.75240220886059,
+      "NPR": 88.68947636184713
+    },
+    "tnl2k": {
+      "AUC": 74.6641786304382,
+      "PRE": 80.24500444750119,
+      "NPR": 91.84861764406969
+    }
+  },
+  "best_trained_mean_AUC": 78.08443127494941,
+  "mean_AUC_delta_pp": -0.34864034958701495,
+  "AUC_delta_pp": {
+    "lasot": -0.5143101246276842,
+    "vasttrack": -0.11638980724386272,
+    "tnl2k": -0.4152211168894837
+  },
+  "final_training_metrics": {
+    "global_step": 4000,
+    "epoch": 4.0,
+    "updated_at": "2026-11-03T22:51:29.006162+00:00",
+    "train/GradNorm": 0.4489497631788254,
+    "train/IoU": 0.8731698580086231,
+    "train/Loss/Total": 0.5428357372060417,
+    "train/Loss/Tracking": 0.5428357372060417,
+    "train/Memory/ClipFrames": 4.0,
+    "train/Memory/EmptyFraction": 0.258281247317791,
+    "train/Memory/Gate": 0.6552871644496918,
+    "train/Memory/LongEntries": 1.0696875000000001,
+    "train/Memory/ReadoutToVisualNorm": 0.4243368864059448,
+    "train/Memory/ShortEntries": 1.4525,
+    "train/Memory/WriteAcceptance": 0.9664583333333332,
+    "lr/memory": 1e-05,
+    "lr/center": 1.0000000000000002e-06,
+    "seconds_per_update": 4.947143467352726,
+    "peak_allocated_mib": 3135.333984375,
+    "allocated_mib": 1597.58935546875,
+    "clips_per_second_global": 16.17094804869464
+  },
+  "audits_passed": true,
+  "interpretation": "Best trained candidate remains below the no-content-memory baseline on this training-part holdout; no matched residual ablation or standard test-set evaluation was run.",
+  "wandb_verification_file": "wandb_completion_verified.json",
+  "wandb_remote_verified_complete": true,
+  "wandb_remote_checked_at": "2026-11-04T12:32:30.056601+08:00",
+  "wandb_recovery_method": "fresh_online_worker_replayed_complete_durable_queue_to_same_run"
+}

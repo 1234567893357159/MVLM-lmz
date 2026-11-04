@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "supervisor_pid": 757893,
+  "started_at": "2026-11-04T00:19:10.895743+08:00",
+  "global_step": 4000,
+  "target_steps": 4000,
+  "physical_gpus": [
+    4,
+    5
+  ],
+  "batch_per_rank": 40,
+  "global_batch": 80,
+  "wandb_url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58",
+  "updated_at": "2026-11-04T07:32:22.923097+08:00",
+  "wandb_mode": "online",
+  "worker_pid": 777349,
+  "best_step": 4000
+}

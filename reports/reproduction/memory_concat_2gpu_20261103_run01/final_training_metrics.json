@@ -1,0 +1,22 @@
+{
+  "global_step": 4000,
+  "epoch": 4.0,
+  "updated_at": "2026-11-03T22:51:29.006162+00:00",
+  "train/GradNorm": 0.4489497631788254,
+  "train/IoU": 0.8731698580086231,
+  "train/Loss/Total": 0.5428357372060417,
+  "train/Loss/Tracking": 0.5428357372060417,
+  "train/Memory/ClipFrames": 4.0,
+  "train/Memory/EmptyFraction": 0.258281247317791,
+  "train/Memory/Gate": 0.6552871644496918,
+  "train/Memory/LongEntries": 1.0696875000000001,
+  "train/Memory/ReadoutToVisualNorm": 0.4243368864059448,
+  "train/Memory/ShortEntries": 1.4525,
+  "train/Memory/WriteAcceptance": 0.9664583333333332,
+  "lr/memory": 1e-05,
+  "lr/center": 1.0000000000000002e-06,
+  "seconds_per_update": 4.947143467352726,
+  "peak_allocated_mib": 3135.333984375,
+  "allocated_mib": 1597.58935546875,
+  "clips_per_second_global": 16.17094804869464
+}

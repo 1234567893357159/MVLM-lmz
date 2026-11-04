@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-04T12:32:30.056601+08:00",
+  "method": "authenticated_read_only_graphql",
+  "run_id": "65be0b58",
+  "url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58",
+  "state": "finished",
+  "summary": {
+    "_step": 5413,
+    "baseline/full150/mean_AUC": 78.43307162453642,
+    "best_val_mean_AUC": 78.08443127494941,
+    "best_val_step": 4000,
+    "exit_code": 0,
+    "global_step": 4000,
+    "status": "completed",
+    "train/IoU": 0.8731698580086231,
+    "train/Loss/Total": 0.5428357372060417,
+    "val/full150/mean_AUC": 77.96651523902607,
+    "val/global_step": 1000
+  },
+  "recovery_method": "fresh_online_worker_replayed_complete_durable_queue_to_same_run",
+  "recovery_exit_code": 0,
+  "local_sdk_run": "wandb_online/wandb/run-20261104_043037-65be0b58",
+  "previous_sync_cli_attempts": "default and append returned 0, remote remained at step 180 before online-worker recovery",
+  "verified_complete": true
+}
