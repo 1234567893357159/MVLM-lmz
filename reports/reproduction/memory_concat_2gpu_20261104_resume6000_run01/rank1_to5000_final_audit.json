@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "rank": 1,
+  "start_step": 4000,
+  "final_step": 5000,
+  "target_steps": 6000,
+  "optimizer": {
+    "state_entries": 71,
+    "state_step_min": 5000.0,
+    "state_step_max": 5000.0,
+    "groups": [
+      {
+        "name": "memory",
+        "lr": 1e-05,
+        "peak_lr": 0.0001
+      },
+      {
+        "name": "center",
+        "lr": 1.0000000000000002e-06,
+        "peak_lr": 1e-05
+      }
+    ]
+  },
+  "frozen_encoder_text_unchanged": true,
+  "bn_statistics_unchanged": true,
+  "changed_memory_parameters": [
+    "roi_position",
+    "visual_proj.weight",
+    "visual_proj.bias",
+    "text_proj.weight",
+    "text_proj.bias",
+    "appearance_key.weight",
+    "appearance_key.bias",
+    "semantic_key.0.weight",
+    "semantic_key.0.bias",
+    "semantic_key.2.weight",
+    "semantic_key.2.bias",
+    "value_proj.weight",
+    "value_proj.bias",
+    "stream_gate.weight",
+    "stream_gate.bias",
+    "output_gate.weight",
+    "output_gate.bias"
+  ],
+  "new_channel_norms": {
+    "conv1_ctr": 1.221197485923767,
+    "conv1_offset": 0.970690906047821,
+    "conv1_size": 0.8102749586105347
+  },
+  "peak_allocated_mib": 3135.333984375,
+  "completed_at": "2026-11-04T11:20:47.278870+00:00"
+}

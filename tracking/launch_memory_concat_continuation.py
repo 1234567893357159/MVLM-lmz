@@ -72,7 +72,8 @@ def launch(parent, out):
         shutil.copytree(Path(previous['source'])/folder,source/folder,
             ignore=shutil.ignore_patterns('__pycache__','node_modules','web','*.pyc'))
     replacements=('lib/train/memory_run_utils.py','tracking/train_memory_concat_run.py',
-        'tracking/supervise_memory_concat_run.py','tracking/launch_memory_concat_continuation.py')
+        'tracking/supervise_memory_concat_run.py','tracking/launch_memory_concat_continuation.py',
+        'tracking/log_memory_concat_wandb.py')
     for filename in replacements:
         shutil.copy2(ROOT/filename,source/filename)
     manifest={str(path.relative_to(source)):sha(path) for path in source.rglob('*') if path.is_file()}

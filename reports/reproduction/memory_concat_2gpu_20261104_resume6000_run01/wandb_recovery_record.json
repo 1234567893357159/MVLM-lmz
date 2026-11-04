@@ -1,0 +1,19 @@
+{
+  "time": "2026-11-04T20:04:00.762379+08:00",
+  "event": "wandb_online_uploader_replaced",
+  "old_process_group": 794629,
+  "new_wrapper_pid": 803066,
+  "command": [
+    "/root/miniconda3/envs/mvlm/bin/python",
+    "-u",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01/monitoring_fix01/log_memory_concat_wandb.py",
+    "--out",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01",
+    "--mode",
+    "online"
+  ],
+  "logger_sha256": "bce97f843f9c111eeb045876b8488afdcf1f0b71f218ee93c5da2099a06ef38d",
+  "reason": "SDK fatal upload error left client alive while remote state crashed; replay durable queue with automatic fatal-error reconnect",
+  "training_supervisor_pid": 794625,
+  "training_worker_pid": 800414
+}

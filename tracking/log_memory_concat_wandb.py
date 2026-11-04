@@ -4,6 +4,7 @@ import datetime as dt
 import json
 import os
 from pathlib import Path
+import signal
 import subprocess
 import sys
 import time
@@ -12,6 +13,28 @@ import time
 def write(path, payload):
     temp=path.with_suffix('.tmp')
     temp.write_text(json.dumps(payload,indent=2)+'\n');temp.replace(path)
+
+
+def run_online_worker(command, env):
+    # The SDK can disable upload permanently while run.log keeps succeeding.
+    # Restart that client from the durable queue rather than waiting for exit.
+    child=subprocess.Popen(command,env=env,stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,text=True,bufsize=1,start_new_session=True)
+    for line in child.stdout:
+        print(line,end='',flush=True)
+        if 'Fatal error while uploading data' in line:
+            print('Restarting online W&B client after fatal upload error; local queue retained.',flush=True)
+            try:
+                os.killpg(child.pid,signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+            try:
+                child.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                os.killpg(child.pid,signal.SIGKILL)
+                child.wait(timeout=10)
+            return 1
+    return child.wait()
 
 
 def worker(out,mode):
@@ -72,10 +95,11 @@ if __name__=='__main__':
             env=dict(os.environ,WANDB_MODE=args.mode,WANDB_CONSOLE='off',WANDB_HTTP_TIMEOUT='15')
             command=[sys.executable,'-u',str(Path(__file__).resolve()),'--out',str(args.out),
                      '--mode',args.mode,'--worker']
-            result=subprocess.run(command,env=env)
-            if result.returncode==0:break
+            returncode=(run_online_worker(command,env) if args.mode=='online'
+                        else subprocess.run(command,env=env).returncode)
+            if returncode==0:break
             payload=dict(mode='pending_'+args.mode,id=json.loads((args.out/'run_spec.json').read_text())['wandb']['id'],
-                         attempt=attempt,last_exit_code=result.returncode,
+                         attempt=attempt,last_exit_code=returncode,
                          local_queue=str(args.out/'wandb_queue.jsonl'))
             write(args.out/('wandb_status.json' if args.mode=='online' else 'wandb_offline_status.json'),payload)
             time.sleep(30)
