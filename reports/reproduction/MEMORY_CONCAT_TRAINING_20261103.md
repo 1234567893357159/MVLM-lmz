@@ -47,6 +47,15 @@
 为77.9665，选模结果应读取`best_val_mean_AUC`和`best_val_step`。
 补传与本轮复核没有启动新训练或评测。
 
+## 后续效果分析与同权重消融
+
+用户随后要求分析模块效果，2026-11-04另完成同一4,000步权重的零记忆输入完整验证，
+没有重训：平均AUC78.1811，正常记忆78.0844，基线78.4331。
+置零仍低0.2520个百分点，开启记忆再低0.0967个百分点；后两项的条件bootstrap区间均跨0，
+不能当作稳定因果占比。平均PRE约+0.0498、NPR约-0.1522个百分点，相对基线并非所有指标同向。
+详见[完整效果与原因分析](MEMORY_CONCAT_ANALYSIS_20261104.md)，含逐视频差异、案例、
+训练/推理记忆状态差异、指标协议核对、后续建议及可复现命令。
+
 - [W&B在线监控](https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58)
 - [持续过程档案](/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/EXPERIMENT_RECORD.md)
 - [实时状态](/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/training_status.json)

@@ -20,7 +20,7 @@ from lib.test.analysis.extract_results import calc_seq_err_robust
 from lib.train.memory_run_utils import write_json
 
 
-def worker(index, tasks, config_path, weight, out, baseline, smoke):
+def worker(index, tasks, config_path, weight, out, baseline, smoke, zero_memory_input=False):
     if not tasks[index]:
         return
     torch.set_num_threads(1); cv2.setNumThreads(0)
@@ -38,6 +38,13 @@ def worker(index, tasks, config_path, weight, out, baseline, smoke):
     params.template_factor, params.template_size = config.TEST.TEMPLATE_FACTOR, config.TEST.TEMPLATE_SIZE
     params.search_factor, params.search_size = config.TEST.SEARCH_FACTOR, config.TEST.SEARCH_SIZE
     tracker = OnlineTracker(params, 'vasttrack')
+    if zero_memory_input:
+        # Load the trained concat architecture first, then bypass content memory.
+        # MVLM.forward retains the expanded head and pads its memory inputs with
+        # zeros. All trained CENTER weights and inference settings stay fixed.
+        if baseline or not getattr(tracker.network.head, 'memory_channels', 0):
+            raise ValueError('Zero-memory-input ablation requires a trained concat head')
+        tracker.network.memory_enabled = False
     for record in tasks[index]:
         destination = Path(out)/record['dataset']/(record['name']+'.txt')
         paths = Path(record['frame_list']).read_text().splitlines()
@@ -79,6 +86,9 @@ def worker(index, tasks, config_path, weight, out, baseline, smoke):
 
 
 def evaluate(args):
+    zero_memory_input = getattr(args, 'zero_memory_input', False)
+    if args.baseline and zero_memory_input:
+        raise ValueError('--baseline and --zero-memory-input are mutually exclusive')
     manifest = json.loads(args.manifest.read_text())
     records = manifest['records']
     if args.smoke:
@@ -91,7 +101,8 @@ def evaluate(args):
     for record in sorted(records,key=lambda r:r['frames'],reverse=True):
         index = min(range(args.workers), key=lambda i:loads[i])
         tasks[index].append(record); loads[index] += min(record['frames'],30) if args.smoke else record['frames']
-    mp.spawn(worker,args=(tasks,str(args.config),str(args.weights),str(args.out),args.baseline,args.smoke),
+    mp.spawn(worker,args=(tasks,str(args.config),str(args.weights),str(args.out),args.baseline,args.smoke,
+                          zero_memory_input),
              nprocs=args.workers,join=True)
     grouped = defaultdict(list)
     for record in records:
@@ -111,6 +122,7 @@ def evaluate(args):
     metrics = {name:{key:float(np.mean([r[key] for r in rows])) for key in ('AUC','PRE','NPR')}
                for name,rows in grouped.items()}
     result = dict(scope='engineering_3x30' if args.smoke else args.scope,baseline=args.baseline,
+        memory_input='zeroed' if zero_memory_input else ('absent' if args.baseline else 'learned'),
         sequences=len(records),weights=str(args.weights),manifest=str(args.manifest),
         metrics=metrics,mean_AUC=float(np.mean([r['AUC'] for r in metrics.values()])),
         seconds=time.monotonic()-started,per_sequence=dict(grouped))
@@ -126,4 +138,6 @@ if __name__=='__main__':
     parser.add_argument('--scope',choices=['full150','quick30'],default='full150')
     parser.add_argument('--baseline',action='store_true')
     parser.add_argument('--smoke',action='store_true')
+    parser.add_argument('--zero-memory-input',action='store_true',
+                        help='Keep trained concat CENTER weights; replace memory inputs with zeros')
     evaluate(parser.parse_args())

@@ -1,0 +1,44 @@
+{
+  "status": "completed",
+  "started_at": "2026-11-04T12:42:31.493180+08:00",
+  "pid": 782372,
+  "physical_gpus": [
+    4,
+    5
+  ],
+  "workers": 8,
+  "command": [
+    "/root/miniconda3/envs/mvlm/bin/python",
+    "-u",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/tracking/evaluate_memory_concat_run.py",
+    "--config",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/config.yaml",
+    "--manifest",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/validation_manifest.json",
+    "--weights",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step004000.pth.tar",
+    "--out",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/analysis_20261104/step004000_zero_memory_full150",
+    "--workers",
+    "8",
+    "--scope",
+    "full150",
+    "--zero-memory-input"
+  ],
+  "log": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/analysis_20261104/zero_memory_full150.log",
+  "source_sha256": {
+    "tracking/evaluate_memory_concat_run.py": "d2f9e33bca675bee05f3fe580d9c15ae5bcdda8cd09c17b249058518f89e3fd6",
+    "lib/models/mvlm/mvlm.py": "d51d07e74a526e32fd248f455abd9621cecb1e8d419e105808e51f6fa95efb9e",
+    "lib/models/mvlm/memory_fusion.py": "9c6eb1b0d4dc9f94ec37f2f7709bda8af6a6941721eb092b6f3806b4df0f0882",
+    "lib/models/mvlm/memory.py": "7709b4421e723077f219c913b3e86d7da2204d2c10a682e38e9e8de9a78e8ff7",
+    "lib/models/mvlm/head.py": "7c018bbf79c511cef2c70b88ae08d4054a814b06ebd3c66ff5e34ca7af674b7b",
+    "lib/test/tracker/mvlm.py": "def7510e5609071dc1d9e2eaf79e8adce174d1bf76b44188c44f20624a030828"
+  },
+  "control": "Same step4000 parameters, fixed 150-video holdout and inference settings; zero only content-memory input via existing zero-padding path. No retraining.",
+  "completed_at": "2026-11-04T12:54:35.817087+08:00",
+  "evaluation_seconds": 715.3378675739514,
+  "validated_videos": 150,
+  "all_source_hashes_unchanged": true,
+  "zero_condition_has_no_content_memory_telemetry": true,
+  "comparison_identity_checked": true
+}

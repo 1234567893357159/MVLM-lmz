@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-11-04T13:10:16.213623+08:00",
+  "method": "authenticated_read_only_graphql",
+  "run_id": "65be0b58",
+  "state": "finished",
+  "summary": {
+    "global_step": 4000,
+    "status": "completed",
+    "best_val_step": 4000,
+    "best_val_mean_AUC": 78.08443127494941,
+    "analysis/status": "completed",
+    "analysis/baseline/AUC": 78.43307162453642,
+    "analysis/concat/AUC": 78.08443127494941,
+    "analysis/zero/AUC": 78.18110783709176,
+    "analysis/memory_on_vs_zero/AUC_delta_pp": -0.0966765621423491,
+    "analysis/zero_vs_baseline/AUC_delta_pp": -0.25196378744466585
+  },
+  "figure_metadata_present": {
+    "evaluation_summary": true,
+    "training_dynamics": true,
+    "case_studies": true
+  },
+  "verified": true
+}

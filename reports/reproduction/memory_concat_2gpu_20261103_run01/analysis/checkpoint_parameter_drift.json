@@ -1,0 +1,28 @@
+{
+  "expanded_input_convolutions": [
+    {
+      "name": "head.conv1_ctr.0.weight",
+      "base_visual_norm": 85.63603210449219,
+      "trained_visual_norm": 85.61923217773438,
+      "visual_relative_drift": 0.014574301832172983,
+      "new_memory_weight_norm": 1.1996855735778809
+    },
+    {
+      "name": "head.conv1_offset.0.weight",
+      "base_visual_norm": 83.45278930664062,
+      "trained_visual_norm": 83.42890167236328,
+      "visual_relative_drift": 0.016208626031282307,
+      "new_memory_weight_norm": 0.9590809345245361
+    },
+    {
+      "name": "head.conv1_size.0.weight",
+      "base_visual_norm": 79.0405044555664,
+      "trained_visual_norm": 79.03105926513672,
+      "visual_relative_drift": 0.010926805468669537,
+      "new_memory_weight_norm": 0.797762393951416
+    }
+  ],
+  "weight_norms_do_not_measure_activation_contribution": true,
+  "original_center_trainable_parameters_relative_l2_drift": 0.013612140133449073,
+  "original_center_relative_l2_drift_includes_bn_buffers": 0.0008786426379551821
+}

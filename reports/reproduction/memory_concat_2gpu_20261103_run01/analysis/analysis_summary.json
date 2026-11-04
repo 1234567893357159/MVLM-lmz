@@ -1,0 +1,908 @@
+{
+  "aggregation": "video mean within dataset, then equal mean of three datasets",
+  "holdout_videos": 150,
+  "conditions": {
+    "baseline": {
+      "metrics": {
+        "lasot": {
+          "AUC": 81.60611479796798,
+          "PRE": 91.15486898588436,
+          "NPR": 90.60766280962012
+        },
+        "vasttrack": {
+          "AUC": 78.61370032831363,
+          "PRE": 74.04609262932995,
+          "NPR": 88.61048853141787
+        },
+        "tnl2k": {
+          "AUC": 75.07939974732768,
+          "PRE": 80.53550613445272,
+          "NPR": 92.19026742043441
+        }
+      },
+      "macro": {
+        "AUC": 78.43307162453642,
+        "PRE": 81.91215591655568,
+        "NPR": 90.46947292049079
+      },
+      "seconds": 765.6467995349085
+    },
+    "concat": {
+      "metrics": {
+        "lasot": {
+          "AUC": 81.09180467334029,
+          "PRE": 90.88834889089647,
+          "NPR": 90.41360356538942
+        },
+        "vasttrack": {
+          "AUC": 78.49731052106976,
+          "PRE": 74.75240220886059,
+          "NPR": 88.68947636184713
+        },
+        "tnl2k": {
+          "AUC": 74.6641786304382,
+          "PRE": 80.24500444750119,
+          "NPR": 91.84861764406969
+        }
+      },
+      "macro": {
+        "AUC": 78.08443127494941,
+        "PRE": 81.96191851575274,
+        "NPR": 90.31723252376874
+      },
+      "seconds": 1067.0778779580723
+    },
+    "zero": {
+      "metrics": {
+        "lasot": {
+          "AUC": 81.39306775013651,
+          "PRE": 91.09238818229564,
+          "NPR": 90.5690666515957
+        },
+        "vasttrack": {
+          "AUC": 78.49312068368947,
+          "PRE": 75.21634079443993,
+          "NPR": 88.55336692158839
+        },
+        "tnl2k": {
+          "AUC": 74.6571350774493,
+          "PRE": 80.08172806773743,
+          "NPR": 91.78428133428314
+        }
+      },
+      "macro": {
+        "AUC": 78.18110783709176,
+        "PRE": 82.13015234815767,
+        "NPR": 90.30223830248907
+      },
+      "seconds": 715.3378675739514
+    }
+  },
+  "comparisons": {
+    "concat_vs_baseline": {
+      "delta": {
+        "AUC": -0.34864034958701495,
+        "PRE": 0.04976259919706649,
+        "NPR": -0.1522403967220498
+      },
+      "datasets": {
+        "lasot": {
+          "delta": {
+            "AUC": -0.5143101246276842,
+            "PRE": -0.2665200949878965,
+            "NPR": -0.19405924423070076
+          },
+          "median_delta_AUC": -0.3342519179440018,
+          "source_groups": 30,
+          "videos": 30,
+          "improved_over_0_1_pp": 2,
+          "degraded_over_0_1_pp": 24,
+          "within_0_1_pp": 4,
+          "AUC_cluster_bootstrap_95ci": [
+            -0.7541940226063877,
+            -0.3159105527494407
+          ]
+        },
+        "vasttrack": {
+          "delta": {
+            "AUC": -0.11638980724386272,
+            "PRE": 0.7063095795306396,
+            "NPR": 0.07898783042925572
+          },
+          "median_delta_AUC": 0.0,
+          "source_groups": 60,
+          "videos": 60,
+          "improved_over_0_1_pp": 22,
+          "degraded_over_0_1_pp": 24,
+          "within_0_1_pp": 14,
+          "AUC_cluster_bootstrap_95ci": [
+            -0.5523678275555386,
+            0.27314534287990055
+          ]
+        },
+        "tnl2k": {
+          "delta": {
+            "AUC": -0.4152211168894837,
+            "PRE": -0.29050168695152934,
+            "NPR": -0.3416497763647186
+          },
+          "median_delta_AUC": -0.30656607541006764,
+          "source_groups": 32,
+          "videos": 60,
+          "improved_over_0_1_pp": 11,
+          "degraded_over_0_1_pp": 42,
+          "within_0_1_pp": 7,
+          "AUC_cluster_bootstrap_95ci": [
+            -0.9986324055029279,
+            0.18591925103460236
+          ]
+        }
+      },
+      "AUC_cluster_bootstrap_95ci": [
+        -0.6016212998392653,
+        -0.10370594003325115
+      ],
+      "bootstrap": {
+        "repetitions": 20000,
+        "seed": 20261104,
+        "unit": "paired source_group",
+        "stratification": "dataset; datasets retain equal 1/3 weights",
+        "limitation": "Conditional on this run/holdout; not a repeated-training confidence interval"
+      },
+      "largest_gains": [
+        {
+          "dataset": "tnl2k",
+          "name": "CM_baby_done---",
+          "frames": 659,
+          "AUC": 10.947322783438103,
+          "PRE": 13.201820940819431,
+          "NPR": 13.353566009104696
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Lunch Box-1",
+          "frames": 63,
+          "AUC": 5.291005291005291,
+          "PRE": 6.349206349206341,
+          "NPR": 6.349206349206341
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Cheytacm200-1",
+          "frames": 55,
+          "AUC": 3.896103896103895,
+          "PRE": 18.18181818181818,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Trolley-21",
+          "frames": 100,
+          "AUC": 2.047619047619037,
+          "PRE": 1.0,
+          "NPR": 1.0
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "Cartoon_Mouse_video_02_done",
+          "frames": 1623,
+          "AUC": 1.6342458116949743,
+          "PRE": 2.2797288971041283,
+          "NPR": 2.033271719038808
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Weekender-2",
+          "frames": 24,
+          "AUC": 1.3888888888889,
+          "PRE": 25.0,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Hockey Player-1",
+          "frames": 24,
+          "AUC": 0.7936507936507837,
+          "PRE": 0.0,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Newt-37",
+          "frames": 65,
+          "AUC": 0.73260073260073,
+          "PRE": 12.307692307692307,
+          "NPR": 0.0
+        }
+      ],
+      "largest_losses": [
+        {
+          "dataset": "tnl2k",
+          "name": "Terminator_video_02-Done",
+          "frames": 624,
+          "AUC": -10.210622710622708,
+          "PRE": -10.89743589743589,
+          "NPR": -11.378205128205138
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Cheese Box-6",
+          "frames": 12,
+          "AUC": -7.936507936507935,
+          "PRE": 0.0,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Cosmetic Gift Box-32",
+          "frames": 28,
+          "AUC": -5.782312925170061,
+          "PRE": -17.857142857142858,
+          "NPR": -10.714285714285708
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "INF_threeman2",
+          "frames": 429,
+          "AUC": -4.351204351204359,
+          "PRE": -4.895104895104893,
+          "NPR": -5.827505827505831
+        },
+        {
+          "dataset": "lasot",
+          "name": "goldfish-4",
+          "frames": 2687,
+          "AUC": -2.8284331968738456,
+          "PRE": -2.7912169705991943,
+          "NPR": -2.8284331968738456
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "monitor_man",
+          "frames": 1693,
+          "AUC": -2.725508395915952,
+          "PRE": -3.603071470761961,
+          "NPR": -2.8942705256940258
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "monitor_people",
+          "frames": 333,
+          "AUC": -1.7732017732017766,
+          "PRE": 0.3003003003002931,
+          "NPR": -6.306306306306297
+        },
+        {
+          "dataset": "lasot",
+          "name": "pig-20",
+          "frames": 2003,
+          "AUC": -1.7236050685876023,
+          "PRE": -0.04992511233150765,
+          "NPR": -0.5491762356465273
+        }
+      ]
+    },
+    "zero_vs_baseline": {
+      "delta": {
+        "AUC": -0.25196378744466585,
+        "PRE": 0.21799643160198912,
+        "NPR": -0.16723461800171435
+      },
+      "datasets": {
+        "lasot": {
+          "delta": {
+            "AUC": -0.21304704783146633,
+            "PRE": -0.062480803588726985,
+            "NPR": -0.038596158024418514
+          },
+          "median_delta_AUC": -0.17588605945737612,
+          "source_groups": 30,
+          "videos": 30,
+          "improved_over_0_1_pp": 4,
+          "degraded_over_0_1_pp": 21,
+          "within_0_1_pp": 5,
+          "AUC_cluster_bootstrap_95ci": [
+            -0.5659733463115656,
+            0.18416437353459314
+          ]
+        },
+        "vasttrack": {
+          "delta": {
+            "AUC": -0.12057964462415782,
+            "PRE": 1.1702481651099816,
+            "NPR": -0.05712160982947978
+          },
+          "median_delta_AUC": 0.062070282658524434,
+          "source_groups": 60,
+          "videos": 60,
+          "improved_over_0_1_pp": 29,
+          "degraded_over_0_1_pp": 20,
+          "within_0_1_pp": 11,
+          "AUC_cluster_bootstrap_95ci": [
+            -0.5463876387313287,
+            0.2387752294966527
+          ]
+        },
+        "tnl2k": {
+          "delta": {
+            "AUC": -0.4222646698783876,
+            "PRE": -0.4537780667152873,
+            "NPR": -0.4059860861512732
+          },
+          "median_delta_AUC": -0.2369254067998412,
+          "source_groups": 32,
+          "videos": 60,
+          "improved_over_0_1_pp": 9,
+          "degraded_over_0_1_pp": 39,
+          "within_0_1_pp": 12,
+          "AUC_cluster_bootstrap_95ci": [
+            -1.1644397890144373,
+            0.18340563734751927
+          ]
+        }
+      },
+      "AUC_cluster_bootstrap_95ci": [
+        -0.5520937805809377,
+        0.01245818355298834
+      ],
+      "bootstrap": {
+        "repetitions": 20000,
+        "seed": 20261104,
+        "unit": "paired source_group",
+        "stratification": "dataset; datasets retain equal 1/3 weights",
+        "limitation": "Conditional on this run/holdout; not a repeated-training confidence interval"
+      },
+      "largest_gains": [
+        {
+          "dataset": "tnl2k",
+          "name": "CM_baby_done---",
+          "frames": 659,
+          "AUC": 11.29416865380447,
+          "PRE": 13.65705614567527,
+          "NPR": 14.112291350531095
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Lunch Box-1",
+          "frames": 63,
+          "AUC": 4.761904761904759,
+          "PRE": 4.761904761904745,
+          "NPR": 6.349206349206341
+        },
+        {
+          "dataset": "lasot",
+          "name": "volleyball-11",
+          "frames": 1822,
+          "AUC": 3.990904814175943,
+          "PRE": 5.323819978046103,
+          "NPR": 4.829857299670692
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Phone-38",
+          "frames": 72,
+          "AUC": 1.8518518518518476,
+          "PRE": 5.555555555555543,
+          "NPR": 1.3888888888889
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "Cartoon_Mouse_video_02_done",
+          "frames": 1623,
+          "AUC": 1.654783909867085,
+          "PRE": 1.7868145409735092,
+          "NPR": 1.848428835489841
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Weekender-2",
+          "frames": 24,
+          "AUC": 1.3888888888889,
+          "PRE": 12.5,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Hockey Player-1",
+          "frames": 24,
+          "AUC": 0.9920634920634939,
+          "PRE": 0.0,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Lawnmower Blade-12",
+          "frames": 116,
+          "AUC": 0.9441707717569727,
+          "PRE": 6.896551724137922,
+          "NPR": 0.0
+        }
+      ],
+      "largest_losses": [
+        {
+          "dataset": "tnl2k",
+          "name": "GuMuLiYing_video_U01-Done",
+          "frames": 511,
+          "AUC": -10.98686049762371,
+          "PRE": -11.74168297455968,
+          "NPR": -12.915851272015658
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Cheese Box-6",
+          "frames": 12,
+          "AUC": -7.936507936507935,
+          "PRE": 0.0,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Cosmetic Gift Box-32",
+          "frames": 28,
+          "AUC": -5.782312925170061,
+          "PRE": -10.714285714285715,
+          "NPR": -17.85714285714286
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "INF_threeman2",
+          "frames": 429,
+          "AUC": -4.884004884004881,
+          "PRE": -5.5944055944056,
+          "NPR": -5.827505827505831
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "monitor_man",
+          "frames": 1693,
+          "AUC": -4.590329929963701,
+          "PRE": -6.261075014766675,
+          "NPR": -4.902539870053161
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "monitor_people",
+          "frames": 333,
+          "AUC": -4.404404404404403,
+          "PRE": -3.9039039039039096,
+          "NPR": -7.507507507507498
+        },
+        {
+          "dataset": "lasot",
+          "name": "goldfish-4",
+          "frames": 2687,
+          "AUC": -3.0375529445123846,
+          "PRE": -2.9772981019724654,
+          "NPR": -3.2378116858950534
+        },
+        {
+          "dataset": "lasot",
+          "name": "drone-3",
+          "frames": 3576,
+          "AUC": -2.3077127942899835,
+          "PRE": -2.3769574944071508,
+          "NPR": -2.181208053691279
+        }
+      ]
+    },
+    "memory_on_vs_zero": {
+      "delta": {
+        "AUC": -0.0966765621423491,
+        "PRE": -0.16823383240492262,
+        "NPR": 0.014994221279664544
+      },
+      "datasets": {
+        "lasot": {
+          "delta": {
+            "AUC": -0.3012630767962179,
+            "PRE": -0.20403929139916954,
+            "NPR": -0.15546308620628224
+          },
+          "median_delta_AUC": -0.1517984761044957,
+          "source_groups": 30,
+          "videos": 30,
+          "improved_over_0_1_pp": 2,
+          "degraded_over_0_1_pp": 17,
+          "within_0_1_pp": 11,
+          "AUC_cluster_bootstrap_95ci": [
+            -0.6824752381849619,
+            -0.0633800636892296
+          ]
+        },
+        "vasttrack": {
+          "delta": {
+            "AUC": 0.004189837380295103,
+            "PRE": -0.4639385855793421,
+            "NPR": 0.1361094402587355
+          },
+          "median_delta_AUC": 0.0,
+          "source_groups": 60,
+          "videos": 60,
+          "improved_over_0_1_pp": 18,
+          "degraded_over_0_1_pp": 28,
+          "within_0_1_pp": 14,
+          "AUC_cluster_bootstrap_95ci": [
+            -0.17422087782906437,
+            0.18949751951707436
+          ]
+        },
+        "tnl2k": {
+          "delta": {
+            "AUC": 0.007043552988903912,
+            "PRE": 0.16327637976375797,
+            "NPR": 0.06433630978655458
+          },
+          "median_delta_AUC": -0.07426262505975245,
+          "source_groups": 32,
+          "videos": 60,
+          "improved_over_0_1_pp": 14,
+          "degraded_over_0_1_pp": 26,
+          "within_0_1_pp": 20,
+          "AUC_cluster_bootstrap_95ci": [
+            -0.45538738058100575,
+            0.6428620657270393
+          ]
+        }
+      },
+      "AUC_cluster_bootstrap_95ci": [
+        -0.3061034835502927,
+        0.1444347999323436
+      ],
+      "bootstrap": {
+        "repetitions": 20000,
+        "seed": 20261104,
+        "unit": "paired source_group",
+        "stratification": "dataset; datasets retain equal 1/3 weights",
+        "limitation": "Conditional on this run/holdout; not a repeated-training confidence interval"
+      },
+      "largest_gains": [
+        {
+          "dataset": "tnl2k",
+          "name": "GuMuLiYing_video_U01-Done",
+          "frames": 511,
+          "AUC": 11.294380766005034,
+          "PRE": 11.545988258317024,
+          "NPR": 13.502935420743654
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Cheytacm200-1",
+          "frames": 55,
+          "AUC": 3.030303030303031,
+          "PRE": 12.727272727272723,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "monitor_people",
+          "frames": 333,
+          "AUC": 2.631202631202626,
+          "PRE": 4.204204204204203,
+          "NPR": 1.2012012012012008
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "monitor_man",
+          "frames": 1693,
+          "AUC": 1.8648215340477492,
+          "PRE": 2.658003544004714,
+          "NPR": 2.0082693443591353
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Trolley-21",
+          "frames": 100,
+          "AUC": 1.3809523809523654,
+          "PRE": -3.0,
+          "NPR": 1.0
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Instrument Tray-4",
+          "frames": 42,
+          "AUC": 1.3605442176870781,
+          "PRE": -2.380952380952381,
+          "NPR": -2.3809523809523796
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Hardness Tester-23",
+          "frames": 120,
+          "AUC": 1.1507936507936591,
+          "PRE": 1.6666666666666714,
+          "NPR": 1.6666666666666714
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Green Turtle-87",
+          "frames": 25,
+          "AUC": 1.1428571428571388,
+          "PRE": 0.0,
+          "NPR": 0.0
+        }
+      ],
+      "largest_losses": [
+        {
+          "dataset": "tnl2k",
+          "name": "Terminator_video_02-Done",
+          "frames": 624,
+          "AUC": -9.630647130647127,
+          "PRE": -10.256410256410255,
+          "NPR": -11.05769230769232
+        },
+        {
+          "dataset": "lasot",
+          "name": "volleyball-11",
+          "frames": 1822,
+          "AUC": -5.172233547645183,
+          "PRE": -7.080131723380902,
+          "NPR": -6.147091108671789
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Phone-38",
+          "frames": 72,
+          "AUC": -2.7116402116402014,
+          "PRE": 1.3888888888889,
+          "NPR": -1.3888888888889
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Lawnmower Blade-12",
+          "frames": 116,
+          "AUC": -1.1904761904761898,
+          "PRE": -4.310344827586192,
+          "NPR": -0.8620689655172384
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "INF_dog",
+          "frames": 45,
+          "AUC": -1.0582010582010497,
+          "PRE": 0.0,
+          "NPR": 0.0
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "CM_soccer2_done",
+          "frames": 379,
+          "AUC": -0.9800226159065275,
+          "PRE": -2.11081794195249,
+          "NPR": -1.8469656992084467
+        },
+        {
+          "dataset": "tnl2k",
+          "name": "INF_man69",
+          "frames": 120,
+          "AUC": -0.7936507936507837,
+          "PRE": 0.0,
+          "NPR": -1.6666666666666714
+        },
+        {
+          "dataset": "vasttrack",
+          "name": "Rescue Board-7",
+          "frames": 25,
+          "AUC": -0.7619047619047592,
+          "PRE": 0.0,
+          "NPR": 0.0
+        }
+      ]
+    }
+  },
+  "full_validation_checkpoints": {
+    "1000": {
+      "AUC": 77.96651523902607,
+      "PRE": 81.8039606312626,
+      "NPR": 90.04450127043287
+    },
+    "2000": {
+      "AUC": 77.6573025247643,
+      "PRE": 81.4622323605568,
+      "NPR": 89.78783452868083
+    },
+    "4000": {
+      "AUC": 78.08443127494941,
+      "PRE": 81.96191851575274,
+      "NPR": 90.31723252376874
+    }
+  },
+  "training_windows": {
+    "0_200": {
+      "train/Loss/Total": 0.5655571049824356,
+      "train/IoU": 0.8686169681698084,
+      "train/Memory/Gate": 0.3493533207476139,
+      "train/Memory/ReadoutToVisualNorm": 0.10551683043129742,
+      "train/Memory/EmptyFraction": 0.2611249952018261,
+      "train/Memory/ShortEntries": 1.44378125,
+      "train/Memory/LongEntries": 1.074546875,
+      "train/Memory/WriteAcceptance": 0.9627083333333333,
+      "approx_gate_conditioned_on_nonempty": 0.47281789000703967
+    },
+    "200_1000": {
+      "train/Loss/Total": 0.5644548428524285,
+      "train/IoU": 0.8692629975266755,
+      "train/Memory/Gate": 0.6471759735420346,
+      "train/Memory/ReadoutToVisualNorm": 0.3027557765133679,
+      "train/Memory/EmptyFraction": 0.2605390577018261,
+      "train/Memory/ShortEntries": 1.44625390625,
+      "train/Memory/LongEntries": 1.0734570312499998,
+      "train/Memory/WriteAcceptance": 0.9639687499999999,
+      "approx_gate_conditioned_on_nonempty": 0.8751996711694786
+    },
+    "1000_2000": {
+      "train/Loss/Total": 0.5595350425839424,
+      "train/IoU": 0.8701749163642525,
+      "train/Memory/Gate": 0.6130896547734737,
+      "train/Memory/ReadoutToVisualNorm": 0.34452706657350063,
+      "train/Memory/EmptyFraction": 0.2603781202882528,
+      "train/Memory/ShortEntries": 1.4462843750000003,
+      "train/Memory/LongEntries": 1.0762031250000001,
+      "train/Memory/WriteAcceptance": 0.9639833333333333,
+      "approx_gate_conditioned_on_nonempty": 0.8289230910967819
+    },
+    "2000_3000": {
+      "train/Loss/Total": 0.5571534821614623,
+      "train/IoU": 0.8705583544000983,
+      "train/Memory/Gate": 0.6393918873369694,
+      "train/Memory/ReadoutToVisualNorm": 0.39891615994274615,
+      "train/Memory/EmptyFraction": 0.2603781202584505,
+      "train/Memory/ShortEntries": 1.4462343750000002,
+      "train/Memory/LongEntries": 1.0739812499999999,
+      "train/Memory/WriteAcceptance": 0.9638500000000001,
+      "approx_gate_conditioned_on_nonempty": 0.8644848196762324
+    },
+    "3000_4000": {
+      "train/Loss/Total": 0.5544770701937377,
+      "train/IoU": 0.8709484213367104,
+      "train/Memory/Gate": 0.6482851425111293,
+      "train/Memory/ReadoutToVisualNorm": 0.4168935271203519,
+      "train/Memory/EmptyFraction": 0.26068124505877494,
+      "train/Memory/ShortEntries": 1.44625,
+      "train/Memory/LongEntries": 1.07305,
+      "train/Memory/WriteAcceptance": 0.9644041666666666,
+      "approx_gate_conditioned_on_nonempty": 0.8768682495585646
+    }
+  },
+  "online_memory": {
+    "lasot": {
+      "video_mean_gate": 0.908782234828579,
+      "frame_weighted_mean_gate": 0.898942925016295,
+      "videos_reaching_short_capacity_8": 30,
+      "videos_reaching_long_capacity_16": 17,
+      "max_short": 8,
+      "max_long": 16
+    },
+    "vasttrack": {
+      "video_mean_gate": 0.8470372096508351,
+      "frame_weighted_mean_gate": 0.8886755450418644,
+      "videos_reaching_short_capacity_8": 58,
+      "videos_reaching_long_capacity_16": 4,
+      "max_short": 8,
+      "max_long": 16
+    },
+    "tnl2k": {
+      "video_mean_gate": 0.9480480326628483,
+      "frame_weighted_mean_gate": 0.9614707982122482,
+      "videos_reaching_short_capacity_8": 59,
+      "videos_reaching_long_capacity_16": 25,
+      "max_short": 8,
+      "max_long": 16
+    }
+  },
+  "valid_only_diagnostic": {
+    "baseline": {
+      "lasot": {
+        "AUC": 83.57225493432222,
+        "PRE": 93.48610508700386,
+        "NPR": 92.84996444349355
+      },
+      "vasttrack": {
+        "AUC": 79.01614810916786,
+        "PRE": 74.35881911821257,
+        "NPR": 88.23996009135291
+      },
+      "tnl2k": {
+        "AUC": 79.74553645581067,
+        "PRE": 84.9030431777786,
+        "NPR": 91.55227418169937
+      }
+    },
+    "concat": {
+      "lasot": {
+        "AUC": 83.0171794574925,
+        "PRE": 93.1767269075974,
+        "NPR": 92.62330033333748
+      },
+      "vasttrack": {
+        "AUC": 78.87807186799924,
+        "PRE": 75.0087639846351,
+        "NPR": 88.279834947703
+      },
+      "tnl2k": {
+        "AUC": 79.27051415906723,
+        "PRE": 84.5782528660645,
+        "NPR": 91.14491249500824
+      }
+    },
+    "zero": {
+      "lasot": {
+        "AUC": 83.40986149646804,
+        "PRE": 93.5029005570852,
+        "NPR": 92.88216601977872
+      },
+      "vasttrack": {
+        "AUC": 78.87685156125288,
+        "PRE": 75.49918734291,
+        "NPR": 88.11929457896981
+      },
+      "tnl2k": {
+        "AUC": 79.31109196226221,
+        "PRE": 84.4320320970291,
+        "NPR": 91.11965033412851
+      }
+    }
+  },
+  "valid_only_diagnostic_note": "Additional diagnostic with invalid/invisible frames excluded. Primary scores retain the original repository protocol; do not mix these scores.",
+  "geometry_diagnostic": {
+    "baseline": {
+      "lasot": {
+        "normalized_center_error": 0.5276868800927755,
+        "mean_abs_log_size_error": 0.08272557944806966,
+        "size_only_IoU": 89.06192917110752,
+        "center_only_IoU": 87.31814689441468
+      },
+      "vasttrack": {
+        "normalized_center_error": 0.48623292812046753,
+        "mean_abs_log_size_error": 0.17760803529124383,
+        "size_only_IoU": 83.89117692257219,
+        "center_only_IoU": 83.21255748457152
+      },
+      "tnl2k": {
+        "normalized_center_error": 0.43858399092452277,
+        "mean_abs_log_size_error": 0.0792245345407832,
+        "size_only_IoU": 88.0329194309467,
+        "center_only_IoU": 83.51082607933839
+      }
+    },
+    "concat": {
+      "lasot": {
+        "normalized_center_error": 0.5300508437508988,
+        "mean_abs_log_size_error": 0.08715004534034339,
+        "size_only_IoU": 88.79222586043034,
+        "center_only_IoU": 86.68097500618416
+      },
+      "vasttrack": {
+        "normalized_center_error": 0.5034544942993525,
+        "mean_abs_log_size_error": 0.17316864183383054,
+        "size_only_IoU": 84.201818818392,
+        "center_only_IoU": 82.99797433722966
+      },
+      "tnl2k": {
+        "normalized_center_error": 0.4392827895539338,
+        "mean_abs_log_size_error": 0.07946226946435776,
+        "size_only_IoU": 87.923275560498,
+        "center_only_IoU": 82.9800872918322
+      }
+    },
+    "zero": {
+      "lasot": {
+        "normalized_center_error": 0.4946813160061342,
+        "mean_abs_log_size_error": 0.08561696710989415,
+        "size_only_IoU": 88.93185789157896,
+        "center_only_IoU": 87.07745504862491
+      },
+      "vasttrack": {
+        "normalized_center_error": 0.49882941440605727,
+        "mean_abs_log_size_error": 0.1733158540220849,
+        "size_only_IoU": 84.09052482857345,
+        "center_only_IoU": 83.13822990644196
+      },
+      "tnl2k": {
+        "normalized_center_error": 0.4356661964670187,
+        "mean_abs_log_size_error": 0.08796077970943285,
+        "size_only_IoU": 87.78352027261667,
+        "center_only_IoU": 83.05567781078511
+      }
+    }
+  }
+}

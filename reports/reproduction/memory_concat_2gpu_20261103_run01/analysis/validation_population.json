@@ -1,0 +1,38 @@
+{
+  "lasot": {
+    "videos": 30,
+    "frames": 71282,
+    "invalid_box_frames": 1152,
+    "invisible_frames": 2308,
+    "min_frames": 1030,
+    "max_frames": 6551,
+    "mean_frames": 2376.0666666666666,
+    "median_frames": 2023.5,
+    "source_groups": 30,
+    "videos_under_100_frames": 0
+  },
+  "vasttrack": {
+    "videos": 60,
+    "frames": 6183,
+    "invalid_box_frames": 55,
+    "invisible_frames": 55,
+    "min_frames": 9,
+    "max_frames": 798,
+    "mean_frames": 103.05,
+    "median_frames": 39.0,
+    "source_groups": 60,
+    "videos_under_100_frames": 45
+  },
+  "tnl2k": {
+    "videos": 60,
+    "frames": 38907,
+    "invalid_box_frames": 4639,
+    "invisible_frames": 4639,
+    "min_frames": 45,
+    "max_frames": 5565,
+    "mean_frames": 648.45,
+    "median_frames": 467.0,
+    "source_groups": 32,
+    "videos_under_100_frames": 1
+  }
+}
