@@ -45,7 +45,8 @@ class Supervisor:
         self.child = None
         self.offset = int(json.loads((out/'upload_cursor.json').read_text()).get('bytes',0)) if (out/'upload_cursor.json').exists() else 0
         self.state = dict(status='initializing',supervisor_pid=os.getpid(),started_at=now(),
-                          global_step=0,target_steps=4000,physical_gpus=[4,5],
+                          global_step=self.spec.get('start_step',0),
+                          target_steps=self.spec.get('optimizer_updates',4000),physical_gpus=[4,5],
                           batch_per_rank=self.spec['batch_per_rank'],global_batch=self.spec['global_batch'],
                           wandb_url=self.spec['wandb']['url'])
         if (out/'latest_checkpoint.json').exists():
@@ -69,7 +70,9 @@ class Supervisor:
         text = ['# 记忆拼接 CENTER 双卡实验档案','',
             '状态：'+self.state['status']+'；更新时间：'+self.state['updated_at'],
             '','W&B：'+self.spec['wandb']['url'],'',
-            'GPU4、5；每卡%d个四帧片段，全局%d；固定4,000次更新。'%(self.spec['batch_per_rank'],self.spec['global_batch']),
+            'GPU4、5；每卡%d个四帧片段，全局%d；本轮从%d步训练到%d步。'%(
+                self.spec['batch_per_rank'],self.spec['global_batch'],
+                self.spec.get('start_step',0),self.state['target_steps']),
             '冻结视觉/文本编码器与CENTER BN运行统计，训练记忆读取与CENTER。',
             '学习率峰值记忆1e-4、CENTER1e-5；前200步预热，第3000步后乘0.1。',
             '','## 当前记录','',json.dumps(self.state,ensure_ascii=False,indent=2),
@@ -82,10 +85,22 @@ class Supervisor:
             '- rank*_start_audit.json / rank*_final_audit.json：逐段冻结、BN与更新审计',
             '- validation/：基线、固定30条子集及完整150条验证结果',
             '- validation_summary.json / best.json：完整验证的候选模型',
-            '- logs/ / wandb/：训练验证日志与完整W&B本地文件','',
+            '- logs/ / wandb_offline/ / wandb_online/：训练验证日志与W&B本地文件',
+            '- audits/：保留每段开始与结束的优化器、随机状态和冻结审计','',
             '验证集来自本轮训练部分，官方初始化可能已见过。子集与完整验证分数分开记录。',
-            '未评估标准测试集；原GPU6、7评测保持独立。',
+            '未评估标准测试集。',
             '检查点保存各rank随机状态；DataLoader预取/worker状态未完整捕获，不保证位级恢复。']
+        if self.spec.get('continuation'):
+            parent=self.spec['continuation']
+            text += ['', '## 续训来源','',
+                '父实验：'+parent['parent_out'],
+                '父实验W&B：'+parent['parent_wandb_url'],
+                '起点检查点：'+parent['checkpoint'],
+                '起点SHA256：'+parent['checkpoint_sha256'],
+                '恢复模型、AdamW状态与双卡随机状态；不重新预热。',
+                '续训学习率：记忆1e-5、CENTER1e-6；训练模块、四帧片段、数据与推理设置不变。',
+                '5000、6000步完成同一150条验证，并与原4000步结果比较。',
+                '训练进程异常时最多自动重试2次，从最新完整检查点继续；失败记录保留。']
         if self.state.get('error'):
             text += ['', '错误：'+self.state['error']]
         self.archive.write_text('\n'.join(text)+'\n')
@@ -178,6 +193,8 @@ class Supervisor:
     def main(self):
         self.status()
         self.open_wandb()
+        if self.spec.get('continuation'):
+            return self.continue_main()
         quick, full = {}, {}
         # The baseline is fixed before training; evaluate it after releasing
         # the first training segment so the two GPUs can train immediately.
@@ -207,6 +224,59 @@ class Supervisor:
             checkpoint=str(self.out/'checkpoints'/('MVLM_step%06d.pth.tar'%best))))
         self.run.summary.update(status='completed',best_val_step=best,best_val_mean_AUC=full[best]['mean_AUC'])
         self.status(status='completed',global_step=4000,best_step=best)
+        self.run.finish()
+
+    def train_continuation_segment(self, end):
+        checkpoint=self.out/'checkpoints'/('MVLM_step%06d.pth.tar'%end)
+        for attempt in range(1,4):
+            if checkpoint.exists():
+                return
+            latest=json.loads((self.out/'latest_checkpoint.json').read_text())
+            if not self.spec['start_step'] <= latest['step'] < end:
+                raise RuntimeError('Latest checkpoint is outside the continuation segment')
+            command=[sys.executable,'-m','torch.distributed.run','--standalone','--nproc_per_node=2',
+                str(self.source/'tracking/train_memory_concat_run.py'),'--config',str(self.config),
+                '--out',str(self.out),'--stop-step',str(end),
+                '--total-steps',str(self.state['target_steps']),'--resume',latest['path']]
+            label='training_to_%04d_attempt%02d'%(end,attempt)
+            self.state['global_step']=latest['step']
+            try:
+                self.execute(command,label)
+                if not checkpoint.exists():
+                    raise RuntimeError('Training exited without its target checkpoint')
+                return
+            except RuntimeError as error:
+                if attempt == 3:
+                    raise
+                self.record('automatic_training_retry',target_step=end,failed_attempt=attempt,
+                            error=str(error),checkpoint_on_disk=str(self.out/'latest_checkpoint.json'))
+                self.status(status='restarting_training',last_training_error=str(error))
+                time.sleep(10)
+
+    def continue_main(self):
+        full={self.spec['start_step']:self.validation(self.spec['start_step'],'full150')}
+        self.run.summary.update(parent_wandb_url=self.spec['continuation']['parent_wandb_url'],
+            start_step=self.spec['start_step'],target_steps=self.state['target_steps'])
+        for end in self.spec['validation']['full150_at']:
+            self.train_continuation_segment(end)
+            full[end]=self.validation(end,'full150')
+            write_json(self.out/'validation_summary.json',dict(full=full))
+        best=max(full,key=lambda step:full[step]['mean_AUC'])
+        best_checkpoint=(self.spec['continuation']['checkpoint'] if best==self.spec['start_step']
+                         else str(self.out/'checkpoints'/('MVLM_step%06d.pth.tar'%best)))
+        write_json(self.out/'validation_summary.json',dict(full=full,best_step=best))
+        write_json(self.out/'best.json',dict(step=best,metrics=full[best],checkpoint=best_checkpoint))
+        comparison=dict(parent_step=self.spec['start_step'],final_step=self.state['target_steps'],
+            baseline_mean_AUC=self.spec['continuation']['baseline_mean_AUC'],
+            steps={str(step):dict(mean_AUC=result['mean_AUC'],
+                delta_vs_4000=result['mean_AUC']-full[self.spec['start_step']]['mean_AUC'],
+                delta_vs_baseline=result['mean_AUC']-self.spec['continuation']['baseline_mean_AUC'])
+                for step,result in full.items()})
+        write_json(self.out/'continuation_comparison.json',comparison)
+        self.run.summary.update(status='completed',global_step=self.state['target_steps'],
+            best_val_step=best,best_val_mean_AUC=full[best]['mean_AUC'],
+            final_delta_vs_4000=comparison['steps'][str(self.state['target_steps'])]['delta_vs_4000'])
+        self.status(status='completed',global_step=self.state['target_steps'],best_step=best)
         self.run.finish()
 
 

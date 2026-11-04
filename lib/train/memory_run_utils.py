@@ -46,6 +46,22 @@ def set_step_lr(optimizer, step):
         group['lr'] = group['peak_lr'] * lr_factor(step)
 
 
+def validate_step_budget(step, stop_step, total_steps=4000, resuming=False):
+    if not 0 <= step < stop_step <= total_steps:
+        raise ValueError('Expected 0 <= resumed step < stop step <= explicit total budget')
+    if total_steps > 4000 and (not resuming or step < 4000):
+        raise ValueError('Extending this experiment requires a checkpoint at step 4000 or later')
+
+
+def optimizer_audit(optimizer):
+    steps = [float(state['step']) for state in optimizer.state.values() if 'step' in state]
+    return dict(state_entries=len(optimizer.state),
+        state_step_min=min(steps) if steps else None,
+        state_step_max=max(steps) if steps else None,
+        groups=[dict(name=group['name'], lr=group['lr'], peak_lr=group['peak_lr'])
+                for group in optimizer.param_groups])
+
+
 def frozen_digest(model):
     digest = hashlib.sha256()
     for name, value in model.state_dict().items():
