@@ -1,0 +1,17 @@
+{
+  "pid": 794625,
+  "command": [
+    "/root/miniconda3/envs/mvlm/bin/python",
+    "-u",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01/source/tracking/supervise_memory_concat_run.py",
+    "--out",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01"
+  ],
+  "cwd": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01/source",
+  "wandb": {
+    "id": "15139aa0",
+    "entity": "2896287267-hit",
+    "project": "mvlm-memory",
+    "url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/15139aa0"
+  }
+}

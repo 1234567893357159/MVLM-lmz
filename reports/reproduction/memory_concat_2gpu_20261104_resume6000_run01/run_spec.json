@@ -1,0 +1,184 @@
+{
+  "name": "memory_concat_2gpu_20261104_resume6000_run01",
+  "source": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01/source",
+  "repository": "/root/.codex/worktrees/xmem-concat-center/MVLM",
+  "git_commit": "b926ced6d454708e57938cbdda2cc4c7888d7c48",
+  "branch": "codex/xmem-concat-center",
+  "source_manifest_sha256": "12634f2c8ae25e8d54ceeb06550565aaeca63c44dfde39c7c5ac9cb35bea06fe",
+  "config_sha256": "aa64a20812919e006d85dfaf13e63ee4e5880394c4379e680e6b7e2c086b8760",
+  "input_hashes": {
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/config.yaml": "aa64a20812919e006d85dfaf13e63ee4e5880394c4379e680e6b7e2c086b8760",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/validation_manifest.json": "d60c872342fe58ce5b69b38e4219df4bc2cf192c1cde9f42540260e3d64d411d",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/quick_manifest.json": "1ce2bb34f9030b0b798af338936c393e8cee89ebb3820ee34db0a60961154f3d",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/lasot_train.txt": "c6bbcc5514d454fd3614f425246c064734059f7cd58a6e797d5f1cd6030511f1",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/vasttrack_train.txt": "dada518aaf69ad646cbc50e091ffd4a9de91a27903dfa86c733bfa0194131f21",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/split/tnl2k_train.txt": "7c62d1b75d784b177b742a50faceb8f2200894560d79ec9f031ea7c512ed9266",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01/config.yaml": "aa64a20812919e006d85dfaf13e63ee4e5880394c4379e680e6b7e2c086b8760",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01/split/validation_manifest.json": "d60c872342fe58ce5b69b38e4219df4bc2cf192c1cde9f42540260e3d64d411d",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01/split/quick_manifest.json": "1ce2bb34f9030b0b798af338936c393e8cee89ebb3820ee34db0a60961154f3d",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261104_resume6000_run01/validation/step004000_full150/metrics.json": "a54c60da11b3bff816594a08b786755877814e80a05c17ecf846a4cd8eea2797",
+    "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step004000.pth.tar": "005807b6de6ae0391b18d097c495c0b33022182bc7bdea69148df6238f52478e"
+  },
+  "baseline_checkpoint": "/root/MVLM/models/MVLM_TF.pth.tar",
+  "data": {
+    "counts": {
+      "lasot": {
+        "source": 1120,
+        "train": 1090,
+        "val": 30
+      },
+      "vasttrack": {
+        "source": 46825,
+        "train": 46765,
+        "val": 60
+      },
+      "tnl2k": {
+        "source": 1299,
+        "train": 1239,
+        "val": 60
+      }
+    },
+    "sources": {
+      "lasot": {
+        "path": "/root/MVLM/output/paper_reproduction_20261030_run01/split/lasot_train.txt",
+        "sha256": "0ae7df00644ee36794ac1d67f123612eb6341b4e94fef933169607d650ade893",
+        "training_sha256": "c6bbcc5514d454fd3614f425246c064734059f7cd58a6e797d5f1cd6030511f1",
+        "validation_sha256": "0d1d59bd616723aa9200c546946adba3a8a3f513306283fd19e773614dd209e4"
+      },
+      "vasttrack": {
+        "path": "/root/MVLM/output/paper_reproduction_20261030_run01/split/vasttrack_train.txt",
+        "sha256": "9fb45e980d26aafd59925a3b8ed56653488b89af8aa5c92635fb41d588932bc0",
+        "training_sha256": "dada518aaf69ad646cbc50e091ffd4a9de91a27903dfa86c733bfa0194131f21",
+        "validation_sha256": "5a7798f178cd8ffa0050a8ae77241ea72829c53b128d8aed7de25e1b8bff92ba"
+      },
+      "tnl2k": {
+        "path": "/root/MVLM/output/paper_reproduction_20261030_run01/split/tnl2k_train.txt",
+        "sha256": "35761e6a8247585505ad3aaf622f734cfa5b75ac8235946b3eaaad0d8e6cb624",
+        "training_sha256": "7c62d1b75d784b177b742a50faceb8f2200894560d79ec9f031ea7c512ed9266",
+        "validation_sha256": "1976dc88741dc34ec955211a1218ce17b314425a474cd9178301733cbcc973a6"
+      }
+    },
+    "validation_manifest_sha256": "d60c872342fe58ce5b69b38e4219df4bc2cf192c1cde9f42540260e3d64d411d",
+    "quick_manifest_sha256": "1ce2bb34f9030b0b798af338936c393e8cee89ebb3820ee34db0a60961154f3d",
+    "decoded_validation_images": 450,
+    "baseline_checkpoint_sha256": "91c31230f3d355f71104df8191e386632a39ce9d3bbc1f7ce5bf3772b369cc4f",
+    "known_exclusions": {
+      "tnl2k": [
+        "Fight_game_004-Done"
+      ],
+      "vasttrack": "11 missing-frame videos absent from canonical list"
+    }
+  },
+  "physical_gpus": [
+    4,
+    5
+  ],
+  "batch_per_rank": 40,
+  "global_batch": 80,
+  "clip_frames": 4,
+  "optimizer_updates": 6000,
+  "sampled_clips": 480000,
+  "search_frame_draws": 1920000,
+  "optimizer": "AdamW",
+  "memory_peak_lr": 0.0001,
+  "center_peak_lr": 1e-05,
+  "weight_decay": 0.0001,
+  "schedule": {
+    "warmup_updates": 200,
+    "decay_after_update": 3000,
+    "decay_factor": 0.1
+  },
+  "frozen": {
+    "encoder": true,
+    "text_encoder_including_projection": true,
+    "center_bn_running_stats": true
+  },
+  "precision": "FP32",
+  "accumulation_steps": 1,
+  "seed": 20261018,
+  "wandb": {
+    "id": "15139aa0",
+    "entity": "2896287267-hit",
+    "project": "mvlm-memory",
+    "url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/15139aa0"
+  },
+  "validation": {
+    "full150_at": [
+      5000,
+      6000
+    ],
+    "workers": 8,
+    "control_step": 4000,
+    "selection": "best of the fixed 4000 control and the 5000/6000 checkpoints"
+  },
+  "known_limits": [
+    "Adaptation holdout may have been seen by official base pretraining",
+    "Four-frame clips do not fully exercise long-capacity memory",
+    "Worker/prefetch state is not saved, so resume is not bitwise replay"
+  ],
+  "monitoring": "Independent online W&B retry and offline W&B backup consume a durable local queue",
+  "created_at": "2026-11-04T18:03:41.901564+08:00",
+  "source_changes_from_parent": [
+    "lib/train/memory_run_utils.py",
+    "tracking/train_memory_concat_run.py",
+    "tracking/supervise_memory_concat_run.py",
+    "tracking/launch_memory_concat_continuation.py"
+  ],
+  "start_step": 4000,
+  "additional_optimizer_updates": 2000,
+  "additional_sampled_clips": 160000,
+  "additional_search_frame_draws": 640000,
+  "continuation": {
+    "parent_out": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01",
+    "parent_wandb_url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/65be0b58",
+    "parent_git_commit": "61eb645aecc0e668c3dfaba4515c93c2b7234f1b",
+    "checkpoint": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step004000.pth.tar",
+    "checkpoint_sha256": "005807b6de6ae0391b18d097c495c0b33022182bc7bdea69148df6238f52478e",
+    "optimizer_audit": {
+      "global_step": 4000,
+      "optimizer_state_entries": 71,
+      "optimizer_step_min": 4000.0,
+      "optimizer_step_max": 4000.0,
+      "rng_ranks": 2,
+      "groups": [
+        {
+          "lr": 1e-05,
+          "peak_lr": 0.0001,
+          "name": "memory",
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.0001,
+          "amsgrad": false,
+          "foreach": null,
+          "maximize": false,
+          "capturable": false
+        },
+        {
+          "lr": 1.0000000000000002e-06,
+          "peak_lr": 1e-05,
+          "name": "center",
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.0001,
+          "amsgrad": false,
+          "foreach": null,
+          "maximize": false,
+          "capturable": false
+        }
+      ]
+    },
+    "control_mean_AUC": 78.08443127494941,
+    "baseline_mean_AUC": 78.43307162453642,
+    "policy": "Only extend update budget; restore model, AdamW and both rank RNG states",
+    "learning_rates": {
+      "memory": 1e-05,
+      "center": 1e-06
+    }
+  }
+}

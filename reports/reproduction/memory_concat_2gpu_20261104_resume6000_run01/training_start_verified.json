@@ -1,0 +1,45 @@
+{
+  "verified_at": "2026-11-04T18:09:13.450975+08:00",
+  "status": {
+    "status": "training_to_5000_attempt01",
+    "supervisor_pid": 794625,
+    "started_at": "2026-11-04T18:03:42.869527+08:00",
+    "global_step": 4060,
+    "target_steps": 6000,
+    "physical_gpus": [
+      4,
+      5
+    ],
+    "batch_per_rank": 40,
+    "global_batch": 80,
+    "wandb_url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/15139aa0",
+    "updated_at": "2026-11-04T18:09:11.264652+08:00",
+    "wandb_mode": "online",
+    "worker_pid": 794640
+  },
+  "latest_training_metrics": {
+    "global_step": 4060,
+    "epoch": 4.06,
+    "updated_at": "2026-11-04T10:09:03.985261+00:00",
+    "train/GradNorm": 0.38723497912287713,
+    "train/IoU": 0.8666774302721023,
+    "train/Loss/Total": 0.5782642882317304,
+    "train/Loss/Tracking": 0.5782642882317304,
+    "train/Memory/ClipFrames": 4.0,
+    "train/Memory/EmptyFraction": 0.2603124946355819,
+    "train/Memory/Gate": 0.6568397358059883,
+    "train/Memory/LongEntries": 1.0765625,
+    "train/Memory/ReadoutToVisualNorm": 0.42797120213508605,
+    "train/Memory/ShortEntries": 1.450625,
+    "train/Memory/WriteAcceptance": 0.9664583333333334,
+    "lr/memory": 1e-05,
+    "lr/center": 1.0000000000000002e-06,
+    "seconds_per_update": 4.855181656847708,
+    "peak_allocated_mib": 3135.333984375,
+    "allocated_mib": 1597.58935546875,
+    "clips_per_second_global": 16.4772413586562
+  },
+  "unit_tests_passed": 16,
+  "config_byte_identical_to_parent": true,
+  "model_actor_sampler_evaluator_identical_to_parent": true
+}

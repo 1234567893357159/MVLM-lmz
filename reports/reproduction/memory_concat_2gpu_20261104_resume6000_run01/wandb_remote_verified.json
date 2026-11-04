@@ -1,0 +1,14 @@
+{
+  "verified_at": "2026-11-04T18:07:33.953132+08:00",
+  "url": "https://wandb.ai/2896287267-hit/mvlm-memory/runs/15139aa0",
+  "state": "running",
+  "summary": {
+    "global_step": 4020,
+    "train/Loss/Total": 0.565143620595336,
+    "train/IoU": 0.8700760040432215,
+    "lr/memory": 1e-05,
+    "lr/center": 1.0000000000000002e-06,
+    "val/global_step": 4000,
+    "val/full150/mean_AUC": 78.08443127494941
+  }
+}

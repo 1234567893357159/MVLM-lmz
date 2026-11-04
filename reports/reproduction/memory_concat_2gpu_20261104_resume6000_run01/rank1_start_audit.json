@@ -1,0 +1,42 @@
+{
+  "rank": 1,
+  "step": 4000,
+  "target_steps": 6000,
+  "resume_checkpoint": "/root/.codex/worktrees/xmem-concat-center/MVLM/output/memory_concat_2gpu_20261103_run01/checkpoints/MVLM_step004000.pth.tar",
+  "rank_rng_restored": true,
+  "optimizer": {
+    "state_entries": 71,
+    "state_step_min": 4000.0,
+    "state_step_max": 4000.0,
+    "groups": [
+      {
+        "name": "memory",
+        "lr": 1e-05,
+        "peak_lr": 0.0001
+      },
+      {
+        "name": "center",
+        "lr": 1.0000000000000002e-06,
+        "peak_lr": 1e-05
+      }
+    ]
+  },
+  "batch_per_rank": 40,
+  "global_batch": 80,
+  "clip_frames": 4,
+  "frozen_sha256": "5de7ade0ff02b66dd3e282c6114804f91fb3839f7e2376b8a0a04fca24f48684",
+  "bn_frozen": true,
+  "trainable_parameters": 7132807,
+  "groups": [
+    {
+      "name": "memory",
+      "peak_lr": 0.0001,
+      "parameters": 658690
+    },
+    {
+      "name": "center",
+      "peak_lr": 1e-05,
+      "parameters": 6474117
+    }
+  ]
+}

@@ -688,3 +688,31 @@ TNL2K 论文目标为 PRE 60.9 / AUC 57.8。若沿用本次在 LaSOT 与 OTB 上
 - **尚未实际训练**：2026-10-19 18:20上海时间，GPU0在`nvidia-smi`报设备句柄错误，PyTorch即使限制到GPU1–7仍`cuda.is_available=False`、设备数0。后台监督PID1350756，`training_status.json`为`waiting_gpus`，每60秒检查，8卡恢复后自动训练；六小时仍失败则标`failed`。运行前和汇报时必须读取新输出目录状态及日志，不可把W&B页面存在当作已有参数更新。勿重复启动。
 - 源码快照、哈希、配置及运行规格已保存在新输出目录，未提交/推送。修改：可配置的200步检查点保存，不改变其他实验默认行为；验证输出标记`fixed_subset`或`full`。
 - 用户随后明确要求暂停。已向监督PID1350756发送SIGTERM并确认该进程及新配置训练进程均不存在；`training_status.json`原子改为`paused`、`completed_optimizer_steps=0`，W&B summary也标为`paused`。恢复须经用户再次要求；不能因为GPU恢复就自行重启。
+
+## concat 双卡训练从4000步续至6000步（2026-11-04）
+
+- 当前工作目录 `/root/.codex/worktrees/xmem-concat-center/MVLM`，分支 `codex/xmem-concat-center`。
+  此轮对应11月3日concat训练，与上文10月19日暂停的dense实验不同；不恢复那个暂停实验。
+- 父实验 `output/memory_concat_2gpu_20261103_run01` 已完成4000步与150条验证：
+  平均AUC78.0844，同划分官方权重对照78.4331，同权重零记忆输入78.1811。
+  对照不是论文表格分数或用户另一分支重新训练的模型。
+- 用户明确要求4000→6000步续训，现已启动新输出
+  `output/memory_concat_2gpu_20261104_resume6000_run01`，北京时间18:03:42启动；
+  监督PID794625、训练启动PID794640。后续必须实查状态、进程和指标，不沿用这些PID判断存活。
+- 起点 `MVLM_step004000.pth.tar` SHA256为
+  `005807b6de6ae0391b18d097c495c0b33022182bc7bdea69148df6238f52478e`。
+  双卡均恢复71组AdamW状态、计数4000及各rank随机状态，冻结参数哈希一致。
+- 仅延长步数：GPU4、5，每卡40个四帧片段，全局80；保持记忆1e-5、CENTER1e-6末段学习率，
+  无新预热；训练记忆和全部扩展CENTER，冻结视觉/文本编码器和BN运行统计。
+  配置文件逐字节不变，模型/actor/采样/损失/评测复制自父实验实际源码。
+- 每500步保存；5000、6000步完成同一150条验证，4000步作为固定选模候选。
+  训练异常最多重试2次，从最新完整检查点恢复，事件和失败日志保留。
+- 已验证真实更新至4060步；4020步loss0.56514、训练IoU0.87008，每步约4.91秒。
+  16项检查通过；含两次验证预计约3～4小时，不预测新验证分数。
+- W&B续训独立运行：https://wandb.ai/2896287267-hit/mvlm-memory/runs/15139aa0 。
+  18:07:33直接核验云端running、global_step4020，两个尾段学习率与4000步验证对照已上传。
+  父运行65be0b58保持归档。W&B在线与离线备份独立于训练，网络不应阻塞参数更新。
+- 启动入口 `tracking/launch_memory_concat_continuation.py`，源码版本b926ced已推送GitHub。
+  新目录已有监督进程，不重复调用启动入口。实时档案 `EXPERIMENT_RECORD.md`，
+  说明 `reports/reproduction/MEMORY_CONCAT_RESUME6000_20261104.md`，精简启动证据在同目录下的
+  `memory_concat_2gpu_20261104_resume6000_run01/`。原4000步分析单独保留。

@@ -1,0 +1,39 @@
+{
+  "global_step": 4000,
+  "optimizer_state_entries": 71,
+  "optimizer_step_min": 4000.0,
+  "optimizer_step_max": 4000.0,
+  "rng_ranks": 2,
+  "groups": [
+    {
+      "lr": 1e-05,
+      "peak_lr": 0.0001,
+      "name": "memory",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0001,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false
+    },
+    {
+      "lr": 1.0000000000000002e-06,
+      "peak_lr": 1e-05,
+      "name": "center",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "weight_decay": 0.0001,
+      "amsgrad": false,
+      "foreach": null,
+      "maximize": false,
+      "capturable": false
+    }
+  ]
+}
