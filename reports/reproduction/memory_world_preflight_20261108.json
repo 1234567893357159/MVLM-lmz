@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-08",
+  "branch": "codex/memory-world",
+  "base_revision": "ef589b4",
+  "formal_training_started": false,
+  "benchmark_accuracy_measured": false,
+  "unittest": {
+    "command": "MVLM_DEVICE=cpu OMP_NUM_THREADS=1 /root/miniconda3/envs/mvlm/bin/python -m unittest discover -s tests -v",
+    "passed": 22
+  },
+  "real_model_cpu": [
+    {
+      "mode": "cross_attention",
+      "raw_shape": [
+        1,
+        196,
+        512
+      ],
+      "predicted_roi_shape": [
+        1,
+        4,
+        512
+      ],
+      "quality_shape": [
+        1,
+        196
+      ],
+      "baseline_max_abs_error": 0.0,
+      "stage_a_gradient_l1": {
+        "reader": 39.905828699923404,
+        "world": 3528.251984104514,
+        "quality": 497.8424996137619
+      },
+      "encoder_frozen": true
+    },
+    {
+      "mode": "concat",
+      "raw_shape": [
+        1,
+        196,
+        512
+      ],
+      "predicted_roi_shape": [
+        1,
+        4,
+        512
+      ],
+      "quality_shape": [
+        1,
+        196
+      ],
+      "baseline_max_abs_error": 0.0,
+      "stage_a_gradient_l1": {
+        "reader": 38.35818845355516,
+        "world": 3502.845851033926,
+        "quality": 497.51863634586334
+      },
+      "encoder_frozen": true
+    }
+  ],
+  "cpu_gloo": [
+    {
+      "stage": "A",
+      "world_size": 2,
+      "steps": 2,
+      "replicas_equal": true,
+      "empty_supervision_rank": 1,
+      "supervised_frames": 4
+    },
+    {
+      "stage": "B",
+      "world_size": 2,
+      "steps": 2,
+      "replicas_equal": true,
+      "empty_supervision_rank": 1,
+      "supervised_frames": 4
+    },
+    {
+      "stage": "C",
+      "world_size": 2,
+      "steps": 2,
+      "replicas_equal": true,
+      "empty_supervision_rank": 1,
+      "supervised_frames": 4
+    }
+  ],
+  "source_sha256": {
+    "lib/config/mvlm/config.py": "fe69a32bed2f61b862c225dd3ef03b28d48e270eada60000be66535de9b60beb",
+    "lib/models/mvlm/__init__.py": "755cb0b86c549292b94705c6d468c22e401301faf08729753f62bcb61eebc961",
+    "lib/models/mvlm/encoder.py": "6bf8901e6263bb4b41b4c2d089c9f9e23e19c320f049c3f9f404b94288e3b0df",
+    "lib/models/mvlm/fastitpn.py": "b14110e39bf30d513996920ed001a0b121528104843d925f5a5529b43145b40d",
+    "lib/models/mvlm/future_fusion.py": "83442593d15d66a199ebb1301ba54f7e9440ff13353b4fda6c77759652be6b8d",
+    "lib/models/mvlm/head.py": "97d93a875a78a2e6030eedc4c82d4a5657ccff3b8ef3f2fc635ffb1438632d50",
+    "lib/models/mvlm/joint_checkpoint.py": "c71ce0fe23c3c157ce2b6ab1e95dbfd02d3a4349c53116e5b027d7a1cba0b8dc",
+    "lib/models/mvlm/memory.py": "0a56ce3d650910aa69a33b00761d843715523a2611446dece6879f0bc136145c",
+    "lib/models/mvlm/memory_reader.py": "f02e461ff9bef1aec88324a5278b16afacf69293d212541314e46735066baa77",
+    "lib/models/mvlm/mvlm.py": "70a5a383a350e5111842c9432133e953655cb26da5cc797079f89f4131ee5cf0",
+    "lib/models/mvlm/quality_head.py": "ba46c61c3cc6d2fa3b585bde8a9732b353967408ec64acc5cdd54094972105d9",
+    "lib/models/mvlm/temporal_core.py": "a8524f6df7b9273d00915137f63d7c98409b086573a08f6a56f6e0ab5a38d457",
+    "lib/models/mvlm/world_model.py": "406bc284359dc60bcd721c56165278c7b484179175f02b65601bdccef6a4ea3c",
+    "lib/models/mvlm/world_state.py": "68f3a3f1f65aedcc9814e91c0c87450faf96e1e09a529ebf317d2d1e05ef3411",
+    "lib/test/tracker/mvlm.py": "4634ca427647e98984f3bf2da450d593857b76946df73efc4a872603793437dc",
+    "lib/train/actors/memory_world.py": "95e9947966c9f444e0f65b22e1fab9aed6bd96959625fd6250237e5c6a3425bb",
+    "lib/train/dataset/world_clips.py": "b31f4fadfa355437e80a23d9c37ea9317a0d36dfaf25f4bad40e632842a8ad8b",
+    "tracking/evaluate_memory_world.py": "dd25839e5ab720648599ce0ced74e89a7345240ce1c0bff963efcf90e9dd6401",
+    "tracking/train_memory_world.py": "f5f6e4898d8d71edb8bc80ddc76c0ff60308e828615b0afb0163893677ed2e0a"
+  },
+  "limitations": [
+    "GPU/NCCL and long-sequence throughput not tested",
+    "No trained joint checkpoint or benchmark accuracy claim",
+    "Synthetic CPU integration training is not a production experiment"
+  ]
+}

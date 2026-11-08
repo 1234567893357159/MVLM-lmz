@@ -52,6 +52,9 @@ def run(settings):
     else:
         init_seeds(base_seed)
 
+    if cfg.MODEL.WORLD.ENABLED or cfg.MODEL.MEMORY.ENABLED or cfg.MODEL.TEMPORAL_BASELINE:
+        raise ValueError('Use tracking/train_memory_world.py for causal memory/world training')
+
     # update settings based on cfg
     update_settings(settings, cfg)
     settings.vasttrack_split = cfg.DATA.TRAIN.VASTTRACK_SPLIT

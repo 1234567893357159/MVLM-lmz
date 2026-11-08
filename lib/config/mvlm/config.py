@@ -154,6 +154,24 @@ cfg.WANDB.MODE = 'online'
 cfg.WANDB.LOG_INTERVAL = 20
 
 
+cfg.MODEL.TEMPORAL_BASELINE = False  # Evaluation-only control using the shared crop geometry.
+
+# Optional content memory and one-step prediction. Legacy configs stay disabled.
+cfg.MODEL.MEMORY = edict(ENABLED=False, HIDDEN_DIM=256, KEY_DIM=128,
+    ROI_SIZE=2, SHORT_CAPACITY=8, LONG_CAPACITY=16, MIN_QUALITY=0.5,
+    NOVELTY_THRESHOLD=0.1, USE_SEMANTIC=True, SHORT_DECAY=0.1, LONG_DECAY=0.01,
+    WRITE_CONSISTENCY=0.0)
+cfg.MODEL.WORLD = edict(ENABLED=False, HISTORY=4, HIDDEN=256, LAYERS=2,
+    HEADS=4, FUSION_STRENGTH=1.0, MIN_QUALITY=0.0, QUALITY_ENABLED=False,
+    QUALITY_WEIGHT=0.25)
+cfg.MODEL.FUSION = edict(MODE='cross_attention', CHANNELS=256)
+cfg.TRAIN.WORLD = edict(STAGE='A', HEAD_LR=1e-5, APPEARANCE_WEIGHT=1.0,
+    MOTION_WEIGHT=1.0, FEATURE_WEIGHT=0.1, QUALITY_LOSS_WEIGHT=0.5,
+    PREDICTED_HISTORY_PROB=0.5, HISTORY_RAMP_STEPS=1000, CLIP_LENGTH=12,
+    MAX_STEPS=4000, SAVE_INTERVAL=200, SEED=20261108,
+    TRAIN_HEAD=False, FREEZE_BN_STATS=True, HEAD_ONLY=False, MAX_STRIDE=4, WARMUP_FRAMES=4)
+
+
 def _edict2dict(dest_dict, src_edict):
     if isinstance(dest_dict, dict) and isinstance(src_edict, dict):
         for k, v in src_edict.items():
@@ -194,3 +212,15 @@ def update_config_from_file(filename):
         _update_config(cfg, exp_config)
 
 
+
+
+# Independent defaults for each tracker/training invocation.
+from copy import deepcopy
+_DEFAULT_CFG = deepcopy(cfg)
+
+
+def load_config(filename):
+    result = deepcopy(_DEFAULT_CFG)
+    with open(filename) as handle:
+        _update_config(result, edict(yaml.safe_load(handle) or {}))
+    return result

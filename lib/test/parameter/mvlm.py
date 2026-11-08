@@ -1,17 +1,19 @@
 from lib.test.utils import TrackerParams
 import os
-from lib.test.evaluation.environment import env_settings
-from lib.config.mvlm.config import cfg, update_config_from_file
+from pathlib import Path
 
 
 def parameters(yaml_name: str, weight_path: str):
     params = TrackerParams()
-    workspace_dir = env_settings().workspace_dir
+    workspace_dir = str(Path(__file__).resolve().parents[3])
 
     # update default config from yaml file
     yaml_file = os.path.join(workspace_dir, 'experiments', 'mvlm', '%s.yaml' % yaml_name)
-    update_config_from_file(yaml_file)
-    params.cfg = cfg
+    # Each tracker starts from defaults; world settings must not leak into baseline runs.
+    from lib.config.mvlm.config import load_config
+    local_cfg = load_config(yaml_file)
+    params.cfg = local_cfg
+    cfg = local_cfg
     params.yaml_name = yaml_name
 
     # template and search region

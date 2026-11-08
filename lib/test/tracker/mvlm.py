@@ -14,7 +14,16 @@ class MVLM(BaseTracker):
         network = build_mvlm(params.cfg, training=False)
         ckpt = torch.load(self.params.checkpoint, map_location='cpu')
         state_dict = ckpt['net'] if 'net' in ckpt else ckpt
-        network.load_state_dict(state_dict, strict=False)
+        temporal = params.cfg.MODEL.WORLD.ENABLED or params.cfg.MODEL.MEMORY.ENABLED or params.cfg.MODEL.TEMPORAL_BASELINE
+        if temporal:
+            from lib.models.mvlm.joint_checkpoint import load_joint
+            if params.cfg.MODEL.TEMPORAL_BASELINE:
+                from lib.models.mvlm.joint_checkpoint import load_baseline
+                load_baseline(network, ckpt)
+            else:
+                load_joint(network, ckpt, inference=True)
+        else:
+            network.load_state_dict(state_dict, strict=False)
         self.cfg = params.cfg
         if hasattr(params, 'device') and params.device:
             self.device = torch.device(params.device)
@@ -23,6 +32,10 @@ class MVLM(BaseTracker):
         self.network = network.to(self.device)
         self.network.eval()
         self.preprocessor = Preprocessor(self.device)
+        self.temporal_enabled = temporal
+        if temporal:
+            from lib.models.mvlm.temporal_core import TemporalState
+            self.temporal_state = TemporalState(self.cfg)
         self.state = None
 
         self.fx_sz = self.cfg.TEST.SEARCH_SIZE // self.cfg.MODEL.ENCODER.STRIDE
@@ -69,6 +82,9 @@ class MVLM(BaseTracker):
             self.use_nlp = self.cfg.TEST.USE_NLP[DATASET_NAME]
         else:
             self.use_nlp = self.cfg.TEST.USE_NLP.DEFAULT
+
+        if self.temporal_enabled and not (self.multi_modal_language and self.use_nlp):
+            raise ValueError('Temporal tracking requires language enabled for this dataset')
 
         self.prev_conf = 1.0
         
@@ -119,11 +135,15 @@ class MVLM(BaseTracker):
 
         self.kmem = None
         self.kmvlm = None
+        if self.temporal_enabled:
+            self.temporal_state.reset()
 
     def track(self, image, info: dict = None):
 
         H, W, _ = image.shape
         self.frame_id += 1
+        if self.temporal_enabled:
+            return self._track_temporal(image)
             
         if self.flag:
             x_patch_arr, resize_factor = resize_sample_target(image, output_sz=self.params.search_size)  # (x1, y1, w, h)
@@ -291,6 +311,34 @@ class MVLM(BaseTracker):
         }
 
         return results_dict
+
+    @torch.no_grad()
+    def _track_temporal(self, image):
+        from lib.models.mvlm.temporal_core import locate, observe
+        frame = torch.tensor([self.frame_id], device=self.device)
+        result = locate(self.network, self.temporal_state, image, self.text_emb,
+                        self.cfg, frame, self.preprocessor)
+        written = observe(self.network, self.temporal_state, result, frame)
+        self.state = result['pixels']
+        self.flag = self.temporal_state.global_search
+        self.kmem = self.temporal_state.kmem
+        shown = None
+        if self.debug:
+            shown = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+            x, y, w, h = map(int, self.state)
+            cv2.rectangle(shown, (x, y), (x + w, y + h), (0, 0, 255), 2)
+        return dict(target_bbox=self.state, conf_score=result['selection']['scores'][None],
+                    image_BGR=shown, cropped_vis=None, memory_written=written,
+                    prediction_reliability=result['output']['prediction_reliability'].cpu().tolist())
+
+    def set_language(self, description):
+        self.init_nlp = description
+        with torch.no_grad():
+            self.text_emb = self.network.text_encoder(description)
+        self.kmem = self.kmvlm = None
+        self.flag = True
+        if self.temporal_enabled:
+            self.temporal_state.reset()
 
     def map_box_back(self, pred_box: list, resize_factor: float):
         cx_prev, cy_prev = self.state[0] + 0.5 * self.state[2], self.state[1] + 0.5 * self.state[3]
