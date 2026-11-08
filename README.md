@@ -4,22 +4,30 @@
 
 本仓库基于 [inha-vllab/MVLM](https://github.com/inha-vllab/MVLM)，用于本人本科毕业设计中的实验复现、代码备份及后续模型改进。本仓库为个人研究版本，不代表 MVLM 官方项目。
 
-原始 MVLM 方法、模型架构及相关代码由原作者提供，不属于本人的原创成果；原论文引用保留在本文的 Citation 部分。当前个人新增或修改内容主要为运行环境适配、数据准备与校验脚本、评测工具、实验配置及实验记录，具体变更可通过 Git 提交历史和 [复现说明](REPRODUCTION.md) 查看。
+原始 MVLM 方法、模型架构及相关代码由原作者提供，不属于本人的原创成果；原论文引用保留在本文的 Citation 部分。当前个人新增或修改内容包括运行环境适配、数据准备与校验、评测与实验记录，以及本分支的内容记忆和世界模型联合实现，具体变更可通过 Git 提交历史、[复现说明](REPRODUCTION.md)和[联合分支说明](BRANCH_MEMORY_WORLD.md)查看。
 
 后续自主完成的模型结构改进及对应实验将单独说明，并在毕业设计中明确引用原论文、区分原项目成果与个人贡献。本声明仅用于说明来源和研究用途，不替代原项目及其依赖的适用许可或授权要求。
 
 ## 记忆与世界模型联合开发分支
 
-`codex/memory-world`实现开题报告中的内容记忆条件预测、未来表征融合与候选质量先验。
-代码入口、分阶段训练、成对消融配置及验证边界见[联合实现说明](reports/reproduction/MEMORY_WORLD_IMPLEMENTATION.md)。
-目前完成工程实现与CPU预检，尚无正式训练或精度提升结论。下方复现实验为此前独立结果。
+`codex/memory-world` 实现开题报告中的内容记忆条件预测、未来表征融合与候选质量先验。
+截至 2026-11-08，已完成工程实现与 CPU 预检，尚未正式训练或评测联合模型精度。
 
-## 本分支实验记录（2026-10-28）
+| 阅读内容 | 入口 |
+|---|---|
+| 当前分支范围、默认流程与完成状态 | [联合分支说明](BRANCH_MEMORY_WORLD.md) |
+| 架构图、模块接口与实现边界 | [联合实现说明](reports/reproduction/MEMORY_WORLD_IMPLEMENTATION.md) |
+| 数据准备、训练参数、A/B/C 命令、续训和评测 | [训练指南](reports/reproduction/MEMORY_WORLD_TRAINING.md) |
+
+默认流程为 A 预测学习 → B 跟踪适配 → 可选 C 联合微调，每阶段 4000 次更新。
+联合模型使用 `tracking/train_memory_world.py`；下方原 MVLM 训练命令与复现实验保留为基线入口和历史记录。
+
+## 历史复现实验记录（2026-10-28）
 
 VastTrack-only 训练已完成 60 轮、75,000 次更新，并完成 6 个轮次的内部验证及第 60 轮的 language-only 外部评测。此实验使用单一训练数据集，不能当作论文三数据集训练的完整复现。下方 Main Results 保留论文原始成绩；本地训练成绩见以下独立记录。
 
 - [实验与文档总索引](reports/reproduction/README.md)
-- [当前分支说明](BRANCH_MVLM_REPRODUCTION.md)
+- [历史复现分支说明](BRANCH_MVLM_REPRODUCTION.md)
 - [本轮结果、数据状态及复现入口](reports/reproduction/vasttrack_run_20261026/README.md)
 - [与论文的差距分析](reports/reproduction/VASTTRACK_RESULT_GAP_ANALYSIS_20261028.md)
 
@@ -67,8 +75,8 @@ Raw tracking results are available for download: [Google Drive](https://drive.go
 ## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/inha-vllab/MVLM.git
+# Clone this development branch
+git clone --branch codex/memory-world https://github.com/1234567893357159/MVLM-lmz.git MVLM
 cd MVLM
 
 # Create conda environment
@@ -184,6 +192,8 @@ Expected directory layout:
 ```
 
 ## Training
+
+For the memory/world model on `codex/memory-world`, follow the [staged training guide](reports/reproduction/MEMORY_WORLD_TRAINING.md) and use `tracking/train_memory_world.py`. The commands below train the original MVLM baseline.
 
 ```bash
 # Single GPU

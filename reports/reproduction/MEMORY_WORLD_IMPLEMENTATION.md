@@ -1,8 +1,22 @@
 # 内容记忆与世界模型联合实现
 
-日期：2026-11-08（北京时间）。分支 `codex/memory-world`，基于复现分支 `ef589b4`。
+更新日期：2026-11-08。分支 `codex/memory-world`，基于复现分支 `ef589b4`，首版代码为 `076e29c`。
 这是开题报告图3-2的首版实现，复用 `codex/world-model@98a0094` 与
 `codex/xmem-concat-center@c71ac15` 的相关模块。尚未进行正式训练或精度评测。
+
+导航：[分支总览](../../BRANCH_MEMORY_WORLD.md) · [训练方案、参数与完整命令](MEMORY_WORLD_TRAINING.md) · [实验索引](README.md)。
+
+## 与开题架构的对应
+
+| 开题设计中的功能 | 当前实现 |
+|---|---|
+| 可靠目标记忆与语言条件读取 | 短/长期内容库，外观与语言双流读取，包含几何、年龄和质量元信息 |
+| 基于历史想像未来目标状态 | 两层轻量 Transformer，输出下一时刻 ROI 表征、框变化及质量隐变量 |
+| 观测与未来表征融合 | 默认几何约束交叉注意力残差；另提供几何对齐后的通道拼接配置 |
+| 候选权值与目标选择 | 预测网格质量先验，在原 MVLM 可靠候选集合内重排 |
+| 定位后更新记忆 | 原始观测 ROI 的可靠写回，训练与在线共用时序核心 |
+
+本版落实的是单步特征与运动回归；扩散去噪、多步自回归及跨训练片段继承记忆均未实现。
 
 ## 数据流与因果边界
 
@@ -16,6 +30,7 @@ flowchart TD
   L --> W
   W --> A[第t帧目标ROI表征与位置先验]
   W --> Q[候选网格质量先验]
+  C[当前搜索裁剪几何] --> Q
   I[第t帧图像] --> E[冻结MVLM编码器]
   E --> F[对齐/一致性门控/融合]
   A --> F
@@ -63,10 +78,10 @@ flowchart TD
 ## 分阶段训练
 
 - A：冻结视觉/文本/CENTER，训练记忆读取、世界模型与质量头；未来特征和运动使用时序框标注监督。
-  允许显式teacher forcing，但写入只发生在该帧预测之后，验证始终使用预测历史。
+  旁路未来表征注入和候选质量重排；允许显式teacher forcing，但写入只发生在该帧预测之后，验证始终使用预测历史。
 - B：世界模型及其记忆读取冻结，训练融合适配层。交叉注意力默认保持原CENTER冻结；
   concat配置训练扩展CENTER，BN运行统计固定，BN仿射参数随头更新。
-- C：从B/C权重加载，小学习率联合微调新增模块，保留预测与跟踪监督。
+- C：从B/C权重加载，小学习率联合微调新增模块，保留预测与跟踪监督；默认编码器与CENTER继续冻结。
 - 仅记忆：B阶段从同一基线开始，训练读出/融合，仍使用统一在线展开。
 - 仅CENTER：`mvlm_TF_head_only_stage_b`从同一基线开始，旁路预测注入和质量重排，仅更新CENTER；BN统计固定。
 
@@ -79,46 +94,26 @@ flowchart TD
 `CLIP_LENGTH`与预热长度。前缀使用同一在线定位/写入规则，验证禁用teacher forcing。
 本版不跨视频或独立训练片段继承运行时记忆；预热后实际入库数量仍取决于可靠性门控。
 
-### 准备固定清单
+### 默认阶段参数与运行入口
 
-以下是手动执行示例，当前未执行数据扫描或正式训练。
+| 阶段 | 新增模块初始学习率 | 更新次数 | 损失 | 历史来源 |
+|---|---:|---:|---|---|
+| A | `1e-4` | 4000 | 外观 + 运动 + `0.5 ×`候选质量 | GT/预测混合，预测比例前1000步升至0.5 |
+| B | `1e-4` | 4000 | `2 ×`GIoU + `5 ×`L1 + Focal | 预测 |
+| C（可选） | `1e-5` | 4000 | 跟踪与预测联合监督 | 预测 |
 
-```bash
-cd /root/MVLM
-/root/miniconda3/envs/mvlm/bin/python tracking/prepare_world_split.py \
-  --lasot-root /root/MVLM/data/lasot --tnl2k-root /root/MVLM/data/tnl2k \
-  --vasttrack-root /root/MVLM/data/vasttrack --clip-length 12 \
-  --output /root/MVLM/output/memory_world_split/manifest.json
-```
+A → B 是基本训练流程，B为首个可在线评测的联合检查点；C作为后续实验与B成对比较。
+数据清单准备、参数键、单/多卡启动、断点恢复和评测的完整命令统一维护在[训练指南](MEMORY_WORLD_TRAINING.md)。
 
-明确排除已知TNL2K帧/标注不一致序列；短于片段的视频记录为排除项。
+划分工具默认按来源从训练视频留出约10%，排除已知TNL2K帧/标注不一致序列，短于片段的视频记录为排除项。
 其他缺失/异常默认报错；`--allow-incomplete`显式允许并记录部分语料。
 清单检查视频身份、真实目录及图像路径交叉，保存标注/可见性/语言/路径签名，
 不等同于全量图像内容去重。官方初始化可能见过适配留出视频，报告时需说明。
 
-### A、B与C入口
-
-```bash
-/root/miniconda3/envs/mvlm/bin/python tracking/train_memory_world.py \
-  --config experiments/mvlm/mvlm_TF_memory_world_stage_a.yaml \
-  --manifest output/memory_world_split/manifest.json --baseline models/MVLM_TF.pth.tar \
-  --output output/memory_world_stage_a --device cuda:0
-
-/root/miniconda3/envs/mvlm/bin/python tracking/train_memory_world.py \
-  --config experiments/mvlm/mvlm_TF_memory_world_stage_b.yaml \
-  --manifest output/memory_world_split/manifest.json --baseline models/MVLM_TF.pth.tar \
-  --world-checkpoint output/memory_world_stage_a/best_clip_loss.pth.tar \
-  --output output/memory_world_stage_b --device cuda:0
-```
-
-C使用`mvlm_TF_memory_world_stage_c.yaml`，父权重改为B检查点。中断恢复在同一命令加`--resume`，
-恢复完整网络/优化器/学习率/逐rank RNG与确定性样本位置；配置、源码、清单、基线来源变更会拒绝静默恢复。
-冻结CLIP本体省略于检查点，重载使用同一预训练缓存；新结构必须加载完整联合权重。
-源数据未移动；普通MVLM配置默认关闭新增模块。
-
-多卡使用`python -m torch.distributed.run --standalone --nproc_per_node=N tracking/train_memory_world.py ...`，
-`TRAIN.BATCH_SIZE`是每进程片段数。配置中默认不启用W&B；需要时显式传`--wandb-project`等参数。
-按固定片段loss保存的`best_clip_loss`不代表完整视频AUC最优。
+B加载A权重，C加载B/C权重；不同阶段共享同一清单、基线和MODEL/DATA/TEST设置。
+中断恢复使用`--resume`，从最近保存状态恢复网络、优化器、学习率、逐rank RNG和样本位置；
+配置、源码、数据或进程数变更会拒绝静默恢复。冻结CLIP本体省略于检查点，重载使用同一预训练缓存。
+普通MVLM配置默认关闭新增模块。按固定片段loss保存的`best_clip_loss`不代表完整视频AUC最优。
 
 ### 成对配置与消融
 
@@ -135,15 +130,12 @@ C使用`mvlm_TF_memory_world_stage_c.yaml`，父权重改为B检查点。中断�
 不能直接拼接旧独立分支训练后的检查点。相同模型关闭读取可清空内容库做诊断；
 `QUALITY_WEIGHT=0`可进行同权重无重排对照，权重系数不是结构参数。
 
+当前concat仅提供成对A/B配置；默认C为交叉注意力配置，不能直接接在concat B之后。
+
 ### 完整视频在线评测
 
-```bash
-/root/miniconda3/envs/mvlm/bin/python tracking/evaluate_memory_world.py \
-  --config experiments/mvlm/mvlm_TF_memory_world_stage_b.yaml \
-  --manifest output/memory_world_split/manifest.json \
-  --checkpoint output/memory_world_stage_b/best_clip_loss.pth.tar \
-  --output output/memory_world_validation --device cuda:0
-```
+入口为`tracking/evaluate_memory_world.py`，使用与训练相同的留出清单，分别评测B/C检查点及同坐标基线。
+命令和输出字段见[训练指南](MEMORY_WORLD_TRAINING.md)。
 
 沿用main首帧GT计分、整数框保存、原无效帧/可见性处理与PRE@20/AUC/NPR@0.2口径；
 首帧GT不会写入新增内容库。精确裁剪回映射与旧路径可能存在像素舍入差异，
@@ -156,6 +148,7 @@ C使用`mvlm_TF_memory_world_stage_c.yaml`，父权重改为B检查点。中断�
 CPU回归入口：
 
 ```bash
+cd /root/MVLM
 MVLM_DEVICE=cpu OMP_NUM_THREADS=1 /root/miniconda3/envs/mvlm/bin/python -m unittest discover -s tests -v
 ```
 

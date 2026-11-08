@@ -1,6 +1,17 @@
 # 训练、评测和数据文档索引
 
-## 最新三数据集实验（2026-11-03）
+## 当前联合开发分支（2026-11-08）
+
+`codex/memory-world` 已完成内容记忆与世界模型联合实现及 CPU 预检，尚未正式训练或评测联合模型精度。
+
+- [分支说明](../../BRANCH_MEMORY_WORLD.md)：分支范围、默认流程、完成状态与维护约定。
+- [联合实现说明](MEMORY_WORLD_IMPLEMENTATION.md)：开题架构对应、数据流、模块接口和验证边界。
+- [训练指南](MEMORY_WORLD_TRAINING.md)：数据划分、损失与参数、A/B/C 命令、断点恢复、多卡及评测。
+- [CPU 预检记录](memory_world_preflight_20261108.json)：22 项回归检查、实际骨干接口与双进程检查。
+
+下方三数据集和 VastTrack-only 成绩均为此前基线实验，不代表本联合模型的结果。
+
+## 历史三数据集实验（2026-11-03）
 
 - [数据、参数与60轮训练结果](PAPER_TRAINING_RESULTS_20261101.md)。
 - [E61～E70最终分析](PAPER_CONTINUATION_ANALYSIS_20261103.md)：E66三集平均AUC最高，58.381。
@@ -24,7 +35,7 @@
 
 2026-10-30：[三数据集重新训练方案](PAPER_REPRODUCTION_PLAN_20261030.md)已进入[正式训练](PAPER_REPRODUCTION_TRAINING_20261030.md)，仅使用 GPU 4、5、每卡 batch 40、全局 80，总计 4 个加载 worker。短测后重新初始化，W&B 已核实实际指标上传：[监控链接](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/7ln28ook)。配置为 `mvlm_TF_paper_reproduction`，跳过 1 条异常 TNL2K 序列，保留源文件；[早期准备报告](paper_reproduction_preparation_20261030.json)是调整卡数前的历史快照。
 
-## 当前：VastTrack-only 自训模型
+## 历史：VastTrack-only 自训模型
 
 | 内容 | 入口 |
 | --- | --- |
