@@ -1,14 +1,19 @@
 # 实验与文档索引
 
+项目交接和各分支导航见 [doc 文档入口](../../doc/README.md)，跨分支结果见 [实验总览](../../doc/EXPERIMENTS.md)。
+
 本索引区分当前联合模型和历史基线实验。文档中的进度、PID 和显卡分配均为带日期的快照；实时状态需同时检查状态文件、进程与 GPU。
 
 ## 当前：记忆库与世界模型
 
-截至 2026-11-12，A 完成 4000 步，完整跟踪器 B 从 A/3000 初始化并完成 4000 步，C 尚未训练。基线、B1025、B4000 的完整视频评测正在进行；OTB 的三组已完成，LaSOT 和 TNL2K 尚无三组完整结果。
+截至 2026-11-12，A 完成 4000 步，完整跟踪器 B 从 A/3000 初始化并完成 4000 步，C 尚未训练。基线、B1025、B4000 的三数据集完整视频评测已完成；结果和逐视频分析见下方记录。
 
 | 内容 | 入口 |
 | --- | --- |
 | 实际训练设置、诊断和测试结果 | [训练与结果总记录](MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md) |
+| 完整视频结果及逐视频差异 | [B 视频分析](MEMORY_WORLD_B_VIDEO_ANALYSIS_20261112.md) |
+| OTB 历史参数迁移（探索性） | [参数对照](MEMORY_WORLD_OTB_HISTORICAL_PARAMS_20261112.md) |
+| OTB 多参数搜索进度（探索性） | [进度快照](MEMORY_WORLD_OTB_SWEEP_PROGRESS_20261112.md) |
 | 模块、数据流和实现边界 | [联合实现说明](MEMORY_WORLD_IMPLEMENTATION.md)、[分支说明](../../BRANCH_MEMORY_WORLD.md) |
 | 数据、损失、命令和对照方案 | [训练指南](MEMORY_WORLD_TRAINING.md)；其中原开发版 C 尚未适配当前 B |
 | A 的配置、预检和运行记录 | [A 阶段记录](MEMORY_WORLD_STAGE_A_20261109.md) |
