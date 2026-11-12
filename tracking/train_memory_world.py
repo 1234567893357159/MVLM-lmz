@@ -72,6 +72,8 @@ def main():
         parser.error('WARMUP_FRAMES must be nonnegative and smaller than CLIP_LENGTH')
     if cfg.TRAIN.NUM_WORKER < 0:
         parser.error('NUM_WORKER must be nonnegative')
+    if world.BATCHED_ENCODER and stage != 'A':
+        parser.error('BATCHED_ENCODER currently supports only stage A')
     if cfg.TRAIN.OPTIMIZER != 'ADAMW' or cfg.TRAIN.SCHEDULER.TYPE != 'cosine':
         parser.error('Joint training supports explicit AdamW and cosine step scheduling')
     device = parallel.setup(args.device)
@@ -226,7 +228,8 @@ def main():
     loader = DataLoader(train, batch_size=cfg.TRAIN.BATCH_SIZE,
                         sampler=sampler, num_workers=cfg.TRAIN.NUM_WORKER,
                         collate_fn=collate_world_clips, generator=loader_generator,
-                        **({'multiprocessing_context': 'spawn'} if parallel.size > 1 and cfg.TRAIN.NUM_WORKER else {}))
+                        **({'multiprocessing_context': 'spawn'} if parallel.size > 1 and cfg.TRAIN.NUM_WORKER else {}),
+                        **({'prefetch_factor': 1} if cfg.TRAIN.NUM_WORKER and world.BATCHED_ENCODER else {}))
     model.train()
     training_step = parallel.wrap(model, actor, broadcast_buffers=stage in ('B', 'C'))
     if args.verify_distributed:

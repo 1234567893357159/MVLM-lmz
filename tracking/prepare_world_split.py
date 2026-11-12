@@ -39,8 +39,11 @@ def main():
             names = sorted(p.name for p in directory.iterdir() if p.is_dir())
         else:
             names = sorted(official_names(dataset))
+        print('Auditing {}: {} training videos'.format(dataset, len(names)), flush=True)
         rows = []
-        for name in names:
+        for index, name in enumerate(names):
+            if index and index % 500 == 0:
+                print('{}: {}/{} audited'.format(dataset, index, len(names)), flush=True)
             if dataset == 'tnl2k' and name == 'Fight_game_004-Done':
                 result['exclusions'].append(dict(dataset=dataset, name=name, reason='known frame/annotation mismatch'))
                 continue
@@ -62,6 +65,7 @@ def main():
         result['val'].extend(rows[:count])
         result['train'].extend(rows[count:])
         result['roots'][dataset] = str(root)
+        print('{}: {} train / {} validation'.format(dataset, len(rows) - count, count), flush=True)
     if not result['roots']:
         parser.error('Provide at least one training dataset root')
     destination = Path(args.output)

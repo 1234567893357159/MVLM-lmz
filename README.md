@@ -11,16 +11,18 @@
 ## 记忆与世界模型联合开发分支
 
 `codex/memory-world` 实现开题报告中的内容记忆条件预测、未来表征融合与候选质量先验。
-截至 2026-11-08，已完成工程实现与 CPU 预检，尚未正式训练或评测联合模型精度。
+2026-11-09 已完成批量训练改造、26项回归检查和两卡GPU/NCCL短测，并启动两卡A阶段正式运行流程；实际进度见[训练记录](reports/reproduction/MEMORY_WORLD_STAGE_A_20261109.md)。尚无联合模型精度结论。
 
 | 阅读内容 | 入口 |
 |---|---|
 | 当前分支范围、默认流程与完成状态 | [联合分支说明](BRANCH_MEMORY_WORLD.md) |
 | 架构图、模块接口与实现边界 | [联合实现说明](reports/reproduction/MEMORY_WORLD_IMPLEMENTATION.md) |
 | 数据准备、训练参数、A/B/C 命令、续训和评测 | [训练指南](reports/reproduction/MEMORY_WORLD_TRAINING.md) |
+| 两卡大batch的参数、显存、验证与实际进度入口 | [A阶段运行记录](reports/reproduction/MEMORY_WORLD_STAGE_A_20261109.md) |
+| 当前 B：完整跟踪器适配、batch80、显存与 loss 观察 | [B重新试训记录](reports/reproduction/MEMORY_WORLD_TRACKER_B_20261111.md) |
 
-默认流程为 A 预测学习 → B 跟踪适配 → 可选 C 联合微调，每阶段 4000 次更新。
-联合模型使用 `tracking/train_memory_world.py`；下方原 MVLM 训练命令与复现实验保留为基线入口和历史记录。
+当前流程为 A 预测学习 → B 完整跟踪器适配，上限各4000次更新，之后按留出验证决定后续方案。
+A 使用 `tracking/train_memory_world.py`；当前 B 使用独立 `tracking/train_memory_world_tracker_b.py`，训练视觉编码器、语言投影、CENTER 与融合层，保留 CLIP 本体和 A 模块冻结。原适配层 B/C 配置及下方 MVLM 复现实验保留为对照和历史记录。
 
 ## 历史复现实验记录（2026-10-28）
 

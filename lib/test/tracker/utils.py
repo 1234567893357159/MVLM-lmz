@@ -26,6 +26,13 @@ class Preprocessor(object):
         img_tensor_norm = ((img_tensor / 255.0) - mean) / std  # (1,3,H,W)
         return img_tensor_norm
 
+    def process_batch(self, images):
+        """Normalize equal-sized crops together without mixing video states."""
+        stacked = np.stack(images)
+        tensor = torch.from_numpy(stacked).to(self.device).float().permute(0, 3, 1, 2)
+        mean, std = (self.mm_mean, self.mm_std) if stacked.shape[-1] == 6 else (self.mean, self.std)
+        return ((tensor / 255.0) - mean) / std
+
 
 def sample_target(im, target_bb, search_area_factor, output_sz=None):
     """ Extracts a square crop centered at target_bb box, of area search_area_factor^2 times target_bb area

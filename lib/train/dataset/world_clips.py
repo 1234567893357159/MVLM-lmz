@@ -115,6 +115,10 @@ class WorldClips(Dataset):
         return self.samples
 
     def __getitem__(self, index):
+        # Each loader process already handles independent clips; avoid OpenCV
+        # launching a server-wide CPU thread pool for every decoded frame.
+        if cv2.getNumThreads() != 1:
+            cv2.setNumThreads(1)
         rng = np.random.RandomState((self.seed + int(index)) % (2 ** 32))
         dataset = self.datasets[rng.choice(len(self.datasets), p=self.probabilities)]
         group = self.groups[dataset]
@@ -141,6 +145,27 @@ class WorldClips(Dataset):
                     name=seq['dataset'] + '/' + seq['name'])
 
 
+class PackedWorldClipBatch:
+    """Transfer four tensors, creating per-video views only in the receiving process."""
+    def __init__(self, items, tensors):
+        self.items, self.tensors = items, tensors
+
+    def __len__(self):
+        return len(self.items)
+
+    def __getitem__(self, index):
+        if isinstance(index, slice):
+            return [self[i] for i in range(*index.indices(len(self)))]
+        return dict(self.items[index], **{key: tensor[index] for key, tensor in self.tensors.items()})
+
+    def __iter__(self):
+        return (self[index] for index in range(len(self)))
+
+
 def collate_world_clips(items):
-    # Keep full-resolution images as lists: images can differ in shape across videos.
-    return items
+    # Keep differently sized images on CPU. Serializing even views of the same
+    # tensor can duplicate descriptors, so views must be built after transfer.
+    fields = ('boxes', 'valid', 'visible', 'frame_ids')
+    tensors = {field: torch.stack([item[field] for item in items]) for field in fields}
+    metadata = [{key: value for key, value in item.items() if key not in fields} for item in items]
+    return PackedWorldClipBatch(metadata, tensors)

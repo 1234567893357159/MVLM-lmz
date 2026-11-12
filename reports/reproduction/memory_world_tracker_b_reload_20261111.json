@@ -1,0 +1,47 @@
+{
+  "inference_class": "MVLM",
+  "step": 2,
+  "valid_frames": 43,
+  "metrics": {
+    "loss": 0.6207341187915136,
+    "tracking_loss": 0.5947101461852706,
+    "giou_loss": 0.15768770284430925,
+    "l1_loss": 0.01794423414177673,
+    "focal_loss": 0.18961357103754106,
+    "cm_loss": 0.052047943176571715,
+    "cm_weighted": 0.026023971588285857,
+    "iou": 0.8439647057960027
+  },
+  "max_abs_error": 0.0,
+  "differences": {
+    "loss": 0.0,
+    "tracking_loss": 0.0,
+    "giou_loss": 0.0,
+    "l1_loss": 0.0,
+    "focal_loss": 0.0,
+    "cm_loss": 0.0,
+    "cm_weighted": 0.0,
+    "iou": 0.0
+  },
+  "optimizer_groups": [
+    {
+      "name": "encoder_and_projection",
+      "parameters": 568
+    },
+    {
+      "name": "head",
+      "parameters": 54
+    },
+    {
+      "name": "fusion",
+      "parameters": 12
+    }
+  ],
+  "status": "passed",
+  "numerics": {
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "precision": "fp32"
+  },
+  "default_cudnn_probe_max_loss_component_difference": 0.0010173161362492245
+}

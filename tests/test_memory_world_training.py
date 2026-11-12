@@ -16,6 +16,7 @@ import yaml
 from test_memory_world import config, tiny_model, ROOT
 from lib.config.mvlm.config import load_config
 from lib.models.mvlm.joint_checkpoint import load_joint
+from lib.train.dataset.world_clips import collate_world_clips
 from lib.test.tracker.mvlm import MVLM
 from lib.test.utils import TrackerParams
 
@@ -23,7 +24,30 @@ sys.path.insert(0,str(ROOT/'tracking'))
 import train_memory_world as trainer
 
 
+class AnnotationClipFixture(torch.utils.data.Dataset):
+    def __len__(self):
+        return 512
+
+    def __getitem__(self, index):
+        return dict(images=[np.full((8, 8, 3), index % 256, dtype=np.uint8)],
+                    boxes=torch.tensor([[float(index), 1., 2., 3.]]),
+                    valid=torch.ones(1, dtype=torch.bool), visible=torch.ones(1, dtype=torch.bool),
+                    frame_ids=torch.tensor([index]), language='target')
+
+
 class TrainingIntegrationTests(unittest.TestCase):
+    def test_large_batch_worker_transfers_annotations_without_fd_exhaustion(self):
+        loader = torch.utils.data.DataLoader(AnnotationClipFixture(), batch_size=256, num_workers=1,
+            prefetch_factor=1, multiprocessing_context='spawn', collate_fn=collate_world_clips, timeout=30)
+        for batch_index, clips in enumerate(loader):
+            self.assertEqual(len(clips), 256)
+            for sample in (0, 255):
+                expected = batch_index * 256 + sample
+                self.assertEqual(clips[sample]['frame_ids'].item(), expected)
+                self.assertEqual(clips[sample]['boxes'][0, 0].item(), float(expected))
+                self.assertEqual(clips[sample]['valid'].dtype, torch.bool)
+                self.assertEqual(int(clips[sample]['images'][0][0, 0, 0]), expected % 256)
+
     def test_staged_cli_restore_and_online_reset(self):
         torch.set_num_threads(1)
         with tempfile.TemporaryDirectory() as directory:

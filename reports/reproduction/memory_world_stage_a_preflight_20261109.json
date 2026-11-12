@@ -1,0 +1,251 @@
+{
+  "date": "2026-11-09",
+  "kind": "stage_A_preflight_and_initial_formal_training_snapshot",
+  "captured_at": "2026-11-09T14:56:56.067495+00:00",
+  "regression_checks_passed": 26,
+  "physical_gpus": [
+    0,
+    1
+  ],
+  "per_gpu_clip_batch": 256,
+  "global_clip_batch": 512,
+  "planned_updates": 4000,
+  "training_complete": false,
+  "benchmark_accuracy_measured": false,
+  "train_videos": 43259,
+  "val_videos": 4807,
+  "baseline_sha256": "91c31230f3d355f71104df8191e386632a39ce9d3bbc1f7ce5bf3772b369cc4f",
+  "manifest_sha256": "fb9dd296c54d620075cbe7aa6813f6d931502263f6e109f60515d2ccdd27b0f9",
+  "source_sha256": {
+    "lib/models/mvlm/world_state.py": "68f3a3f1f65aedcc9814e91c0c87450faf96e1e09a529ebf317d2d1e05ef3411",
+    "lib/models/mvlm/future_fusion.py": "83442593d15d66a199ebb1301ba54f7e9440ff13353b4fda6c77759652be6b8d",
+    "lib/models/mvlm/joint_checkpoint.py": "c71ce0fe23c3c157ce2b6ab1e95dbfd02d3a4349c53116e5b027d7a1cba0b8dc",
+    "lib/models/mvlm/quality_head.py": "ba46c61c3cc6d2fa3b585bde8a9732b353967408ec64acc5cdd54094972105d9",
+    "lib/models/mvlm/memory_reader.py": "f02e461ff9bef1aec88324a5278b16afacf69293d212541314e46735066baa77",
+    "lib/models/mvlm/memory.py": "0a56ce3d650910aa69a33b00761d843715523a2611446dece6879f0bc136145c",
+    "lib/models/mvlm/world_model.py": "406bc284359dc60bcd721c56165278c7b484179175f02b65601bdccef6a4ea3c",
+    "lib/models/mvlm/encoder.py": "6bf8901e6263bb4b41b4c2d089c9f9e23e19c320f049c3f9f404b94288e3b0df",
+    "lib/models/mvlm/fastitpn.py": "b14110e39bf30d513996920ed001a0b121528104843d925f5a5529b43145b40d",
+    "lib/models/mvlm/head.py": "97d93a875a78a2e6030eedc4c82d4a5657ccff3b8ef3f2fc635ffb1438632d50",
+    "lib/models/mvlm/temporal_core.py": "52f196dfd5cfe523ed314a9f2372b24d0968ae3ca0f0ca669f400a54c8b9a050",
+    "lib/models/mvlm/mvlm.py": "70a5a383a350e5111842c9432133e953655cb26da5cc797079f89f4131ee5cf0",
+    "lib/models/mvlm/__init__.py": "755cb0b86c549292b94705c6d468c22e401301faf08729753f62bcb61eebc961",
+    "lib/models/mvlm/language/clip.py": "3a9e96e1862f9fcb1eb2eace2a78159d9b5d610f8a1d79b1ad699054cea28f5b",
+    "lib/train/actors/memory_world.py": "220e3e340d4e7432d3ca52fceb91dfb202bc169c90f45a9dafde4b264857156a",
+    "lib/train/dataset/world_clips.py": "aa2c7bc8aaad69bd71700fb7a2fb4ef1ccad6cff083a9df7d9c2f5d99985935e",
+    "lib/test/tracker/mvlm.py": "4634ca427647e98984f3bf2da450d593857b76946df73efc4a872603793437dc",
+    "lib/test/tracker/utils.py": "11ec01712ca733fff9359cd60426b8323c55bd388f211ac777a75fe84151c587",
+    "lib/config/mvlm/config.py": "81a7028f826a4d940811f6333be0e8a98c45eedb91f8bd9ac805e9721e5e624b",
+    "tracking/train_memory_world.py": "f5b222619fcc0b7aca379c2bcc432cb8c3fad2777877fac0c55cd0c11d0a1853",
+    "tracking/world_monitor.py": "7d33f6c6776c079c01d51e493ffe1c0686a7f0bb1cbe0c4c36ee8e346023de8e",
+    "tracking/world_distributed.py": "544d8c3aabaaaba86b84f97ca2caddcebccda6237807f3ddddc5288b9651c5dc"
+  },
+  "resource_sweep": [
+    {
+      "per_gpu_clip_batch": 16,
+      "peak_allocated_mib": 1905.35498046875,
+      "peak_reserved_mib": 1980.0,
+      "mean_actor_seconds": 2.0850649648346007,
+      "clips_per_second": 7.673621815073379,
+      "input_frames_per_second": 92.08346178088055,
+      "observed_encoder_batch_sizes": [
+        16
+      ]
+    },
+    {
+      "per_gpu_clip_batch": 32,
+      "peak_allocated_mib": 2404.5283203125,
+      "peak_reserved_mib": 2578.0,
+      "mean_actor_seconds": 3.9588513649068773,
+      "clips_per_second": 8.08315267495594,
+      "input_frames_per_second": 96.99783209947128,
+      "observed_encoder_batch_sizes": [
+        32
+      ]
+    },
+    {
+      "per_gpu_clip_batch": 64,
+      "peak_allocated_mib": 3518.77392578125,
+      "peak_reserved_mib": 3700.0,
+      "mean_actor_seconds": 7.61133430688642,
+      "clips_per_second": 8.408512544521328,
+      "input_frames_per_second": 100.90215053425592,
+      "observed_encoder_batch_sizes": [
+        64
+      ]
+    },
+    {
+      "per_gpu_clip_batch": 128,
+      "peak_allocated_mib": 5756.7578125,
+      "peak_reserved_mib": 6390.0,
+      "mean_actor_seconds": 14.857020517112687,
+      "clips_per_second": 8.615455558708181,
+      "input_frames_per_second": 103.38546670449817,
+      "observed_encoder_batch_sizes": [
+        128
+      ]
+    },
+    {
+      "per_gpu_clip_batch": 256,
+      "peak_allocated_mib": 10241.59423828125,
+      "peak_reserved_mib": 11030.0,
+      "mean_actor_seconds": 29.12471889797598,
+      "clips_per_second": 8.789784406049346,
+      "input_frames_per_second": 105.47741287259217,
+      "observed_encoder_batch_sizes": [
+        256
+      ]
+    },
+    {
+      "per_gpu_clip_batch": 384,
+      "peak_allocated_mib": 14725.58984375,
+      "peak_reserved_mib": 16378.0,
+      "mean_actor_seconds": 44.415353862103075,
+      "clips_per_second": 8.645658913181459,
+      "input_frames_per_second": 103.74790695817751,
+      "observed_encoder_batch_sizes": [
+        384
+      ]
+    }
+  ],
+  "gpu_smoke": [
+    {
+      "rank": 0,
+      "device": "cuda:0",
+      "step": 2,
+      "trainable_sha256": "0a79fd13b7ade51f21f7966229e232a35963b197807b860e86d43eb4f91ebfed",
+      "trainable_updated": true,
+      "frozen_parameters_unchanged": true
+    },
+    {
+      "rank": 1,
+      "device": "cuda:1",
+      "step": 2,
+      "trainable_sha256": "0a79fd13b7ade51f21f7966229e232a35963b197807b860e86d43eb4f91ebfed",
+      "trainable_updated": true,
+      "frozen_parameters_unchanged": true
+    }
+  ],
+  "formal_training_snapshot": {
+    "status": "running",
+    "completed_optimizer_steps": 5,
+    "pid": 897039,
+    "updated_at": "2026-11-09T14:56:33.757859+00:00",
+    "loss": 0.43281055888237663,
+    "elapsed_seconds": 422.00843273615465,
+    "seconds_per_step": 57.02292695711367,
+    "learning_rate": 9.999961446907354e-05,
+    "global_batch_size": 512,
+    "peak_allocated_mib": 10270.74365234375,
+    "peak_reserved_mib": 11564.0
+  },
+  "formal_gpu_snapshot": [
+    {
+      "index": 0.0,
+      "memory_used_mib": 11985.0,
+      "memory_free_mib": 12140.0,
+      "gpu_utilization_percent": 13.0,
+      "power_watts": 243.39
+    },
+    {
+      "index": 1.0,
+      "memory_used_mib": 11985.0,
+      "memory_free_mib": 12140.0,
+      "gpu_utilization_percent": 0.0,
+      "power_watts": 176.23
+    }
+  ],
+  "formal_output": "/root/MVLM/output/memory_world_stage_a_2gpu_20261109_run02",
+  "status_file": "/root/MVLM/output/memory_world_stage_a_2gpu_20261109_run02/training_status.json",
+  "limitations": [
+    "Resource sweep uses preloaded real clips and a single measured batch per size",
+    "Formal training is ongoing; snapshot is not completion or accuracy evidence",
+    "First full-data attempt stopped before its first update because of descriptor exhaustion; fixed before run02"
+  ],
+  "initial_formal_updates": [
+    {
+      "step": 1,
+      "split": "train",
+      "skipped_clips": 0,
+      "world_size": 2,
+      "global_batch_size": 512,
+      "supervised_frames": 4014,
+      "predictions": 4096,
+      "active": 4045,
+      "memory_writes": 6004,
+      "loss": 0.6186443269252777,
+      "appearance_cosine_error": 0.22344557067296278,
+      "motion_error": 0.028019917062143403,
+      "predicted_history_probability": 0.0,
+      "quality_loss": 0.7350158300968958,
+      "seconds_per_step": 204.48162547498941,
+      "gradient_norm": 2.771038770675659,
+      "learning_rate": 9.999998457874392e-05,
+      "peak_allocated_mib": 10248.40576171875,
+      "peak_reserved_mib": 11542.0
+    },
+    {
+      "step": 2,
+      "split": "train",
+      "skipped_clips": 0,
+      "world_size": 2,
+      "global_batch_size": 512,
+      "supervised_frames": 4014,
+      "predictions": 4096,
+      "active": 4053,
+      "memory_writes": 6031,
+      "loss": 0.48860870320284966,
+      "appearance_cosine_error": 0.21446329173167844,
+      "motion_error": 0.02519748534829377,
+      "predicted_history_probability": 0.0005,
+      "quality_loss": 0.49278946496170567,
+      "seconds_per_step": 50.677255558082834,
+      "gradient_norm": 1.3728752136230469,
+      "learning_rate": 9.999993831498517e-05,
+      "peak_allocated_mib": 10270.556640625,
+      "peak_reserved_mib": 11564.0
+    },
+    {
+      "step": 3,
+      "split": "train",
+      "skipped_clips": 0,
+      "world_size": 2,
+      "global_batch_size": 512,
+      "supervised_frames": 3967,
+      "predictions": 4096,
+      "active": 4016,
+      "memory_writes": 5976,
+      "loss": 0.4347151152607413,
+      "appearance_cosine_error": 0.20738214411427344,
+      "motion_error": 0.022027135003969377,
+      "predicted_history_probability": 0.0010000000000000002,
+      "quality_loss": 0.40928380412788146,
+      "seconds_per_step": 67.94792940607294,
+      "gradient_norm": 0.4018584191799164,
+      "learning_rate": 9.999986120875233e-05,
+      "peak_allocated_mib": 10270.74365234375,
+      "peak_reserved_mib": 11564.0
+    },
+    {
+      "step": 4,
+      "split": "train",
+      "skipped_clips": 0,
+      "world_size": 2,
+      "global_batch_size": 512,
+      "supervised_frames": 3997,
+      "predictions": 4096,
+      "active": 4048,
+      "memory_writes": 5989,
+      "loss": 0.43351497980007564,
+      "appearance_cosine_error": 0.20863319617895404,
+      "motion_error": 0.023807150361206286,
+      "predicted_history_probability": 0.0015,
+      "quality_loss": 0.397666298321552,
+      "seconds_per_step": 41.878695339895785,
+      "gradient_norm": 0.16335204243659973,
+      "learning_rate": 9.999975326009292e-05,
+      "peak_allocated_mib": 10270.74365234375,
+      "peak_reserved_mib": 11564.0
+    }
+  ]
+}

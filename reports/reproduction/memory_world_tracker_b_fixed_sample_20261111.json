@@ -1,0 +1,90 @@
+{
+  "protocol": "independent_fixed_two_training_clips; frozen_BN_statistics; no_formal_weight_reuse",
+  "status": "completed",
+  "training_clips": [
+    "vasttrack/Spanish Dancer-33",
+    "vasttrack/Camel-4"
+  ],
+  "evaluation_at_steps": [
+    {
+      "step": 0,
+      "supervised_frames": 16,
+      "predictions": 16,
+      "active": 16,
+      "memory_writes": 16,
+      "cm_valid_frames": 16,
+      "loss": 0.1288439929485321,
+      "tracking_loss": 0.1115823807194829,
+      "giou_loss": 0.03861472010612488,
+      "l1_loss": 0.002555662300437689,
+      "focal_loss": 0.021574629266979173,
+      "cm_loss": 0.034523229114711285,
+      "cm_weighted": 0.017261614557355642,
+      "iou": 0.9616202786564827
+    },
+    {
+      "step": 5,
+      "supervised_frames": 16,
+      "predictions": 16,
+      "active": 16,
+      "memory_writes": 19,
+      "cm_valid_frames": 16,
+      "loss": 0.08604163862764835,
+      "tracking_loss": 0.0716771176084876,
+      "giou_loss": 0.02763020247220993,
+      "l1_loss": 0.0018263906240463257,
+      "focal_loss": 0.007284760107722832,
+      "cm_loss": 0.028729043900966644,
+      "cm_weighted": 0.014364521950483322,
+      "iou": 0.9724670201539993
+    },
+    {
+      "step": 10,
+      "supervised_frames": 16,
+      "predictions": 16,
+      "active": 16,
+      "memory_writes": 19,
+      "cm_valid_frames": 16,
+      "loss": 0.06869504973292351,
+      "tracking_loss": 0.05513801192864776,
+      "giou_loss": 0.020413365215063095,
+      "l1_loss": 0.0013201083056628704,
+      "focal_loss": 0.007710741163464263,
+      "cm_loss": 0.02711407491005957,
+      "cm_weighted": 0.013557037455029786,
+      "iou": 0.979669488966465
+    },
+    {
+      "step": 15,
+      "supervised_frames": 16,
+      "predictions": 16,
+      "active": 16,
+      "memory_writes": 19,
+      "cm_valid_frames": 16,
+      "loss": 0.14425788214430213,
+      "tracking_loss": 0.1296519753523171,
+      "giou_loss": 0.017063334584236145,
+      "l1_loss": 0.0010900141205638647,
+      "focal_loss": 0.09007524008848122,
+      "cm_loss": 0.029211815213784575,
+      "cm_weighted": 0.014605907606892288,
+      "iou": 0.9829850420355797
+    },
+    {
+      "step": 20,
+      "supervised_frames": 16,
+      "predictions": 16,
+      "active": 16,
+      "memory_writes": 19,
+      "cm_valid_frames": 16,
+      "loss": 0.06698556896299124,
+      "tracking_loss": 0.05484138894826174,
+      "giou_loss": 0.016394637525081635,
+      "l1_loss": 0.0010993757750838995,
+      "focal_loss": 0.01655523447698215,
+      "cm_loss": 0.024288359796628356,
+      "cm_weighted": 0.012144179898314178,
+      "iou": 0.9836263284087181
+    }
+  ]
+}

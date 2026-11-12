@@ -1,12 +1,16 @@
 # 记忆库与世界模型联合版本：训练方案和参数
 
-更新日期：2026-11-08。适用分支：`codex/memory-world`，首版实现提交：`076e29c`。
+更新日期：2026-11-11。适用分支：`codex/memory-world`，首版实现提交：`076e29c`。
 
 导航：[分支总览](../../BRANCH_MEMORY_WORLD.md) · [架构与实现说明](MEMORY_WORLD_IMPLEMENTATION.md) · [实验索引](README.md)。
 
-本文对应当前代码和 YAML 的实际行为。默认方案为交叉注意力融合，按 **A：预测学习 → B：跟踪适配 → C：联合微调** 执行。A、B 是得到可在线评测模型的基本流程，C 用于进一步实验；是否采用 C 的结果由同一留出集的完整视频在线评测决定。
+当前实验按 **A：预测学习 → B：完整跟踪器适配** 执行，使用交叉注意力融合。2026-11-11 新 B 解冻视觉编码器、CLIP 输出投影、CENTER 和融合层，冻结 CLIP 本体及 A 的读取/预测/质量模块；恢复定位损失 + 0.5 CM。新入口是 `tracking/train_memory_world_tracker_b.py`，配置为 `mvlm_TF_memory_world_tracker_b_2gpu.yaml`，详细命令、短测与实际监控见[完整跟踪器 B 记录](MEMORY_WORLD_TRACKER_B_20261111.md)。下文原始 A/B/C 的适配层方案保留为开发与对照说明，不能替代当前 B 的配置。
 
-当前只完成了代码与预检验证，尚未进行正式训练。下面的 4000 步等数值是开发起点，不能当作已经验证的最优参数或精度结论。本文仅说明运行方式，不启动训练。
+2026-11-09 已启动两卡 A 阶段实验准备与正式运行流程，使用新增的 `mvlm_TF_memory_world_stage_a_2gpu.yaml`：每卡256、全局512、真正批量编码和预测，详见[本次训练记录](MEMORY_WORLD_STAGE_A_20261109.md)。完成状态以其中列出的运行状态文件为准，尚无联合模型精度结论。
+
+2026-11-11 保持 A 在 GPU0、1 运行，固定 A/3000 作为 B 的父权重。旧的仅融合 B 已保存第500步并结束，训练范围审计见[旧 B 审计](MEMORY_WORLD_STAGE_B_SCOPE_AUDIT_20261111.md)；新 B 仍为 GPU2、3、每卡40、全局80，按帧反向传播以释放计算图。新 B 独立记录 W&B，只上传已授权的数值指标、超参数和显卡资源。
+
+下文的 batch2、保存间隔200等为原始开发配置的默认值；两卡 A 为每卡256、每50步保存，新 B 为每卡40、每25步保存并验证固定96片段，启动时增加第0步验证。配置分别保留，不能混作同一训练预算。本文中的命令是手动运行说明。
 
 ## 运行顺序与路径约定
 
@@ -20,17 +24,17 @@
 
 从 `/root/MVLM/models/MVLM_TF.pth.tar` 初始化完整 MVLM 基线，而不是从头训练编码器，也不是直接拼接两个独立分支已经训练的权重。
 
-视觉编码器 FastITPN-B 和文本编码器 CLIP ViT-L/14 在 A/B/C 中都冻结。默认交叉注意力配置中的原 CENTER 头也全程冻结。训练的重点是记忆读取器、世界模型、候选质量头和融合适配层。
+原适配层 A/B/C 配置冻结视觉编码器和 CLIP，默认交叉注意力配置也冻结 CENTER。**当前完整跟踪器 B 不受此冻结约束**：它的独立模型子类显式训练 FastITPN、CLIP 输出投影、CENTER 与融合层，绕开原 `configure_world_stage/train` 的冻结行为；不修改运行中的 A。
 
 记忆库本身是每个视频片段的运行时状态，没有需要优化的“库参数”。需要学习的是如何检索记忆、利用记忆预测未来、把预测融入当前观测。写入库的是定位后提取的原始视觉 ROI，预测生成的特征不会写回库。
 
 | 阶段 | 更新的模块 | 主要冻结模块 | 新增模块初始学习率 | 默认更新步数 |
 |---|---|---|---|---|
 | A：预测学习 | 记忆读取器、世界模型、候选质量头 | 编码器、CENTER、融合层 | `1e-4` | 4000 |
-| B：跟踪适配 | 融合适配层 | 编码器、CENTER、记忆读取器、世界模型、质量头 | `1e-4` | 4000 |
+| B：当前完整跟踪器适配 | 编码器、语言投影、CENTER、融合层 | CLIP本体、记忆读取器、世界模型、质量头 | 编码/投影`1e-5`；头`5e-5`；融合`1e-4` | 上限4000 |
 | C：联合微调 | 记忆读取器、世界模型、质量头、融合层 | 编码器、CENTER | `1e-5` | 4000 |
 
-B 阶段即使冻结 CENTER，跟踪损失仍可通过 CENTER 反向传到融合层。C 阶段不是解冻整网训练。
+旧的仅融合 B 即使冻结 CENTER，跟踪损失仍可通过 CENTER 反向传到融合层；当前 B 同时更新 CENTER。表中 C 为原开发配置，不是已确定的当前 B 后续方案。
 
 ## 2. 数据划分与片段采样
 
@@ -107,10 +111,12 @@ L_A = 1.0 × L_app + 1.0 × L_motion + 0.5 × L_quality
 ### B：跟踪监督
 
 ```text
-L_B = L_track = 2.0 × L_GIoU + 5.0 × L1 + 1.0 × L_focal
+L_track = 2.0 × L_GIoU + 5.0 × L1 + 1.0 × L_focal
+L_B_current = L_track + 0.5 × L_CM
+L_B_legacy_adapter = L_track
 ```
 
-用当前有效 GT 监督融合后的定位输出，使适配层学会何时、在何处、以多大强度使用预测信息。B 不继续优化未来外观、运动或质量头。
+当前 B 用定位与 CM 损失更新编码器、语言投影、CENTER 和融合层。B 不继续优化未来外观、运动或质量头；当前 GT 仅用于监督，不用于裁剪和观测写回。
 
 ### C：联合监督
 
@@ -120,7 +126,7 @@ L_C = L_track + L_app + L_motion + 0.5 × L_quality
 
 各项按有效监督条件启用，片段中的有效帧损失平均后反向传播。`MODEL.WORLD.QUALITY_WEIGHT=0.25` 是推理候选重排强度，与训练质量损失权重 `TRAIN.WORLD.QUALITY_LOSS_WEIGHT=0.5` 是不同参数。
 
-## 5. 当前默认参数
+## 5. 原开发配置参数（当前 B 覆盖值见顶部专用记录）
 
 ### 优化与训练预算
 
@@ -142,7 +148,7 @@ L_C = L_track + L_app + L_motion + 0.5 × L_quality
 | DataLoader workers | 每进程 `2` |
 | 训练随机种子 | `20261108`；数据划分种子独立，为 `20261022` |
 | BN 运行统计 | 固定；默认头冻结，concat 更新头时其 BN 仿射参数可训练 |
-| 数值精度 | 当前入口使用常规 FP32，没有 AMP 或梯度累积开关 |
+| 数值精度 | 视觉编码器与新增模块 FP32，冻结 CLIP 沿用库加载精度；无 AMP 或梯度累积开关 |
 
 这里按更新步数训练。`TRAIN.EPOCH`、`DATA.TRAIN.SAMPLE_PER_EPOCH`、`DATA.MAX_SAMPLE_INTERVAL`、`TEST.EPOCH` 等沿用字段不控制本入口的更新预算或片段间隔；应修改 `TRAIN.WORLD.MAX_STEPS` 和 `TRAIN.WORLD.MAX_STRIDE`。
 
@@ -157,6 +163,7 @@ L_C = L_track + L_app + L_motion + 0.5 × L_quality
 | 预测历史比例及过渡长度 | `TRAIN.WORLD.PREDICTED_HISTORY_PROB`、`HISTORY_RAMP_STEPS` |
 | 外观、运动、特征回归、质量损失权重 | `TRAIN.WORLD.APPEARANCE_WEIGHT`、`MOTION_WEIGHT`、`FEATURE_WEIGHT`、`QUALITY_LOSS_WEIGHT` |
 | 结构与融合模式 | `MODEL.MEMORY`、`MODEL.WORLD`、`MODEL.FUSION` |
+| A阶段实际批量编码与预测 | `TRAIN.WORLD.BATCHED_ENCODER`；默认false，本次两卡配置true |
 | 固定验证片段数 | `--validation-clips`（默认 32，属于命令行参数） |
 | 数据留出比例与划分种子 | 划分工具的 `--val-fraction`、`--seed` |
 
@@ -196,7 +203,7 @@ L_C = L_track + L_app + L_motion + 0.5 × L_quality
   --device cuda:0
 ```
 
-### B：从 A 的检查点训练融合层
+### B：原适配层对照命令（当前 B 请使用专用记录中的新入口）
 
 ```bash
 /root/miniconda3/envs/mvlm/bin/python /root/MVLM/tracking/train_memory_world.py \
@@ -261,11 +268,13 @@ B 是首个适合完整视频在线跟踪评测的阶段。A 检查点用于后�
   --device cuda
 ```
 
-默认 2 卡的全局 batch 为 4 个片段，固定 4000 步会比单卡看到更多采样片段，不能直接当作相同训练预算。多卡 GPU/NCCL 尚未验证；已有双进程 CPU/Gloo 一致性检查通过。
+上面的开发配置在2卡时全局 batch 为4个片段，固定4000步会比单卡看到更多采样片段，不能直接当作相同训练预算。2026-11-09 已通过真实两卡GPU/NCCL、每卡256的短测和参数一致性检查；正式大 batch 配置与运行状态见[两卡训练记录](MEMORY_WORLD_STAGE_A_20261109.md)。
 
 ### 监控与产物
 
 默认写本地日志；可在训练命令追加 `--wandb-project mvlm-memory-world --wandb-name memory-world-A` 启用已登录账号的 W&B。B、C 使用不同运行名。仅设置配置里的 `WANDB` 字段不会启用此训练入口的上传。
+
+2026-11-09的两卡A阶段已接入 [W&B实时监控](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/ngk6l0q4)。这次使用 `tracking/monitor_memory_world_wandb.py` 在独立进程读取训练/验证日志及监督程序的GPU资源记录，补传前序历史并持续同步，没有重启训练。训练指标按 `train/step` 显示，GPU指标按训练启动后的秒数显示；不要把 W&B 内部 `_step` 当作优化器更新数。具体指标、连接核验及恢复同步命令见[两卡训练记录](MEMORY_WORLD_STAGE_A_20261109.md#wb-实时监控)。
 
 - `metrics.jsonl`：训练损失、监督帧数、有效预测数、记忆写入数等。
 - `training_status.json`：当前阶段状态和已完成更新数。

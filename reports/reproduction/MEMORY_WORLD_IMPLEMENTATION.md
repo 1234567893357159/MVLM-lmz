@@ -1,8 +1,8 @@
 # 内容记忆与世界模型联合实现
 
-更新日期：2026-11-08。分支 `codex/memory-world`，基于复现分支 `ef589b4`，首版代码为 `076e29c`。
+更新日期：2026-11-09。分支 `codex/memory-world`，基于复现分支 `ef589b4`，首版代码为 `076e29c`。
 这是开题报告图3-2的首版实现，复用 `codex/world-model@98a0094` 与
-`codex/xmem-concat-center@c71ac15` 的相关模块。尚未进行正式训练或精度评测。
+`codex/xmem-concat-center@c71ac15` 的相关模块。2026-11-09已启动[两卡A阶段运行流程](MEMORY_WORLD_STAGE_A_20261109.md)，尚无完整训练与精度结论。
 
 导航：[分支总览](../../BRANCH_MEMORY_WORLD.md) · [训练方案、参数与完整命令](MEMORY_WORLD_TRAINING.md) · [实验索引](README.md)。
 
@@ -31,7 +31,7 @@ flowchart TD
   W --> A[第t帧目标ROI表征与位置先验]
   W --> Q[候选网格质量先验]
   C[当前搜索裁剪几何] --> Q
-  I[第t帧图像] --> E[冻结MVLM编码器]
+  I[第t帧图像] --> E[MVLM视觉编码器]
   E --> F[对齐/一致性门控/融合]
   A --> F
   F --> H[CENTER候选框]
@@ -79,9 +79,10 @@ flowchart TD
 
 - A：冻结视觉/文本/CENTER，训练记忆读取、世界模型与质量头；未来特征和运动使用时序框标注监督。
   旁路未来表征注入和候选质量重排；允许显式teacher forcing，但写入只发生在该帧预测之后，验证始终使用预测历史。
-- B：世界模型及其记忆读取冻结，训练融合适配层。交叉注意力默认保持原CENTER冻结；
+- B（原开发配置）：世界模型及其记忆读取冻结，训练融合适配层。交叉注意力默认保持原CENTER冻结；
   concat配置训练扩展CENTER，BN运行统计固定，BN仿射参数随头更新。
 - C：从B/C权重加载，小学习率联合微调新增模块，保留预测与跟踪监督；默认编码器与CENTER继续冻结。
+- B（2026-11-11 当前实验）：专用 `TrackerStageB` 子类训练视觉编码器、CLIP 输出投影、CENTER 和融合，CLIP 本体与 A 模块冻结；使用定位 + CM 损失、按帧反向传播，详见[完整跟踪器 B 记录](MEMORY_WORLD_TRACKER_B_20261111.md)。旧入口的 B 冻结策略保持不变。
 - 仅记忆：B阶段从同一基线开始，训练读出/融合，仍使用统一在线展开。
 - 仅CENTER：`mvlm_TF_head_only_stage_b`从同一基线开始，旁路预测注入和质量重排，仅更新CENTER；BN统计固定。
 
@@ -157,3 +158,5 @@ MVLM_DEVICE=cpu OMP_NUM_THREADS=1 /root/miniconda3/envs/mvlm/bin/python -m unitt
 新增模块梯度及编码器冻结；结果见[memory_world_preflight_20261108.json](memory_world_preflight_20261108.json)。
 可重复运行`tracking/check_memory_world.py --baseline models/MVLM_TF.pth.tar`。
 双进程CPU/Gloo检查覆盖A/B/C及一侧无监督样本的副本一致性；多卡GPU/NCCL与长视频吞吐量尚未验证。
+
+2026-11-09更新：新增A阶段`BATCHED_ENCODER`路径，批量执行同一时刻的编码、记忆读取、世界预测、质量头和候选评分，独立维护各视频状态。26项回归检查及真实两卡GPU/NCCL短测通过；完整大batch参数、显存扫描与运行边界见[训练记录](MEMORY_WORLD_STAGE_A_20261109.md)。上一段为11月8日的历史预检范围。

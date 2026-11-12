@@ -58,6 +58,11 @@ class WorldMonitor:
         seconds = now - self.last_tick
         self.last_tick = now
         self.step = row['step']
+        row.update(seconds_per_step=seconds, gradient_norm=float(grad_norm),
+                   learning_rate=optimizer.param_groups[0]['lr'])
+        if torch.device(self.device).type == 'cuda':
+            row.update(peak_allocated_mib=torch.cuda.max_memory_allocated(self.device) / 1024 ** 2,
+                       peak_reserved_mib=torch.cuda.max_memory_reserved(self.device) / 1024 ** 2)
         metrics = {'train/' + k: v for k, v in row.items() if isinstance(v, (int, float))}
         metrics.update({'train/seconds_per_step': seconds,
                         'train/gradient_norm': float(grad_norm),
@@ -66,7 +71,11 @@ class WorldMonitor:
             metrics['train/peak_memory_mib'] = torch.cuda.max_memory_allocated(self.device) / 1024 ** 2
         if self.run:
             self.run.log(metrics)
-        self.status('running', loss=row.get('loss'), elapsed_seconds=now - self.started)
+        self.status('running', loss=row.get('loss'), elapsed_seconds=now - self.started,
+                    seconds_per_step=seconds, learning_rate=row['learning_rate'],
+                    global_batch_size=row.get('global_batch_size'),
+                    peak_allocated_mib=row.get('peak_allocated_mib'),
+                    peak_reserved_mib=row.get('peak_reserved_mib'))
 
     def validation(self, row):
         if self.run:

@@ -18,7 +18,7 @@ from lib.models.mvlm.mvlm import build_mvlm
 from lib.models.mvlm.memory import TargetMemoryBank
 from lib.models.mvlm.memory_reader import MemoryReader
 from lib.models.mvlm.world_state import crop_to_image, image_to_crop
-from lib.models.mvlm.temporal_core import TemporalState, predict_prior, locate, observe, select_candidates
+from lib.models.mvlm.temporal_core import TemporalState, predict_prior, locate, observe, select_candidates, select_stage_a_batch
 from lib.models.mvlm.joint_checkpoint import load_baseline, load_joint, joint_spec
 from lib.train.actors.memory_world import MemoryWorldActor, candidate_iou_targets
 from lib.test.tracker.utils import Preprocessor
@@ -110,6 +110,70 @@ class MemoryWorldTests(unittest.TestCase):
         two = load_config(ROOT / 'experiments/mvlm/mvlm_TF.yaml')
         self.assertTrue(one.MODEL.MEMORY.ENABLED)
         self.assertFalse(two.MODEL.MEMORY.ENABLED or two.MODEL.WORLD.ENABLED)
+
+    def test_stage_a_batched_encoding_preserves_independent_supervision(self):
+        cfg = config()
+        first, second = clip(), clip()
+        second['images'] = [np.flip(image, axis=1).copy() for image in second['images']]
+        second['boxes'] = torch.tensor([[8., 12., 16., 20.]] * 6)
+        second['frame_ids'] = torch.arange(6) * 3
+        second['valid'][4] = False
+        second['visible'][4] = False
+        serial = tiny_model(cfg)
+        serial.configure_world_stage('A')
+        batched_cfg = copy.deepcopy(cfg)
+        batched_cfg.TRAIN.WORLD.BATCHED_ENCODER = True
+        batched = tiny_model(batched_cfg)
+        batched.load_state_dict(serial.state_dict())
+        batched.configure_world_stage('A')
+        with mock.patch.object(serial, 'forward_encoder', wraps=serial.forward_encoder) as encoded:
+            loss, metrics = MemoryWorldActor(serial, cfg, 'A')([first, second])
+            self.assertEqual(encoded.call_count, 12)
+            self.assertTrue(all(call.args[1][0].shape[0] == 1 for call in encoded.call_args_list))
+        loss.backward()
+        with mock.patch.object(batched, 'forward_encoder', wraps=batched.forward_encoder) as encoded:
+            batch_loss, batch_metrics = MemoryWorldActor(batched, batched_cfg, 'A')([first, second])
+            self.assertEqual(encoded.call_count, 6)
+            self.assertTrue(all(call.args[1][0].shape[0] == 2 for call in encoded.call_args_list))
+        batch_loss.backward()
+        torch.testing.assert_close(batch_loss, loss, rtol=1e-5, atol=1e-6)
+        for key in ('supervised_frames', 'predictions', 'active', 'memory_writes'):
+            self.assertEqual(batch_metrics[key], metrics[key])
+        for (name, parameter), (other_name, other) in zip(serial.named_parameters(), batched.named_parameters()):
+            self.assertEqual(name, other_name)
+            if parameter.grad is not None:
+                torch.testing.assert_close(parameter.grad, other.grad, rtol=1e-4, atol=5e-6)
+            else:
+                self.assertIsNone(other.grad)
+
+    def test_batch_preprocessing_matches_individual_images(self):
+        images = clip()['images'][:2]
+        processor = Preprocessor('cpu')
+        torch.testing.assert_close(processor.process_batch(images),
+                                   torch.cat([processor.process(image) for image in images]), rtol=0, atol=0)
+
+    def test_batched_candidate_rule_matches_independent_fallbacks(self):
+        cfg = config()
+        model = tiny_model(cfg)
+        model.configure_world_stage('A')
+        with torch.no_grad():
+            language = model.forward_textencoder(['first', 'second'])
+            raw = model.forward_encoder([], [torch.randn(2, 3, 64, 64)], language)['feat_x']
+            output = dict(model.forward_head(raw), feat_x=raw)
+        states = [TemporalState(cfg), TemporalState(cfg)]
+        states[1].kmem = torch.randn(16)
+        for window in (False, True):
+            cfg.TEST.WINDOW = window
+            for threshold in (-2., .1, 2.):
+                cfg.TEST.MVLM.TAU = threshold
+                for outside in (0., .3, 1.):
+                    cfg.TEST.MVLM.PSI_OUT = outside
+                    batch = select_stage_a_batch(model, output, language, states, cfg)
+                    for index in range(2):
+                        one = select_candidates(model, {key: value[index:index + 1] for key, value in output.items()},
+                                                language[index:index + 1], states[index].kmem, cfg)
+                        for key in one:
+                            torch.testing.assert_close(batch[index][key], one[key], rtol=1e-5, atol=1e-6)
 
     def test_baseline_initialization_and_empty_forecast_equivalence(self):
         baseline = tiny_model(config(False, False)).eval()

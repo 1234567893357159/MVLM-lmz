@@ -1,13 +1,21 @@
 # 训练、评测和数据文档索引
 
-## 当前联合开发分支（2026-11-08）
+2026-11-12 更新：A、B 均已完成 4000 步，B 使用 A 第 3000 步初始化；三组模型的完整视频测试正在进行。[训练过程与测试结果总记录](MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md)汇总了实际参数、数据划分、验证结果和 OTB 测试快照；实时进度以测试输出中的 `status.json` 为准。下方 2026-11-11 文字保留为当时的历史状态。
 
-`codex/memory-world` 已完成内容记忆与世界模型联合实现及 CPU 预检，尚未正式训练或评测联合模型精度。
+## 当前联合开发分支（2026-11-11）
+
+`codex/memory-world` 已完成联合实现、批量训练改造及两卡GPU/NCCL短测，已启动A阶段正式运行流程，尚无联合模型精度结论。
+
+2026-11-11：A 在 GPU0、1 继续运行。旧仅融合 B 已保存第500步并停止；新完整跟踪器 B 从 A/3000 初始化，使用 GPU2、3、每卡40、全局80，训练视觉编码器、语言投影、CENTER 与融合层，恢复定位 + CM 损失。两卡 FP32 短测已通过，当前记录和监控见[完整跟踪器 B](MEMORY_WORLD_TRACKER_B_20261111.md)。
 
 - [分支说明](../../BRANCH_MEMORY_WORLD.md)：分支范围、默认流程、完成状态与维护约定。
 - [联合实现说明](MEMORY_WORLD_IMPLEMENTATION.md)：开题架构对应、数据流、模块接口和验证边界。
 - [训练指南](MEMORY_WORLD_TRAINING.md)：数据划分、损失与参数、A/B/C 命令、断点恢复、多卡及评测。
 - [CPU 预检记录](memory_world_preflight_20261108.json)：22 项回归检查、实际骨干接口与双进程检查。
+- [两卡A阶段训练记录](MEMORY_WORLD_STAGE_A_20261109.md)：26项回归检查、batch扫描、真实GPU短测、正式配置和实时状态入口。
+- [B阶段并行训练方案与记录](MEMORY_WORLD_STAGE_B_PLAN_20261111.md)：固定A/3000父权重、B批量计算、batch80、监控与运行入口。
+- [B阶段两卡预检证据](memory_world_stage_b_preflight_20261111.json)：真实更新、GIoU/L1/Focal、冻结检查、副本一致性与父权重签名。
+- [完整跟踪器 B 重新试训](MEMORY_WORLD_TRACKER_B_20261111.md)：当前训练范围、batch80、逐帧反向、约22GB显存与正式验证观察。
 
 下方三数据集和 VastTrack-only 成绩均为此前基线实验，不代表本联合模型的结果。
 

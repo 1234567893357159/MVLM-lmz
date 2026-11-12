@@ -1,0 +1,171 @@
+{
+  "recorded_at": "2026-11-11T12:00:54.740713+00:00",
+  "scope": "B preflight only; formal B freshly initializes from A/3000",
+  "world_size": 2,
+  "physical_gpus": [
+    2,
+    3
+  ],
+  "global_batch_size": 80,
+  "per_gpu_batch_size": 40,
+  "preflight_parent_step": 2950,
+  "formal_parent": {
+    "path": "/root/MVLM/output/memory_world_stage_a_2gpu_20261109_run02/step_003000.pth.tar",
+    "step": 3000,
+    "stage": "A",
+    "sha256": "1809a2591f5b119cd221628eac9ffa510d7fc26a6a014d7edbdbce0901f81b16",
+    "validation_loss": 0.3931843121349812,
+    "manifest_sha256": "fb9dd296c54d620075cbe7aa6813f6d931502263f6e109f60515d2ccdd27b0f9",
+    "baseline_sha256": "91c31230f3d355f71104df8191e386632a39ce9d3bbc1f7ce5bf3772b369cc4f",
+    "data_signature": "fbdc0ed99e51736712586bb77cced062483716a1a6f705e08ffce9e3e339e2e0",
+    "A_continues": true,
+    "preflight": "/root/MVLM/output/memory_world_stage_b_smoke_2gpu_b80_20261111_run02"
+  },
+  "trainable_parameters": 657921,
+  "batch_execution": "independent-stage-b-batched",
+  "optimizer_updates": [
+    {
+      "step": 1,
+      "split": "train",
+      "skipped_clips": 0,
+      "world_size": 2,
+      "global_batch_size": 80,
+      "supervised_frames": 618,
+      "predictions": 640,
+      "active": 557,
+      "memory_writes": 716,
+      "loss": 0.8802174450317247,
+      "predicted_history_probability": 1.0,
+      "giou_loss": 0.24311110820970874,
+      "l1_loss": 0.024087080653624242,
+      "focal_loss": 0.27355987683590255,
+      "seconds_per_step": 106.32179289194755,
+      "gradient_norm": 0.010479659773409367,
+      "learning_rate": 5e-05,
+      "peak_allocated_mib": 3040.958984375,
+      "peak_reserved_mib": 3348.0
+    },
+    {
+      "step": 2,
+      "split": "train",
+      "skipped_clips": 0,
+      "world_size": 2,
+      "global_batch_size": 80,
+      "supervised_frames": 609,
+      "predictions": 640,
+      "active": 524,
+      "memory_writes": 618,
+      "loss": 0.9381666045470778,
+      "predicted_history_probability": 1.0,
+      "giou_loss": 0.25954479576135897,
+      "l1_loss": 0.025803300822750102,
+      "focal_loss": 0.2900604735837085,
+      "seconds_per_step": 8.690908225020394,
+      "gradient_norm": 0.013273120857775211,
+      "learning_rate": 0.0,
+      "peak_allocated_mib": 3046.998046875,
+      "peak_reserved_mib": 3352.0
+    }
+  ],
+  "validation": [
+    {
+      "step": 1,
+      "split": "fixed_validation_clips",
+      "loss": 0.6514201949943196,
+      "clips": 6,
+      "usable_clips": 6
+    },
+    {
+      "step": 2,
+      "split": "fixed_validation_clips",
+      "loss": 0.6493314775553617,
+      "clips": 6,
+      "usable_clips": 6
+    }
+  ],
+  "replicas_identical": true,
+  "trainable_updated": true,
+  "frozen_parameters_unchanged": true,
+  "source_hashes": {
+    "lib/models/mvlm/world_state.py": "68f3a3f1f65aedcc9814e91c0c87450faf96e1e09a529ebf317d2d1e05ef3411",
+    "lib/models/mvlm/future_fusion.py": "83442593d15d66a199ebb1301ba54f7e9440ff13353b4fda6c77759652be6b8d",
+    "lib/models/mvlm/joint_checkpoint.py": "c71ce0fe23c3c157ce2b6ab1e95dbfd02d3a4349c53116e5b027d7a1cba0b8dc",
+    "lib/models/mvlm/quality_head.py": "ba46c61c3cc6d2fa3b585bde8a9732b353967408ec64acc5cdd54094972105d9",
+    "lib/models/mvlm/memory_reader.py": "f02e461ff9bef1aec88324a5278b16afacf69293d212541314e46735066baa77",
+    "lib/models/mvlm/memory.py": "0a56ce3d650910aa69a33b00761d843715523a2611446dece6879f0bc136145c",
+    "lib/models/mvlm/world_model.py": "406bc284359dc60bcd721c56165278c7b484179175f02b65601bdccef6a4ea3c",
+    "lib/models/mvlm/encoder.py": "6bf8901e6263bb4b41b4c2d089c9f9e23e19c320f049c3f9f404b94288e3b0df",
+    "lib/models/mvlm/fastitpn.py": "b14110e39bf30d513996920ed001a0b121528104843d925f5a5529b43145b40d",
+    "lib/models/mvlm/head.py": "97d93a875a78a2e6030eedc4c82d4a5657ccff3b8ef3f2fc635ffb1438632d50",
+    "lib/models/mvlm/temporal_core.py": "52f196dfd5cfe523ed314a9f2372b24d0968ae3ca0f0ca669f400a54c8b9a050",
+    "lib/models/mvlm/mvlm.py": "70a5a383a350e5111842c9432133e953655cb26da5cc797079f89f4131ee5cf0",
+    "lib/models/mvlm/__init__.py": "755cb0b86c549292b94705c6d468c22e401301faf08729753f62bcb61eebc961",
+    "lib/models/mvlm/language/clip.py": "3a9e96e1862f9fcb1eb2eace2a78159d9b5d610f8a1d79b1ad699054cea28f5b",
+    "lib/train/actors/memory_world.py": "220e3e340d4e7432d3ca52fceb91dfb202bc169c90f45a9dafde4b264857156a",
+    "lib/train/dataset/world_clips.py": "aa2c7bc8aaad69bd71700fb7a2fb4ef1ccad6cff083a9df7d9c2f5d99985935e",
+    "lib/test/tracker/mvlm.py": "4634ca427647e98984f3bf2da450d593857b76946df73efc4a872603793437dc",
+    "lib/test/tracker/utils.py": "11ec01712ca733fff9359cd60426b8323c55bd388f211ac777a75fe84151c587",
+    "lib/config/mvlm/config.py": "81a7028f826a4d940811f6333be0e8a98c45eedb91f8bd9ac805e9721e5e624b",
+    "tracking/train_memory_world.py": "f5b222619fcc0b7aca379c2bcc432cb8c3fad2777877fac0c55cd0c11d0a1853",
+    "tracking/world_monitor.py": "7d33f6c6776c079c01d51e493ffe1c0686a7f0bb1cbe0c4c36ee8e346023de8e",
+    "tracking/world_distributed.py": "544d8c3aabaaaba86b84f97ca2caddcebccda6237807f3ddddc5288b9651c5dc",
+    "tracking/train_memory_world_stage_b.py": "f9751f5f55dec27fd41176fd2bc99eb244e7bc1c8774f4854108169f4141a832",
+    "tracking/memory_world_stage_b_actor.py": "316e0b3f8c0d5948406dc7b5c373f6fe31cf01be13b3c2dbab5b7cf65e3a481c",
+    "tracking/world_manifest_fast.py": "5606ac47632886f3c21d67dbde043891ee8c73a2b02f11d4185c5c40d206707d"
+  },
+  "max_sampled_system_gpu_memory_mib": {
+    "2": 3783.0,
+    "3": 3785.0
+  },
+  "real_encoder_batch_check": {
+    "text_max_abs_difference": 0.008129119873046875,
+    "raw_max_abs_difference": 0.028232574462890625,
+    "raw_mean_abs_difference": 0.00018963748880196363,
+    "raw_rms": 0.8237370848655701,
+    "score_max_abs_difference": 0.0006488263607025146,
+    "first_frame_top_grid_individual": [
+      105,
+      120
+    ],
+    "first_frame_top_grid_batched": [
+      105,
+      120
+    ],
+    "raw_same_text_max_abs_difference": 0.01941394805908203,
+    "raw_same_text_mean_abs_difference": 0.0001467096881242469
+  },
+  "cpu_checks_passed": [
+    "B batched/serial loss and gradients",
+    "fast/standard audit equivalence for all three sources",
+    "image alias leakage rejection",
+    "existing staged training and restoration",
+    "existing multiworker packed clip transfer"
+  ],
+  "formal_online_verification": {
+    "verified_at": "2026-11-11T12:08:13.913983+00:00",
+    "url": "https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/ylxp2wpf",
+    "state": "running",
+    "config": {
+      "stage": "B",
+      "global_batch_size": 80,
+      "per_gpu_batch_size": 40,
+      "world_size": 2,
+      "parent_checkpoint_step": 3000,
+      "batch_execution": "independent-stage-b-batched"
+    },
+    "summary": {
+      "train/step": 6,
+      "train/loss": 0.6700949038615067,
+      "train/giou_loss": 0.1913122112671154,
+      "train/l1_loss": 0.014220721187869136,
+      "train/focal_loss": 0.21636686108465228,
+      "train/gradient_norm": 0.007576548494398594,
+      "train/global_batch_size": 80,
+      "completed_optimizer_steps": 6,
+      "last_synced_train_step": 6,
+      "training_status": "running",
+      "gpu/2/memory_used_mib": 3715,
+      "gpu/3/memory_used_mib": 3715
+    }
+  }
+}

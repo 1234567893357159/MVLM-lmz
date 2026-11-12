@@ -1,0 +1,158 @@
+{
+  "timestamp_utc": "2026-11-12T04:20:18.725669+00:00",
+  "protocol": "fixed 96 clips; 731 visible/valid frames after warmup; final selected full-image boxes; not full video evaluation",
+  "training_steps": 4000,
+  "results": [
+    {
+      "label": "initial_A3000",
+      "frames": 731,
+      "iou": 0.7185714308904003,
+      "success": 0.786593707250342,
+      "loss": 1.3221502736104387
+    },
+    {
+      "label": "B25",
+      "frames": 731,
+      "iou": 0.688391183014372,
+      "success": 0.7606019151846786,
+      "loss": 1.4496326864676456
+    },
+    {
+      "label": "B25_parent_BN",
+      "frames": 731,
+      "iou": 0.707155777441253,
+      "success": 0.7934336525307798,
+      "loss": 1.2270780071584868
+    },
+    {
+      "label": "B1025",
+      "frames": 731,
+      "iou": 0.7390848873961571,
+      "success": 0.8084815321477428,
+      "loss": 1.020467649885265
+    },
+    {
+      "label": "B3925",
+      "frames": 731,
+      "iou": 0.722812824712827,
+      "success": 0.7893296853625171,
+      "loss": 1.1129195512215186
+    },
+    {
+      "label": "B1025_parent_BN",
+      "frames": 731,
+      "iou": 0.7305912329747587,
+      "success": 0.8235294117647058,
+      "loss": 1.0198508621242208
+    },
+    {
+      "label": "B3925_parent_BN",
+      "frames": 731,
+      "iou": 0.7293008847194253,
+      "success": 0.8194254445964432,
+      "loss": 1.140875828862603
+    },
+    {
+      "label": "B1025_without_temporal_injection_or_quality",
+      "frames": 731,
+      "iou": 0.7331148637086359,
+      "success": 0.8030095759233926,
+      "loss": 1.0146544152683719
+    },
+    {
+      "label": "B3925_without_temporal_injection_or_quality",
+      "frames": 731,
+      "iou": 0.7218551513751407,
+      "success": 0.786593707250342,
+      "loss": 1.1005125509408515
+    },
+    {
+      "label": "B4000",
+      "frames": 731,
+      "iou": 0.7277883686825072,
+      "success": 0.8043775649794802,
+      "loss": 1.055783006968506
+    },
+    {
+      "label": "B4000_without_temporal_injection_or_quality",
+      "frames": 731,
+      "iou": 0.7264503536996814,
+      "success": 0.8002735978112175,
+      "loss": 1.0502360528017478
+    },
+    {
+      "label": "B4000_parent_BN",
+      "frames": 731,
+      "iou": 0.7366060005160947,
+      "success": 0.8317373461012312,
+      "loss": 1.1027655622953276
+    }
+  ],
+  "paired_bootstrap": [
+    {
+      "a": "B1025",
+      "b": "initial_A3000",
+      "delta": 0.02051345650575688,
+      "bootstrap_95": [
+        -0.018174619289673986,
+        0.06363353191930973
+      ]
+    },
+    {
+      "a": "B4000",
+      "b": "initial_A3000",
+      "delta": 0.00921693779210715,
+      "bootstrap_95": [
+        -0.020670087048623515,
+        0.03902293818672664
+      ]
+    },
+    {
+      "a": "B4000",
+      "b": "B1025",
+      "delta": -0.01129651871364973,
+      "bootstrap_95": [
+        -0.049417007091300376,
+        0.02322618653584274
+      ]
+    },
+    {
+      "a": "B25_parent_BN",
+      "b": "B25",
+      "delta": 0.018764594426881036,
+      "bootstrap_95": [
+        -0.0034532164764563052,
+        0.04560965835164476
+      ]
+    },
+    {
+      "a": "B4000_parent_BN",
+      "b": "B4000",
+      "delta": 0.008817631833587277,
+      "bootstrap_95": [
+        -0.016327673374209272,
+        0.04077230013151998
+      ]
+    },
+    {
+      "a": "B1025",
+      "b": "B1025_without_temporal_injection_or_quality",
+      "delta": 0.00597002368752147,
+      "bootstrap_95": [
+        -0.010303664439244043,
+        0.01831211009899859
+      ]
+    },
+    {
+      "a": "B4000",
+      "b": "B4000_without_temporal_injection_or_quality",
+      "delta": 0.0013380149828243668,
+      "bootstrap_95": [
+        -0.005203866535019134,
+        0.007843441466570364
+      ]
+    }
+  ],
+  "bootstrap_note": "Resamples clips; exploratory only; clips may share videos.",
+  "training_audit": "two replicas identical, trainable modules updated, frozen parameters unchanged"
+}
