@@ -1,8 +1,8 @@
 # MVLM 复现工作区
 
-本仓库保留官方 MVLM 的 Git 历史，保存环境适配、训练与评测工具、实验配置和结果证据。当前分支 `codex/mvlm-reproduction` 的完整导航见[实验与文档索引](reports/reproduction/README.md)。
+本仓库保留官方 MVLM 的 Git 历史，保存环境适配、训练与评测工具、实验配置和结果证据。历史 `codex/mvlm-reproduction` 分支的实验导航见[实验与文档索引](reports/reproduction/README.md)。
 
-2026-11-03 更新：三数据集训练已完成60轮，并分两阶段续训至80轮（100,000次更新）。LaSOT/VastTrack/TNL2K 按1:1:1抽样，GPU4、5每卡batch40、全局80；当前GPU6、7逐轮评测E71～E80。详见[训练与监控记录](reports/reproduction/PAPER_CONTINUATION_TRAINING_20261103.md)、[评测进度快照](reports/reproduction/PAPER_CONTINUATION_TESTS_20261103.md)及[新W&B运行](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/jrhbvcza)。E61～E70完整评测中，E66三集平均AUC最高（58.381）；[分析报告](reports/reproduction/PAPER_CONTINUATION_ANALYSIS_20261103.md)记录了小幅续训收益和测试集选择的限制。在线W&B曾中断，训练完成情况以本地日志和检查点核验为准。
+2026-11-03 更新：三数据集训练已完成60轮，并分两阶段续训至80轮（100,000次更新）。LaSOT/VastTrack/TNL2K 按1:1:1抽样，GPU4、5每卡batch40、全局80；当时 GPU6、7 正在逐轮评测 E71～E80（历史快照）。详见[训练与监控记录](reports/reproduction/PAPER_CONTINUATION_TRAINING_20261103.md)、[评测进度快照](reports/reproduction/PAPER_CONTINUATION_TESTS_20261103.md)及[新W&B运行](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/jrhbvcza)。E61～E70完整评测中，E66三集平均AUC最高（58.381）；[分析报告](reports/reproduction/PAPER_CONTINUATION_ANALYSIS_20261103.md)记录了小幅续训收益和测试集选择的限制。在线W&B曾中断，训练完成情况以本地日志和检查点核验为准。
 
 ## 此前实验：VastTrack-only
 
@@ -39,4 +39,4 @@
 
 本机根目录 `/root/MVLM`，Python 环境 `/root/miniconda3/envs/mvlm/bin/python`。换机器时先调整 `lib/local_config.py` 中的数据和输出路径，准备预训练权重及检查点。依赖见 `requirements.txt`、`requirements-wandb.txt`。
 
-原始运行配置与状态保留当时绝对路径；可复用评测配置与验证入口引用仓库内版本化清单，清单哈希保持不变。LaSOT、TNL2K 的训练数据仍在独立下载任务中，具体状态须读取实时记录；归档清单只表示采集时的快照。
+原始运行配置与状态保留当时绝对路径；可复用评测配置与验证入口引用仓库内版本化清单，清单哈希保持不变。历史下载任务的状态以实时记录为准；归档清单只表示采集时的快照。当前联合实验的数据划分见[训练与结果记录](reports/reproduction/MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md)。

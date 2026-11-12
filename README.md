@@ -11,11 +11,13 @@
 ## 记忆与世界模型联合开发分支
 
 `codex/memory-world` 实现开题报告中的内容记忆条件预测、未来表征融合与候选质量先验。
-2026-11-09 已完成批量训练改造、26项回归检查和两卡GPU/NCCL短测，并启动两卡A阶段正式运行流程；实际进度见[训练记录](reports/reproduction/MEMORY_WORLD_STAGE_A_20261109.md)。尚无联合模型精度结论。
+截至 2026-11-12，A、B 均完成 4000 步，B 从 A/3000 初始化；C 尚未训练。基线、B1025、B4000 的同协议完整视频评测尚未全部完成，已完成的 OTB 结果及状态入口见[训练与结果记录](reports/reproduction/MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md)。
 
 | 阅读内容 | 入口 |
 |---|---|
 | 当前分支范围、默认流程与完成状态 | [联合分支说明](BRANCH_MEMORY_WORLD.md) |
+| 实际训练、结果及评测状态入口 | [训练与结果记录](reports/reproduction/MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md) |
+| SSH 跳板及代理转发 | [连接说明](SSH_DESKTOP_PROXY.md) |
 | 架构图、模块接口与实现边界 | [联合实现说明](reports/reproduction/MEMORY_WORLD_IMPLEMENTATION.md) |
 | 数据准备、训练参数、A/B/C 命令、续训和评测 | [训练指南](reports/reproduction/MEMORY_WORLD_TRAINING.md) |
 | 两卡大batch的参数、显存、验证与实际进度入口 | [A阶段运行记录](reports/reproduction/MEMORY_WORLD_STAGE_A_20261109.md) |

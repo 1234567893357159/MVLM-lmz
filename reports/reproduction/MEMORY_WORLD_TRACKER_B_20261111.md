@@ -96,7 +96,7 @@ CM 使用 FastITPN 输出的 `tae`，语言77个 token 与视觉196个 token 的
 - 输出：`/root/MVLM/output/memory_world_tracker_b_2gpu_b80_20261111_run01`。
 - 控制与日志：`/root/MVLM/output/memory_world_tracker_b_setup_20261111/formal_run01`。
 - 状态：输出中的 `training_status.json`；训练数值 `metrics.jsonl`；验证 `validation_*.json`；控制目录的 `gpu_resources.jsonl`、`supervisor_status.json` 和 `train.log`。
-- W&B：[当前完整跟踪器 B](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/zovlqxy8)。北京时间11月12日12:20远端API显示只收到第100步、状态为crashed；这是代理断开与积压日志补传超时导致的监控状态，不是训练进程状态。本地 `metrics.jsonl` 完整至4000步，W&B原补传进程仍在重试；单独建立精简恢复曲线时初始化也因网络超时失败。仅授权上传数值指标、超参数和GPU资源，不上传代码、图片、数据或权重。[本地完整曲线](memory_world_tracker_b_20261111/observed_curves.png)不依赖云端。
+- W&B（2026-11-12 12:20 快照）：[当前完整跟踪器 B](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/zovlqxy8)。北京时间11月12日12:20远端API显示只收到第100步、状态为crashed；这是代理断开与积压日志补传超时导致的监控状态，不是训练进程状态。本地 `metrics.jsonl` 完整至4000步，W&B原补传进程仍在重试；单独建立精简恢复曲线时初始化也因网络超时失败。仅授权上传数值指标、超参数和GPU资源，不上传代码、图片、数据或权重。[本地完整曲线](memory_world_tracker_b_20261111/observed_curves.png)不依赖云端。
 
 正式第0步固定96片段：91个片段有有效监督，共700帧；总loss1.322150、定位项1.123143、GIoU0.306135、L1为0.031632、Focal0.352712、CM0.398015（加权0.199007）、IoU0.764546。该定位损失也说明旧仅融合 B 的约1.12～1.16平台接近未适配的初始化水平。后续按相同固定片段比较，不与新旧总loss直接混用。
 
@@ -105,6 +105,8 @@ CM 使用 FastITPN 输出的 `tae`，语言77个 token 与视觉196个 token 的
 判断正常训练时同时看：loss 分项有限、四个训练模块梯度有效、监督帧数稳定、固定验证定位损失下降与 IoU 提升。新增 CM 后的总损失不能直接与旧 B 无 CM 的总损失比较，更不能要求等于原复现随机定位头的初始 loss。训练已经从训练好的权重开始，单步片段难度波动是预期现象。
 
 如果训练下降而验证变差，优先检查 BN 统计、自由运行裁剪覆盖率、编码表征变化与冻结世界模型的不匹配；如果所有梯度或参数变化为零，先检查冻结与 no_grad；如果数值发散，检查目标尺度、loss 分项和梯度，再用独立实验调整学习率。最终是否提升跟踪精度仍以相同视频的完整在线 AUC/PRE/NPR 为准。
+
+2026-11-12 后续：已创建 [W&B 恢复运行](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/wiy4jneg)，本地指标排队补传；上传请求仍出现超时，尚未核实远端收到完整曲线。原运行及本地记录保留。W&B 客户端还会尝试上传运行日志、依赖列表等自动生成文件；未主动上传代码、数据、图片或权重。
 
 ## 2026-11-12 复查：早期波动与训练后效果
 

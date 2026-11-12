@@ -1,8 +1,7 @@
 # 内容记忆与世界模型联合实现
 
 更新日期：2026-11-09。分支 `codex/memory-world`，基于复现分支 `ef589b4`，首版代码为 `076e29c`。
-这是开题报告图3-2的首版实现，复用 `codex/world-model@98a0094` 与
-`codex/xmem-concat-center@c71ac15` 的相关模块。2026-11-09已启动[两卡A阶段运行流程](MEMORY_WORLD_STAGE_A_20261109.md)，尚无完整训练与精度结论。
+项目记录将本实现对应开题报告图3-2，复用 `codex/world-model@98a0094` 与 `codex/xmem-concat-center@c71ac15` 的相关模块。报告正文和原图目前不在工作区，下表为已有记录的对应关系。实际训练及评测状态见[训练与结果记录](MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md)。
 
 导航：[分支总览](../../BRANCH_MEMORY_WORLD.md) · [训练方案、参数与完整命令](MEMORY_WORLD_TRAINING.md) · [实验索引](README.md)。
 

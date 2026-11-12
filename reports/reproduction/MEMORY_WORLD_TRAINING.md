@@ -6,15 +6,13 @@
 
 当前实验按 **A：预测学习 → B：完整跟踪器适配** 执行，使用交叉注意力融合。2026-11-11 新 B 解冻视觉编码器、CLIP 输出投影、CENTER 和融合层，冻结 CLIP 本体及 A 的读取/预测/质量模块；恢复定位损失 + 0.5 CM。新入口是 `tracking/train_memory_world_tracker_b.py`，配置为 `mvlm_TF_memory_world_tracker_b_2gpu.yaml`，详细命令、短测与实际监控见[完整跟踪器 B 记录](MEMORY_WORLD_TRACKER_B_20261111.md)。下文原始 A/B/C 的适配层方案保留为开发与对照说明，不能替代当前 B 的配置。
 
-2026-11-09 已启动两卡 A 阶段实验准备与正式运行流程，使用新增的 `mvlm_TF_memory_world_stage_a_2gpu.yaml`：每卡256、全局512、真正批量编码和预测，详见[本次训练记录](MEMORY_WORLD_STAGE_A_20261109.md)。完成状态以其中列出的运行状态文件为准，尚无联合模型精度结论。
-
-2026-11-11 保持 A 在 GPU0、1 运行，固定 A/3000 作为 B 的父权重。旧的仅融合 B 已保存第500步并结束，训练范围审计见[旧 B 审计](MEMORY_WORLD_STAGE_B_SCOPE_AUDIT_20261111.md)；新 B 仍为 GPU2、3、每卡40、全局80，按帧反向传播以释放计算图。新 B 独立记录 W&B，只上传已授权的数值指标、超参数和显卡资源。
+截至 2026-11-12，A、B 均已完成 4000 步，本次 B 使用 A/3000 初始化。旧仅融合 B 已停止，保留第500步作为历史对照。C 尚未训练；下文 C 是旧开发配置，只供参考，不能直接接入当前完整跟踪器 B。实际训练和评测快照见[训练与结果记录](MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md)。
 
 下文的 batch2、保存间隔200等为原始开发配置的默认值；两卡 A 为每卡256、每50步保存，新 B 为每卡40、每25步保存并验证固定96片段，启动时增加第0步验证。配置分别保留，不能混作同一训练预算。本文中的命令是手动运行说明。
 
 ## 运行顺序与路径约定
 
-先准备固定清单，再执行 A → B，对 B 做完整视频在线评测，之后决定是否投入 C 或其他消融。联合训练使用 `tracking/train_memory_world.py`，本指南的参数对应这一入口。
+先准备固定清单，再执行 A → B，对 B 做完整视频在线评测，之后决定是否投入 C 或其他消融。原开发配置使用 `tracking/train_memory_world.py`；当前完整跟踪器 B 使用顶部列出的专用入口。
 
 命令使用当前服务器的绝对路径：仓库 `/root/MVLM`，解释器 `/root/miniconda3/envs/mvlm/bin/python`。换机器时需替换这些路径，并按根目录 README 安装依赖；基线权重、数据和 CLIP 缓存需要单独准备，不随 GitHub 仓库提供。
 
@@ -217,7 +215,7 @@ L_C = L_track + L_app + L_motion + 0.5 × L_quality
 
 B 是首个适合完整视频在线跟踪评测的阶段。A 检查点用于后续训练，不用于联合模型在线精度结论。
 
-### C：从 B 的检查点小学习率联合微调
+### C：原开发配置示例（尚未适配当前完整跟踪器 B）
 
 ```bash
 /root/miniconda3/envs/mvlm/bin/python /root/MVLM/tracking/train_memory_world.py \
