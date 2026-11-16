@@ -91,12 +91,15 @@ class MonitorChecks(unittest.TestCase):
                    committed=3, pending=1, rejected=2, attempt=1, lr_used=1e-4, lr=5e-5, gradient_norm=4.)
         results = [dict(diagnostics=dict(score=.9, short_size=3, long_size=1, used_global_search=False,
                                         write=dict(reasons=['low_score']),
-                                        fusion=dict(raw_ratio=.2, clipped_fraction=.1)))]
+                                        fusion=dict(raw_ratio=.2, clipped_fraction=.1,
+                                                    readout_ratio=.3, gate=.4, memory_fraction=1.)))]
         payload = monitoring_metrics(row, results, seconds=2., batch=1)
         self.assertEqual(payload['train/loss'], 2.)
         self.assertEqual(payload['memory/commit_rate'], .5)
         self.assertEqual(payload['memory/rank0/reasons/low_score'], 1)
         self.assertEqual(payload['fusion/rank0/raw_ratio_mean'], .2)
+        self.assertEqual(payload['fusion/rank0/readout_ratio_mean'], .3)
+        self.assertEqual(payload['fusion/rank0/gate_mean'], .4)
 
 
 if __name__ == '__main__':

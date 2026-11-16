@@ -35,7 +35,7 @@ def monitoring_metrics(row, results, seconds, batch):
         values = [float(item[key]) for item in diagnostics if item.get(key) is not None]
         if values:
             payload['memory/rank0/' + key + '_mean'] = sum(values)/len(values)
-    for key in ('raw_ratio', 'clipped_fraction'):
+    for key in ('raw_ratio', 'clipped_fraction', 'readout_ratio', 'gate', 'memory_fraction'):
         values = [item['fusion'][key] for item in diagnostics if key in item.get('fusion', {})]
         if values:
             payload['fusion/rank0/' + key + '_mean'] = sum(values)/len(values)

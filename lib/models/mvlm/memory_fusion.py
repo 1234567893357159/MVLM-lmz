@@ -6,11 +6,17 @@ from torch import nn
 class MemoryFusion(nn.Module):
     def __init__(self, channels, hidden_dim=256, key_dim=128, roi_size=2,
                  use_semantic=True, short_decay=0.1, long_decay=0.01,
-                 bounded=False, max_residual_ratio=0.25, eps=1e-6):
+                 bounded=False, max_residual_ratio=0.25, eps=1e-6, fusion_mode='residual'):
         super().__init__()
+        if fusion_mode not in ('residual', 'concat'):
+            raise ValueError('Unknown memory fusion mode: ' + str(fusion_mode))
+        if fusion_mode == 'concat' and bounded:
+            raise ValueError('Bounded residual fusion cannot be applied to direct concatenation')
         if max_residual_ratio < 0 or eps <= 0:
             raise ValueError('Invalid residual limit')
         self.bounded = bounded
+        self.fusion_mode = fusion_mode
+        self.zero_memory_input = False  # Evaluation intervention; never checkpointed.
         self.max_residual_ratio = max_residual_ratio
         self.eps = eps
         self.last_diagnostics = {}
@@ -27,9 +33,10 @@ class MemoryFusion(nn.Module):
         self.roi_position = nn.Parameter(torch.zeros(roi_size * roi_size, hidden_dim))
         self.stream_gate = nn.Linear(hidden_dim * 2, 1)
         self.output_gate = nn.Linear(hidden_dim * 2, 1)
-        self.output_proj = nn.Linear(hidden_dim, channels)
-        nn.init.zeros_(self.output_proj.weight)
-        nn.init.zeros_(self.output_proj.bias)
+        if fusion_mode == 'residual':
+            self.output_proj = nn.Linear(hidden_dim, channels)
+            nn.init.zeros_(self.output_proj.weight)
+            nn.init.zeros_(self.output_proj.bias)
 
     def _semantic(self, visual, language):
         language = language.expand_as(visual)
@@ -63,6 +70,18 @@ class MemoryFusion(nn.Module):
             retrieved = appearance
         gate = torch.sigmoid(self.output_gate(torch.cat((visual, retrieved), -1)))
         has_memory = valid.any(-1).view(-1, 1, 1)
+        if self.fusion_mode == 'concat':
+            readout = gate * retrieved * has_memory.to(features.dtype)
+            if self.zero_memory_input:
+                readout = torch.zeros_like(readout)
+            if not bool(torch.isfinite(features).all()) or not bool(torch.isfinite(readout).all()):
+                raise ValueError('Nonfinite memory features/readout')
+            self.last_diagnostics = dict(
+                readout_ratio=float((readout.float().norm(dim=-1) /
+                                     features.float().norm(dim=-1).clamp_min(self.eps)).mean().detach()),
+                gate=float((gate * has_memory.to(gate.dtype)).mean().detach()),
+                memory_fraction=float(has_memory.float().mean().detach()))
+            return torch.cat((features, readout), dim=-1), gate * has_memory.to(features.dtype)
         delta = self.output_proj(gate * retrieved) * has_memory.to(features.dtype)
         if self.bounded:
             if not bool(torch.isfinite(features).all()) or not bool(torch.isfinite(delta).all()):

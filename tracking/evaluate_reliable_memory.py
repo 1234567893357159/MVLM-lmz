@@ -54,7 +54,9 @@ def main():
     parser.add_argument('--max-frames', type=int, default=0)
     parser.add_argument('--allow-untrained-memory', action='store_true', help='Engineering only')
     parser.add_argument('--baseline', action='store_true', help='Disable content memory with these weights')
-    parser.add_argument('--group', default='M6', choices=['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6'])
+    parser.add_argument('--zero-memory-input', action='store_true',
+                        help='Keep trained concat CENTER and zero its memory input for an ablation')
+    parser.add_argument('--group', default='M6', choices=['M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'])
     parser.add_argument('--resume', action='store_true')
     args = parser.parse_args()
     if min(args.max_sequences, args.max_frames) < 0:
@@ -65,6 +67,8 @@ def main():
         parser.error('Require the strict-language config')
     if args.baseline:
         cfg.MODEL.MEMORY.ENABLED = False
+    if args.zero_memory_input and (not cfg.MODEL.MEMORY.ENABLED or cfg.MODEL.MEMORY.FUSION_MODE != 'concat'):
+        parser.error('--zero-memory-input requires the concat memory group and no --baseline')
     device = torch.device(args.device)
     if device.type == 'cuda':
         torch.cuda.set_device(device)
@@ -82,7 +86,8 @@ def main():
                     protocol=args.protocol, max_sequences=args.max_sequences, max_frames=args.max_frames,
                     allow_untrained_memory=args.allow_untrained_memory,
                     engineering_only=bool(args.max_sequences or args.max_frames or args.allow_untrained_memory),
-                    baseline=args.baseline, group=args.group, source_hashes=source_hashes(),
+                    baseline=args.baseline, zero_memory_input=args.zero_memory_input,
+                    group=args.group, source_hashes=source_hashes(),
                     metrics_protocol='strict-v1: float boxes; actual frame zero; invalid/invisible/failed frames count failure in AUC/PRE/NPR',
                     evaluation_source_sha256=sha256(__file__))
     if args.resume:
@@ -120,6 +125,8 @@ def main():
                 raise ValueError('Empty language: '+seq['name'])
         model, _, audit = build_loaded_model(cfg, args.checkpoint, device,
                                             allow_untrained=args.allow_untrained_memory)
+        if args.zero_memory_input:
+            model.memory_fusion.zero_memory_input = True
         atomic_json(output/'loading_audit.json', audit)
         rows = []
         for seq in sequences:

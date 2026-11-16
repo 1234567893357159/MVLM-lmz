@@ -47,6 +47,7 @@ cfg.MODEL.MEMORY.MIN_QUALITY = 0.5
 cfg.MODEL.MEMORY.NOVELTY_THRESHOLD = 0.1
 cfg.MODEL.MEMORY.SHORT_DECAY = 0.1
 cfg.MODEL.MEMORY.LONG_DECAY = 0.01
+cfg.MODEL.MEMORY.FUSION_MODE = 'residual'
 
 # Reliable memory is opt-in; old configs/checkpoints keep their original path.
 cfg.MODEL.MEMORY.RELIABLE_WRITE = False
@@ -234,6 +235,7 @@ def update_config_from_file(filename):
         if 'MEMORY' not in exp_config.get('MODEL', {}):
             cfg.MODEL.MEMORY.ENABLED = False
         memory_options = exp_config.get('MODEL', {}).get('MEMORY', {})
+        cfg.MODEL.MEMORY.FUSION_MODE = memory_options.get('FUSION_MODE', 'residual')
         for key in ('RELIABLE_WRITE', 'DISTRACTOR_RETENTION', 'BOUNDED_FUSION'):
             cfg.MODEL.MEMORY[key] = memory_options.get(key, False)
         cfg.TEST.RELIABLE_CORE = exp_config.get('TEST', {}).get('RELIABLE_CORE', False)

@@ -41,7 +41,8 @@ class MVLM(nn.Module):
                 memory_cfg.SHORT_DECAY, memory_cfg.LONG_DECAY,
                 bounded=getattr(memory_cfg, 'BOUNDED_FUSION', False),
                 max_residual_ratio=getattr(getattr(memory_cfg, 'FUSION', None), 'MAX_RESIDUAL_RATIO', 0.25),
-                eps=getattr(getattr(memory_cfg, 'FUSION', None), 'EPS', 1e-6))
+                eps=getattr(getattr(memory_cfg, 'FUSION', None), 'EPS', 1e-6),
+                fusion_mode=getattr(memory_cfg, 'FUSION_MODE', 'residual'))
             if memory_cfg.ROI_SIZE < 1 or memory_cfg.HIDDEN_DIM < 1 or memory_cfg.KEY_DIM < 1:
                 raise ValueError('Memory dimensions and ROI size must be positive')
             if memory_cfg.SHORT_CAPACITY < 0 or memory_cfg.LONG_CAPACITY < 0:
@@ -211,6 +212,7 @@ def load_pretrained_tracker(model, pretrained):
     for key in keys_to_remove:
         del state_dict[key]
 
+    state_dict, _ = prepare_memory_checkpoint(model, state_dict, allow_baseline=True)
     incompatible = model.load_state_dict(state_dict, strict=False)
     if model.memory_enabled:
         missing_base = [name for name in incompatible.missing_keys
@@ -219,6 +221,37 @@ def load_pretrained_tracker(model, pretrained):
             raise ValueError('Incompatible memory initialization checkpoint: missing={}, unexpected={}'.format(
                 missing_base, incompatible.unexpected_keys))
     return model
+
+
+def prepare_memory_checkpoint(model, state_dict, allow_baseline=False):
+    """Expand only official baseline CENTER weights; reject cross-architecture memory weights."""
+    state = dict(state_dict)
+    expanded = []
+    if not (model.memory_enabled and getattr(model.memory_cfg, 'FUSION_MODE', 'residual') == 'concat'):
+        return state, expanded
+    names = ('head.conv1_ctr.0.weight', 'head.conv1_offset.0.weight', 'head.conv1_size.0.weight')
+    target = model.state_dict()
+    has_memory = any(name.startswith('memory_fusion.') for name in state)
+    for name in names:
+        if name not in state:
+            continue
+        original, expected = state[name], target[name]
+        if original.shape == expected.shape:
+            continue
+        valid = (original.ndim == 4 and expected.ndim == 4 and original.shape[0] == expected.shape[0]
+                 and original.shape[2:] == expected.shape[2:]
+                 and original.shape[1] + model.memory_cfg.HIDDEN_DIM == expected.shape[1])
+        if not (allow_baseline and not has_memory and valid):
+            raise ValueError('Incompatible concat CENTER checkpoint: ' + name)
+        widened = expected.new_zeros(expected.shape)
+        widened[:, :original.shape[1]].copy_(original)
+        state[name] = widened
+        expanded.append(name)
+    if 'memory_fusion.output_proj.weight' in state:
+        raise ValueError('Residual memory weights cannot initialize concatenation')
+    if expanded and len(expanded) != len(names):
+        raise ValueError('Inconsistent concat CENTER checkpoint widths')
+    return state, expanded
 
 def build_mvlm(cfg, training=True):
     encoder = build_encoder(cfg, training=training and cfg.MODEL.PRETRAINED_MODEL is None)

@@ -37,7 +37,7 @@ def main():
     parser.add_argument('--warmup-frames', type=int)
     parser.add_argument('--engineering-subset', type=int, default=0, help='Videos/source/split; labels run as engineering only')
     parser.add_argument('--seed', type=int, default=20261116)
-    parser.add_argument('--group', choices=['M1','M2','M3','M4','M5','M6'], default='M6')
+    parser.add_argument('--group', choices=['M1','M2','M3','M4','M5','M6','M7'], default='M6')
     parser.add_argument('--resume', action='store_true')
     parser.add_argument('--stop-after', type=int, help='Checkpoint and stop at this absolute update, preserving total schedule')
     parser.add_argument('--save-every', type=int, default=1000)

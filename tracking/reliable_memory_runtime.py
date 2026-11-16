@@ -46,6 +46,7 @@ def seed_all(seed):
 
 def build_loaded_model(cfg, checkpoint, device, training=False, allow_untrained=False):
     from lib.models.mvlm import build_mvlm
+    from lib.models.mvlm.mvlm import prepare_memory_checkpoint
     if cfg.MODEL.PRETRAINED_MODEL is not None:
         raise ValueError('Set MODEL.PRETRAINED_MODEL=null and supply --checkpoint explicitly')
     if not cfg.MODEL.ENCODER.TEMPLATE_FREE or not cfg.TEST.RELIABLE_CORE:
@@ -57,6 +58,7 @@ def build_loaded_model(cfg, checkpoint, device, training=False, allow_untrained=
     state = {k: v for k, v in state.items() if not k.startswith('text_encoder.clip.')}
     if not model.memory_enabled:
         state = {k: v for k, v in state.items() if not k.startswith('memory_fusion.')}
+    state, expanded = prepare_memory_checkpoint(model, state, allow_baseline=training or allow_untrained)
     incompatible = model.load_state_dict(state, strict=False)
     missing_base = [k for k in incompatible.missing_keys if not k.startswith(('memory_fusion.', 'text_encoder.clip.'))]
     missing_memory = [k for k in incompatible.missing_keys if k.startswith('memory_fusion.')]
@@ -72,6 +74,7 @@ def build_loaded_model(cfg, checkpoint, device, training=False, allow_untrained=
         parameter.requires_grad_(training and name.startswith(('head.', 'memory_fusion.')))
     model.train(training)
     audit = dict(missing_memory=missing_memory, initialized_memory=bool(missing_memory),
+                 expanded_center_weights=expanded,
                  trainable_parameters=sum(p.numel() for p in model.parameters() if p.requires_grad),
                  trainable_groups=[name for name, p in model.named_parameters() if p.requires_grad],
                  clip_dtype=str(next(model.text_encoder.clip.parameters()).dtype))
@@ -98,12 +101,13 @@ def snapshot_sources(destination, hashes):
 
 
 def configure_group(cfg, group):
-    if group not in ('M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6'):
+    if group not in ('M0', 'M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'):
         raise ValueError('Unknown experiment group')
     cfg.MODEL.MEMORY.ENABLED = group not in ('M0', 'M1')
-    cfg.MODEL.MEMORY.RELIABLE_WRITE = group in ('M3', 'M6')
-    cfg.MODEL.MEMORY.DISTRACTOR_RETENTION = group in ('M4', 'M6')
-    cfg.MODEL.MEMORY.BOUNDED_FUSION = group in ('M5', 'M6')
+    cfg.MODEL.MEMORY.RELIABLE_WRITE = group in ('M3', 'M6', 'M7')
+    cfg.MODEL.MEMORY.DISTRACTOR_RETENTION = group in ('M4', 'M6', 'M7')
+    cfg.MODEL.MEMORY.BOUNDED_FUSION = group in ('M5', 'M7')
+    cfg.MODEL.MEMORY.FUSION_MODE = 'concat' if group == 'M6' else 'residual'
     return cfg
 
 

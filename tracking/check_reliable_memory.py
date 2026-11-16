@@ -16,7 +16,7 @@ from lib.models.mvlm.memory import TargetMemoryBank
 from lib.models.mvlm.memory_fusion import MemoryFusion
 from lib.models.mvlm.memory_policy import Observation, ReliableWritePolicy
 from lib.models.mvlm.reliable_memory import ReliableMemoryBank, ReliableEntry
-from lib.models.mvlm.mvlm import MVLM
+from lib.models.mvlm.mvlm import MVLM, prepare_memory_checkpoint
 from lib.models.mvlm.head import CenterPredictor
 from lib.models.mvlm.tracking_core import TrackingCore, prepare_crop, select_candidates
 from lib.train.actors.reliable_memory import ReliableMemoryActor, frame_loss
@@ -33,6 +33,7 @@ def config(permissive=False):
     cfg.DATA.MULTI_MODAL_VISION = False
     cfg.MODEL.MEMORY.HIDDEN_DIM = 16
     cfg.MODEL.MEMORY.KEY_DIM = 8
+    cfg.MODEL.MEMORY.FUSION_MODE = 'residual'
     cfg.TRAIN.CLIP_FRAMES = 5
     cfg.TRAIN.WARMUP_FRAMES = 1
     if permissive:
@@ -66,7 +67,10 @@ class TinyText(nn.Module):
 
 
 def tiny_model(cfg):
-    model = MVLM(TinyText(), TinyEncoder(), CenterPredictor(32, 32, 4, 16),
+    memory_channels = (cfg.MODEL.MEMORY.HIDDEN_DIM if cfg.MODEL.MEMORY.ENABLED
+                       and cfg.MODEL.MEMORY.FUSION_MODE == 'concat' else 0)
+    model = MVLM(TinyText(), TinyEncoder(), CenterPredictor(32+memory_channels, 32, 4, 16,
+                                                            memory_channels=memory_channels),
                  memory_cfg=cfg.MODEL.MEMORY)
     model.freeze_memory_backbone = model.freeze_head_bn = True
     for parameter in model.encoder.parameters():
@@ -245,7 +249,7 @@ class Checks(unittest.TestCase):
 
     def test_all_paired_group_paths(self):
         image = np.zeros((90, 170, 3), dtype=np.uint8)
-        for group in ('M1', 'M2', 'M3', 'M4', 'M5', 'M6'):
+        for group in ('M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7'):
             cfg = configure_group(config(True), group)
             model = tiny_model(cfg)
             core = TrackingCore(model, cfg, 'cpu')
@@ -260,6 +264,57 @@ class Checks(unittest.TestCase):
                 self.assertTrue(core.state.memory.entries(0))
             if group in ('M2', 'M5'):
                 self.assertIsInstance(core.state.memory, TargetMemoryBank)
+
+    def test_concat_migration_empty_bank_and_gradients(self):
+        cfg = configure_group(config(True), 'M6')
+        model = tiny_model(cfg).eval()
+        baseline_cfg = configure_group(config(True), 'M1')
+        baseline = tiny_model(baseline_cfg).eval()
+        baseline_state = baseline.state_dict()
+        migrated, expanded = prepare_memory_checkpoint(model, baseline_state, allow_baseline=True)
+        self.assertEqual(len(expanded), 3)
+        incompat = model.load_state_dict(migrated, strict=False)
+        self.assertTrue(all(k.startswith('memory_fusion.') for k in incompat.missing_keys))
+        for name in expanded:
+            self.assertTrue(torch.equal(migrated[name][:, :32], baseline_state[name]))
+            self.assertEqual(int(torch.count_nonzero(migrated[name][:, 32:])), 0)
+        with self.assertRaises(ValueError):
+            prepare_memory_checkpoint(model, baseline_state, allow_baseline=False)
+        fake_residual = dict(baseline_state, **{'memory_fusion.output_proj.weight': torch.zeros(32, 16)})
+        with self.assertRaises(ValueError):
+            prepare_memory_checkpoint(model, fake_residual, allow_baseline=True)
+        features, text = torch.randn(2, 16, 32), torch.randn(2, 3, 32)
+        bank = TargetMemoryBank(2)
+        bank.write(torch.randn(2, 4, 32), torch.tensor([[.1, .1, .3, .3]]*2), [0, 0], [1., 0.])
+        fused, _ = model.memory_fusion(features, text, bank, [1, 1])
+        self.assertEqual(tuple(fused.shape), (2, 16, 48))
+        self.assertTrue(torch.equal(fused[..., :32], features))
+        self.assertGreater(float(fused[0, :, 32:].abs().sum()), 0.)
+        self.assertEqual(float(fused[1, :, 32:].abs().sum()), 0.)
+        model.memory_fusion.zero_memory_input = True
+        suppressed, _ = model.memory_fusion(features, text, bank, [1, 1])
+        self.assertTrue(torch.equal(suppressed[..., :32], features))
+        self.assertEqual(int(torch.count_nonzero(suppressed[..., 32:])), 0)
+        model.memory_fusion.zero_memory_input = False
+        with torch.no_grad():
+            actual = model.forward_head(fused)
+            expected = baseline.forward_head(features)
+            for name in ('score_map', 'pred_boxes', 'size_map', 'offset_map'):
+                torch.testing.assert_close(actual[name], expected[name], rtol=1e-5, atol=1e-6)
+        model.zero_grad(set_to_none=True)
+        model.forward_head(fused)['score_map'].sum().backward()
+        self.assertGreater(float(model.head.conv1_ctr[0].weight.grad[:, 32:].abs().sum()), 0.)
+        # Once expanded CENTER weights become nonzero, reader receives gradients.
+        with torch.no_grad():
+            model.head.conv1_ctr[0].weight[:, 32:].fill_(.01)
+        model.zero_grad(set_to_none=True)
+        fused, _ = model.memory_fusion(features, text, bank, [1, 1])
+        model.forward_head(fused)['score_map'].sum().backward()
+        self.assertGreater(float(model.memory_fusion.value_proj.weight.grad.abs().sum()), 0.)
+        self.assertTrue(all(p.grad is None for p in model.encoder.parameters()))
+        restored, expanded = prepare_memory_checkpoint(model, model.state_dict(), allow_baseline=False)
+        self.assertEqual(expanded, [])
+        self.assertFalse(model.load_state_dict(restored, strict=True).missing_keys)
 
     def test_raw_sampling_keeps_invisible_interior(self):
         with tempfile.TemporaryDirectory() as directory:
