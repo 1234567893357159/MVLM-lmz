@@ -1,0 +1,247 @@
+{
+  "date": "2026-11-16",
+  "branch": "codex/reliable-memory",
+  "wandb_version": "0.22.3",
+  "mode": "offline",
+  "uploaded": false,
+  "unit_checks": 7,
+  "runs": {
+    "single": {
+      "output": "output/reliable_wandb_offline_smoke_20261116_run01",
+      "identity": {
+        "project": "mvlm-reliable-memory",
+        "entity": null,
+        "mode": "offline",
+        "id": "20a97180"
+      },
+      "training_status": {
+        "status": "completed",
+        "group": "M6",
+        "engineering_only": true,
+        "step": 2,
+        "audit": {
+          "rank": 0,
+          "frozen_unchanged": true,
+          "bn_unchanged": true,
+          "trainable_changed": true,
+          "trainable_sha256": "e30f161fb37ba4026f8a14939fa1ebe92608bd326d225c0c914992fb3ef6bc9f",
+          "step": 2
+        }
+      },
+      "audits": [
+        {
+          "rank": 0,
+          "frozen_unchanged": true,
+          "bn_unchanged": true,
+          "trainable_changed": true,
+          "trainable_sha256": "e30f161fb37ba4026f8a14939fa1ebe92608bd326d225c0c914992fb3ef6bc9f",
+          "step": 2
+        }
+      ],
+      "sessions": [
+        {
+          "session": "output/reliable_wandb_offline_smoke_20261116_run01/wandb_monitor/session-19b74bff1cb8481caf9d2e399dd42a0f",
+          "state": {
+            "status": "finished",
+            "id": "20a97180",
+            "url": null,
+            "last_step": 2,
+            "training_status": "completed"
+          },
+          "metrics": [
+            {
+              "kind": "metrics",
+              "step": 2,
+              "metrics": {
+                "train/loss": 0.5973819978535175,
+                "train/supervised": 8.0,
+                "train/regression": 8.0,
+                "train/outside": 0.0,
+                "train/partial": 0.0,
+                "train/background": 0.0,
+                "train/committed": 0.0,
+                "train/pending": 0.0,
+                "train/rejected": 12.0,
+                "train/attempt": 2.0,
+                "train/lr": 5e-05,
+                "train/lr_next": 0.0,
+                "train/gradient_norm": 3.9283695220947266,
+                "runtime/rank0/seconds_per_update": 2.070817522937432,
+                "runtime/rank0/clips_per_second": 0.482901071158366,
+                "memory/commit_rate": 0.0,
+                "memory/reject_rate": 1.0,
+                "memory/rank0/score_mean": 0.5689902851978937,
+                "memory/rank0/short_size_mean": 0.0,
+                "memory/rank0/long_size_mean": 0.0,
+                "memory/rank0/used_global_search_mean": 0.08333333333333333,
+                "fusion/rank0/raw_ratio_mean": 0.0,
+                "fusion/rank0/clipped_fraction_mean": 0.0,
+                "memory/rank0/reasons/score": 12.0,
+                "memory/rank0/reasons/language_margin": 1.0,
+                "gpu/rank0/allocated_mib": 1318.51416015625,
+                "gpu/rank0/peak_allocated_mib": 1335.94091796875
+              }
+            }
+          ]
+        },
+        {
+          "session": "output/reliable_wandb_offline_smoke_20261116_run01/wandb_monitor/session-4c6c6ec37b634dea8785c69294597fc6",
+          "state": {
+            "status": "finished",
+            "id": "20a97180",
+            "url": null,
+            "last_step": 1,
+            "training_status": "checkpointed"
+          },
+          "metrics": [
+            {
+              "kind": "metrics",
+              "step": 1,
+              "metrics": {
+                "train/loss": 0.1464738780632615,
+                "train/supervised": 8.0,
+                "train/regression": 8.0,
+                "train/outside": 0.0,
+                "train/partial": 0.0,
+                "train/background": 0.0,
+                "train/committed": 9.0,
+                "train/pending": 2.0,
+                "train/rejected": 1.0,
+                "train/attempt": 1.0,
+                "train/lr": 0.0001,
+                "train/lr_next": 5e-05,
+                "train/gradient_norm": 2.347479820251465,
+                "runtime/rank0/seconds_per_update": 2.029903094051406,
+                "runtime/rank0/clips_per_second": 0.4926343542854247,
+                "memory/commit_rate": 0.75,
+                "memory/reject_rate": 0.08333333333333333,
+                "memory/rank0/score_mean": 0.8979442119598389,
+                "memory/rank0/short_size_mean": 3.6666666666666665,
+                "memory/rank0/long_size_mean": 0.75,
+                "memory/rank0/used_global_search_mean": 0.08333333333333333,
+                "fusion/rank0/raw_ratio_mean": 0.0,
+                "fusion/rank0/clipped_fraction_mean": 0.0,
+                "memory/rank0/reasons/score": 1.0,
+                "memory/rank0/reasons/confirmation": 2.0,
+                "gpu/rank0/allocated_mib": 1318.51416015625,
+                "gpu/rank0/peak_allocated_mib": 1327.51416015625
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "ddp": {
+      "output": "output/reliable_wandb_ddp_smoke_20261116_run01",
+      "identity": {
+        "project": "mvlm-reliable-memory",
+        "entity": null,
+        "mode": "offline",
+        "id": "3f9a26db"
+      },
+      "training_status": {
+        "status": "completed",
+        "group": "M6",
+        "engineering_only": true,
+        "step": 1,
+        "audit": {
+          "rank": 0,
+          "frozen_unchanged": true,
+          "bn_unchanged": true,
+          "trainable_changed": true,
+          "trainable_sha256": "4445145da367e5d3e586b586b13ec421deded35b178edb3a1bb94d962217b78e",
+          "step": 1
+        }
+      },
+      "audits": [
+        {
+          "rank": 1,
+          "frozen_unchanged": true,
+          "bn_unchanged": true,
+          "trainable_changed": true,
+          "trainable_sha256": "4445145da367e5d3e586b586b13ec421deded35b178edb3a1bb94d962217b78e",
+          "step": 1
+        },
+        {
+          "rank": 0,
+          "frozen_unchanged": true,
+          "bn_unchanged": true,
+          "trainable_changed": true,
+          "trainable_sha256": "4445145da367e5d3e586b586b13ec421deded35b178edb3a1bb94d962217b78e",
+          "step": 1
+        }
+      ],
+      "sessions": [
+        {
+          "session": "output/reliable_wandb_ddp_smoke_20261116_run01/wandb_monitor/session-ebf39fa3c6b541a0bcdea7e0f5734bbc",
+          "state": {
+            "status": "finished",
+            "id": "3f9a26db",
+            "url": null,
+            "last_step": 1,
+            "training_status": "completed"
+          },
+          "metrics": [
+            {
+              "kind": "metrics",
+              "step": 1,
+              "metrics": {
+                "train/loss": 2.189360645134002,
+                "train/supervised": 16.0,
+                "train/regression": 9.0,
+                "train/outside": 0.0,
+                "train/partial": 7.0,
+                "train/background": 0.0,
+                "train/committed": 9.0,
+                "train/pending": 2.0,
+                "train/rejected": 13.0,
+                "train/attempt": 1.0,
+                "train/lr": 0.0001,
+                "train/lr_next": 0.0,
+                "train/gradient_norm": 3.5512664318084717,
+                "runtime/rank0/seconds_per_update": 2.695950028952211,
+                "runtime/rank0/clips_per_second": 0.370926756527699,
+                "memory/commit_rate": 0.375,
+                "memory/reject_rate": 0.5416666666666666,
+                "memory/rank0/score_mean": 0.8979442119598389,
+                "memory/rank0/short_size_mean": 3.6666666666666665,
+                "memory/rank0/long_size_mean": 0.75,
+                "memory/rank0/used_global_search_mean": 0.08333333333333333,
+                "fusion/rank0/raw_ratio_mean": 0.0,
+                "fusion/rank0/clipped_fraction_mean": 0.0,
+                "memory/rank0/reasons/score": 1.0,
+                "memory/rank0/reasons/confirmation": 2.0,
+                "gpu/rank0/allocated_mib": 1339.0146484375,
+                "gpu/rank0/peak_allocated_mib": 1755.77197265625
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "source_hashes": {
+    "lib/config/mvlm/config.py": "26a752dc7b775851d21787708ab69c8b015823824dccf5bce731a961a8760856",
+    "lib/models/mvlm/__init__.py": "755cb0b86c549292b94705c6d468c22e401301faf08729753f62bcb61eebc961",
+    "lib/models/mvlm/encoder.py": "6bf8901e6263bb4b41b4c2d089c9f9e23e19c320f049c3f9f404b94288e3b0df",
+    "lib/models/mvlm/fastitpn.py": "b14110e39bf30d513996920ed001a0b121528104843d925f5a5529b43145b40d",
+    "lib/models/mvlm/head.py": "4970ccfdc2dd2fd5b0c2093a300eb3914c0a7886c1509b7879b52e345146e656",
+    "lib/models/mvlm/language/clip.py": "3a9e96e1862f9fcb1eb2eace2a78159d9b5d610f8a1d79b1ad699054cea28f5b",
+    "lib/models/mvlm/memory.py": "7709b4421e723077f219c913b3e86d7da2204d2c10a682e38e9e8de9a78e8ff7",
+    "lib/models/mvlm/memory_fusion.py": "b1f2d072526eb3c32415ecbff63f4e169c2f66bbe58167f97fc068164ee35e39",
+    "lib/models/mvlm/memory_policy.py": "e0f397a8691fdb3891b5182c6b08e7ae57c6d852125268c38c717cda2a16d7d4",
+    "lib/models/mvlm/mvlm.py": "26537ae0f149b7fdbeffc090887afcbddba757d42f05743bd34f46fb150d866f",
+    "lib/models/mvlm/reliable_memory.py": "72558906c209a5b79475f7d36356dd28838338d02be43eeb37cba2cc287074a5",
+    "lib/models/mvlm/tracking_core.py": "75659cdc9e9de2358a1874f5054ecfd7652ba279865f57135b852e792f49ae83",
+    "lib/models/mvlm/tracking_ops.py": "0be2407c29d9f06721588791c07d79206b6ba6c89cdf5b9e1c51df2df27af25c",
+    "lib/test/tracker/utils.py": "fafd40e7e06bc0ead3728ec2ed24fc5c99eb0b2e35964677704827809356c69c",
+    "lib/train/actors/reliable_memory.py": "301ce6dee7d951f262b693854bfb28785e7ef49e00a728da777aafcbf7659bcf",
+    "lib/train/data/reliable_memory_dataset.py": "03c70c2b2b725da3343d7f2725eb3547e889fa7f75fa8b7f2eae2f69e4358d8a",
+    "lib/utils/box_ops.py": "c7c5939e1806379392293f83f568fc0a64cb3715c073224f6b1c8ef0002fa07c",
+    "lib/utils/focal_loss.py": "d6ab3a089c8a81745d3298aa1bc7111e42098ac2f6be77fe4329c425d5654e6d",
+    "lib/utils/heapmap_utils.py": "64964daacceacfe18ddf6cdd081d981d6bfdb24b4d7734762c524d9d1ca5f90a",
+    "tracking/reliable_memory_runtime.py": "f2241a929193ac8151561ad903e61bb06a7d49cc5072a08174a494e7242fd376",
+    "tracking/reliable_memory_wandb.py": "35d5e52ee1c3cbf0bcd7244cdc083452058ca553cbe3fd0cff5baf050dbd6e4b",
+    "tracking/train_reliable_memory.py": "cd898bc84347198eeb538daaf4624aa461efb0d20cd43b9320c020a975338c06"
+  }
+}

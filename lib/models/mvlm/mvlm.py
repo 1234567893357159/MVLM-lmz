@@ -31,13 +31,17 @@ class MVLM(nn.Module):
         self.memory_enabled = memory_cfg is not None and memory_cfg.ENABLED
         self.freeze_memory_backbone = False
         self.freeze_memory_head = False
+        self.freeze_head_bn = False
         if self.memory_enabled:
             if head_type != 'CENTER':
                 raise ValueError('Content memory currently supports the CENTER head only')
             self.memory_fusion = MemoryFusion(
                 encoder.num_channels, memory_cfg.HIDDEN_DIM, memory_cfg.KEY_DIM,
                 memory_cfg.ROI_SIZE, memory_cfg.USE_SEMANTIC,
-                memory_cfg.SHORT_DECAY, memory_cfg.LONG_DECAY)
+                memory_cfg.SHORT_DECAY, memory_cfg.LONG_DECAY,
+                bounded=getattr(memory_cfg, 'BOUNDED_FUSION', False),
+                max_residual_ratio=getattr(getattr(memory_cfg, 'FUSION', None), 'MAX_RESIDUAL_RATIO', 0.25),
+                eps=getattr(getattr(memory_cfg, 'FUSION', None), 'EPS', 1e-6))
             if memory_cfg.ROI_SIZE < 1 or memory_cfg.HIDDEN_DIM < 1 or memory_cfg.KEY_DIM < 1:
                 raise ValueError('Memory dimensions and ROI size must be positive')
             if memory_cfg.SHORT_CAPACITY < 0 or memory_cfg.LONG_CAPACITY < 0:
@@ -48,6 +52,10 @@ class MVLM(nn.Module):
     def new_memory(self, batch_size):
         if not self.memory_enabled:
             return None
+        if (getattr(self.memory_cfg, 'RELIABLE_WRITE', False)
+                or getattr(self.memory_cfg, 'DISTRACTOR_RETENTION', False)):
+            from .reliable_memory import ReliableMemoryBank
+            return ReliableMemoryBank(batch_size, self.memory_cfg)
         return TargetMemoryBank(batch_size, self.memory_cfg.SHORT_CAPACITY,
                                 self.memory_cfg.LONG_CAPACITY, self.memory_cfg.MIN_QUALITY,
                                 self.memory_cfg.NOVELTY_THRESHOLD)
@@ -60,6 +68,10 @@ class MVLM(nn.Module):
                 self.text_encoder.eval()
         if self.freeze_memory_head:
             self.head.eval()
+        if self.freeze_head_bn:
+            for module in self.head.modules():
+                if isinstance(module, nn.modules.batchnorm._BatchNorm):
+                    module.eval()
         return self
 
 
@@ -78,6 +90,9 @@ class MVLM(nn.Module):
             text_emb = None
 
         if self.memory_enabled and len(search_list) > 1:
+            if (getattr(self.memory_cfg, 'RELIABLE_WRITE', False)
+                    or getattr(self.memory_cfg, 'DISTRACTOR_RETENTION', False)):
+                raise ValueError('Reliable memory requires closed-loop training, not the legacy mixed-GT sequence')
             return self.forward_memory_sequence(template_list, search_list, text_emb, frame_ids,
                                                 memory_boxes, memory_valid, predicted_write_probability,
                                                 memory_box_transforms, memory_image_sizes)

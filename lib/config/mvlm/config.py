@@ -48,6 +48,19 @@ cfg.MODEL.MEMORY.NOVELTY_THRESHOLD = 0.1
 cfg.MODEL.MEMORY.SHORT_DECAY = 0.1
 cfg.MODEL.MEMORY.LONG_DECAY = 0.01
 
+# Reliable memory is opt-in; old configs/checkpoints keep their original path.
+cfg.MODEL.MEMORY.RELIABLE_WRITE = False
+cfg.MODEL.MEMORY.DISTRACTOR_RETENTION = False
+cfg.MODEL.MEMORY.BOUNDED_FUSION = False
+cfg.MODEL.MEMORY.POLICY = edict(dict(
+    MIN_SCORE=0.9, MIN_CLS_MARGIN=0., MIN_LANGUAGE_MARGIN=0.,
+    CONFIRM_FRAMES=2, RECOVERY_CONFIRM_FRAMES=3, MIN_DESCRIPTOR_SIM=0.7,
+    MAX_CENTER_SPEED=2., MAX_LOG_SCALE_RATE=1.38629436112))
+cfg.MODEL.MEMORY.RETENTION = edict(dict(
+    MAX_COMPETITORS=3, MAX_TARGET_IOU=0.1, NMS_IOU=0.5,
+    MIN_OBSERVATIONS=3, EMA_DECAY=0.9, UTILITY_TOLERANCE=0.02))
+cfg.MODEL.MEMORY.FUSION = edict(dict(MAX_RESIDUAL_RATIO=0.25, EPS=1.e-6))
+
 # TRAIN
 cfg.TRAIN = edict()
 cfg.TRAIN.LR = 0.0001
@@ -76,6 +89,10 @@ cfg.TRAIN.TYPE = "normal" # normal, peft, fft, text_frozen
 cfg.TRAIN.PRETRAINED_PATH = None
 cfg.TRAIN.MEMORY_FREEZE_HEAD = True
 cfg.TRAIN.MEMORY_PREDICTED_PROB = 0.5
+cfg.TRAIN.RELIABLE_CLOSED_LOOP = False
+cfg.TRAIN.CLIP_FRAMES = 12
+cfg.TRAIN.WARMUP_FRAMES = 4
+cfg.TRAIN.MAX_UPDATES = 4000
 
 # DATA
 cfg.DATA = edict()
@@ -126,6 +143,8 @@ cfg.TEST.SEARCH_FACTOR = 2.0
 cfg.TEST.SEARCH_SIZE = 128
 cfg.TEST.EPOCH = 500
 cfg.TEST.MEMORY_ALLOW_UNTRAINED = False
+cfg.TEST.RELIABLE_CORE = False
+cfg.TEST.FIRST_FRAME_PROTOCOL = 'legacy_gt'
 cfg.TEST.WINDOW = False # window penalty
 cfg.TEST.NUM_TEMPLATES = 1
 # TEST.UPDATE_INTERVALS
@@ -214,6 +233,41 @@ def update_config_from_file(filename):
         exp_config = edict(yaml.safe_load(f))
         if 'MEMORY' not in exp_config.get('MODEL', {}):
             cfg.MODEL.MEMORY.ENABLED = False
+        memory_options = exp_config.get('MODEL', {}).get('MEMORY', {})
+        for key in ('RELIABLE_WRITE', 'DISTRACTOR_RETENTION', 'BOUNDED_FUSION'):
+            cfg.MODEL.MEMORY[key] = memory_options.get(key, False)
+        cfg.TEST.RELIABLE_CORE = exp_config.get('TEST', {}).get('RELIABLE_CORE', False)
+        cfg.TEST.FIRST_FRAME_PROTOCOL = exp_config.get('TEST', {}).get('FIRST_FRAME_PROTOCOL', 'legacy_gt')
+        cfg.TRAIN.RELIABLE_CLOSED_LOOP = exp_config.get('TRAIN', {}).get('RELIABLE_CLOSED_LOOP', False)
         _update_config(cfg, exp_config)
 
 
+
+
+# Stateless config loading for independent paired runs in the same process.
+import copy as _copy
+_DEFAULT_CFG = _copy.deepcopy(cfg)
+
+
+def load_config(filename):
+    from pathlib import Path
+    class UniqueLoader(yaml.SafeLoader):
+        pass
+
+    def unique_mapping(loader, node, deep=False):
+        result = {}
+        for key_node, value_node in node.value:
+            key = loader.construct_object(key_node, deep=deep)
+            if key in result:
+                raise ValueError('Duplicate configuration key: ' + str(key))
+            result[key] = loader.construct_object(value_node, deep=deep)
+        return result
+
+    UniqueLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, unique_mapping)
+    filename = Path(filename)
+    if not filename.is_file():
+        filename = Path(__file__).resolve().parents[3] / 'experiments/mvlm' / (str(filename) + '.yaml')
+    config = _copy.deepcopy(_DEFAULT_CFG)
+    with filename.open() as handle:
+        _update_config(config, edict(yaml.load(handle, Loader=UniqueLoader)))
+    return config

@@ -5,8 +5,15 @@ from torch import nn
 
 class MemoryFusion(nn.Module):
     def __init__(self, channels, hidden_dim=256, key_dim=128, roi_size=2,
-                 use_semantic=True, short_decay=0.1, long_decay=0.01):
+                 use_semantic=True, short_decay=0.1, long_decay=0.01,
+                 bounded=False, max_residual_ratio=0.25, eps=1e-6):
         super().__init__()
+        if max_residual_ratio < 0 or eps <= 0:
+            raise ValueError('Invalid residual limit')
+        self.bounded = bounded
+        self.max_residual_ratio = max_residual_ratio
+        self.eps = eps
+        self.last_diagnostics = {}
         self.roi_size = roi_size
         self.use_semantic = use_semantic
         self.short_decay = short_decay
@@ -57,4 +64,16 @@ class MemoryFusion(nn.Module):
         gate = torch.sigmoid(self.output_gate(torch.cat((visual, retrieved), -1)))
         has_memory = valid.any(-1).view(-1, 1, 1)
         delta = self.output_proj(gate * retrieved) * has_memory.to(features.dtype)
+        if self.bounded:
+            if not bool(torch.isfinite(features).all()) or not bool(torch.isfinite(delta).all()):
+                raise ValueError('Nonfinite memory features/residual')
+            base_norm = features.float().norm(dim=-1, keepdim=True)
+            delta_norm = delta.float().norm(dim=-1, keepdim=True)
+            scale = (self.max_residual_ratio * base_norm / delta_norm.clamp_min(self.eps)).clamp(max=1)
+            self.last_diagnostics = dict(
+                clipped_fraction=float((scale < 1).float().mean().detach()),
+                raw_ratio=float((delta_norm/base_norm.clamp_min(self.eps)).mean().detach()))
+            if self.max_residual_ratio == 0:
+                return features, gate * has_memory.to(features.dtype)
+            delta = (delta.float() * scale).to(features.dtype)
         return features + delta, gate * has_memory.to(features.dtype)
