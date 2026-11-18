@@ -102,7 +102,7 @@ class WandbMonitor:
         self._append(dict(kind='metrics', step=step, metrics=clean))
         self.last_step = step
 
-    def close(self, status, timeout=5):
+    def close(self, status, timeout=60):
         if self.closed:
             return
         self._append(dict(kind='finish', status=status))

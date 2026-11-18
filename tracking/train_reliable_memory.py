@@ -24,6 +24,19 @@ from reliable_memory_runtime import (atomic_json, atomic_save, sha256, seed_all,
 from reliable_memory_wandb import WandbMonitor, monitoring_metrics
 
 
+def save_candidate(output, step):
+    """Keep an immutable hard link before the next atomic replacement of last."""
+    folder = output/'checkpoints'
+    folder.mkdir(exist_ok=True)
+    last, candidate = output/'last.pth.tar', folder/('step_%06d.pth.tar' % step)
+    if candidate.exists():
+        if sha256(candidate) != sha256(last):
+            raise ValueError('Candidate checkpoint already exists with different contents')
+        return candidate
+    os.link(last, candidate)
+    return candidate
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', default='mvlm_TF_reliable_memory')
@@ -41,6 +54,8 @@ def main():
     parser.add_argument('--resume', action='store_true')
     parser.add_argument('--stop-after', type=int, help='Checkpoint and stop at this absolute update, preserving total schedule')
     parser.add_argument('--save-every', type=int, default=1000)
+    parser.add_argument('--candidate-every', type=int, default=1000,
+                        help='Preserve a separate immutable candidate at this interval')
     parser.add_argument('--wandb', action='store_true', help='Enable optional W&B monitoring')
     parser.add_argument('--wandb-mode', choices=['online', 'offline', 'disabled'])
     parser.add_argument('--wandb-project')
@@ -77,7 +92,7 @@ def main():
         cfg.TRAIN.CLIP_FRAMES = args.clip_frames
     if args.warmup_frames is not None:
         cfg.TRAIN.WARMUP_FRAMES = args.warmup_frames
-    if min(cfg.TRAIN.MAX_UPDATES, args.global_batch, args.save_every) < 1 or args.engineering_subset < 0:
+    if min(cfg.TRAIN.MAX_UPDATES, args.global_batch, args.save_every, args.candidate_every) < 1 or args.engineering_subset < 0:
         parser.error('Invalid budget/batch/subset')
     if args.stop_after is not None and not 0 < args.stop_after <= cfg.TRAIN.MAX_UPDATES:
         parser.error('stop-after must be inside the total budget')
@@ -131,6 +146,7 @@ def main():
         metadata = dict(config=cfg, manifest_sha256=manifest_hash, checkpoint_sha256=sha256(args.checkpoint),
                         source_hashes=hashes, world_size=world, global_batch=args.global_batch, group=group,
                         engineering_subset=args.engineering_subset, seed=args.seed,
+                        candidate_every=args.candidate_every, save_every=args.save_every,
                         clip_length=cfg.TRAIN.CLIP_FRAMES, protocol='strict_language',
                         data_signature=sha256(args.manifest))
         step, attempt = 0, 0
@@ -202,7 +218,8 @@ def main():
             scheduler.step()
             step += 1
             row = dict(metrics, step=step, attempt=attempt, gradient_norm=float(gradient_norm),
-                       lr=optimizer.param_groups[0]['lr'], lr_used=lr_used, rank=rank)
+                       lr=optimizer.param_groups[0]['lr'], lr_used=lr_used, rank=rank,
+                       seconds_per_update=time.monotonic()-started)
             with (output/('metrics_rank%d.jsonl'%rank)).open('a') as handle:
                 handle.write(json.dumps(row, allow_nan=False)+'\n')
             print(json.dumps(row), flush=True)
@@ -221,7 +238,7 @@ def main():
                         payload.update({'gpu/rank0/allocated_mib': torch.cuda.memory_allocated(device)/2**20,
                                         'gpu/rank0/peak_allocated_mib': torch.cuda.max_memory_allocated(device)/2**20})
                     monitor.log(payload, step, force=step == stop)
-            if step%args.save_every == 0 or step == stop:
+            if step%args.save_every == 0 or step%args.candidate_every == 0 or step == stop:
                 rng = dict(python=random.getstate(), numpy=np.random.get_state(), torch=torch.get_rng_state(),
                            cuda=torch.cuda.get_rng_state(device) if device.type == 'cuda' else None)
                 rngs = [None]*world
@@ -235,6 +252,8 @@ def main():
                     atomic_save(output/'last.pth.tar', dict(net=state, optimizer=optimizer.state_dict(),
                                 scheduler=scheduler.state_dict(), step=step, attempt=attempt,
                                 metadata=metadata, rng=rngs))
+                    if step%args.candidate_every == 0:
+                        save_candidate(output, step)
         report = dict(rank=rank, frozen_unchanged=parameter_digest(model, True)==frozen_before,
                       bn_unchanged=bn_digest(model)==bn_before,
                       trainable_changed=parameter_digest(model, False)!=trainable_before,

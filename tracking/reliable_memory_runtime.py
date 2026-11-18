@@ -87,7 +87,8 @@ def source_hashes():
         ROOT/'lib/train/data/reliable_memory_dataset.py', ROOT/'lib/test/tracker/utils.py',
         ROOT/'lib/utils/focal_loss.py', ROOT/'lib/utils/heapmap_utils.py', ROOT/'lib/utils/box_ops.py',
         ROOT/'tracking/train_reliable_memory.py', ROOT/'tracking/reliable_memory_runtime.py',
-        ROOT/'tracking/reliable_memory_wandb.py']
+        ROOT/'tracking/reliable_memory_wandb.py', ROOT/'tracking/reliable_validation.py',
+        ROOT/'tracking/evaluate_reliable_memory.py', ROOT/'tracking/watch_reliable_training.py']
     return {str(p.relative_to(ROOT)): sha256(p) for p in sorted(paths)}
 
 
