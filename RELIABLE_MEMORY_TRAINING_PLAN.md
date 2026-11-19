@@ -164,7 +164,7 @@ M2 是旧记忆方法的重训对照，初始化也从同一官方 MVLM 开始�
 
 对选定的 M6 拼接检查点，使用评测入口的 `--zero-memory-input` 再做一次同权重消融：保留训练后的 768 维 CENTER，将输入的记忆通道置零；读取干预后轨迹可能随之改变。这不是独立训练的无记忆 M1，也不等于关闭记忆写入。拼接与残差的权重不能相互直接加载；从官方无记忆权重初始化时才能扩展 CENTER。
 
-训练器已支持 `--save-every 100 --candidate-every 1000`：每 100 步更新恢复点，并在 1000、2000、3000、4000 步保留独立候选。`tracking/watch_reliable_training.py` 使用独立显卡顺序评测全部 90 条完整视频，按上述规则产生 `best.pth.tar` 和 `validation/best.json`，并向独立 W&B 验证 run 上传分数。若验证失败会记录 `watcher_status.json`，不会伪造 best；训练及验证任务状态需分别检查。检查点保留、验证清单和选优逻辑已通过合成检查，真实 90 视频周期验证将在候选产生后运行。
+训练器已支持 `--save-every 100 --candidate-every 1000`：每 100 步更新恢复点，并在 1000、2000、3000、4000 步保留独立候选。`tracking/watch_reliable_training.py` 使用独立进程顺序评测全部 90 条完整视频，按上述规则产生 `best.pth.tar` 和 `validation/best.json`，并向独立 W&B 验证 run 上传分数。当前 GPU 0–3 已被其他进程占用，训练使用 GPU 4–7；验证暂与 GPU 7 共享，可能减慢训练。若验证失败会记录 `watcher_status.json`，不会伪造 best；训练及验证任务状态需分别检查。检查点保留、验证清单和选优逻辑已通过合成检查，真实 90 视频周期验证将在候选产生后运行。
 
 ## 7. W&B 与运行时间
 

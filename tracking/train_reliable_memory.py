@@ -129,7 +129,19 @@ def main():
     try:
         write_status()
         seed_all(args.seed)
+        hashes = source_hashes()
+        metadata = dict(config=cfg, manifest_sha256=sha256(args.manifest), checkpoint_sha256=sha256(args.checkpoint),
+                        source_hashes=hashes, world_size=world, global_batch=args.global_batch, group=group,
+                        engineering_subset=args.engineering_subset, seed=args.seed,
+                        candidate_every=args.candidate_every, save_every=args.save_every,
+                        clip_length=cfg.TRAIN.CLIP_FRAMES, protocol='strict_language',
+                        data_signature=sha256(args.manifest))
+        # Publish the run before the full dataset scan, which may take many minutes.
+        monitor = WandbMonitor(output, cfg.WANDB, dict(metadata, git_revision=revision()),
+                               resume=args.resume, rank=rank)
         partitions, manifest_hash = read_manifest(args.manifest, cfg.TRAIN.CLIP_FRAMES, args.engineering_subset)
+        if manifest_hash != metadata['manifest_sha256']:
+            raise ValueError('Dataset manifest changed during startup')
         model, _, audit = build_loaded_model(cfg, args.checkpoint, device, training=True)
         frozen_before, bn_before = parameter_digest(model, True), bn_digest(model)
         trainable_before = parameter_digest(model, False)
@@ -142,13 +154,6 @@ def main():
                 return (step+1)/warmup
             return .5*(1+math.cos(math.pi*(step-warmup)/max(1,total-warmup)))
         scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_scale)
-        hashes = source_hashes()
-        metadata = dict(config=cfg, manifest_sha256=manifest_hash, checkpoint_sha256=sha256(args.checkpoint),
-                        source_hashes=hashes, world_size=world, global_batch=args.global_batch, group=group,
-                        engineering_subset=args.engineering_subset, seed=args.seed,
-                        candidate_every=args.candidate_every, save_every=args.save_every,
-                        clip_length=cfg.TRAIN.CLIP_FRAMES, protocol='strict_language',
-                        data_signature=sha256(args.manifest))
         step, attempt = 0, 0
         if args.resume:
             saved = torch.load(output/'last.pth.tar', map_location='cpu')
@@ -193,8 +198,6 @@ def main():
                                 max_stride=cfg.DATA.MEMORY_MAX_STRIDE, dataset_weights=weights)
         per_rank = args.global_batch//world
         stop = args.stop_after or total
-        monitor = WandbMonitor(output, cfg.WANDB, dict(metadata, audit=audit, git_revision=revision()),
-                               resume=args.resume, rank=rank)
         while step < stop:
             started = time.monotonic()
             clips = [dataset[attempt*args.global_batch + rank*per_rank+i] for i in range(per_rank)]
