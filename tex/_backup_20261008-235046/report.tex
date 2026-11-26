@@ -1,0 +1,122 @@
+% !Mode:: "TeX:UTF-8"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  本科毕业论文（设计）开题报告
+%  题目：基于记忆与想像建模的视觉-语言目标跟踪方法研究
+%  学生：刘明卓    学号：2023111648    指导教师：马丁
+%  模板：hithesis v3 (examples/hitart/reports)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[fontset=windows,toc=true,type=bachelor,stage=opening,campus=harbin]{hithesisart}
+% 此处选项中不要有空格
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 必填选项
+% type=bachelor
+% stage=opening
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 选填选项
+% campus=harbin|shenzhen|weihai   默认harbin
+% fontset=windows|mac|ubuntu|fandol
+%   含义：前三个对应各自系统，fandol是开源字体。
+% toc=true|false                   是否显示目录，默认true
+% newtxmath=true|false             是否使用 times 风格数学字体，默认true
+% print=true|false                 是否在封面后增加空白页用于打印，默认false
+% bibauthorupper=full|preserve
+% bibmaxauthor=<自然数>
+% biblabelalign=left|right
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{figures/}}
+
+% 表格：撑满版心宽度 + 单元格自动换行，保证完整居中显示
+\usepackage{tabularx}
+\usepackage{array}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}   % 左对齐自动宽度列
+\newcolumntype{C}{>{\centering\arraybackslash}X}       % 居中自动宽度列
+% 固定比例列（用于控制各列宽窄），用法：\begin{tabularx}{\textwidth}{A{0.25} A{0.75}}
+\newcolumntype{A}[1]{>{\raggedright\arraybackslash\hsize=#1\hsize}X}
+\newcolumntype{B}[1]{>{\centering\arraybackslash\hsize=#1\hsize}X}   % 居中的固定比例列
+
+% 封面字体：Windows 版宋体无真粗体，\textbf 会退化为伪粗体而偏细，
+% 故将粗体字重映射到黑体；封面数字另取消加粗，使中英文粗细协调。
+% 若学校要求「宋体加粗」，删掉 \setCJKfamilyfont 与下方 \begingroup 即可。
+\setCJKfamilyfont{zhsong}[BoldFont=SimHei]{SimSun}
+
+% 目录条目字体：hithesisart.cls 中 \renewcommand{\cftsecfont}{\heiti} 把目录的
+% 一级条目设为黑体（二级、三级沿用 tocloft 默认即宋体），该设定承自硕士开题报告规范。
+% 本科开题报告要求目录条目统一用宋体，故在此覆盖：仅影响目录，不影响正文各级标题。
+\renewcommand{\cftsecfont}{\songti}
+
+% 浮动体与正文的垂直间距。
+% \intextsep 上下相同，但 TeX 只在下方补完整基线胶水（约12pt，上方仅
+% \lineskip=1pt），故用 caption 的负 belowskip 抵消，使图/表上下留白对称。
+% 实测：图 上11.5 下10.5　表 上14.6 下15.7（单位 pt）
+\setlength{\textfloatsep}{12pt}
+\setlength{\intextsep}{12pt}
+\captionsetup[figure]{aboveskip=8pt, belowskip=-14pt}
+\captionsetup[table]{skip=6pt}
+
+% tabular 以居中为基线，使浮动体下边界偏低；末尾补负间距抵消之。
+\newcommand{\tabdepthfix}{\par\vspace{-6pt}}
+
+% ===================== 与学校下发的 Word 版开题报告模板对齐 =====================
+% 说明：hithesisart.cls 是按「研究生学位论文」规范写的（版心 150mm、行距 20.5bp），
+% 而学校下发的本科开题报告 Word 模板是上下左右各 2.5cm、版心 160mm×247mm、正文
+% 1.5 倍行距（宋体小四对应 22pt）。以下四项把 LaTeX 版对齐到 Word 模板。
+\makeatletter
+
+% (1) 删除封面隐形水印
+%     hithesisart.cls:546 会在本科封面顶部插入一行白色（不可见）文字「嗨！thesis」。
+%     屏幕/打印都看不见，但复制文字、查重系统、文本提取会把它读出来。
+%     这里换成一个等高的透明占位，既清掉文字，又保持封面垂直排版与原来完全一致。
+%     若不在意封面整体上移约 16pt，也可直接写 \def\hit@hi{}。
+\def\hit@hi{\vphantom{X}}%
+
+% (2) 正文行距 20.50398bp → 22bp（等价 Word 1.5 倍行距）
+%     只改 \normalsize，四级标题等其它字号的基线距不受影响。
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{12bp}{22bp}%
+  \abovedisplayskip=8pt
+  \abovedisplayshortskip=8pt
+  \belowdisplayskip=\abovedisplayskip
+  \belowdisplayshortskip=\abovedisplayshortskip
+}
+\AtBeginDocument{\normalsize}
+\makeatother
+
+% (3) 版心与页边距：上下左右各 25mm，版心 160mm×247mm
+\geometry{text={160true mm,247true mm},left=25true mm}
+
+% (4) 首行位置补偿：Word 会在首行上方留出整行行距，LaTeX 默认只留 \topskip=10pt，
+%     补偿到 23.4pt 后，首行文字落点与 Word 模板一致。
+\topskip=23.4pt
+
+% (5) 各级标题的上下间距：对齐 Word 模板。
+%     模板实测（标题1/标题2 = 段前段后7.8pt/0pt + 22pt固定行距）：
+%     一级标题上下留白各约 14pt，二级标题上约 7pt、下约 8.5pt。
+%     cls 原值 section 7.5bp/7.5bp、subsection 7bp/7bp，实际视觉留白只有
+%     5pt 左右——这就是“整页都是字、显得密”的主要原因。以下按模板实测值放大。
+\ctexset{
+  section={beforeskip=15.4bp, afterskip=16.3bp},
+  subsection={beforeskip=8.5bp, afterskip=10.45bp},
+}
+% ============================================================================
+
+\begin{document}
+
+% 封面：取消西文加粗（Times Bold 笔画重于黑体，会使数字比中文突出）。
+% 中文侧走 \heiti 家族，不受影响。
+\begingroup
+  \let\origcovertext\textbf
+  \renewcommand{\textbf}[1]{\origcovertext{\mdseries #1}}
+  \input{front/coverart.tex}
+  \makecover
+\endgroup
+
+% 哈尔滨校区本科生开题报告结构 --------------------------------------
+\input{body/report_harbin_bachelor_opening}
+% \makebackcover  % 已删除“指导教师评语”页（封底）
+
+\end{document}
+
+% Local Variables:
+% TeX-engine: xetex
+% End:
