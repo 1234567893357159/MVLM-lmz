@@ -12,10 +12,16 @@
 
 当前交接、各分支导航及实验总览见 [doc 文档入口](doc/README.md)。
 
+## 可靠记忆库 M6（2026-11-24 核实）
+
+可靠记忆分支 `codex/reliable-memory` 的批处理原型已从官方权重完成4000步训练；固定90条严格语言开发验证选择4000步，mean AUC为75.4383。随后按旧首帧框/整数框协议在OTB48、LaSOT280、TNL2K700各搜索12组参数，已全部完成，各集最高AUC为59.24 / 61.64 / 56.93。两套视频及协议不同，测试集搜索最高值属于探索性结果。
+
+正式记录：[可靠记忆M6训练、验证与测试](reports/reproduction/RELIABLE_MEMORY_M6_RESULTS_20261124.md)；服务器完整结果表：[测试README](/root/MVLM/output/reliable_m6_legacy_sweep_20261122_run01/README.md)。实际训练代码来自 `/root/MVLM/work/reliable-batched-prototype` 及运行快照，不能用本分支当前代码代替；未把可靠记忆分支合并为联合模型，也未启动首帧记忆初始化的新训练。
+
 ## 记忆与世界模型联合开发分支
 
 `codex/memory-world` 实现开题报告中的内容记忆条件预测、未来表征融合与候选质量先验。
-截至 2026-11-12，A、B 均完成 4000 步，B 从 A/3000 初始化；C 尚未训练。基线、B1025、B4000 的同协议完整视频评测尚未全部完成，已完成的 OTB 结果及状态入口见[训练与结果记录](reports/reproduction/MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md)。
+A、B 均完成4000步，B从A/3000初始化；C尚未训练。基线、B1025、B4000的OTB48/LaSOT280/TNL2K700完整视频评测与后续参数搜索已完成；实际结果及历史快照见[训练与结果记录](reports/reproduction/MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md)。可靠记忆M6是另一个实验，见上节。
 
 | 阅读内容 | 入口 |
 |---|---|
@@ -30,14 +36,9 @@
 当前流程为 A 预测学习 → B 完整跟踪器适配，上限各4000次更新，之后按留出验证决定后续方案。
 A 使用 `tracking/train_memory_world.py`；当前 B 使用独立 `tracking/train_memory_world_tracker_b.py`，训练视觉编码器、语言投影、CENTER 与融合层，保留 CLIP 本体和 A 模块冻结。原适配层 B/C 配置及下方 MVLM 复现实验保留为对照和历史记录。
 
-## 历史复现实验记录（2026-10-28）
+## 复现实验
 
-VastTrack-only 训练已完成 60 轮、75,000 次更新，并完成 6 个轮次的内部验证及第 60 轮的 language-only 外部评测。此实验使用单一训练数据集，不能当作论文三数据集训练的完整复现。下方 Main Results 保留论文原始成绩；本地训练成绩见以下独立记录。
-
-- [实验与文档总索引](reports/reproduction/README.md)
-- [历史复现分支说明](BRANCH_MVLM_REPRODUCTION.md)
-- [本轮结果、数据状态及复现入口](reports/reproduction/vasttrack_run_20261026/README.md)
-- [与论文的差距分析](reports/reproduction/VASTTRACK_RESULT_GAP_ANALYSIS_20261028.md)
+三数据集复现及后续实验见[实验与文档总索引](reports/reproduction/README.md)。
 
 ---
 

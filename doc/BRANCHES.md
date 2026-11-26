@@ -1,14 +1,15 @@
 # 分支与文档导航
 
-本文件的本机路径是 2026-11-12 的工作树快照。不同机器或工作树清理后路径可能变化；先用 `git worktree list`、`git branch -a` 核对。表中的仓库内路径以对应分支为准；不必为读文档切换当前分支，可用 `git show <分支>:<路径>`。
+本文件主要路径为2026-11-12的工作树快照；可靠记忆路径于2026-11-24核实补充。不同机器或工作树清理后路径可能变化；先用 `git worktree list`、`git branch -a` 核对。表中的仓库内路径以对应分支为准；不必为读文档切换当前分支，可用 `git show <分支>:<路径>`。
 
 | 分支 | 用途 | 本机工作目录 |
 |---|---|---|
 | `codex/memory-world` | 内容记忆、世界模型、融合与质量头联合开发 | `/root/MVLM` |
+| `codex/reliable-memory` | 可靠写入、短/长期内容记忆与拼接CENTER的M6开发 | `/root/.codex/worktrees/reliable-memory/MVLM` |
 | `codex/world-model` | 不含内容记忆的独立世界模型实验 | `/root/MVLM/work/world-model` |
 | `codex/xmem-memory` | 目标内容短/长期记忆实验 | `/root/MVLM/work/xmem-wandb` |
 | `codex/xmem-concat-center` | 内容记忆拼接扩展 CENTER 实验 | `/root/.codex/worktrees/xmem-concat-center/MVLM` |
-| `codex/mvlm-reproduction` | 原模型复现、VastTrack 和三数据集训练 | 未单独挂载；部分资料在当前分支 |
+| `codex/mvlm-reproduction` | 原模型复现与三数据集训练 | 未单独挂载；部分资料在当前分支 |
 | `main` | 原始项目和早期官方权重参数实验 | 未单独挂载 |
 
 ## 联合模型 `codex/memory-world`
@@ -16,6 +17,10 @@
 - [分支说明](../BRANCH_MEMORY_WORLD.md)、[联合架构](../reports/reproduction/MEMORY_WORLD_IMPLEMENTATION.md)、[训练指南](../reports/reproduction/MEMORY_WORLD_TRAINING.md)。
 - [A 阶段](../reports/reproduction/MEMORY_WORLD_STAGE_A_20261109.md)、[当前完整跟踪器 B](../reports/reproduction/MEMORY_WORLD_TRACKER_B_20261111.md)、[训练与结果总记录](../reports/reproduction/MEMORY_WORLD_TRAINING_AND_RESULTS_20261112.md)。
 - [完整视频分析](../reports/reproduction/MEMORY_WORLD_B_VIDEO_ANALYSIS_20261112.md)、[历史参数迁移](../reports/reproduction/MEMORY_WORLD_OTB_HISTORICAL_PARAMS_20261112.md)、[OTB 多参数搜索](../reports/reproduction/MEMORY_WORLD_OTB_SWEEP_20261112.md)。
+
+## 可靠记忆 `codex/reliable-memory`
+
+本轮实际训练在 `/root/MVLM/work/reliable-batched-prototype`，该副本不是Git工作树。以训练运行 `run.json`、25项源码哈希与source快照确定代码身份，不以分支HEAD代替。M6/4000训练、90视频选模和三测试集参数搜索均已完成，正式结果与本地证据见[可靠记忆实验记录](../reports/reproduction/RELIABLE_MEMORY_M6_RESULTS_20261124.md)。当前memory-world文档收录此记录不表示代码已合并。
 
 ## 独立世界模型 `codex/world-model`
 
@@ -31,7 +36,7 @@
 
 ## 原模型复现及早期文档
 
-- `codex/mvlm-reproduction`：`BRANCH_MVLM_REPRODUCTION.md`、`reports/reproduction/README.md`；当前分支也保留[复现分支说明](../BRANCH_MVLM_REPRODUCTION.md)及[实验索引](../reports/reproduction/README.md)。
+- `codex/mvlm-reproduction`：保留原模型复现与三数据集训练代码和配置，三数据集训练及续训见[实验索引](../reports/reproduction/README.md)。此前 VastTrack-only 运行的本地训练记录、评测归档和检查点已按要求删除；用于训练和严格无框评测的通用代码及数据划分仍保留。
 - `main`：`README.md`、`REPRODUCTION.md`、`SESSION_HANDOFF.md`，及 `reports/reproduction/` 下三个数据集的参数搜索记录。
 - [历史会话交接](../SESSION_HANDOFF.md)属于早期快照；世界模型分支的 `WORLD_MODEL_HANDOFF.md` 也是该分支历史记录，不能替代[当前交接](HANDOFF.md)。
 

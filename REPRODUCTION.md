@@ -4,24 +4,11 @@
 
 2026-11-03 更新：三数据集训练已完成60轮，并分两阶段续训至80轮（100,000次更新）。LaSOT/VastTrack/TNL2K 按1:1:1抽样，GPU4、5每卡batch40、全局80；当时 GPU6、7 正在逐轮评测 E71～E80（历史快照）。详见[训练与监控记录](reports/reproduction/PAPER_CONTINUATION_TRAINING_20261103.md)、[评测进度快照](reports/reproduction/PAPER_CONTINUATION_TESTS_20261103.md)及[新W&B运行](https://wandb.ai/2896287267-hit/mvlm-reproduction/runs/jrhbvcza)。E61～E70完整评测中，E66三集平均AUC最高（58.381）；[分析报告](reports/reproduction/PAPER_CONTINUATION_ANALYSIS_20261103.md)记录了小幅续训收益和测试集选择的限制。在线W&B曾中断，训练完成情况以本地日志和检查点核验为准。
 
-## 此前实验：VastTrack-only
+## 可靠记忆库 M6 的可复现记录
 
-2026-10-28 更新：训练已经完成 60 轮、75,000 次更新；每卡 batch 10，8 卡全局 batch 80。CLIP 冻结，FastITPN 骨干微调，语言投影和预测头从随机初始化开始训练。保留全部 60 个本地检查点；独立评测已完成。
+2026-11-24复核：可靠记忆M6完成4000步、四候选90视频验证及三测试集36组参数搜索；运行代码来自批处理副本与source快照，初始化/清单/源码/最佳权重哈希、冻结范围、空语言例外和恢复经过见[正式实验记录](reports/reproduction/RELIABLE_MEMORY_M6_RESULTS_20261124.md)。本分支当前代码与工作树HEAD都不能单独标识训练版本。
 
-| 第 60 轮外部测试 | AUC | PRE | NPR |
-| --- | ---: | ---: | ---: |
-| OTB99-Lang（标准测试 48 条） | 52.70 | 71.00 | 63.31 |
-| LaSOT（280 条） | 51.52 | 50.26 | 54.72 |
-| TNL2K（699 条，排除 1 条空语言） | 37.14 | 32.53 | 49.38 |
-
-首帧由模型根据整图及语言预测，无 GT 初始化。推理参数使用之前各数据集在官方权重上测试调优的值；本次未重新搜索参数。这些结果属于单数据集训练的探索性评测，不能当作论文三数据集训练的完整复现。
-
-- [分支说明](BRANCH_MVLM_REPRODUCTION.md)：实现范围和训练设置。
-- [本轮运行归档](reports/reproduction/vasttrack_run_20261026/README.md)：数据状态、完整指标、逐序列统计、配置与复评命令。
-- [划分审计](reports/reproduction/VASTTRACK_PROTOCOL_AUDIT_20261028.md)：46,325 条训练、500 条内部验证及证据边界。
-- [差距分析](reports/reproduction/VASTTRACK_RESULT_GAP_ANALYSIS_20261028.md)：已确认差异、排查结果和后续控制变量实验。
-
-第 10/20/30/40/50/60 轮内部验证 AUC 分别为 66.44/67.64/68.63/68.32/69.13/70.43。该验证来自 VastTrack 训练部分，不能与外部测试横比；目前也没有评测全部 60 轮。
+90视频strict_language开发验证与首帧GT/整数框的旧协议测试分开报告。测试目录早期状态文件为历史快照，最终以 `resume_status.json`、`resume_summary.json`、`README.md` 为准；W&B上传未获确认。
 
 ## 历史官方权重实验
 
@@ -31,11 +18,11 @@
 | OTB99-Lang | 56.48 | 60.56 |
 | TNL2K | 55.42 | 57.62 |
 
-这些历史结果采用原有首帧处理方式，且最佳值来自测试集调参；与本次自训结果的直接对照需要说明协议差异。已完成的 OTB 官方同严格协议 AUC 为 60.52。历史记录入口见[总索引](reports/reproduction/README.md)。
+这些历史结果采用原有首帧处理方式，且最佳值来自测试集调参；与自训结果的直接对照需要说明协议差异。历史记录入口见[总索引](reports/reproduction/README.md)。
 
 ## 数据、路径与大文件
 
-数据集、完整帧级预测、模型权重、60 个检查点、下载分块和运行日志保留在服务器，不加入 Git。本轮约 1.1 MB 的元数据、汇总和逐序列成绩已归档到仓库，可在 GitHub 浏览。
+数据集、模型权重和完整训练输出不加入 Git；各实验具体状态见对应记录。
 
 本机根目录 `/root/MVLM`，Python 环境 `/root/miniconda3/envs/mvlm/bin/python`。换机器时先调整 `lib/local_config.py` 中的数据和输出路径，准备预训练权重及检查点。依赖见 `requirements.txt`、`requirements-wandb.txt`。
 

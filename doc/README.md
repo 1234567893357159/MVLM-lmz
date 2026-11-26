@@ -8,6 +8,9 @@
 2. [分支与文档导航](BRANCHES.md)：各分支职责、Git 内路径及本机工作目录。
 3. [各分支实验结果总览](EXPERIMENTS.md)：训练数据、参数、测试结果与协议边界。
 4. [实验文档索引](../reports/reproduction/README.md)：详细训练、评测、消融及历史记录。
+5. [毕设完成计划](THESIS_COMPLETION_PLAN.md)：剩余工作、核心对照与消融、场景分析、C 阶段决策及论文交付清单。
+
+2026-11-24新增：[可靠记忆库M6正式实验记录](../reports/reproduction/RELIABLE_MEMORY_M6_RESULTS_20261124.md)，包含4000步训练、90视频候选验证、三测试集完整参数搜索、错误写入案例与旧XMem同视频参考。其标准测试搜索已完成，不能把开发验证75.4383与标准测试最高59.24/61.64/56.93混为同一口径。
 
 其他入口：[项目首页](../README.md) · [联合模型分支说明](../BRANCH_MEMORY_WORLD.md) · [SSH 与代理](../SSH_DESKTOP_PROXY.md) · [历史会话交接](../SESSION_HANDOFF.md)。
 
