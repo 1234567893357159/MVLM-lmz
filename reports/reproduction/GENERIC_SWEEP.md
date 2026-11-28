@@ -58,3 +58,23 @@ CUDA_VISIBLE_DEVICES=5 /root/miniconda3/envs/mvlm/bin/python tracking/sweep_mvlm
 `manifest.json` 记录实验身份及选中的逐视频指纹，`status.json` 标记进度或错误，`results/模型/参数/数据集/视频.json` 包含每帧预测和指标，`summary.json` 按视频等权计算各数据集 AUC/PRE/NPR，另给各数据集等权的 macro AUC。首帧 GT、整数 xywh、AUC 21 阈值、PRE@20、NPR@0.2，使用项目 `calc_seq_err_robust`。`--smoke-frames` 产生的是诊断片段，清楚标为非完整视频。帧读取包含在 wall time 内，不能视为纯模型 FPS。
 
 每次只启动一个设备上的单进程顺序评测，不接管其他 GPU；运行时间和资源需求按实际输入测量。新目录使用独占创建；不删除旧结果。模型各参数组在同一设备顺序运行；未实现跨 GPU 自动调度或自动排名。
+
+## 多 GPU / 每卡多进程与实时 Markdown
+
+通用并行入口 `tracking/sweep_mvlm_parallel.py` 读取同样的实验 JSON，以**模型 × 参数组**作为独立任务，按指定 GPU 和每卡进程数调度现有完整视频评测器；每个子任务仍按视频顺序运行。一个模型只有一组参数时只有一个任务，不会自动把视频拆分到多个进程。输出目录必须是全新的：
+
+```bash
+# 诊断：两个参数组同时运行在物理 GPU 5，每组仅使用前六帧
+/root/miniconda3/envs/mvlm/bin/python tracking/sweep_mvlm_parallel.py \
+  --spec /tmp/sweep.json --output /tmp/mvlm-parallel-smoke \
+  --gpus 5 --workers-per-gpu 2 --smoke-frames 6
+
+# 正式：物理 GPU 5、6、7，每卡两个独立评测进程
+/root/miniconda3/envs/mvlm/bin/python tracking/sweep_mvlm_parallel.py \
+  --spec /tmp/sweep.json --output output/NEW_PARALLEL_SWEEP \
+  --gpus 5,6,7 --workers-per-gpu 2
+```
+
+GPU 编号为物理编号；预先检查资源、显存和吞吐量，避免与已有任务冲突，显存占用随模型和数据变化。调度器不自动寻找空闲 GPU 或确定最佳并发。`LIVE.md` 按 `--interval`（默认 10 秒）原子更新，显示排队、运行、完成和失败状态；只有整组完成后才报告各数据集 AUC/PRE/NPR。`parallel_status.json`、`parallel_manifest.json`、各任务日志、结果和合并 `summary.json` 均保存在该新目录。标准测试集选参明确标为探索性，诊断片段不等于完整视频结果。
+
+中断后，保持相同代码版本、工作区受跟踪代码差异、实验规格、模型配置及权重哈希、GPU 与并发设置，追加 `--resume`：已完成任务跳过，已创建清单的未完成任务由单进程评测器检查身份并继续。留出清单哈希也会检查；标准测试数据可能发生改变，续跑前应自行确认视频、标注及语言未变，已完成任务不会重新审计视频。正在运行的任务若失败，停止启动新任务并等待其他已启动任务结束；异常中断后须检查状态及日志。每次均记录各子任务的代码与视频指纹，不得混用不同协议的结果。
